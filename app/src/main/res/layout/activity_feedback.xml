@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/w30"
+    android:paddingRight="@dimen/w30">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h100"
+        android:background="@color/white"
+        android:gravity="center_vertical|left"
+        android:hint="联系方式"
+        android:paddingLeft="@dimen/w30"
+        android:paddingRight="@dimen/w30"
+        android:singleLine="true"
+        android:textColor="@color/textColorPrimary"
+        android:textColorHint="@color/textColorSecondary" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/h30"
+        android:background="@color/white"
+        android:gravity="left|top"
+        android:hint="输入您的问题或者建议（必填）"
+        android:lines="10"
+        android:padding="@dimen/w30"
+        android:textColor="@color/textColorPrimary"
+        android:textColorHint="@color/textColorSecondary" />
+
+    <Button
+        android:layout_width="@dimen/w660"
+        android:layout_height="@dimen/h80"
+        android:layout_marginTop="@dimen/h50"
+        android:background="@color/textColorPink"
+        android:text="提交"
+        android:textColor="@color/white"
+        android:textSize="@dimen/w32" />
+</LinearLayout>

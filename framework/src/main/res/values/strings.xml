@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources >
+    <!--  -->
+    <string name="network_unavailable">网络失联中，么么哒</string>
+    <string name="request_failed">服务器不给力了,过一会儿再试试。</string>
+    <!--  -->
+</resources>

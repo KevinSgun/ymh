@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.fans.becomebeaut.common.widget.MutilRadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:padding="@dimen/w30">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="请对我们的服务作出评价"
+        android:textSize="@dimen/w28"
+        android:textColor="@color/textColorPrimary"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/h35"
+        android:paddingTop="@dimen/h30">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/w56"
+            android:background="@drawable/sl_evaluate_positive"
+            android:button="@null"
+            android:gravity="center"
+            android:paddingLeft="@dimen/w34"
+            android:paddingRight="@dimen/w34"
+            android:text="很满意"
+            android:textColor="@color/common_positive_color" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/w56"
+            android:layout_marginLeft="@dimen/w20"
+            android:background="@drawable/sl_evaluate_positive"
+            android:button="@null"
+            android:gravity="center"
+            android:paddingLeft="@dimen/w34"
+            android:paddingRight="@dimen/w34"
+            android:text="满意"
+            android:textColor="@color/common_positive_color" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/w56"
+            android:layout_marginLeft="@dimen/w20"
+            android:background="@drawable/sl_evaluate_negative"
+            android:button="@null"
+            android:gravity="center"
+            android:paddingLeft="@dimen/w34"
+            android:paddingRight="@dimen/w34"
+            android:text="不满意"
+            android:textColor="@color/common_negative_color" />
+    </LinearLayout>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minLines="10"
+        android:background="@drawable/bg_stroke_gray"
+        android:hint="亲，给我们的服务做出详细评价吧！"
+        android:padding="@dimen/w30"
+        android:gravity="left|top"
+        android:textSize="@dimen/w28"
+        android:textColor="@color/textColorPrimary"
+        />
+
+</com.fans.becomebeaut.common.widget.MutilRadioGroup>

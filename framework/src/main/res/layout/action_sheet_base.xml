@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#80000000" >    
+    <LinearLayout
+        android:id="@+id/action_sheet_actionView"
+        style="@style/action_sheet_layout_style"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical" >
+        <LinearLayout
+            android:id="@+id/action_sheet_contentView"
+            style="@style/action_sheet_content_style"           
+            android:orientation="vertical" />
+    </LinearLayout>
+
+</RelativeLayout>

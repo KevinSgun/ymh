@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="@dimen/w226"
+        android:layout_height="@dimen/w225"
+        android:layout_marginTop="@dimen/h179"
+        android:background="@color/white"
+        android:scaleType="fitCenter"
+        android:src="@mipmap/about_app_logo" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/h64"
+        android:text="深圳市快来美有限公司"
+        android:textColor="@color/textColorPrimary"
+        android:textSize="@dimen/w32" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/h12"
+        android:text="V1.0"
+        android:textColor="@color/textColorSecondary"
+        android:textSize="@dimen/w24" />
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/w24"
+            android:text="客服电话 400-124-12412"
+            android:textColor="@color/textColorSecondary"/>
+        <TextView
+            android:layout_marginLeft="@dimen/w30"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/w24"
+            android:text="官方网址 www.****.com"
+            android:textColor="@color/textColorSecondary"/>
+    </LinearLayout>
+    <Button
+        android:layout_marginTop="@dimen/h16"
+        android:layout_width="@dimen/w600"
+        android:layout_height="@dimen/h69"
+        android:textSize="@dimen/w28"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:text="检测新版本"
+        android:background="@color/textColorPink"/>
+    <TextView
+        android:layout_marginTop="@dimen/h84"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/w24"
+        android:text="Copyright © 2016 快来美 版权所有"
+        android:textColor="@color/textColorSecondary"/>
+    <TextView
+        android:layout_marginTop="@dimen/h14"
+        android:layout_marginBottom="@dimen/h29"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/w24"
+        android:text="深圳快来美"
+        android:textColor="@color/textColorSecondary"/>
+</LinearLayout>

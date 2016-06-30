@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h350">
+
+        <com.fans.becomebeaut.common.widget.RemoteImageView
+            android:id="@+id/img_store"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/h99"
+            android:layout_gravity="bottom"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/h13"
+            android:paddingLeft="@dimen/w30"
+            android:paddingRight="@dimen/w30"
+            android:paddingTop="@dimen/h16">
+
+            <TextView
+                android:id="@+id/shop_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="快来美美容美发连锁（深圳店）"
+                android:textColor="@color/white"
+                android:textSize="@dimen/w32" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/h13"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/ic_shop_hours"
+                    android:layout_width="@dimen/w29"
+                    android:layout_height="@dimen/w24"
+                    android:scaleType="centerInside"
+                    android:src="@mipmap/ic_shop_hours" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/w26"
+                    android:layout_marginLeft="@dimen/w9"
+                    android:layout_toRightOf="@+id/ic_shop_hours"
+                    android:gravity="center_vertical"
+                    android:text="8-21"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/w20" />
+            </LinearLayout>
+        </LinearLayout>
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h86"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/w30"
+        android:paddingRight="@dimen/w30">
+
+        <ImageView
+            android:layout_width="@dimen/w23"
+            android:layout_height="@dimen/w30"
+            android:src="@mipmap/ic_location" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/w17"
+            android:layout_weight="1"
+            android:text="深圳市龙岗区民治路111号"
+            android:textSize="@dimen/w28" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_gray_arrow" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h1"
+        android:background="@color/divider_color" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h86"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/w30"
+        android:paddingRight="@dimen/w30">
+
+        <ImageView
+            android:layout_width="@dimen/w23"
+            android:layout_height="@dimen/w30"
+            android:src="@mipmap/ic_phone" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/w17"
+            android:layout_weight="1"
+            android:text="0755-28888888"
+            android:textSize="@dimen/w28" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_gray_arrow" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h74"
+        android:layout_marginTop="@dimen/h15"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/w30"
+        android:paddingRight="@dimen/w30">
+
+        <TextView
+            style="@style/CommonTextPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="客户评价"
+            android:textSize="@dimen/w24" />
+
+        <TextView
+            style="@style/CommonTextPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="满意度："
+            android:textSize="@dimen/w24" />
+
+        <TextView
+            style="@style/CommonTextPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="100%"
+            android:textColor="@color/textColorPink"
+            android:textSize="@dimen/w24" />
+
+        <ImageView
+            android:layout_width="@dimen/w15"
+            android:layout_height="@dimen/w24"
+            android:layout_marginLeft="@dimen/w19"
+            android:src="@mipmap/ic_gray_arrow" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h1"
+        android:background="@color/divider_color" />
+
+    <com.fans.becomebeaut.common.widget.MutilRadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/h18"
+        android:paddingLeft="@dimen/w30"
+        android:paddingRight="@dimen/w30">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/h20"
+            android:paddingTop="@dimen/h30">
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/w56"
+                android:background="@drawable/sl_comment_positive"
+                android:button="@null"
+                android:gravity="center"
+                android:paddingLeft="@dimen/w20"
+                android:paddingRight="@dimen/w20"
+                android:text="全部评价(9999)"
+                android:textColor="@color/common_positive_color" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/w56"
+                android:layout_marginLeft="@dimen/w20"
+                android:background="@drawable/sl_comment_positive"
+                android:button="@null"
+                android:gravity="center"
+                android:paddingLeft="@dimen/w20"
+                android:paddingRight="@dimen/w20"
+                android:text="很满意(999)"
+                android:textColor="@color/common_positive_color" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/w56"
+                android:layout_marginLeft="@dimen/w20"
+                android:background="@drawable/sl_comment_positive"
+                android:button="@null"
+                android:gravity="center"
+                android:paddingLeft="@dimen/w20"
+                android:paddingRight="@dimen/w20"
+                android:text="满意(999999)"
+                android:textColor="@color/common_positive_color" />
+        </LinearLayout>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/w56"
+            android:background="@drawable/sl_comment_negative"
+            android:button="@null"
+            android:gravity="center"
+            android:paddingLeft="@dimen/w20"
+            android:paddingRight="@dimen/w20"
+            android:text="满意(999999)"
+            android:textColor="@color/common_negative_color" />
+    </com.fans.becomebeaut.common.widget.MutilRadioGroup>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h100">
+
+        <com.fans.becomebeaut.common.widget.RippleLinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/shop_service_choice_bg_color"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="@dimen/w60"
+                android:layout_height="@dimen/w60"
+                android:src="@drawable/sl_shop_hair" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/w29"
+                android:text="我要美发"
+                android:textColor="@color/shop_service_choice_text_color"
+                android:textSize="@dimen/w32" />
+        </com.fans.becomebeaut.common.widget.RippleLinearLayout>
+
+        <com.fans.becomebeaut.common.widget.RippleLinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/shop_service_choice_bg_color"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="@dimen/w60"
+                android:layout_height="@dimen/w60"
+                android:src="@drawable/sl_shop_face" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/w29"
+                android:text="我要美容"
+                android:textColor="@color/shop_service_choice_text_color"
+                android:textSize="@dimen/w32" />
+        </com.fans.becomebeaut.common.widget.RippleLinearLayout>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h1"
+        android:background="@color/divider_color" />
+
+</LinearLayout>

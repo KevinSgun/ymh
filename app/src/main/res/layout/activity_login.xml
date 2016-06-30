@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/input_phone_et"
+        style="@style/CommentEditStyle"
+        android:hint="@string/please_input_phone"
+        android:inputType="phone" />
+    <View style="@style/DividerHorizontalLine" />
+    <EditText
+        android:id="@+id/input_psd_et"
+        style="@style/CommentEditStyle"
+        android:hint="@string/please_input_psd"
+        />
+    <View style="@style/DividerHorizontalLine" />
+    <LinearLayout
+        style="@style/CommentLinearLayoutStyle"
+        >
+        <View style="@style/SpaceAutoFit"/>
+        <TextView
+            android:id="@+id/free_register_tv"
+            style="@style/CommonTextPrimary"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:textColor="@color/textColorPink"
+            android:text="@string/free_register"/>
+        <View style="@style/DividerVerticalLine"
+            android:layout_margin="@dimen/w24"
+            />
+        <TextView
+            android:id="@+id/forget_psd_tv"
+            style="@style/CommonTextPrimary"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:textColor="@color/textColorSecondary"
+            android:text="@string/forget_psd"/>
+    </LinearLayout>
+    <Button
+        android:id="@+id/login_btn"
+        style="@style/CommentButtonStyle"
+        android:layout_width="@dimen/w480"
+        android:layout_height="@dimen/h80"
+        android:text="@string/login"/>
+</LinearLayout>

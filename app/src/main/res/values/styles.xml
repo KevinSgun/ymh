@@ -1,0 +1,113 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/textColorPrimary</item>
+        <item name="colorPrimaryDark">@color/textColorPrimaryDark</item>
+        <item name="colorAccent">@color/light_gray</item>
+        <item name="android:actionMenuTextColor">#FF0000</item>
+        <item name="android:textColorPrimary">@color/textColorPrimary</item>
+        <item name="android:textColorSecondary">@color/textColorSecondary</item>
+    </style>
+
+
+    <style name="AppActionbarStyle" parent="@android:style/Widget.Holo.Light.ActionBar">
+        <item name="android:background">#75caff</item>
+        <item name="android:titleTextStyle">@style/ActionBarTitleStyle</item>
+    </style>
+
+    <style name="ActionBarTitleStyle">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+    <!-- 重写actionbar中 OverFlow的属性 -->
+    <style name="OverFlow" parent="@android:style/Widget.Holo.ActionButton.Overflow">
+        <item name="android:src">@mipmap/ic_launcher</item>
+    </style>
+
+    <style name="CommonTextPrimary">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textSize">@dimen/w28</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="android:textColorHint">@color/textColorSecondary</item>
+    </style>
+    <style name="CommonTextSecondary">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textSize">@dimen/w21</item>
+        <item name="android:textColor">@color/textColorSecondary</item>
+    </style>
+    <style name="CommonButtonNegative">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textColor">@color/common_negative_color</item>
+        <item name="android:background">@drawable/sl_comment_negative</item>
+    </style>
+    <style name="CommonButtonPositive">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textColor">@color/common_positive_color</item>
+        <item name="android:background">@drawable/sl_comment_positive</item>
+    </style>
+    <!--普通的横线-->
+    <style name="DividerVerticalLine">
+        <item name="android:layout_width">@dimen/h1</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/divider_color</item>
+    </style>
+    <!--普通的竖线-->
+    <style name="DividerHorizontalLine">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/h1</item>
+        <item name="android:background">@color/divider_color</item>
+    </style>
+
+    <style name="Space">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+    </style>
+    <style name="SpaceAutoFit" parent="Space">
+        <item name="android:layout_weight">1</item>
+    </style>
+
+    <style name="CommentEditStyle" parent="CommonTextPrimary">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/w95</item>
+        <item name="android:layout_marginLeft">@dimen/w50</item>
+        <item name="android:background">@color/transparent</item>
+    </style>
+
+    <!--start 默认的横向item的RelativeLayout样式 -->
+    <style name="CommentRelativeLayoutStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/comment_item_height</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:paddingLeft">@dimen/w50</item>
+        <item name="android:paddingRight">@dimen/w50</item>
+    </style>
+    <!--end 默认的横向item的RelativeLayout样式 -->
+
+    <!--start 默认的横向item的LinearLayout样式-->
+    <style name="CommentLinearLayoutStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/comment_item_height</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingLeft">@dimen/w30</item>
+        <item name="android:paddingRight">@dimen/w30</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+    <!--start 默认的Button样式-->
+    <style name="CommentButtonStyle">
+        <item name="android:layout_width">@dimen/w600</item>
+        <item name="android:layout_height">@dimen/h70</item>
+        <item name="android:background">@drawable/btn_comment</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:textSize">@dimen/w32</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_marginTop">@dimen/h80</item>
+        <item name="android:text">确定</item>
+    </style>
+</resources>

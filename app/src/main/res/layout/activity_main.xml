@@ -1,0 +1,114 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                tools:context=".home.ui.MainActivity" >
+
+    <FrameLayout
+        android:id="@+id/content_frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <com.fans.becomebeaut.common.widget.MutilRadioGroup
+        android:id="@+id/main_radio_group"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/h100"
+        android:layout_alignParentBottom="true"
+        android:background="#e5ffffff"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <com.fans.becomebeaut.common.widget.RippleLinearLayout
+            android:id="@+id/main_menu_home_layout"
+            android:layout_width="@dimen/w120"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="@dimen/w68"
+            android:gravity="center"
+            app:rv_centered="true" >
+
+            <RadioButton
+                android:id="@+id/main_menu_home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:drawablePadding="@dimen/h10"
+                android:checked="true"
+                android:text="首页"
+                android:button="@null"
+                android:textColor="@color/home_text_color"
+                android:textSize="@dimen/w20"
+                android:drawableTop="@drawable/sl_home"/>
+        </com.fans.becomebeaut.common.widget.RippleLinearLayout>
+
+        <View style="@style/SpaceAutoFit" />
+
+        <com.fans.becomebeaut.common.widget.RippleFrameLayout
+            android:id="@+id/main_menu_nearby_layout"
+            android:layout_width="@dimen/w120"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            app:rv_centered="true" >
+
+            <RadioButton
+                android:id="@+id/main_menu_nearby"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:drawablePadding="@dimen/h10"
+                android:text="附近"
+                android:textColor="@color/home_text_color"
+                android:textSize="@dimen/w20"
+                android:drawableTop="@drawable/sl_near"
+                android:button="@null"/>
+
+        </com.fans.becomebeaut.common.widget.RippleFrameLayout>
+
+        <View style="@style/SpaceAutoFit" />
+
+        <com.fans.becomebeaut.common.widget.RippleFrameLayout
+            android:id="@+id/main_menu_exchange_layout"
+            android:layout_width="@dimen/w120"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            app:rv_centered="true" >
+
+            <RadioButton
+                android:id="@+id/main_menu_exchange"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:drawablePadding="@dimen/h10"
+                android:textColor="@color/home_text_color"
+                android:textSize="@dimen/w20"
+                android:drawableTop="@drawable/sl_free"
+                android:button="@null"
+                 android:text="免费兑换"
+                />
+        </com.fans.becomebeaut.common.widget.RippleFrameLayout>
+        <View style="@style/SpaceAutoFit" />
+        <com.fans.becomebeaut.common.widget.RippleFrameLayout
+            android:id="@+id/main_menu_profile_layout"
+            android:layout_width="@dimen/w120"
+            android:layout_height="fill_parent"
+            android:layout_marginRight="@dimen/w68"
+            android:gravity="center"
+            app:rv_centered="true" >
+            <RadioButton
+                android:id="@+id/main_menu_profile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:drawablePadding="@dimen/h10"
+                android:textColor="@color/home_text_color"
+                android:textSize="@dimen/w20"
+                android:drawableTop="@drawable/sl_mine"
+                android:text="我的"
+                android:button="@null"
+                />
+        </com.fans.becomebeaut.common.widget.RippleFrameLayout>
+    </com.fans.becomebeaut.common.widget.MutilRadioGroup>
+
+</RelativeLayout>

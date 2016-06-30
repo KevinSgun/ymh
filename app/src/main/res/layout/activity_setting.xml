@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h100"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:padding="@dimen/w30">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="修改密码"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="@dimen/w28" />
+
+        <ImageView
+            android:layout_width="@dimen/w14"
+            android:layout_height="@dimen/w25"
+            android:src="@mipmap/ic_gray_arrow" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h1"
+        android:background="@color/divider_color" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h100"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:padding="@dimen/w30">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="清楚缓存数据"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="@dimen/w28" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
+    <com.fans.becomebeaut.common.widget.RippleButton
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h100"
+        android:background="@color/textColorPink"
+        android:text="退出登录"
+        android:textColor="@color/white"
+        android:textSize="@dimen/w32" />
+</LinearLayout>

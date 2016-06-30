@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h300"
+        android:background="#ffe0f0"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <com.zitech.framework.widget.RemoteImageView
+            android:layout_marginTop="@dimen/h50"
+            android:id="@+id/avatar"
+            android:layout_width="@dimen/h140"
+            android:layout_height="@dimen/h140" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/w28"
+            android:text="我勒个去"
+            android:textColor="#f60068"
+            android:layout_marginTop="@dimen/h20"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h248"
+        android:orientation="vertical"
+        >
+
+        <com.fans.becomebeaut.common.widget.RippleLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/h88"
+            android:layout_marginTop="@dimen/h10"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/w30"
+            android:paddingRight="@dimen/w30">
+
+            <TextView
+                style="@style/CommonTextPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="我的订单"
+                android:textSize="@dimen/w30" />
+
+            <TextView
+                style="@style/CommonTextSecondary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="查看全部订单"
+                android:textSize="@dimen/w24" />
+
+            <ImageView
+                android:layout_width="@dimen/w14"
+                android:layout_height="@dimen/w25"
+                android:layout_marginLeft="@dimen/w10"
+                android:src="@mipmap/ic_gray_arrow" />
+        </com.fans.becomebeaut.common.widget.RippleLinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/h1" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <com.fans.becomebeaut.common.widget.RippleLinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="@dimen/w42"
+                    android:layout_height="@dimen/w32"
+                    android:src="@mipmap/ic_wait_paid" />
+
+                <TextView
+                    android:layout_marginTop="@dimen/h13"
+                    style="@style/CommonTextPrimary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="待付款"
+                    android:textColor="#666666"
+                    android:textSize="@dimen/w20" />
+            </com.fans.becomebeaut.common.widget.RippleLinearLayout>
+
+            <com.fans.becomebeaut.common.widget.RippleLinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/w120"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="@dimen/w42"
+                    android:layout_height="@dimen/w32"
+                    android:src="@mipmap/ic_message" />
+
+                <TextView
+                    android:layout_marginTop="@dimen/h13"
+                    style="@style/CommonTextPrimary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="待评价"
+                    android:textColor="#666666"
+                    android:textSize="@dimen/w20" />
+            </com.fans.becomebeaut.common.widget.RippleLinearLayout>
+            <com.fans.becomebeaut.common.widget.RippleLinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/w120"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="@dimen/w42"
+                    android:layout_height="@dimen/w32"
+                    android:src="@mipmap/ic_refund" />
+
+                <TextView
+                    android:layout_marginTop="@dimen/h13"
+                    style="@style/CommonTextPrimary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="退款"
+                    android:textColor="#666666"
+                    android:textSize="@dimen/w20" />
+            </com.fans.becomebeaut.common.widget.RippleLinearLayout>
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+    <com.fans.becomebeaut.common.widget.RippleLinearLayout
+        android:layout_marginTop="@dimen/h10"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h100"
+        android:paddingLeft="@dimen/w30"
+        android:paddingRight="@dimen/w30"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/w28"
+            android:text="我的美券"
+            android:layout_weight="1"
+            style="@style/CommonTextPrimary"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/w28"
+            style="@style/CommonTextPrimary"
+            />
+        <ImageView
+            android:layout_width="@dimen/w14"
+            android:layout_height="@dimen/w25"
+            android:layout_marginLeft="@dimen/w10"
+            android:src="@mipmap/ic_gray_arrow" />
+    </com.fans.becomebeaut.common.widget.RippleLinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h1"
+        android:background="@color/divider_color"/>
+    <com.fans.becomebeaut.common.widget.RippleLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h100"
+        android:paddingLeft="@dimen/w30"
+        android:paddingRight="@dimen/w30"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/w28"
+            android:text="我的收藏"
+            android:layout_weight="1"
+            style="@style/CommonTextPrimary"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/w28"
+            style="@style/CommonTextPrimary"
+            />
+        <ImageView
+            android:layout_width="@dimen/w14"
+            android:layout_height="@dimen/w25"
+            android:layout_marginLeft="@dimen/w10"
+            android:src="@mipmap/ic_gray_arrow" />
+    </com.fans.becomebeaut.common.widget.RippleLinearLayout>
+
+    <com.fans.becomebeaut.common.widget.RippleLinearLayout
+        android:layout_marginTop="@dimen/h10"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h100"
+        android:paddingLeft="@dimen/w30"
+        android:paddingRight="@dimen/w30"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/w28"
+            android:text="关于我们"
+            android:layout_weight="1"
+            style="@style/CommonTextPrimary"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/w28"
+            style="@style/CommonTextPrimary"
+            />
+        <ImageView
+            android:layout_width="@dimen/w14"
+            android:layout_height="@dimen/w25"
+            android:layout_marginLeft="@dimen/w10"
+            android:src="@mipmap/ic_gray_arrow" />
+    </com.fans.becomebeaut.common.widget.RippleLinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h1"
+        android:background="@color/divider_color"/>
+    <com.fans.becomebeaut.common.widget.RippleLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h100"
+        android:paddingLeft="@dimen/w30"
+        android:paddingRight="@dimen/w30"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/w28"
+            android:text="意见反馈"
+            android:layout_weight="1"
+            style="@style/CommonTextPrimary"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/w28"
+            style="@style/CommonTextPrimary"
+            />
+        <ImageView
+            android:layout_width="@dimen/w14"
+            android:layout_height="@dimen/w25"
+            android:layout_marginLeft="@dimen/w10"
+            android:src="@mipmap/ic_gray_arrow" />
+    </com.fans.becomebeaut.common.widget.RippleLinearLayout>
+
+    <com.fans.becomebeaut.common.widget.RippleLinearLayout
+        android:layout_marginTop="@dimen/h10"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h100"
+        android:paddingLeft="@dimen/w30"
+        android:paddingRight="@dimen/w30"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/w28"
+            android:text="系统设置"
+            android:layout_weight="1"
+            style="@style/CommonTextPrimary"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/w28"
+            style="@style/CommonTextPrimary"
+            />
+        <ImageView
+            android:layout_width="@dimen/w14"
+            android:layout_height="@dimen/w25"
+            android:layout_marginLeft="@dimen/w10"
+            android:src="@mipmap/ic_gray_arrow" />
+    </com.fans.becomebeaut.common.widget.RippleLinearLayout>
+</LinearLayout>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="horizontal"
+    android:padding="@dimen/w30">
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_stroke_gray"
+        android:paddingBottom="@dimen/h11"
+        android:paddingLeft="@dimen/w7"
+        android:paddingRight="@dimen/w7"
+        android:paddingTop="@dimen/h11">
+
+        <com.zitech.framework.widget.RemoteImageView
+            android:layout_width="@dimen/w127"
+            android:layout_height="@dimen/w117"
+            android:layout_gravity="center"
+            android:scaleType="fitCenter" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/w32"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tangle teezer梳子 英国按摩梳美发梳子卷发梳王妃顺发梳 TT梳子"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="@dimen/w20" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/h10"
+            android:gravity="center_vertical">
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="￥100+500美劵"
+                android:textColor="@color/textColorPink"
+                android:textSize="@dimen/w24" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/w18"
+                android:textColor="@color/textColorSecondary"
+                android:layout_marginLeft="@dimen/w30"
+                android:text="官方原价：￥100+500美券"/>
+
+        </LinearLayout>
+        <Button
+            android:layout_width="@dimen/w200"
+            android:layout_height="@dimen/w36"
+            android:text="仅支持平台邮寄兑换"
+            android:layout_gravity="right"
+            android:background="@drawable/btn_exchange"
+            android:textColor="#f60068"
+            android:gravity="center"
+            android:textSize="@dimen/w18"
+            android:layout_marginTop="@dimen/h6"/>
+    </LinearLayout>
+</LinearLayout>

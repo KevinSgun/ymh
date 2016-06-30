@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.fans.becomebeaut.common.widget.RippleLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/w30">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingRight="@dimen/w30"
+        android:layout_marginTop="@dimen/h30"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="很满意"
+            android:textColor="@color/textColorPink"
+            android:textSize="@dimen/w28" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="153****0909"
+            android:textColor="@color/textColorPrimaryGray" />
+
+        <com.zitech.framework.widget.RemoteImageView
+            android:id="@+id/avatar"
+            android:layout_width="@dimen/w40"
+            android:layout_height="@dimen/w40"
+            android:src="@mipmap/ic_avatar_small"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/h30"
+        android:text="服务很好，满意"
+        android:textColor="@color/textColorPrimary"
+        android:textSize="@dimen/w32"
+        android:layout_marginRight="@dimen/w30"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/h30"
+        android:text="2016-2-12"
+        android:textColor="@color/textColorPrimaryGray"
+        android:textSize="@dimen/w32"
+        android:layout_marginRight="@dimen/w24"/>
+
+    <View
+        android:layout_marginTop="@dimen/h28"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h1"
+        android:background="@color/divider_color"/>
+</com.fans.becomebeaut.common.widget.RippleLinearLayout>

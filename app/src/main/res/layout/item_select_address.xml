@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/w30">
+
+        <ImageView
+            android:layout_width="@dimen/w24"
+            android:layout_height="@dimen/w28"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/ic_address_avatar" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/w20"
+            android:text="汪汪汪"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="@dimen/w28" />
+
+        <ImageView
+            android:layout_width="@dimen/w24"
+            android:layout_height="@dimen/w28"
+            android:layout_marginLeft="@dimen/w80"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/ic_address_phone" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/w20"
+            android:text="13471033523"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="@dimen/w28" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/h30"
+        android:paddingLeft="@dimen/w30"
+        android:paddingRight="@dimen/w30">
+
+        <ImageView
+            android:layout_width="@dimen/w24"
+            android:layout_height="@dimen/w28"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/ic_address" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/w20"
+            android:text="广东省深圳市福田区香蜜街道财富广场A座14楼s-z室"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="@dimen/w28" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h1"
+        android:background="@color/divider_color" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h80"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/w30"
+        android:paddingRight="@dimen/w30">
+
+        <RadioButton
+            android:layout_width="@dimen/w32"
+            android:layout_height="@dimen/w32"
+            android:background="@drawable/sl_address"
+            android:button="@null" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/w8"
+            android:layout_weight="1"
+            android:text="选择地址"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="@dimen/w24" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="@dimen/w31"
+                android:layout_height="@dimen/w31"
+                android:src="@mipmap/ic_address_edit" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/w8"
+                android:text="编辑"
+                android:textColor="@color/textColorPrimaryGray"
+                android:textSize="@dimen/w26" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/w30">
+
+            <ImageView
+                android:layout_width="@dimen/w31"
+                android:layout_height="@dimen/w31"
+                android:src="@mipmap/ic_address_del" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/w8"
+                android:text="删除"
+                android:textColor="@color/textColorPrimaryGray"
+                android:textSize="@dimen/w26" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

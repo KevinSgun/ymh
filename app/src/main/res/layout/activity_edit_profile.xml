@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/w30">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h137"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingRight="@dimen/w30">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="头像"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="@dimen/w32" />
+
+        <com.zitech.framework.widget.RemoteImageView
+            android:layout_width="@dimen/w100"
+            android:layout_height="@dimen/w100"
+            android:src="@mipmap/ic_avatar" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h1"
+        android:background="@color/divider_color" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h100"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingRight="@dimen/w30">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="昵称"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="@dimen/w32" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="昵称"
+            android:textColor="@color/textColorPrimaryGray"
+            android:textSize="@dimen/w32" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h100"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingRight="@dimen/w30">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="性别"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="@dimen/w32" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="男"
+            android:textColor="@color/textColorPrimaryGray"
+            android:textSize="@dimen/w32" />
+        <ImageView
+            android:layout_width="@dimen/w15"
+            android:layout_height="@dimen/w27"
+            android:src="@mipmap/ic_gray_arrow"
+            android:layout_marginLeft="@dimen/w20"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h100"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingRight="@dimen/w30">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="出生日期"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="@dimen/w32" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1988-10-11"
+            android:textColor="@color/textColorPrimaryGray"
+            android:textSize="@dimen/w32" />
+        <ImageView
+            android:layout_width="@dimen/w15"
+            android:layout_height="@dimen/w27"
+            android:src="@mipmap/ic_gray_arrow"
+            android:layout_marginLeft="@dimen/w20"/>
+    </LinearLayout>
+</LinearLayout>

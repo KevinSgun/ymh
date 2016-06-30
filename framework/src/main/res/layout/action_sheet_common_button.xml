@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="44dp"
+    android:clickable="true"
+    android:background="@drawable/actionsheet_middle">
+    <TextView
+        android:id="@+id/action_sheet_button"
+        style="@style/action_sheet_btn_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        />
+    <ImageView 
+        android:id="@+id/action_sheet_checkedIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="15dp"
+        android:src="@drawable/common_bottom_dialog_checked_icon"
+        android:visibility="gone"
+        />
+</RelativeLayout>

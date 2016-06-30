@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.fans.becomebeaut.common.widget.RemoteImageView
+        android:id="@+id/img_store"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/h350" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/h26"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <com.fans.becomebeaut.common.widget.RippleLinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/h19"
+            android:paddingLeft="@dimen/w30"
+            android:paddingTop="@dimen/h30">
+
+            <TextView
+                style="@style/CommonTextSecondary"
+                android:text="商户名称"
+                android:textSize="@dimen/w30"
+                />
+
+            <TextView
+                style="@style/CommonTextPrimary"
+                android:layout_marginLeft="@dimen/w40"
+                android:text="快来美"
+                android:layout_marginRight="@dimen/w30"
+                android:textSize="@dimen/w30"
+                android:layout_width="match_parent"
+                android:id="@+id/tv_shop_name" />
+        </com.fans.becomebeaut.common.widget.RippleLinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/h1"
+            android:background="@color/divider_color" />
+
+        <com.fans.becomebeaut.common.widget.RippleLinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/h19"
+            android:paddingLeft="@dimen/w30"
+            android:paddingTop="@dimen/h30">
+
+            <TextView
+                style="@style/CommonTextSecondary"
+                android:text="营业时间"
+                android:textSize="@dimen/w30" />
+
+            <TextView
+                style="@style/CommonTextPrimary"
+                android:layout_marginLeft="@dimen/w40"
+                android:layout_marginRight="@dimen/w30"
+                android:text="快来美"
+                android:textSize="@dimen/w30"
+                android:layout_width="match_parent"
+                android:id="@+id/tv_shop_hours" />
+        </com.fans.becomebeaut.common.widget.RippleLinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/h1"
+            android:background="@color/divider_color" />
+
+        <com.fans.becomebeaut.common.widget.RippleLinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/h19"
+            android:paddingLeft="@dimen/w30"
+            android:paddingTop="@dimen/h30">
+
+            <TextView
+                style="@style/CommonTextSecondary"
+                android:text="店铺地址"
+                android:textSize="@dimen/w30" />
+
+            <TextView
+                style="@style/CommonTextPrimary"
+                android:layout_marginLeft="@dimen/w40"
+                android:layout_marginRight="@dimen/w30"
+                android:text="位置"
+                android:textSize="@dimen/w30"
+                android:layout_width="match_parent"
+                android:id="@+id/tv_shop_address" />
+        </com.fans.becomebeaut.common.widget.RippleLinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/h1"
+            android:background="@color/divider_color" />
+
+        <com.fans.becomebeaut.common.widget.RippleLinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/h19"
+            android:paddingLeft="@dimen/w30"
+            android:paddingTop="@dimen/h30">
+
+            <TextView
+                style="@style/CommonTextSecondary"
+                android:text="店铺电话"
+                android:textSize="@dimen/w30" />
+
+            <TextView
+                style="@style/CommonTextPrimary"
+                android:layout_marginLeft="@dimen/w40"
+                android:layout_marginRight="@dimen/w30"
+                android:text="快来美"
+                android:textSize="@dimen/w30"
+                android:layout_width="match_parent"
+                android:id="@+id/tv_shop_phone" />
+        </com.fans.becomebeaut.common.widget.RippleLinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/h1"
+            android:background="@color/divider_color" />
+
+        <com.fans.becomebeaut.common.widget.RippleLinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/h19"
+            android:paddingLeft="@dimen/w30"
+            android:paddingTop="@dimen/h30">
+
+            <TextView
+                style="@style/CommonTextSecondary"
+                android:text="店铺介绍"
+                android:textSize="@dimen/w30" />
+
+            <TextView
+                style="@style/CommonTextPrimary"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="@dimen/w40"
+                android:layout_marginRight="@dimen/w30"
+                android:minLines="2"
+                android:text="快来美"
+                android:textSize="@dimen/w30"
+                android:id="@+id/tv_shop_intro" />
+        </com.fans.becomebeaut.common.widget.RippleLinearLayout>
+
+
+    </LinearLayout>
+</LinearLayout>

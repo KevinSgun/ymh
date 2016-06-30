@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.fans.becomebeaut.common.widget.RippleLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/w60"
+    android:paddingRight="@dimen/w60">
+
+    <com.zitech.framework.widget.RemoteImageView
+        android:layout_width="@dimen/w240"
+        android:layout_height="@dimen/w240"
+        android:layout_marginTop="@dimen/h53" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/h20"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="李寻欢"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="@dimen/w28"
+            android:singleLine="true"
+            android:paddingRight="@dimen/w20"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="满意度"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="@dimen/w20" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/w5"
+            android:text="100%"
+            android:textColor="@color/textColorPink"
+            android:textSize="@dimen/w20" />
+    </LinearLayout>
+
+    <Button
+        android:layout_marginTop="@dimen/h25"
+        android:layout_width="@dimen/w240"
+        android:layout_height="@dimen/w48"
+        style="@style/CommonButtonPositive"
+        android:text="选择助理"/>
+</com.fans.becomebeaut.common.widget.RippleLinearLayout>

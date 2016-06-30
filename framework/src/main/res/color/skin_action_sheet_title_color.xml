@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ActionSheet的标题颜色, 建议和Dialog的标题色统一. -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:color="#8a8a8a"/>
+</selector>

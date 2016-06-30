@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.zitech.framework.widget.RemoteImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h300" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <com.fans.becomebeaut.common.widget.RippleFrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/h135"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|left"
+                android:layout_marginLeft="@dimen/w40"
+                android:text="我要美容"
+                android:textColor="#f9b84e"
+                android:textSize="@dimen/w32" />
+
+            <ImageView
+                android:layout_width="@dimen/w80"
+                android:layout_height="@dimen/w80"
+                android:layout_gravity="center_vertical|right"
+                android:layout_marginRight="@dimen/w40"
+                android:src="@mipmap/face" />
+        </com.fans.becomebeaut.common.widget.RippleFrameLayout>
+
+        <View
+            android:layout_width="@dimen/w1"
+            android:layout_height="match_parent"
+            android:background="@color/divider_color" />
+
+        <com.fans.becomebeaut.common.widget.RippleFrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/h135"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|left"
+                android:layout_marginLeft="@dimen/w40"
+                android:text="我要美容"
+                android:textColor="@color/textColorPink"
+                android:textSize="@dimen/w32" />
+
+            <ImageView
+                android:layout_width="@dimen/w80"
+                android:layout_height="@dimen/w80"
+                android:layout_gravity="center_vertical|right"
+                android:layout_marginRight="@dimen/w40"
+                android:src="@mipmap/hair" />
+        </com.fans.becomebeaut.common.widget.RippleFrameLayout>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/w30"
+        android:layout_marginTop="@dimen/h20"
+        android:text="最近消费记录"
+        android:textSize="@dimen/w20" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/h10"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/w24"
+        android:paddingLeft="@dimen/w30"
+        android:paddingRight="@dimen/w30"
+        android:paddingTop="@dimen/w20">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/h67"
+            android:gravity="center_vertical">
+
+            <View
+                android:layout_width="@dimen/w5"
+                android:layout_height="@dimen/h23"
+                android:background="@color/textColorPink" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/w9"
+                android:layout_weight="1"
+                android:text="消费项目：离子烫"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="@dimen/w20" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/w9"
+                android:text="2016 12-23"
+                android:textColor="@color/textColorSecondary"
+                android:textSize="@dimen/w20" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:layout_width="@dimen/w120"
+                android:layout_height="@dimen/w120">
+
+                <com.zitech.framework.widget.RemoteImageView
+                    android:layout_width="@dimen/w72"
+                    android:layout_height="@dimen/w72"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/ic_shop_default" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/w20"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="超级理发店"
+                        android:textColor="@color/textColorPrimary"
+                        android:textSize="@dimen/w28" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        android:text="800米"
+                        android:textColor="@color/textColorSecondary"
+                        android:textSize="@dimen/w28" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/h20"
+                    android:text="店铺地址：深圳市龙华区民治深圳市龙华区民治"
+                    android:textColor="@color/textColorSecondary"
+                    android:textSize="@dimen/w28" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h51"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="@dimen/w122"
+            android:layout_height="@dimen/w1"
+            android:background="@color/textColorPink" />
+
+        <View
+            android:layout_width="@dimen/w122"
+            android:layout_height="@dimen/w1"
+            android:background="@color/textColorPink" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/w30"
+        android:layout_marginRight="@dimen/w30"
+        android:layout_marginTop="@dimen/h15"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/h100"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/w30">
+
+            <TextView
+                style="@style/CommonTextPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="满意度："
+                android:textSize="@dimen/w28" />
+
+            <TextView
+                style="@style/CommonTextPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="100"
+                android:textColor="@color/textColorPink"
+                android:textSize="@dimen/w28" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/h1"
+            android:background="@color/divider_color" />
+
+        <com.fans.becomebeaut.common.widget.MutilRadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/h30"
+                android:paddingBottom="@dimen/h20">
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/w56"
+                    android:paddingLeft="@dimen/w20"
+                    android:paddingRight="@dimen/w20"
+                    android:gravity="center"
+                    android:button="@null"
+                    android:background="@drawable/sl_comment_positive"
+                    android:text="全部评价(9999)"
+                    android:textColor="@color/common_positive_color"
+                    />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/w56"
+                    android:paddingLeft="@dimen/w20"
+                    android:paddingRight="@dimen/w20"
+                    android:gravity="center"
+                    android:button="@null"
+                    android:background="@drawable/sl_comment_positive"
+                    android:text="很满意(999)"
+                    android:textColor="@color/common_positive_color"
+                    android:layout_marginLeft="@dimen/w20"
+                    />
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/w56"
+                    android:paddingLeft="@dimen/w20"
+                    android:paddingRight="@dimen/w20"
+                    android:gravity="center"
+                    android:button="@null"
+                    android:background="@drawable/sl_comment_positive"
+                    android:text="满意(999999)"
+                    android:textColor="@color/common_positive_color"
+                    android:layout_marginLeft="@dimen/w20"
+                    />
+            </LinearLayout>
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/w56"
+                android:paddingLeft="@dimen/w20"
+                android:paddingRight="@dimen/w20"
+                android:gravity="center"
+                android:button="@null"
+                android:background="@drawable/sl_comment_negative"
+                android:text="满意(999999)"
+                android:textColor="@color/common_negative_color"
+                />
+        </com.fans.becomebeaut.common.widget.MutilRadioGroup>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/h20">
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/sl_show_content"
+                android:textColor="@color/textColorPrimaryGray"
+                android:text=" 只看有内容的评价"
+                android:textSize="@dimen/w24"
+                android:layout_marginBottom="@dimen/h31"
+                />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/h40"
+        style="@style/List"/>
+</LinearLayout>

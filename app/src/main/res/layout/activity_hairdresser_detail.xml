@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+    <com.zitech.framework.widget.RemoteImageView
+        android:layout_width="@dimen/w160"
+        android:layout_height="@dimen/w160"
+        android:layout_marginTop="@dimen/h50" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/h20"
+        android:text="刘禹锡"
+        android:textColor="@color/textColorPrimary"
+        android:textSize="@dimen/w32" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/h23"
+        android:text="资深形象设计师"
+        android:textSize="@dimen/w20"
+
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/h51"
+        android:text=" 每个理发师都听不懂“稍微修一下，不要太短”这句话"
+        android:textColor="@color/textColorPrimaryGray"
+        android:textSize="@dimen/w20" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/h72"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="127"
+                android:textColor="@color/textColorPink"
+                android:textSize="@dimen/w36" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/h6"
+                android:text="预约"
+                android:textSize="@dimen/w24" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="@dimen/w1"
+            android:layout_height="@dimen/h51"
+            android:background="@color/divider_color_dark" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="127"
+                android:textColor="@color/textColorPink"
+                android:textSize="@dimen/w36" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/h6"
+                android:text="预约"
+                android:textSize="@dimen/w24" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="@dimen/w1"
+            android:layout_height="@dimen/h51"
+            android:background="@color/divider_color_dark" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="127"
+                android:textColor="@color/textColorPink"
+                android:textSize="@dimen/w36" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/h6"
+                android:text="预约"
+                android:textSize="@dimen/w24" />
+        </LinearLayout>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h10"
+        android:background="@color/bg_color"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h86"
+        android:paddingLeft="@dimen/w30"
+        android:paddingRight="@dimen/w30"
+        android:gravity="center_vertical"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/w24"
+            android:layout_weight="1"
+            android:textColor="@color/textColorPrimary"
+            android:text="客户评价"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/textColorPrimary"
+            android:text="满意度："/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="100%"
+            android:textColor="@color/textColorPink"
+            android:textSize="@dimen/w24"/>
+        <ImageView
+            android:layout_width="@dimen/w15"
+            android:layout_height="@dimen/h24"
+            android:src="@mipmap/ic_gray_arrow"
+            android:layout_marginLeft="@dimen/w19"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h86"
+        android:paddingLeft="@dimen/w30"
+        android:paddingRight="@dimen/w30"
+        android:gravity="center_vertical"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/w24"
+            android:layout_weight="1"
+            android:textColor="@color/textColorPrimary"
+            android:text="所在店铺"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/textColorPink"
+            android:text="几乎"/>
+
+        <ImageView
+            android:layout_width="@dimen/w15"
+            android:layout_height="@dimen/h24"
+            android:src="@mipmap/ic_gray_arrow"
+            android:layout_marginLeft="@dimen/w19"/>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h10"
+        android:background="@color/bg_color"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h60"
+        android:gravity="center">
+        <ImageView
+            android:layout_width="@dimen/w39"
+            android:layout_height="@dimen/w39"
+            android:src="@mipmap/ic_hairdresser_avatar"/>
+
+        <TextView
+            android:layout_marginLeft="@dimen/w28"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/textColorSecondary"
+            android:text="服务项目"/>
+    </LinearLayout>
+
+</LinearLayout>
