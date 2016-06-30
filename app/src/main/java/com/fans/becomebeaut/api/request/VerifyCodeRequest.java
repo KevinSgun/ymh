@@ -1,4 +1,4 @@
-package com.zitech.framework.data.network.request;
+package com.fans.becomebeaut.api.request;
 
 /**
  * Created by ymh on 2016/6/30 0030.

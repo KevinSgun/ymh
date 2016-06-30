@@ -1,6 +1,7 @@
 package com.fans.becomebeaut.api.service;
 
 import com.fans.becomebeaut.api.NetConstants;
+import com.fans.becomebeaut.api.request.Request;
 import com.zitech.framework.data.network.RetrofitClient;
 import com.zitech.framework.data.network.request.ApiRequest;
 import com.zitech.framework.data.network.response.ApiResponse;
@@ -24,12 +25,11 @@ public interface AccountService {
     /**
      * 获取验证码
      *
-     * @param token
      * @param body
      * @return
      */
     @POST(NetConstants.USERS_CODE)
     @Headers("Content-Type:" + RetrofitClient.JSON)
-    Observable<ApiResponse> getVerifyCode(@Query("access_token") String token, @Body ApiRequest body);
+    Observable<ApiResponse> getVerifyCode( @Body Request body);
 
 }

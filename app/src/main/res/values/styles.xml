@@ -9,6 +9,7 @@
         <item name="android:actionMenuTextColor">#FF0000</item>
         <item name="android:textColorPrimary">@color/textColorPrimary</item>
         <item name="android:textColorSecondary">@color/textColorSecondary</item>
+        <item name="android:windowBackground">@color/foreground_material_dark</item>
     </style>
 
 

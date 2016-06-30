@@ -1,5 +1,7 @@
 package com.fans.becomebeaut.api;
 
+import com.fans.becomebeaut.api.request.Request;
+import com.fans.becomebeaut.api.request.VerifyCodeRequest;
 import com.fans.becomebeaut.api.response.GetwayResponse;
 import com.fans.becomebeaut.api.service.AccountService;
 import com.fans.becomebeaut.api.service.GatewayService;
@@ -62,11 +64,11 @@ public class ApiFactory {
 
     /**
      * 获取验证码
-     * @param token
+     * @param request
      * @return
      */
-    public static Observable<ApiResponse> getVerifyCode(String token, ApiRequest request){
-        return getAccountService().getVerifyCode(token,request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
+    public static Observable<ApiResponse> getVerifyCode(Request request){
+        return getAccountService().getVerifyCode(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
     }
 
 

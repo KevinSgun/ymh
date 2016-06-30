@@ -1,11 +1,12 @@
-package com.zitech.framework.data.network.request;
+package com.fans.becomebeaut.api.request;
 
 import com.zitech.framework.data.network.entity.Global;
+import com.zitech.framework.data.network.request.ApiRequest;
 
 /**
  * Created by ymh on 2016/6/30 0030.
  */
-public class Request extends ApiRequest{
+public class Request extends ApiRequest {
     private Global global;
     private RequestData data;
     private transient String method;
@@ -34,8 +35,4 @@ public class Request extends ApiRequest{
         this.data = data;
     }
 
-    @Override
-    String getMethod() {
-        return method;
-    }
 }

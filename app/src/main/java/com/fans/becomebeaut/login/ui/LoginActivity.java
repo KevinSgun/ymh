@@ -6,9 +6,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.fans.becomebeaut.R;
+import com.fans.becomebeaut.api.ApiFactory;
+import com.fans.becomebeaut.api.request.Request;
+import com.fans.becomebeaut.api.request.VerifyCodeRequest;
 import com.fans.becomebeaut.common.ui.AppBarActivity;
-import com.zitech.framework.data.network.request.Request;
-import com.zitech.framework.data.network.request.VerifyCodeRequest;
+import com.zitech.framework.data.network.response.ApiResponse;
+import com.zitech.framework.data.network.subscribe.ProgressSubscriber;
 
 /**
  * Created by ymh on 2016/6/30 0030.
@@ -53,6 +56,11 @@ public class LoginActivity extends AppBarActivity implements View.OnClickListene
         verifyCodeRequest.setApkind("register");
         verifyCodeRequest.setMobile("13265680639");
         Request request = new Request(verifyCodeRequest);
-//        ApiFactory.getVerifyCode("",request).subscribe(new )
+        ApiFactory.getVerifyCode(request).subscribe(new ProgressSubscriber<ApiResponse>(this) {
+            @Override
+            protected void onNextInActive(ApiResponse apiResponse) {
+                apiResponse.getData();
+            }
+        });
     }
 }

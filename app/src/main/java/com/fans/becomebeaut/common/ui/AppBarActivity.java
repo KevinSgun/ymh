@@ -21,6 +21,12 @@ public abstract class AppBarActivity extends BaseActivity {
         setSupportActionBar(toolbar);
     }
 
+    @Override
+    public void setTitle(CharSequence title) {
+        super.setTitle(title);
+        toolbar.setTitleText(title);
+    }
+
     private void initToolBarEvent() {
         toolbar.setBtnLeftClick(leftOnClickListener);
         toolbar.setBtnRightClick(rightOnClickListener);

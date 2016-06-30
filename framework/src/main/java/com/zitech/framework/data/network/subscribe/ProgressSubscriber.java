@@ -7,6 +7,7 @@ import android.widget.Toast;
 
 
 import com.zitech.framework.data.network.IContext;
+import com.zitech.framework.widget.LoadingDialog;
 
 import java.net.ConnectException;
 import java.net.SocketTimeoutException;
@@ -25,7 +26,7 @@ public abstract class ProgressSubscriber<T> extends Subscriber<T> {
     private IContext context;
 
     public ProgressSubscriber(IContext context) {
-        this(context, new ProgressDialog(context.getContext()));
+        this(context, new LoadingDialog(context.getContext()));
     }
 
     public ProgressSubscriber(IContext context, Dialog dialog) {
