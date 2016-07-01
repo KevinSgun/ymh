@@ -21,6 +21,7 @@ public interface StoreService {
      *
      * @param body
      * @return
+     * @see {@link com.fans.becomebeaut.api.request.HomeDataRequest}
      */
     @POST(NetConstants.HOME_LOAD)
     @Headers("Content-Type:" + RetrofitClient.JSON)

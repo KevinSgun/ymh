@@ -1,5 +1,6 @@
 package com.fans.becomebeaut;
 
+import com.baidu.mapapi.SDKInitializer;
 import com.fans.becomebeaut.common.User;
 import com.zitech.framework.BaseApplication;
 
@@ -13,6 +14,8 @@ public class BeautApplication extends BaseApplication {
     @Override
     public void onCreate() {
         super.onCreate();
+        // 在使用 SDK 各组间之前初始化 context 信息，传入 ApplicationContext
+        SDKInitializer.initialize(this);
         user = new User();
     }
 

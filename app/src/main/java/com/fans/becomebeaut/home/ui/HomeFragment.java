@@ -6,6 +6,7 @@ import android.os.Message;
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -25,6 +26,7 @@ import com.fans.becomebeaut.common.widget.LoopViewPager;
 import com.fans.becomebeaut.common.widget.OnRippleCompleteListener;
 import com.fans.becomebeaut.common.widget.RippleFrameLayout;
 import com.fans.becomebeaut.common.widget.RippleView;
+import com.fans.becomebeaut.home.adapter.HomePageAdapter;
 import com.zitech.framework.data.network.subscribe.ProgressSubscriber;
 import com.zitech.framework.widget.RemoteImageView;
 
@@ -33,7 +35,7 @@ import java.util.List;
 /**
  * Created by lu on 2016/6/16.
  */
-public class HomeFragment extends BaseFragment {
+public class HomeFragment extends BaseFragment implements AdapterView.OnItemClickListener {
 
     private final static int AUTO = 10;
     private final static long DELAY_TIME = 4 * 1000;
@@ -71,6 +73,8 @@ public class HomeFragment extends BaseFragment {
     private TextView shopnametv;
     private TextView distancetv;
     private TextView shopaddresstv;
+    private HomePageAdapter mAdapter;
+    private LinearLayout consumerrecordlayout;
 
     @Override
     protected int getContentViewId() {
@@ -85,8 +89,10 @@ public class HomeFragment extends BaseFragment {
 
         View header  = LayoutInflater.from(getActivity()).inflate(R.layout.header_home_page,null);
         initHeader(header);
-
         shoplistview.addHeaderView(header);
+        mAdapter = new HomePageAdapter(getActivity());
+        shoplistview.setAdapter(mAdapter);
+        shoplistview.setOnItemClickListener(this);
     }
 
     @Override
@@ -100,17 +106,39 @@ public class HomeFragment extends BaseFragment {
         ApiFactory.getHomeData(request).subscribe(new ProgressSubscriber<HomePageResponse>(this) {
             @Override
             protected void onNextInActive(HomePageResponse homePageResponse) {
-
+                if(homePageResponse != null){
+                    refreshHeaderUI(homePageResponse);
+                    mAdapter.setList(homePageResponse.getStoreList());
+                }
             }
+
         });
 
+    }
+
+
+    private void refreshHeaderUI(HomePageResponse homePageResponse) {
+        HomePageResponse.LastStoreBean lastStoreBean = homePageResponse.getLastStore();
+       if(lastStoreBean!=null) {
+           consumerrecordlayout.setVisibility(View.VISIBLE);
+           consumeritemstv.setText(lastStoreBean.getServiceName());
+           consumerdatetv.setText(lastStoreBean.getAddDate());
+           shopiv.setImageUri(R.mipmap.ic_shop_default, lastStoreBean.getIcon());
+           shopnametv.setText(lastStoreBean.getName());
+//                distancetv.setText(lastStoreBean.get);
+           shopaddresstv.setText(lastStoreBean.getAddress());
+       }else{
+           consumerrecordlayout.setVisibility(View.GONE);
+       }
+
+        initPager(homePageResponse.getBanners());
     }
 
     private void initHeader(View header) {
         // 轮播图mm
         homePager = (LoopViewPager) header.findViewById(R.id.home_pager);
         indicator = (CirclePageIndicator) header.findViewById(R.id.home_pager_indicator);
-
+        consumerrecordlayout = (LinearLayout) header.findViewById(R.id.consumer_record_layout);
         wantbeautylayout = (RippleFrameLayout) header.findViewById(R.id.want_beauty_layout);
         wantsalonlayout = (RippleFrameLayout) header.findViewById(R.id.want_salon_layout);
         consumeritemstv = (TextView) header.findViewById(R.id.consumer_items_tv);
@@ -135,11 +163,17 @@ public class HomeFragment extends BaseFragment {
             }
 
         });
-        if (bannerList != null && bannerList.size() > 1 && !mHandler.hasMessages(AUTO)) {
+        if (bannerList.size() > 1 && !mHandler.hasMessages(AUTO)) {
             mHandler.sendEmptyMessageDelayed(AUTO, DELAY_TIME);
         } else {
             mHandler.removeMessages(AUTO);
         }
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+        int index = position > 0 && position - 1 >= 0 ? position - 1 : position;
+        //TODO 进入店铺首页
     }
 
     class HomePagerAdapter extends PagerAdapter {

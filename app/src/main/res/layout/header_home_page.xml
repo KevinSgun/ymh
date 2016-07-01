@@ -79,29 +79,29 @@
         </com.fans.becomebeaut.common.widget.RippleFrameLayout>
     </LinearLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/w30"
-        android:layout_marginTop="@dimen/h20"
-        android:text="最近消费记录"
-        android:textSize="@dimen/w20" />
-
     <LinearLayout
+        android:id="@+id/consumer_record_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/h10"
         android:background="@color/white"
         android:orientation="vertical"
         android:paddingBottom="@dimen/w24"
-        android:paddingLeft="@dimen/w30"
-        android:paddingRight="@dimen/w30"
         android:paddingTop="@dimen/w20">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/w30"
+            android:paddingTop="@dimen/h20"
+            android:paddingBottom="@dimen/h20"
+            android:background="@color/bg_color"
+            android:text="最近消费记录"
+            android:textSize="@dimen/w20" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/h67"
-            android:gravity="center_vertical">
+            android:gravity="center_vertical"
+            android:paddingRight="@dimen/w30">
 
             <View
                 android:layout_width="@dimen/w5"
@@ -172,7 +172,8 @@
                         android:singleLine="true"
                         android:text="800米"
                         android:textColor="@color/textColorSecondary"
-                        android:textSize="@dimen/w28" />
+                        android:textSize="@dimen/w28"
+                        android:visibility="gone"/>
 
                 </LinearLayout>
 
