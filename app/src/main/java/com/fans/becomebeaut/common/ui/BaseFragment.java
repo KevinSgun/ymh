@@ -1,5 +1,6 @@
 package com.fans.becomebeaut.common.ui;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -10,6 +11,7 @@ import android.view.ViewGroup;
 
 import com.zitech.framework.BaseApplication;
 import com.zitech.framework.Session;
+import com.zitech.framework.data.network.IContext;
 import com.zitech.framework.utils.NetworkUtil;
 
 /**
@@ -17,7 +19,7 @@ import com.zitech.framework.utils.NetworkUtil;
  *
  * @author Ludaiqian
  */
-public abstract class BaseFragment extends Fragment {
+public abstract class BaseFragment extends Fragment implements IContext{
 
     protected Session mSession;
     private BaseApplication mApplicationContext;
@@ -221,6 +223,11 @@ public abstract class BaseFragment extends Fragment {
         ft.addToBackStack(tag);
         ft.commitAllowingStateLoss();
         return fragment;
+    }
+
+    @Override
+    public boolean isActive() {
+        return isAdded();
     }
 
 }
