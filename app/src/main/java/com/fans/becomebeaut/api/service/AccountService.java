@@ -29,37 +29,7 @@ public interface AccountService {
      */
     @POST(NetConstants.USERS_CODE)
     @Headers("Content-Type:" + RetrofitClient.JSON)
-    Observable<ApiResponse> getVerifyCode(@Body Request body);
-
-    /**
-     * 用户注册
-     *
-     * @param body
-     * @return
-     */
-    @POST(NetConstants.USERS_REGISTER)
-    @Headers("Content-Type:" + RetrofitClient.JSON)
-    Observable<ApiResponse<UserInfoResponse>> requestRegister(@Body Request body);
-
-    /**
-     * 用户注册
-     *
-     * @param body
-     * @return
-     */
-    @POST(NetConstants.USERS_LOGIN)
-    @Headers("Content-Type:" + RetrofitClient.JSON)
-    Observable<ApiResponse<UserInfoResponse>> requestLogin(@Body Request body);
-
-    /**
-     * 忘记密码
-     *
-     * @param body
-     * @return
-     */
-    @POST(NetConstants.USERS_FORGET)
-    @Headers("Content-Type:" + RetrofitClient.JSON)
-    Observable<ApiResponse> requestResetPsd(@Body Request body);
+    Observable<ApiResponse> getVerifyCode( @Body Request body);
 
     /**
      * 用户注册
