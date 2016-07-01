@@ -2,29 +2,27 @@ package com.fans.becomebeaut.home.ui;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.view.KeyEvent;
-import android.view.MotionEvent;
-import android.view.View;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 import com.fans.becomebeaut.Constants;
 import com.fans.becomebeaut.R;
 import com.fans.becomebeaut.common.ui.BaseActivity;
 import com.fans.becomebeaut.common.ui.BaseFragment;
-import com.fans.becomebeaut.common.widget.MutilRadioGroup;
 import com.fans.becomebeaut.utils.ToastMaster;
 
-public class MainActivity extends BaseActivity implements View.OnTouchListener,MutilRadioGroup.OnCheckedChangeListener {
+public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedChangeListener {
 
-    private View exchangelayout;
-    private View homeLayout;
-    private View nearbylayout;
-    private View profileLayout;
-    private MutilRadioGroup radioGroup;
+    private RadioGroup radioGroup;
     private long exitTime;
+    private RadioButton mainmenuhome;
+    private RadioButton mainmenunearby;
+    private RadioButton mainmenuexchange;
+    private RadioButton mainmenuprofile;
 
     @Override
     protected void setContentView() {
@@ -33,18 +31,9 @@ public class MainActivity extends BaseActivity implements View.OnTouchListener,M
 
     @Override
     protected void initView() {
-        homeLayout = findViewById(R.id.main_menu_home_layout);
-        nearbylayout = findViewById(R.id.main_menu_nearby_layout);
-        exchangelayout = findViewById(R.id.main_menu_exchange_layout);
-        profileLayout = findViewById(R.id.main_menu_profile_layout);
-        radioGroup = (MutilRadioGroup) findViewById(R.id.main_radio_group);
+        radioGroup = (RadioGroup) findViewById(R.id.main_radio_group);
 //        newMessageIconChat = findViewById(R.id.unread_message_count_chat);
 //        newMessageIconNotify = findViewById(R.id.unread_message_count_notify);
-
-        homeLayout.setOnTouchListener(this);
-        nearbylayout.setOnTouchListener(this);
-        exchangelayout.setOnTouchListener(this);
-        profileLayout.setOnTouchListener(this);
         radioGroup.setOnCheckedChangeListener(this);
     }
 
@@ -63,12 +52,6 @@ public class MainActivity extends BaseActivity implements View.OnTouchListener,M
     }
 
     private void showUnReadMessageIcon() {
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
     }
 
 //    private View newMessageIconChat;
@@ -98,30 +81,6 @@ public class MainActivity extends BaseActivity implements View.OnTouchListener,M
     }
 
     @Override
-    public boolean onTouch(View v, MotionEvent event) {
-        if (event.getAction() == MotionEvent.ACTION_DOWN) {
-            switch (v.getId()) {
-                case R.id.main_menu_home_layout:
-                    radioGroup.check(R.id.main_menu_home);
-                    break;
-                case R.id.main_menu_nearby_layout:
-                    radioGroup.check(R.id.main_menu_nearby);
-                    break;
-                case R.id.main_menu_exchange_layout:
-                    radioGroup.check(R.id.main_menu_exchange);
-                    break;
-                case R.id.main_menu_profile_layout:
-                    radioGroup.check(R.id.main_menu_profile);
-                    break;
-                default:
-                    break;
-
-            }
-        }
-        return true;
-    }
-
-    @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
             if ((System.currentTimeMillis() - exitTime) > 2000) { // 第一次System.currentTimeMillis()无论何时调用，差值肯定大于2000
@@ -145,8 +104,8 @@ public class MainActivity extends BaseActivity implements View.OnTouchListener,M
     }
 
     @Override
-    public void onCheckedChanged(MutilRadioGroup group, int checkedId) {
-        switch (checkedId) {
+    public void onCheckedChanged(RadioGroup radioGroup, int i) {
+        switch (i) {
             case R.id.main_menu_home:
                 showFragment(HomeFragment.class);
                 break;
