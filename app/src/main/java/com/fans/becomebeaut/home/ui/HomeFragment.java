@@ -81,7 +81,7 @@ public class HomeFragment extends BaseFragment {
         View header  = LayoutInflater.from(getActivity()).inflate(R.layout.header_home_page,null);
         initHeader(header);
 
-
+        shoplistview.addHeaderView(header);
     }
 
     private void initHeader(View header) {

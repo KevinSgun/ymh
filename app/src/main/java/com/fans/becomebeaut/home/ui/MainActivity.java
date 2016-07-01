@@ -6,7 +6,6 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.view.KeyEvent;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.fans.becomebeaut.Constants;
@@ -19,10 +18,6 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
 
     private RadioGroup radioGroup;
     private long exitTime;
-    private RadioButton mainmenuhome;
-    private RadioButton mainmenunearby;
-    private RadioButton mainmenuexchange;
-    private RadioButton mainmenuprofile;
 
     @Override
     protected void setContentView() {
