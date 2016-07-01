@@ -8,12 +8,14 @@
     <EditText
         android:id="@+id/input_new_psd_et"
         style="@style/CommentEditStyle"
+        android:inputType="textPassword"
         android:hint="@string/please_input_new_psd_tip"
         />
     <View style="@style/DividerHorizontalLine" />
     <EditText
         android:id="@+id/input_new_psd_again_et"
         style="@style/CommentEditStyle"
+        android:inputType="textPassword"
         android:hint="@string/please_input_new_psd_again"
         />
     <View style="@style/DividerHorizontalLine" />

@@ -14,4 +14,9 @@ public class Constants {
     public interface FragmentExtra{
 
     }
+
+    public interface ImageDefault {
+
+//        int RECTANGLE_LANDSCAPE = R.drawable.;
+    }
 }

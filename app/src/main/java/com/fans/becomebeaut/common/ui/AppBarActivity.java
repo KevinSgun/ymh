@@ -32,10 +32,6 @@ public abstract class AppBarActivity extends BaseActivity {
         toolbar.setBtnRightClick(rightOnClickListener);
     }
 
-    protected void setBarTitle(String title){
-        toolbar.setTitle(title);
-    }
-
     protected void setBarTitle(int titleId){
         toolbar.setTitle(titleId);
     }

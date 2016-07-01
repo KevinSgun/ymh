@@ -22,7 +22,7 @@ public class ModifyPassWordActivity extends AppBarActivity implements View.OnCli
 
     @Override
     protected void initView() {
-        setBarTitle("修改密码");
+        setTitle("修改密码");
 
         inputnewpsdet = (EditText) findViewById(R.id.input_new_psd_et);
         inputnewpsdagainet = (EditText) findViewById(R.id.input_new_psd_again_et);

@@ -8,15 +8,13 @@ import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
 
-import com.zitech.framework.R;
-
 /**
  * SimpleDialog
  * 
  * @author LuDaiqian
  * 
  */
-public class LoadingDialog extends ValidDialog {
+public class LoadingDialog extends com.zitech.framework.widget.ValidDialog {
 
 	protected static final String TAG = "IphoneDialog";
 

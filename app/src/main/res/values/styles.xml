@@ -113,7 +113,7 @@
     <!--start 默认的Button样式-->
     <style name="CommentButtonStyle">
         <item name="android:layout_width">@dimen/w600</item>
-        <item name="android:layout_height">@dimen/h70</item>
+        <item name="android:layout_height">@dimen/h90</item>
         <item name="android:background">@drawable/btn_comment</item>
         <item name="android:layout_gravity">center_horizontal</item>
         <item name="android:textSize">@dimen/w32</item>
