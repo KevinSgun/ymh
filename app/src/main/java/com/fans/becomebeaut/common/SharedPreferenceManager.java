@@ -61,7 +61,11 @@ public class SharedPreferenceManager implements Observer {
 
 	private static Method findApplyMethod() {
 		try {
+<<<<<<< HEAD
 			Class<Editor> cls = Editor.class;
+=======
+			Class<Editor> cls = SharedPreferences.Editor.class;
+>>>>>>> b1ac1444f6d3f7839c2715da5b78a231d25279d8
 			return cls.getMethod("apply");
 		} catch (NoSuchMethodException unused) {
 			// fall through
@@ -72,7 +76,11 @@ public class SharedPreferenceManager implements Observer {
 	/**
 	 * Use this method to modify preference
 	 */
+<<<<<<< HEAD
 	public static void apply(Editor editor) {
+=======
+	public static void apply(SharedPreferences.Editor editor) {
+>>>>>>> b1ac1444f6d3f7839c2715da5b78a231d25279d8
 		if (sApplyMethod != null) {
 			try {
 				sApplyMethod.invoke(editor);
