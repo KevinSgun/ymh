@@ -40,6 +40,7 @@
     <EditText
         android:id="@+id/set_psd_et"
         style="@style/CommentEditStyle"
+        android:inputType="textPassword"
         android:hint="@string/please_set_psd"
         />
     <View style="@style/DividerHorizontalLine" />

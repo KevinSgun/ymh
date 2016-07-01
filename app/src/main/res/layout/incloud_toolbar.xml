@@ -48,7 +48,7 @@
             android:paddingRight="@dimen/w30"
             android:gravity="center_vertical"
             android:textColor="@color/textColorPink"
-            android:visibility="gone"
+            android:visibility="visible"
             />
 
         <ImageView

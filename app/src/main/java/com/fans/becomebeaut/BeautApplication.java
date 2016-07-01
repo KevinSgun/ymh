@@ -1,5 +1,6 @@
 package com.fans.becomebeaut;
 
+import com.fans.becomebeaut.common.User;
 import com.zitech.framework.BaseApplication;
 
 /**
@@ -7,8 +8,19 @@ import com.zitech.framework.BaseApplication;
  */
 public class BeautApplication extends BaseApplication {
 
+    private User user;
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        user = new User();
+    }
 
     public static BeautApplication getInstance() {
         return (BeautApplication) BaseApplication.getInstance();
+    }
+
+    public User getUser(){
+        return user;
     }
 }

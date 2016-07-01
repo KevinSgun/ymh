@@ -2,27 +2,40 @@ package com.fans.becomebeaut.home.ui;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
-import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 
 import com.fans.becomebeaut.Constants;
 import com.fans.becomebeaut.R;
-import com.fans.becomebeaut.common.ui.AppBarActivity;
+import com.fans.becomebeaut.common.ui.BaseActivity;
 import com.fans.becomebeaut.common.ui.BaseFragment;
 import com.fans.becomebeaut.common.widget.MutilRadioGroup;
 import com.fans.becomebeaut.utils.ToastMaster;
 
-public class MainActivity extends AppBarActivity implements View.OnTouchListener,MutilRadioGroup.OnCheckedChangeListener {
+public class MainActivity extends BaseActivity implements View.OnTouchListener,MutilRadioGroup.OnCheckedChangeListener {
+
+    private View exchangelayout;
+    private View homeLayout;
+    private View nearbylayout;
+    private View profileLayout;
+    private MutilRadioGroup radioGroup;
+    private long exitTime;
+
+    @Override
+    protected void setContentView() {
+        setContentView(R.layout.activity_main);
+    }
 
     @Override
     protected void initView() {
         homeLayout = findViewById(R.id.main_menu_home_layout);
-        nearbylayout = findViewById(R.id.main_menu_nearby);
+        nearbylayout = findViewById(R.id.main_menu_nearby_layout);
+        exchangelayout = findViewById(R.id.main_menu_exchange_layout);
         profileLayout = findViewById(R.id.main_menu_profile_layout);
         radioGroup = (MutilRadioGroup) findViewById(R.id.main_radio_group);
 //        newMessageIconChat = findViewById(R.id.unread_message_count_chat);
@@ -30,6 +43,7 @@ public class MainActivity extends AppBarActivity implements View.OnTouchListener
 
         homeLayout.setOnTouchListener(this);
         nearbylayout.setOnTouchListener(this);
+        exchangelayout.setOnTouchListener(this);
         profileLayout.setOnTouchListener(this);
         radioGroup.setOnCheckedChangeListener(this);
     }
@@ -57,15 +71,6 @@ public class MainActivity extends AppBarActivity implements View.OnTouchListener
         setContentView(R.layout.activity_main);
     }
 
-    @Override
-    protected int getContentViewId() {
-        return 0;
-    }
-    private View homeLayout;
-    private View nearbylayout;
-    private View profileLayout;
-    private MutilRadioGroup radioGroup;
-    private long exitTime;
 //    private View newMessageIconChat;
 
 //    private View newMessageIconNotify;
@@ -142,12 +147,14 @@ public class MainActivity extends AppBarActivity implements View.OnTouchListener
     @Override
     public void onCheckedChanged(MutilRadioGroup group, int checkedId) {
         switch (checkedId) {
-
             case R.id.main_menu_home:
                 showFragment(HomeFragment.class);
                 break;
             case R.id.main_menu_profile:
                 showFragment(ProfileFragment.class);
+                break;
+            case R.id.main_menu_exchange:
+                showFragment(ExchangeFragment.class);
                 break;
             case R.id.main_menu_nearby:
                 showFragment(NearbyFragment.class);

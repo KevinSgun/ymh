@@ -1,4 +1,4 @@
-package com.fans.becomebeaut.store.ui;
+package com.fans.becomebeaut.shop.ui;
 
 import android.os.Bundle;
 import android.widget.TextView;

@@ -201,7 +201,7 @@ public class MutilRadioGroup extends LinearLayout {
 	 */
 	@Override
 	public LayoutParams generateLayoutParams(AttributeSet attrs) {
-		return new MutilRadioGroup.LayoutParams(getContext(), attrs);
+		return new LayoutParams(getContext(), attrs);
 	}
 
 	/**
@@ -209,7 +209,7 @@ public class MutilRadioGroup extends LinearLayout {
 	 */
 	@Override
 	protected boolean checkLayoutParams(ViewGroup.LayoutParams p) {
-		return p instanceof MutilRadioGroup.LayoutParams;
+		return p instanceof LayoutParams;
 	}
 
 	@Override
@@ -279,8 +279,8 @@ public class MutilRadioGroup extends LinearLayout {
 
 		/**
 		 * <p>Fixes the child's width to
-		 * {@link android.view.ViewGroup.LayoutParams#WRAP_CONTENT} and the child's
-		 * height to  {@link android.view.ViewGroup.LayoutParams#WRAP_CONTENT}
+		 * {@link ViewGroup.LayoutParams#WRAP_CONTENT} and the child's
+		 * height to  {@link ViewGroup.LayoutParams#WRAP_CONTENT}
 		 * when not specified in the XML file.</p>
 		 *
 		 * @param a the styled attributes set
@@ -344,8 +344,8 @@ public class MutilRadioGroup extends LinearLayout {
 	 * hierarchy change listener without preventing the user to setup his.</p>
 	 */
 	private class PassThroughHierarchyChangeListener implements
-			ViewGroup.OnHierarchyChangeListener {
-		private ViewGroup.OnHierarchyChangeListener mOnHierarchyChangeListener;
+			OnHierarchyChangeListener {
+		private OnHierarchyChangeListener mOnHierarchyChangeListener;
 
 		/**
 		 * {@inheritDoc}

@@ -7,7 +7,6 @@ import android.support.v7.widget.Toolbar;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -121,6 +120,7 @@ public class CustomToolBar extends Toolbar {
 
     public void setBtnRight(int icon) {
         actionbarright.setVisibility(View.VISIBLE);
+        actionrightimg.setVisibility(View.VISIBLE);
         actionrightimg.setImageResource(icon);
     }
 

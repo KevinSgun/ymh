@@ -20,7 +20,7 @@ public class CommonDialog extends ValidDialog{
     private TextView cancel;
     private OnPositiveButtonClickListener onPositiveButtonClickListener;
 
-    public CommonDialog(Context context, boolean cancelable, DialogInterface.OnCancelListener cancelListener) {
+    public CommonDialog(Context context, boolean cancelable, OnCancelListener cancelListener) {
         super(context, cancelable, cancelListener);
         init();
     }

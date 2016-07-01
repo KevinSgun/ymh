@@ -1,12 +1,25 @@
 package com.fans.becomebeaut.login.ui;
 
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.fans.becomebeaut.R;
+import com.fans.becomebeaut.api.ApiFactory;
+import com.fans.becomebeaut.api.request.RegisterRequest;
+import com.fans.becomebeaut.api.request.Request;
 import com.fans.becomebeaut.api.request.VerifyCodeRequest;
+import com.fans.becomebeaut.api.response.UserInfoResponse;
+import com.fans.becomebeaut.common.User;
 import com.fans.becomebeaut.common.ui.ValidateActivity;
+import com.fans.becomebeaut.common.widget.ToolBarHelper;
+import com.fans.becomebeaut.home.ui.MainActivity;
+import com.fans.becomebeaut.utils.StringUtils;
+import com.fans.becomebeaut.utils.ToastMaster;
+import com.zitech.framework.data.network.entity.Basic;
+import com.zitech.framework.data.network.response.ApiResponse;
+import com.zitech.framework.data.network.subscribe.ProgressSubscriber;
 
 /**
  * Created by ymh on 2016/6/30 0030.
@@ -26,6 +39,7 @@ public class RegisterActivity extends ValidateActivity {
     @Override
     protected void initView() {
         setTitle("注册");
+        setRightText("下一步");
         inputphoneet = (EditText) findViewById(R.id.input_phone_et);
         inputverifyet = (EditText) findViewById(R.id.input_verify_et);
         setpsdet = (EditText) findViewById(R.id.set_psd_et);
@@ -64,5 +78,61 @@ public class RegisterActivity extends ValidateActivity {
         }else if(view.getId() == R.id.login_direct_tv){
 
         }
+    }
+
+    @Override
+    protected void onActionBarItemClick(int position) {
+        super.onActionBarItemClick(position);
+        if(position == ToolBarHelper.ITEM_RIGHT){
+            if(!inputStatusIsCorrect()) return;
+            RegisterRequest registerRequest = new RegisterRequest();
+            registerRequest.setMobile(inputphoneet.getText().toString());
+            registerRequest.setCode(inputverifyet.getText().toString());
+            registerRequest.setPassword(setpsdet.getText().toString());
+            Request request = new Request(registerRequest);
+            request.sign();
+            ApiFactory.requestRegister(request).subscribe(new ProgressSubscriber<ApiResponse<UserInfoResponse>>(this) {
+                @Override
+                protected void onNextInActive(ApiResponse<UserInfoResponse> registerResponseApiResponse) {
+                    Basic basic = registerResponseApiResponse.getBasic();
+                    if(basic.getStatus() == 1){
+                        User.get().storeFromUserInfo(registerResponseApiResponse.getData());
+                        skipActivity(MainActivity.class);
+                    }
+
+                    ToastMaster.shortToast(basic.getMsg());
+                }
+            });
+
+        }
+    }
+
+    private boolean inputStatusIsCorrect() {
+        if(TextUtils.isEmpty(inputphoneet.getText().toString())){
+            ToastMaster.shortToast("手机号不能为空");
+            return false;
+        }
+
+        if(inputphoneet.getText().toString().length()!=11){
+            ToastMaster.shortToast("请输入11位手机号");
+            return false;
+        }
+
+        if(!StringUtils.isPhoneNum(inputphoneet.getText().toString())){
+            ToastMaster.shortToast("手机号格式不正确");
+            return false;
+        }
+
+        if(TextUtils.isEmpty(inputverifyet.getText().toString())){
+            ToastMaster.shortToast("验证码不能为空");
+            return false;
+        }
+
+        if(TextUtils.isEmpty(setpsdet.getText().toString())){
+            ToastMaster.shortToast("密码码不能为空");
+            return false;
+        }
+
+        return true;
     }
 }

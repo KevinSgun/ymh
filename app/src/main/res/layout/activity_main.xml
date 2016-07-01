@@ -19,13 +19,13 @@
         android:gravity="center"
         android:orientation="horizontal" >
 
-        <com.fans.becomebeaut.common.widget.RippleLinearLayout
+        <FrameLayout
             android:id="@+id/main_menu_home_layout"
-            android:layout_width="@dimen/w120"
+            android:layout_width="0dp"
             android:layout_height="fill_parent"
-            android:layout_marginLeft="@dimen/w68"
+            android:layout_weight="1"
             android:gravity="center"
-            app:rv_centered="true" >
+            >
 
             <RadioButton
                 android:id="@+id/main_menu_home"
@@ -33,22 +33,22 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:drawablePadding="@dimen/h10"
+                android:enabled="false"
                 android:checked="true"
                 android:text="首页"
                 android:button="@null"
                 android:textColor="@color/home_text_color"
                 android:textSize="@dimen/w20"
                 android:drawableTop="@drawable/sl_home"/>
-        </com.fans.becomebeaut.common.widget.RippleLinearLayout>
+        </FrameLayout>
 
-        <View style="@style/SpaceAutoFit" />
-
-        <com.fans.becomebeaut.common.widget.RippleFrameLayout
+        <FrameLayout
             android:id="@+id/main_menu_nearby_layout"
-            android:layout_width="@dimen/w120"
+            android:layout_width="0dp"
             android:layout_height="fill_parent"
+            android:layout_weight="1"
             android:gravity="center"
-            app:rv_centered="true" >
+            >
 
             <RadioButton
                 android:id="@+id/main_menu_nearby"
@@ -62,16 +62,15 @@
                 android:drawableTop="@drawable/sl_near"
                 android:button="@null"/>
 
-        </com.fans.becomebeaut.common.widget.RippleFrameLayout>
+        </FrameLayout>
 
-        <View style="@style/SpaceAutoFit" />
-
-        <com.fans.becomebeaut.common.widget.RippleFrameLayout
+        <FrameLayout
             android:id="@+id/main_menu_exchange_layout"
-            android:layout_width="@dimen/w120"
+            android:layout_width="0dp"
             android:layout_height="fill_parent"
+            android:layout_weight="1"
             android:gravity="center"
-            app:rv_centered="true" >
+            >
 
             <RadioButton
                 android:id="@+id/main_menu_exchange"
@@ -86,15 +85,14 @@
                 android:button="@null"
                  android:text="免费兑换"
                 />
-        </com.fans.becomebeaut.common.widget.RippleFrameLayout>
-        <View style="@style/SpaceAutoFit" />
-        <com.fans.becomebeaut.common.widget.RippleFrameLayout
+        </FrameLayout>
+        <FrameLayout
             android:id="@+id/main_menu_profile_layout"
-            android:layout_width="@dimen/w120"
+            android:layout_width="0dp"
             android:layout_height="fill_parent"
-            android:layout_marginRight="@dimen/w68"
+            android:layout_weight="1"
             android:gravity="center"
-            app:rv_centered="true" >
+            >
             <RadioButton
                 android:id="@+id/main_menu_profile"
                 android:layout_width="wrap_content"
@@ -108,7 +106,7 @@
                 android:text="我的"
                 android:button="@null"
                 />
-        </com.fans.becomebeaut.common.widget.RippleFrameLayout>
+        </FrameLayout>
     </com.fans.becomebeaut.common.widget.MutilRadioGroup>
 
 </RelativeLayout>

@@ -1,13 +1,12 @@
 package com.fans.becomebeaut.api;
 
 import com.fans.becomebeaut.api.request.Request;
-import com.fans.becomebeaut.api.request.VerifyCodeRequest;
 import com.fans.becomebeaut.api.response.GetwayResponse;
+import com.fans.becomebeaut.api.response.UserInfoResponse;
 import com.fans.becomebeaut.api.service.AccountService;
 import com.fans.becomebeaut.api.service.GatewayService;
 import com.zitech.framework.data.network.HttpResultFunc;
 import com.zitech.framework.data.network.RetrofitClient;
-import com.zitech.framework.data.network.request.ApiRequest;
 import com.zitech.framework.data.network.response.ApiResponse;
 import com.zitech.framework.data.network.subscribe.SchedulersCompat;
 
@@ -71,5 +70,30 @@ public class ApiFactory {
         return getAccountService().getVerifyCode(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
     }
 
+    /**
+     * 用户注册
+     * @param request
+     * @return
+     */
+    public static Observable<ApiResponse<UserInfoResponse>> requestRegister(Request request){
+        return getAccountService().requestRegister(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
+    }
 
+    /**
+     * 用户注册
+     * @param request
+     * @return
+     */
+    public static Observable<ApiResponse<UserInfoResponse>> requestLogin(Request request){
+        return getAccountService().requestLogin(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
+    }
+
+    /**
+     * 获取验证码
+     * @param request
+     * @return
+     */
+    public static Observable<ApiResponse> requestResetPsd(Request request){
+        return getAccountService().requestResetPsd(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
+    }
 }

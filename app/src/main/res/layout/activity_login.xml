@@ -14,6 +14,7 @@
     <EditText
         android:id="@+id/input_psd_et"
         style="@style/CommentEditStyle"
+        android:inputType="textPassword"
         android:hint="@string/please_input_psd"
         />
     <View style="@style/DividerHorizontalLine" />
@@ -42,7 +43,7 @@
     <Button
         android:id="@+id/login_btn"
         style="@style/CommentButtonStyle"
-        android:layout_width="@dimen/w480"
-        android:layout_height="@dimen/h80"
+        android:layout_width="@dimen/w500"
+        android:layout_height="@dimen/h90"
         android:text="@string/login"/>
 </LinearLayout>
