@@ -3,7 +3,7 @@ package com.fans.becomebeaut.api.entity;
 /**
  * Created by ymh on 2016/7/1 0001.
  */
-public class StoreListBean {
+public class NearStore {
     private int id;
     private int status;
     private String address;

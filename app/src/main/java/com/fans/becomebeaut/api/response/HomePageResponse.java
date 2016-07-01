@@ -1,7 +1,7 @@
 package com.fans.becomebeaut.api.response;
 
 import com.fans.becomebeaut.api.entity.HomePageBanner;
-import com.fans.becomebeaut.api.entity.StoreListBean;
+import com.fans.becomebeaut.api.entity.NearStore;
 
 import java.util.List;
 
@@ -52,7 +52,7 @@ public class HomePageResponse {
      * status : 1
      */
 
-    private List<StoreListBean> storeList;
+    private List<NearStore> storeList;
 
     public int getMsgCount() {
         return msgCount;
@@ -86,11 +86,11 @@ public class HomePageResponse {
         this.serviceList = serviceList;
     }
 
-    public List<StoreListBean> getStoreList() {
+    public List<NearStore> getStoreList() {
         return storeList;
     }
 
-    public void setStoreList(List<StoreListBean> storeList) {
+    public void setStoreList(List<NearStore> storeList) {
         this.storeList = storeList;
     }
 

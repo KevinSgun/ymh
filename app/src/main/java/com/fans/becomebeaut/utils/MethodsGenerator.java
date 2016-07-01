@@ -1,4 +1,4 @@
-package com.zitech.framework.utils;
+package com.fans.becomebeaut.utils;
 
 import com.google.gson.reflect.TypeToken;
 import com.zitech.framework.data.network.response.ApiResponse;

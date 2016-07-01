@@ -230,4 +230,8 @@ public abstract class BaseFragment extends Fragment implements IContext{
         return isAdded();
     }
 
+    @Override
+    public Context getContext() {
+        return super.getContext();
+    }
 }
