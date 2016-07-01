@@ -14,13 +14,18 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.fans.becomebeaut.R;
+import com.fans.becomebeaut.api.ApiFactory;
 import com.fans.becomebeaut.api.entity.HomePageBanner;
+import com.fans.becomebeaut.api.request.HomeDataRequest;
+import com.fans.becomebeaut.api.request.Request;
+import com.fans.becomebeaut.api.response.HomePageResponse;
 import com.fans.becomebeaut.common.ui.BaseFragment;
 import com.fans.becomebeaut.common.widget.CirclePageIndicator;
 import com.fans.becomebeaut.common.widget.LoopViewPager;
 import com.fans.becomebeaut.common.widget.OnRippleCompleteListener;
 import com.fans.becomebeaut.common.widget.RippleFrameLayout;
 import com.fans.becomebeaut.common.widget.RippleView;
+import com.zitech.framework.data.network.subscribe.ProgressSubscriber;
 import com.zitech.framework.widget.RemoteImageView;
 
 import java.util.List;
@@ -82,6 +87,23 @@ public class HomeFragment extends BaseFragment {
         initHeader(header);
 
         shoplistview.addHeaderView(header);
+    }
+
+    @Override
+    public void onPrepareData() {
+        super.onPrepareData();
+        HomeDataRequest homeDataRequest = new HomeDataRequest();
+        homeDataRequest.setLatitude("22.62");
+        homeDataRequest.setLongitude("114.07");
+        Request request = new Request(homeDataRequest);
+        request.sign();
+        ApiFactory.getHomeData(request).subscribe(new ProgressSubscriber<HomePageResponse>(this) {
+            @Override
+            protected void onNextInActive(HomePageResponse homePageResponse) {
+
+            }
+        });
+
     }
 
     private void initHeader(View header) {

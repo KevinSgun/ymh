@@ -2,9 +2,11 @@ package com.fans.becomebeaut.api;
 
 import com.fans.becomebeaut.api.request.Request;
 import com.fans.becomebeaut.api.response.GetwayResponse;
+import com.fans.becomebeaut.api.response.HomePageResponse;
 import com.fans.becomebeaut.api.response.UserInfoResponse;
 import com.fans.becomebeaut.api.service.AccountService;
 import com.fans.becomebeaut.api.service.GatewayService;
+import com.fans.becomebeaut.api.service.StoreService;
 import com.zitech.framework.data.network.HttpResultFunc;
 import com.zitech.framework.data.network.RetrofitClient;
 import com.zitech.framework.data.network.response.ApiResponse;
@@ -29,6 +31,10 @@ public class ApiFactory {
 
     private static AccountService getAccountService(){
         return getService(AccountService.class);
+    }
+
+    private static StoreService getStoreService(){
+        return getService(StoreService.class);
     }
 
     public static <T> T getService(Class cls) {
@@ -95,5 +101,14 @@ public class ApiFactory {
      */
     public static Observable<ApiResponse> requestResetPsd(Request request){
         return getAccountService().requestResetPsd(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
+    }
+
+    /**
+     * 获取验证码
+     * @param request
+     * @return
+     */
+    public static Observable<HomePageResponse> getHomeData(Request request){
+        return getStoreService().getHomeData(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
     }
 }
