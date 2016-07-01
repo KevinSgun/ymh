@@ -6,12 +6,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.fans.becomebeaut.R;
-import com.fans.becomebeaut.api.ApiFactory;
-import com.fans.becomebeaut.api.request.Request;
-import com.fans.becomebeaut.api.request.VerifyCodeRequest;
 import com.fans.becomebeaut.common.ui.AppBarActivity;
-import com.zitech.framework.data.network.response.ApiResponse;
-import com.zitech.framework.data.network.subscribe.ProgressSubscriber;
 
 /**
  * Created by ymh on 2016/6/30 0030.
@@ -48,19 +43,17 @@ public class LoginActivity extends AppBarActivity implements View.OnClickListene
         forgetpsdtv = (TextView) findViewById(R.id.forget_psd_tv);
         loginbtn = (Button) findViewById(R.id.login_btn);
         loginbtn.setOnClickListener(this);
+        freeregistertv.setOnClickListener(this);
+        forgetpsdtv.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
-        VerifyCodeRequest verifyCodeRequest = new VerifyCodeRequest();
-        verifyCodeRequest.setApkind("register");
-        verifyCodeRequest.setMobile("13265680639");
-        Request request = new Request(verifyCodeRequest);
-        ApiFactory.getVerifyCode(request).subscribe(new ProgressSubscriber<ApiResponse>(this) {
-            @Override
-            protected void onNextInActive(ApiResponse apiResponse) {
-                apiResponse.getData();
-            }
-        });
+        if(view.getId() == R.id.free_register_tv){
+            //TODO 注册
+            skipActivity(RegisterActivity.class);
+        }else if(view.getId() == R.id.forget_psd_tv){
+            //TODO 忘记密码
+        }
     }
 }

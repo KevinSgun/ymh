@@ -11,6 +11,10 @@ public class Global {
     private String os;
     private String sign;
 
+    public Global(){
+        os = "1";
+    }
+
     public String getOs() {
         return os;
     }

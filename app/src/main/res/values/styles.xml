@@ -30,7 +30,6 @@
     <style name="CommonTextPrimary">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
-        <item name="android:textSize">@dimen/w28</item>
         <item name="android:textColor">@color/textColorPrimary</item>
         <item name="android:textColorHint">@color/textColorSecondary</item>
     </style>
@@ -39,6 +38,17 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:textSize">@dimen/w21</item>
         <item name="android:textColor">@color/textColorSecondary</item>
+    </style>
+    <style name="TextBlank.Small" parent="CommonTextPrimary">
+        <item name="android:textSize">@dimen/w22</item>
+    </style>
+
+    <style name="TextBlank.Medium" parent="CommonTextPrimary">
+        <item name="android:textSize">@dimen/w28</item>
+    </style>
+
+    <style name="TextBlank.Large" parent="CommonTextPrimary">
+        <item name="android:textSize">@dimen/w36</item>
     </style>
     <style name="CommonButtonNegative">
         <item name="android:layout_height">wrap_content</item>
@@ -111,4 +121,13 @@
         <item name="android:layout_marginTop">@dimen/h80</item>
         <item name="android:text">确定</item>
     </style>
+    <style name="CommonDialog" parent="Animation.AppCompat.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+
 </resources>

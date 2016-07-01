@@ -9,7 +9,8 @@ public class VerifyCodeRequest implements RequestData{
      * apkind : register
      * mobile : 15914087331
      */
-
+    public static final String REGISTER = "register";//注册获取验证码
+    public static final String RESET_PSD = "retrievePwd";//重置密码获取验证码
     private String apkind;
     private String mobile;
 

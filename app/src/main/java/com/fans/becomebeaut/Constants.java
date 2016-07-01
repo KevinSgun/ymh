@@ -5,7 +5,9 @@ package com.fans.becomebeaut;
  */
 public class Constants {
 
-   public interface ActivityExtra{
+    public static final int VALIDATE_CODE_LENGTH = 6;
+
+    public interface ActivityExtra{
 
         String CHECK_POSITION = "check_position";
     }

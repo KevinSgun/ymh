@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/input_phone_et"
+        style="@style/CommentEditStyle"
+        android:hint="@string/please_input_phone"
+        android:inputType="phone" />
+    <View style="@style/DividerHorizontalLine" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <EditText
+            android:id="@+id/input_verify_et"
+            style="@style/CommentEditStyle"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:hint="@string/please_input_verify_code"
+            />
+        <View
+            style="@style/DividerVerticalLine"
+            android:layout_marginTop="@dimen/w20"
+            android:layout_marginBottom="@dimen/w20"/>
+        <Button
+            android:id="@+id/get_verify_btn"
+            style="@style/TextBlank.Medium"
+            android:layout_height="match_parent"
+            android:paddingLeft="@dimen/w50"
+            android:paddingRight="@dimen/w50"
+            android:textColor="@color/textColorPink"
+            android:text="@string/get_verify_code"
+            android:background="@drawable/selector_comment_item"/>
+    </LinearLayout>
+    <View style="@style/DividerHorizontalLine" />
+    <EditText
+        android:id="@+id/set_new_psd_et"
+        style="@style/CommentEditStyle"
+        android:hint="@string/please_set_new_psd"
+        />
+    <View style="@style/DividerHorizontalLine" />
+    <Button
+        android:id="@+id/commit_btn"
+        style="@style/CommentButtonStyle"
+        android:text="@string/commit"/>
+</LinearLayout>

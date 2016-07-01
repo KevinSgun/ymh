@@ -1,6 +1,7 @@
 package com.fans.becomebeaut.home.ui;
 
 
+import com.fans.becomebeaut.R;
 import com.fans.becomebeaut.common.ui.BaseFragment;
 
 /**
@@ -9,6 +10,6 @@ import com.fans.becomebeaut.common.ui.BaseFragment;
 public class HomeFragment extends BaseFragment {
     @Override
     protected int getContentViewId() {
-        return 0;
+        return R.layout.fragment_home;
     }
 }

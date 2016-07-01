@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_white_rectangle_corner"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/content"
+        style="@style/TextBlank.Medium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/w66"
+        android:paddingBottom="@dimen/w53"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textSize="@dimen/w32"
+        android:paddingLeft="@dimen/w30"
+        android:paddingRight="@dimen/w30"
+        android:text="确定清空缓存吗"
+        />
+
+    <View
+        style="@style/DividerHorizontalLine"
+        android:layout_marginTop="@dimen/h28"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/w90"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/cancle"
+            style="@style/TextBlank.Medium"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/selector_comment_item"
+            android:gravity="center"
+            android:text="取消"
+            android:textColor="@color/textColorPrimaryDark"
+            android:textSize="@dimen/w32" />
+
+        <View
+            style="@style/DividerVerticalLine"
+            />
+
+        <TextView
+            android:id="@+id/confirm"
+            style="@style/TextBlank.Medium"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/selector_comment_item"
+            android:gravity="center"
+            android:text="确定"
+            android:textColor="@color/textColorPrimaryDark"
+            android:textSize="@dimen/w32" />
+    </LinearLayout>
+
+</LinearLayout>
