@@ -14,14 +14,15 @@
 
         <com.zitech.framework.widget.RemoteImageView
             android:id="@+id/shop_iv"
-            android:layout_width="@dimen/w72"
-            android:layout_height="@dimen/w72"
+            android:layout_width="@dimen/w100"
+            android:layout_height="@dimen/w100"
             android:layout_gravity="center"
             android:scaleType="centerCrop"
             android:src="@mipmap/ic_shop_default" />
     </FrameLayout>
 
     <LinearLayout
+        android:id="@+id/shop_address_layout"
         android:layout_width="match_parent"
         android:layout_height="@dimen/w180"
         android:layout_toRightOf="@id/iv_layout"
@@ -66,14 +67,15 @@
             android:textColor="@color/textColorSecondary"
             android:textSize="@dimen/w28" />
     </LinearLayout>
+    <View android:id="@+id/bottom_divider"
+        style="@style/DividerHorizontalLine"
+        android:background="@color/divider_color"
+        android:layout_below="@id/shop_address_layout"
+        />
     <View
-        android:id="@+id/bottom_divider"
         android:layout_width="match_parent"
         android:layout_height="@dimen/w20"
+        android:layout_below="@id/bottom_divider"
         android:background="@color/bg_color"
         android:layout_alignParentBottom="true"/>
-    <View style="@style/DividerHorizontalLine"
-        android:background="#e0e0e0"
-        android:layout_above="@id/bottom_divider"/>
-
 </RelativeLayout>

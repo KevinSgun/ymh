@@ -41,7 +41,7 @@ public class BaiduMapHelper {
 //            R.mipmap.icon_dbz
 //    };
 
-    public static LocationClient mLocationClient = null;
+    public LocationClient mLocationClient;
     public static boolean isNeedLocation; //标识是否需要接受定位信息值 在接受定位信息成功后在外部关闭
 
     public void setIsNeedLocation(boolean flag) {

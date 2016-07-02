@@ -9,6 +9,8 @@ import android.widget.TextView;
 import com.fans.becomebeaut.R;
 import com.fans.becomebeaut.api.entity.NearStore;
 import com.fans.becomebeaut.utils.ViewHolderUtil;
+import com.zitech.framework.transform.RoundedCornersTransformation;
+import com.zitech.framework.utils.ViewUtils;
 import com.zitech.framework.widget.RemoteImageView;
 
 /**
@@ -32,6 +34,7 @@ public class HomeDataAdapter extends ListAdapter<NearStore>{
         TextView shopaddresstv = ViewHolderUtil.get(convertView,R.id.shop_address_tv);
 
         if(item != null){
+            shopiv.setBitmapTransformation(new RoundedCornersTransformation(mContext, ViewUtils.getDimenPx(R.dimen.w20)));
             shopiv.setImageUri(R.mipmap.ic_shop_default,item.getIcon());
             shopnametv.setText(item.getName());
             distancetv.setText(item.getDistances()+"米");

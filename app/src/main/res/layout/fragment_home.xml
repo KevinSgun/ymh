@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_color"
@@ -7,8 +8,7 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/h95"
-        >
+        android:layout_height="@dimen/h95">
 
         <TextView
             android:id="@+id/action_bar_title"
@@ -22,13 +22,14 @@
             android:textColor="@color/textColorPrimary"
             android:textSize="@dimen/w40" />
 
-        <LinearLayout
+        <com.fans.becomebeaut.common.widget.RippleLinearLayout
             android:id="@+id/msg_layout"
             android:layout_width="@dimen/w95"
             android:layout_height="match_parent"
             android:layout_gravity="right|center_vertical"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            app:rv_centered="true">
 
             <ImageView
                 android:layout_width="@dimen/w36"
@@ -39,24 +40,24 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/w8"
+                android:text="消息"
                 android:textColor="@color/textColorPink"
-                android:textSize="@dimen/w18"
-                android:text="消息"/>
-        </LinearLayout>
+                android:textSize="@dimen/w18" />
+        </com.fans.becomebeaut.common.widget.RippleLinearLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/w1"
             android:layout_gravity="bottom"
-            android:background="#eeeeee" />
+            android:background="@color/divider_color" />
     </FrameLayout>
 
-   <ListView
-       android:id="@+id/shop_list_view"
-       android:layout_width="match_parent"
-       android:layout_height="0dp"
-       android:layout_weight="1"
-       android:divider="@null"
-       android:dividerHeight="0dp"
-       android:listSelector="@color/transparent"/>
+    <ListView
+        android:id="@+id/shop_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        android:listSelector="@color/transparent" />
 </LinearLayout>

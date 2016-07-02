@@ -3,7 +3,7 @@ package com.fans.becomebeaut.home.ui;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.view.View;
-import android.widget.LinearLayout;
+import android.widget.FrameLayout;
 
 import com.baidu.location.BDLocation;
 import com.baidu.mapapi.map.BaiduMap;
@@ -17,12 +17,14 @@ import com.baidu.mapapi.map.Marker;
 import com.baidu.mapapi.map.MarkerOptions;
 import com.baidu.mapapi.map.TextureMapView;
 import com.baidu.mapapi.model.LatLng;
+import com.fans.becomebeaut.Constants;
 import com.fans.becomebeaut.R;
 import com.fans.becomebeaut.api.ApiFactory;
 import com.fans.becomebeaut.api.entity.StoreListBean;
 import com.fans.becomebeaut.api.request.NearStoreRequest;
 import com.fans.becomebeaut.api.request.Request;
 import com.fans.becomebeaut.api.response.NearStoreListResposne;
+import com.fans.becomebeaut.common.SP;
 import com.fans.becomebeaut.common.ui.BaseFragment;
 import com.fans.becomebeaut.map.BaiduMapHelper;
 import com.fans.becomebeaut.map.LocationCallBack;
@@ -37,14 +39,14 @@ import java.util.List;
  * Created by lu on 2016/6/17.
  */
 public class NearbyFragment extends BaseFragment implements BaiduMap.OnMarkerClickListener {
-    private LinearLayout maplayout;
+    private FrameLayout maplayout;
     /**
      * MapView 是地图主控件
      */
     private TextureMapView mMapView;
     private BaiduMap mBaiduMap;
     private BaiduMapOptions options;    //地图基础配置
-//    private double mLat = 40.056858;                //纬度
+    //    private double mLat = 40.056858;                //纬度
 //    private double mLng = 116.308194;                //经度
     private LatLng mLatLng;             //经纬度值对象
     private Marker mMarker;             //覆盖标注图标
@@ -55,6 +57,7 @@ public class NearbyFragment extends BaseFragment implements BaiduMap.OnMarkerCli
     private int currentType;            //联网请求标识
     private ArrayList<Marker> mMarkers; //标注对象
     private List<StoreListBean> storeList;
+    private BaiduMapHelper baiduMapHel;
 
     //    private ArrayList<NetWorkPointVO> mCompanys;
     @Override
@@ -66,17 +69,25 @@ public class NearbyFragment extends BaseFragment implements BaiduMap.OnMarkerCli
     public void onInflateView(View contentView) {
         super.onInflateView(contentView);
 
-        maplayout = (LinearLayout) contentView.findViewById(R.id.map_layout);
+        maplayout = (FrameLayout) contentView.findViewById(R.id.map_layout);
 
         mMarkers = new ArrayList<Marker>();
-//        mCompanys = getIntent().getParcelableArrayListExtra("Company");
-        try {
-//            mLat = Double.parseDouble(mCompanys.get(0).getLnglatY());
-//            mLng = Double.parseDouble(mCompanys.get(0).getLnglatX());
-        } catch (NumberFormatException e) {
-            e.printStackTrace();
+        SP sp = SP.getDefaultSP();
+        String locationStr = sp.getString(Constants.BAI_DU_MAP, null);
+        double mLat = 0;
+        double mLng = 0;
+        if (locationStr != null) {
+            String[] locations;
+            locations = locationStr.split(Constants.BAI_DU_SPLIT);
+            try {
+                mLat = Double.parseDouble(locations[0]);
+                mLng = Double.parseDouble(locations[1]);
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+            }
         }
-//        mLatLng = new LatLng(mLat, mLng);
+        if (mLat != 0 && mLng != 0)
+            mLatLng = new LatLng(mLat, mLng);
 
         initMapView();
         setMapZoom(14.0f);
@@ -89,43 +100,48 @@ public class NearbyFragment extends BaseFragment implements BaiduMap.OnMarkerCli
     @Override
     public void onPrepareData() {
         super.onPrepareData();
+        baiduMapHel = new BaiduMapHelper();
         startLocation();
     }
 
     private void getShopNet() {
-        NearStoreRequest nearStoreRequest = new NearStoreRequest();
-        nearStoreRequest.setLongitude(String.valueOf(mLocation.getLongitude()));
-        nearStoreRequest.setLatitude(String.valueOf(mLocation.getLatitude()));
-        Request request = new Request(nearStoreRequest);
-        request.sign();
-        ApiFactory.getNearest(request).subscribe(new ProgressSubscriber<ApiResponse<NearStoreListResposne>>(this) {
-            @Override
-            protected void onNextInActive(ApiResponse<NearStoreListResposne> nearStoreListResposneApiResponse) {
-                NearStoreListResposne resposne = nearStoreListResposneApiResponse.getData();
-                if(resposne!=null) {
-                    storeList = resposne.getStoreList();
-                    showShopNet();
+        if (storeList == null || storeList.size() == 0) {
+            NearStoreRequest nearStoreRequest = new NearStoreRequest();
+            nearStoreRequest.setLongitude(String.valueOf(mLocation.getLongitude()));
+            nearStoreRequest.setLatitude(String.valueOf(mLocation.getLatitude()));
+            Request request = new Request(nearStoreRequest);
+            request.sign();
+            ApiFactory.getNearest(request).subscribe(new ProgressSubscriber<ApiResponse<NearStoreListResposne>>(this) {
+                @Override
+                protected void onNextInActive(ApiResponse<NearStoreListResposne> nearStoreListResposneApiResponse) {
+                    NearStoreListResposne resposne = nearStoreListResposneApiResponse.getData();
+                    if (resposne != null) {
+                        storeList = resposne.getStoreList();
+                        showShopNet();
+                    }
                 }
-            }
-        });
+            });
+        }
     }
 
     public void startLocation() {
-        new BaiduMapHelper().startLocation(getActivity(), new LocationCallBack() {
+        baiduMapHel.startLocation(getActivity(), new LocationCallBack() {
             @Override
             public void onLocationSuccess(BDLocation location) {
                 if (location != null) {
                     mLocation = location;
-                    mLatLng = new LatLng(mLocation.getLatitude(), mLocation.getLongitude());
+                    mLatLng = new LatLng(location.getLatitude(), location.getLongitude());
+                    SP sp = SP.getDefaultSP();
+                    sp.putString(Constants.BAI_DU_MAP, location.getLatitude() + Constants.BAI_DU_SPLIT + location.getLongitude());
                     setLoaction();
                     getShopNet();
-                    new BaiduMapHelper().stopLoaction();
+                    baiduMapHel.stopLoaction();
                 }
             }
 
             @Override
             public void onLocationFail(String result) {
-                new BaiduMapHelper().stopLoaction();
+                baiduMapHel.stopLoaction();
             }
         });
     }
@@ -159,10 +175,10 @@ public class NearbyFragment extends BaseFragment implements BaiduMap.OnMarkerCli
 
 
     private void showShopNet() {
-        if(storeList!=null&&storeList.size()>0){
+        if (storeList != null && storeList.size() > 0) {
             mBaiduMap.clear();
             mMarkers.clear();
-            for(StoreListBean storeListBean:storeList)
+            for (StoreListBean storeListBean : storeList)
                 setMarker(storeListBean);
 //            String content = response.getPointName() + " \r\n " + response.getPointAddress();
 //            addMarkCustomView(mMarkers.get(0), content, mLat, mLng, null);
@@ -174,7 +190,7 @@ public class NearbyFragment extends BaseFragment implements BaiduMap.OnMarkerCli
 //        }
     }
 
-    public void setMarker(StoreListBean store){
+    public void setMarker(StoreListBean store) {
         double mLat = 0;
         double mLng = 0;
         try {
@@ -183,16 +199,16 @@ public class NearbyFragment extends BaseFragment implements BaiduMap.OnMarkerCli
         } catch (NumberFormatException e) {
             e.printStackTrace();
         }
-        Marker marker = initOyerLay(mLat, mLng, 2, String.valueOf(store.getId())+"$"+store.getName());
+        Marker marker = initOyerLay(mLat, mLng, 2, String.valueOf(store.getId()) + "$" + store.getName());
         mMarkers.add(marker);
     }
 
     /**
      * 初始化覆盖图 图标
      *
-     * @param lat                    维度
-     * @param lng                    经度
-     * @param animationType          0无动画 1从天上掉下 2从地上生长
+     * @param lat           维度
+     * @param lng           经度
+     * @param animationType 0无动画 1从天上掉下 2从地上生长
      */
     public Marker initOyerLay(double lat, double lng, int animationType, String title) {
         Bitmap bm = null;
@@ -201,7 +217,7 @@ public class NearbyFragment extends BaseFragment implements BaiduMap.OnMarkerCli
 //            if (index >= 0 && index <= BaiduMapHelper.mMarkerResourceIds.length - 1) {
 //                bm = BitmapFactory.decodeResource(getResources(), BaiduMapHelper.mMarkerResourceIds[index]);
 //            } else {
-                bm = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_map_local);
+            bm = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_map_local);
 //            }
         } catch (Exception e) {
             e.printStackTrace();
@@ -236,26 +252,26 @@ public class NearbyFragment extends BaseFragment implements BaiduMap.OnMarkerCli
 
     @Override
     public void onPause() {
-        if(mMapView!=null)mMapView.onPause();
+        if (mMapView != null) mMapView.onPause();
         super.onPause();
     }
 
     @Override
     public void onResume() {
-        if(mMapView!=null)mMapView.onResume();
+        if (mMapView != null) mMapView.onResume();
         super.onResume();
     }
 
     @Override
     public void onDestroy() {
-        if(mMapView!=null) mMapView.onDestroy();
+        if (mMapView != null) mMapView.onDestroy();
         super.onDestroy();
     }
 
     @Override
     public void onRefreshData() {
         super.onRefreshData();
-        showShopNet();
+        startLocation();
     }
 
     @Override

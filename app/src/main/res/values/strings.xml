@@ -26,4 +26,10 @@
     <string name="reset_psd">重置密码</string>
     <string name="get_verify_second">%d秒后重新获取</string>
     <!--登录、账号信息相关 end-->
+
+    <!--订单相关 start -->
+    <string name="wait_pay">待付款(%d)</string>
+    <string name="wait_comment">待评价(%d)</string>
+    <string name="refund">退款(%d)</string>
+    <!--订单相关 end -->
 </resources>

@@ -151,13 +151,13 @@ public interface StoreService {
 
 
     /**
-     * 附近地图接口
+     * 技师详细信息
      *
      * @param body
      * @return
-     * @see NearStoreRequest
+     * @see IDRequest
      */
-    @POST(NetConstants.STORE_NEAR)
+    @POST(NetConstants.STORE_DESIGNERDETAILS)
     @Headers("Content-Type:" + RetrofitClient.JSON)
     Observable<ApiResponse<DesignerDetail>> getDesignerDetail(@Body Request body);
 
@@ -186,13 +186,13 @@ public interface StoreService {
 
 
     /**
-     * 技师详细信息
+     * 附近地图接口
      *
      * @param body
      * @return
-     * @see IDRequest
+     * @see NearStoreRequest
      */
-    @POST(NetConstants.STORE_DESIGNERDETAILS)
+    @POST(NetConstants.STORE_NEAR)
     @Headers("Content-Type:" + RetrofitClient.JSON)
     Observable<ApiResponse<NearStoreListResposne>> getNearest(@Body Request body);
 

@@ -49,10 +49,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         } else {
 //            showFragment(MyHomeFragment.class);
         }
-        showUnReadMessageIcon();
-    }
 
-    private void showUnReadMessageIcon() {
     }
 
 //    private View newMessageIconChat;

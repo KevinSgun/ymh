@@ -1,11 +1,14 @@
 package com.fans.becomebeaut.login.ui;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.fans.becomebeaut.Constants;
 import com.fans.becomebeaut.R;
 import com.fans.becomebeaut.api.ApiFactory;
 import com.fans.becomebeaut.api.request.LoginRequest;
@@ -29,6 +32,7 @@ public class LoginActivity extends AppBarActivity implements View.OnClickListene
     private TextView freeregistertv;
     private TextView forgetpsdtv;
     private Button loginbtn;
+    private boolean isFirstLaunchMain;
 
     @Override
     protected int getContentViewId() {
@@ -37,6 +41,7 @@ public class LoginActivity extends AppBarActivity implements View.OnClickListene
 
     @Override
     protected void initView() {
+        isFirstLaunchMain = getIntent().getBooleanExtra(Constants.ActivityExtra.LOGIN_ABOUT,true);
         toolbar.setLeftVisiable(View.GONE);
         setTitle(R.string.login);
         initialize();
@@ -83,7 +88,10 @@ public class LoginActivity extends AppBarActivity implements View.OnClickListene
                         Basic basic = userInfoResponseApiResponse.getBasic();
                         if(basic.getStatus() == 1){
                             User.get().storeFromUserInfo(userInfoResponseApiResponse.getData());
-                            skipActivity(MainActivity.class);
+                            if(isFirstLaunchMain)
+                                skipActivity(MainActivity.class);
+                            else
+                                finish();
                         }
                         ToastMaster.shortToast(basic.getMsg());
                     }
@@ -114,5 +122,18 @@ public class LoginActivity extends AppBarActivity implements View.OnClickListene
         }
 
         return true;
+    }
+
+    /**
+     *
+     * @param act
+     * @param firstLaunchMain 是否为第一次登录首页MainActivity，默认为true
+     *                         为true表示需要新打开一个MainActivity
+     *                         为false表示不需要新打开MainActivity
+     */
+    public static void launch(Activity act,boolean firstLaunchMain){
+        Intent intent = new Intent(act,LoginActivity.class);
+        intent.putExtra(Constants.ActivityExtra.LOGIN_ABOUT,firstLaunchMain);
+        act.startActivity(intent);
     }
 }

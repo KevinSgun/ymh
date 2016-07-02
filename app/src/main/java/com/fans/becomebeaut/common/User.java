@@ -123,4 +123,8 @@ public class User {
         notifyChange();
 
     }
+
+    public boolean notLogin(){
+        return TextUtils.isEmpty(token);
+    }
 }

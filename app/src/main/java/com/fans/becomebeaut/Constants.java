@@ -7,9 +7,14 @@ public class Constants {
 
     public static final int VALIDATE_CODE_LENGTH = 6;
 
+    public static final String BAI_DU_MAP = "baidumap";
+    public static final String BAI_DU_SPLIT = "$";
+
     public interface ActivityExtra{
 
         String CHECK_POSITION = "check_position";
+
+        String LOGIN_ABOUT = "login_about";
     }
     public interface FragmentExtra{
 

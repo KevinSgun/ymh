@@ -11,4 +11,12 @@ public class EventFactory {
     public static class UserDataChange{
 
     }
+
+    /**
+     * 地图定位信息
+     */
+    public static class MapLocationInfo{
+        public double latitude;//纬度
+        public double longitude;//经度
+    }
 }
