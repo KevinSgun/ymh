@@ -3,13 +3,12 @@ package com.fans.becomebeaut.api.service;
 import com.fans.becomebeaut.api.NetConstants;
 import com.fans.becomebeaut.api.entity.Address;
 import com.fans.becomebeaut.api.entity.Message;
-import com.fans.becomebeaut.api.request.ID;
+import com.fans.becomebeaut.api.request.IDRequest;
 import com.fans.becomebeaut.api.request.NearStoreRequest;
 import com.fans.becomebeaut.api.request.Request;
 import com.fans.becomebeaut.api.response.DesignerDetail;
 import com.fans.becomebeaut.api.response.HomePageResponse;
 import com.fans.becomebeaut.api.response.NearStoreListResposne;
-import com.fans.becomebeaut.api.response.SelectedStoreList;
 import com.fans.becomebeaut.api.response.StoreDetailResponse;
 import com.fans.becomebeaut.api.response.StoreListResponse;
 import com.zitech.framework.data.network.RetrofitClient;
@@ -79,7 +78,7 @@ public interface StoreService {
      *
      * @param body
      * @return
-     * @see ID
+     * @see IDRequest
      */
     @POST(NetConstants.USERS_ADDRESSDETAIL)
     @Headers("Content-Type:" + RetrofitClient.JSON)
@@ -90,7 +89,7 @@ public interface StoreService {
      *
      * @param body
      * @return
-     * @see ID
+     * @see IDRequest
      */
     @POST(NetConstants.USERS_ADDRESSDELETE)
     @Headers("Content-Type:" + RetrofitClient.JSON)
@@ -101,7 +100,7 @@ public interface StoreService {
      *
      * @param body
      * @return
-     * @see ID
+     * @see IDRequest
      */
     @POST(NetConstants.USERS_ADDRESSSTATUS)
     @Headers("Content-Type:" + RetrofitClient.JSON)
@@ -112,7 +111,7 @@ public interface StoreService {
      *
      * @param body
      * @return
-     * @see ID
+     * @see IDRequest
      */
     @POST(NetConstants.FEEDBACK)
     @Headers("Content-Type:" + RetrofitClient.JSON)
@@ -128,7 +127,7 @@ public interface StoreService {
      */
     @POST(NetConstants.STORE_LIST)
     @Headers("Content-Type:" + RetrofitClient.JSON)
-    Observable<ApiResponse<SelectedStoreList>> getSeletedStores(@Body Request body);
+    Observable<ApiResponse<StoreListResponse>> getSeletedStores(@Body Request body);
 
     /**
      * 消息接口
@@ -191,7 +190,7 @@ public interface StoreService {
      *
      * @param body
      * @return
-     * @see ID
+     * @see IDRequest
      */
     @POST(NetConstants.STORE_DESIGNERDETAILS)
     @Headers("Content-Type:" + RetrofitClient.JSON)
