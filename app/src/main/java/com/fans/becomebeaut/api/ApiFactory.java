@@ -104,11 +104,11 @@ public class ApiFactory {
     }
 
     /**
-     * 获取验证码
+     * 获取首页数据
      * @param request
      * @return
      */
-    public static Observable<HomePageResponse> getHomeData(Request request){
+    public static Observable<ApiResponse<HomePageResponse>> getHomeData(Request request){
         return getStoreService().getHomeData(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
     }
 }

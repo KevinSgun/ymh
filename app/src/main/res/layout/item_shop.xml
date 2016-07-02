@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/w210"
-    android:background="@color/white">
+    android:layout_height="@dimen/w230"
+    android:background="@drawable/selector_white_item">
 
     <FrameLayout
         android:id="@+id/iv_layout"
@@ -22,7 +22,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/w180"
         android:layout_toRightOf="@id/iv_layout"
         android:paddingLeft="@dimen/w20"
         android:paddingRight="@dimen/w30"
@@ -72,6 +72,7 @@
         android:background="@color/bg_color"
         android:layout_alignParentBottom="true"/>
     <View style="@style/DividerHorizontalLine"
+        android:background="#e0e0e0"
         android:layout_above="@id/bottom_divider"/>
 
 </RelativeLayout>

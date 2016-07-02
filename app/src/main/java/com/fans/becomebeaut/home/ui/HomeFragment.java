@@ -26,7 +26,8 @@ import com.fans.becomebeaut.common.widget.LoopViewPager;
 import com.fans.becomebeaut.common.widget.OnRippleCompleteListener;
 import com.fans.becomebeaut.common.widget.RippleFrameLayout;
 import com.fans.becomebeaut.common.widget.RippleView;
-import com.fans.becomebeaut.home.adapter.HomePageAdapter;
+import com.fans.becomebeaut.home.adapter.HomeDataAdapter;
+import com.zitech.framework.data.network.response.ApiResponse;
 import com.zitech.framework.data.network.subscribe.ProgressSubscriber;
 import com.zitech.framework.widget.RemoteImageView;
 
@@ -73,7 +74,7 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
     private TextView shopnametv;
     private TextView distancetv;
     private TextView shopaddresstv;
-    private HomePageAdapter mAdapter;
+    private HomeDataAdapter mAdapter;
     private LinearLayout consumerrecordlayout;
 
     @Override
@@ -87,10 +88,10 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
         msglayout = (LinearLayout) contentView.findViewById(R.id.msg_layout);
         shoplistview = (ListView) contentView.findViewById(R.id.shop_list_view);
 
-        View header  = LayoutInflater.from(getActivity()).inflate(R.layout.header_home_page,null);
+        View header = LayoutInflater.from(getActivity()).inflate(R.layout.header_home_page, null);
         initHeader(header);
         shoplistview.addHeaderView(header);
-        mAdapter = new HomePageAdapter(getActivity());
+        mAdapter = new HomeDataAdapter(getActivity());
         shoplistview.setAdapter(mAdapter);
         shoplistview.setOnItemClickListener(this);
     }
@@ -103,33 +104,32 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
         homeDataRequest.setLongitude("114.07");
         Request request = new Request(homeDataRequest);
         request.sign();
-        ApiFactory.getHomeData(request).subscribe(new ProgressSubscriber<HomePageResponse>(this) {
+        ApiFactory.getHomeData(request).subscribe(new ProgressSubscriber<ApiResponse<HomePageResponse>>(this) {
             @Override
-            protected void onNextInActive(HomePageResponse homePageResponse) {
-                if(homePageResponse != null){
+            protected void onNextInActive(ApiResponse<HomePageResponse> homePageResponseApiResponse) {
+                HomePageResponse homePageResponse = homePageResponseApiResponse.getData();
+                if (homePageResponse != null) {
                     refreshHeaderUI(homePageResponse);
                     mAdapter.setList(homePageResponse.getStoreList());
                 }
             }
-
         });
-
     }
 
 
     private void refreshHeaderUI(HomePageResponse homePageResponse) {
         HomePageResponse.LastStoreBean lastStoreBean = homePageResponse.getLastStore();
-       if(lastStoreBean!=null) {
-           consumerrecordlayout.setVisibility(View.VISIBLE);
-           consumeritemstv.setText(lastStoreBean.getServiceName());
-           consumerdatetv.setText(lastStoreBean.getAddDate());
-           shopiv.setImageUri(R.mipmap.ic_shop_default, lastStoreBean.getIcon());
-           shopnametv.setText(lastStoreBean.getName());
+        if (lastStoreBean != null&&lastStoreBean.getName()!=null) {
+            consumerrecordlayout.setVisibility(View.VISIBLE);
+            consumeritemstv.setText(lastStoreBean.getServiceName());
+            consumerdatetv.setText(lastStoreBean.getAddDate());
+            shopiv.setImageUri(R.mipmap.ic_shop_default, lastStoreBean.getIcon());
+            shopnametv.setText(lastStoreBean.getName());
 //                distancetv.setText(lastStoreBean.get);
-           shopaddresstv.setText(lastStoreBean.getAddress());
-       }else{
-           consumerrecordlayout.setVisibility(View.GONE);
-       }
+            shopaddresstv.setText(lastStoreBean.getAddress());
+        } else {
+            consumerrecordlayout.setVisibility(View.GONE);
+        }
 
         initPager(homePageResponse.getBanners());
     }
@@ -150,7 +150,7 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
     }
 
     private void initPager(List<HomePageBanner> bannerList) {
-        if(bannerList == null) return;
+        if (bannerList == null) return;
         pagerAdapter = new HomePagerAdapter(bannerList);
         homePager.setAdapter(pagerAdapter);
         indicator.setViewPager(homePager);
@@ -201,7 +201,7 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
 
         @Override
         public Object instantiateItem(View container, final int position) {
-            if(getActivity() == null) return null;
+            if (getActivity() == null) return null;
             RippleView item = new RippleView(getActivity());
             RemoteImageView iv = new RemoteImageView(getActivity());
             iv.setScaleType(ImageView.ScaleType.FIT_XY);

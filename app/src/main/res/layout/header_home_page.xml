@@ -86,7 +86,7 @@
         android:background="@color/white"
         android:orientation="vertical"
         android:paddingBottom="@dimen/w24"
-        android:paddingTop="@dimen/w20">
+        >
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

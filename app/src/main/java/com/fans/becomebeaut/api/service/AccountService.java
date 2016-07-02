@@ -26,6 +26,7 @@ public interface AccountService {
      *
      * @param body
      * @return
+     * @see {@link com.fans.becomebeaut.api.request.VerifyCodeRequest}
      */
     @POST(NetConstants.USERS_CODE)
     @Headers("Content-Type:" + RetrofitClient.JSON)
@@ -36,16 +37,18 @@ public interface AccountService {
      *
      * @param body
      * @return
+     * @see {@link com.fans.becomebeaut.api.request.RegisterRequest}
      */
     @POST(NetConstants.USERS_REGISTER)
     @Headers("Content-Type:" + RetrofitClient.JSON)
     Observable<ApiResponse<UserInfoResponse>> requestRegister(@Body Request body);
 
     /**
-     * 用户注册
+     * 用户登录
      *
      * @param body
      * @return
+     * @see {@link com.fans.becomebeaut.api.request.LoginRequest}
      */
     @POST(NetConstants.USERS_LOGIN)
     @Headers("Content-Type:" + RetrofitClient.JSON)
@@ -56,6 +59,7 @@ public interface AccountService {
      *
      * @param body
      * @return
+     * @see {@link com.fans.becomebeaut.api.request.ResetPsdRequest}
      */
     @POST(NetConstants.USERS_FORGET)
     @Headers("Content-Type:" + RetrofitClient.JSON)

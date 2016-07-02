@@ -148,4 +148,23 @@ public class NearbyFragment extends BaseFragment implements BaiduMap.OnMarkerCli
 //            ToastUtils.showToastInCenter(getApplicationContext(), "获取附近网点失败!");
 //        }
     }
+
+//    @Override
+//    public void onPause() {
+//        mMapView.setVisibility(View.INVISIBLE);
+//        mMapView.onPause();
+//        super.onPause();
+//    }
+//
+//    @Override
+//    public void onResume(){
+//        mMapView.setVisibility(View.VISIBLE);
+//        mMapView.onResume();
+//        super.onResume();
+//    }
+//
+//    @Override
+//    public boolean getUserVisibleHint() {
+//        return super.getUserVisibleHint();
+//    }
 }

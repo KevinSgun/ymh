@@ -58,5 +58,5 @@
        android:layout_weight="1"
        android:divider="@null"
        android:dividerHeight="0dp"
-       android:listSelector="@drawable/selector_comment_item"/>
+       android:listSelector="@color/transparent"/>
 </LinearLayout>
