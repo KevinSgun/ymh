@@ -3,6 +3,7 @@ package com.fans.becomebeaut.api;
 import com.fans.becomebeaut.api.request.Request;
 import com.fans.becomebeaut.api.response.GetwayResponse;
 import com.fans.becomebeaut.api.response.HomePageResponse;
+import com.fans.becomebeaut.api.response.NearStoreListResposne;
 import com.fans.becomebeaut.api.response.UserInfoResponse;
 import com.fans.becomebeaut.api.service.AccountService;
 import com.fans.becomebeaut.api.service.GatewayService;
@@ -110,5 +111,14 @@ public class ApiFactory {
      */
     public static Observable<ApiResponse<HomePageResponse>> getHomeData(Request request){
         return getStoreService().getHomeData(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
+    }
+
+    /**
+     * 获取附近店铺数据
+     * @param request
+     * @return
+     */
+   public static Observable<ApiResponse<NearStoreListResposne>> getNearest(Request request){
+        return getStoreService().getNearest(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
     }
 }

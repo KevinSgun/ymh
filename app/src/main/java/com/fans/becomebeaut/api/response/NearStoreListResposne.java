@@ -1,7 +1,7 @@
 package com.fans.becomebeaut.api.response;
 
 import com.fans.becomebeaut.api.entity.CountBean;
-import com.fans.becomebeaut.api.entity.NearStore;
+import com.fans.becomebeaut.api.entity.StoreListBean;
 
 import java.util.List;
 
@@ -28,7 +28,7 @@ public class NearStoreListResposne {
      * status : 1
      */
 
-    private List<NearStore> storeList;
+    private List<StoreListBean> storeList;
 
     public CountBean getCount() {
         return count;
@@ -38,11 +38,11 @@ public class NearStoreListResposne {
         this.count = count;
     }
 
-    public List<NearStore> getStoreList() {
+    public List<StoreListBean> getStoreList() {
         return storeList;
     }
 
-    public void setStoreList(List<NearStore> storeList) {
+    public void setStoreList(List<StoreListBean> storeList) {
         this.storeList = storeList;
     }
 

@@ -12,7 +12,7 @@ import java.util.List;
 
 public class BaiduMapHelper {
 
-    public static int[] mMarkerResourceIds = new int[]{
+//    public static int[] mMarkerResourceIds = new int[]{
 //            R.mipmap.icon_dba,
 //            R.mipmap.icon_dbb,
 //            R.mipmap.icon_dbc,
@@ -39,7 +39,7 @@ public class BaiduMapHelper {
 //            R.mipmap.icon_dbx,
 //            R.mipmap.icon_dby,
 //            R.mipmap.icon_dbz
-    };
+//    };
 
     public static LocationClient mLocationClient = null;
     public static boolean isNeedLocation; //标识是否需要接受定位信息值 在接受定位信息成功后在外部关闭
@@ -162,18 +162,18 @@ public class BaiduMapHelper {
             }
 
             String address = location.getAddrStr();
-            double lng = location.getLongitude();
-            double lat = location.getLatitude();
-            String titme = location.getTime();
-            String city = location.getCity();
-            String cityCode = location.getCityCode();
-            String county = location.getCountry();
-            String countyCode = location.getCountryCode();
+//            double lng = location.getLongitude();
+//            double lat = location.getLatitude();
+//            String titme = location.getTime();
+//            String city = location.getCity();
+//            String cityCode = location.getCityCode();
+//            String county = location.getCountry();
+//            String countyCode = location.getCountryCode();
 
 //            if (!isNeedLocation) {
 //                return;
 //            }
-            if (location!=null && !TextUtils.isEmpty(address)) {
+            if (!TextUtils.isEmpty(address)) {
                 locationCallBack.onLocationSuccess(location);
             } else {
                 locationCallBack.onLocationFail(sb.toString());
