@@ -59,7 +59,7 @@
                     android:button="@null"
                     android:background="@drawable/sl_comment_positive"
                     android:text="全部评价(9999)"
-                    android:textColor="@color/common_positive_color"
+                    android:textColor="@color/common_pink_white_color"
                     />
 
                 <RadioButton
@@ -71,7 +71,7 @@
                     android:button="@null"
                     android:background="@drawable/sl_comment_positive"
                     android:text="很满意(999)"
-                    android:textColor="@color/common_positive_color"
+                    android:textColor="@color/common_pink_white_color"
                     android:layout_marginLeft="@dimen/w20"
                     />
                 <RadioButton
@@ -83,7 +83,7 @@
                     android:button="@null"
                     android:background="@drawable/sl_comment_positive"
                     android:text="满意(999999)"
-                    android:textColor="@color/common_positive_color"
+                    android:textColor="@color/common_pink_white_color"
                     android:layout_marginLeft="@dimen/w20"
                     />
             </LinearLayout>
@@ -96,7 +96,7 @@
                 android:button="@null"
                 android:background="@drawable/sl_comment_negative"
                 android:text="满意(999999)"
-                android:textColor="@color/common_negative_color"
+                android:textColor="@color/common_gray_white_color"
                 />
         </com.fans.becomebeaut.common.widget.MutilRadioGroup>
         <LinearLayout

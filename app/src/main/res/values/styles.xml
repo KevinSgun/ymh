@@ -53,13 +53,13 @@
     <style name="CommonButtonNegative">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
-        <item name="android:textColor">@color/common_negative_color</item>
+        <item name="android:textColor">@color/common_gray_white_color</item>
         <item name="android:background">@drawable/sl_comment_negative</item>
     </style>
     <style name="CommonButtonPositive">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
-        <item name="android:textColor">@color/common_positive_color</item>
+        <item name="android:textColor">@color/common_pink_white_color</item>
         <item name="android:background">@drawable/sl_comment_positive</item>
     </style>
     <!--普通的横线-->

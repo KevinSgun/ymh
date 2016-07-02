@@ -187,7 +187,7 @@
                 android:paddingLeft="@dimen/w20"
                 android:paddingRight="@dimen/w20"
                 android:text="全部评价(9999)"
-                android:textColor="@color/common_positive_color" />
+                android:textColor="@color/common_pink_white_color" />
 
             <RadioButton
                 android:layout_width="wrap_content"
@@ -199,7 +199,7 @@
                 android:paddingLeft="@dimen/w20"
                 android:paddingRight="@dimen/w20"
                 android:text="很满意(999)"
-                android:textColor="@color/common_positive_color" />
+                android:textColor="@color/common_pink_white_color" />
 
             <RadioButton
                 android:layout_width="wrap_content"
@@ -211,7 +211,7 @@
                 android:paddingLeft="@dimen/w20"
                 android:paddingRight="@dimen/w20"
                 android:text="满意(999999)"
-                android:textColor="@color/common_positive_color" />
+                android:textColor="@color/common_pink_white_color" />
         </LinearLayout>
 
         <RadioButton
@@ -223,7 +223,7 @@
             android:paddingLeft="@dimen/w20"
             android:paddingRight="@dimen/w20"
             android:text="满意(999999)"
-            android:textColor="@color/common_negative_color" />
+            android:textColor="@color/common_gray_white_color" />
     </com.fans.becomebeaut.common.widget.MutilRadioGroup>
 
     <LinearLayout

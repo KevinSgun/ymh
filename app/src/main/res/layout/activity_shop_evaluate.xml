@@ -29,7 +29,7 @@
             android:paddingLeft="@dimen/w34"
             android:paddingRight="@dimen/w34"
             android:text="很满意"
-            android:textColor="@color/common_positive_color" />
+            android:textColor="@color/common_pink_white_color" />
 
         <RadioButton
             android:layout_width="wrap_content"
@@ -41,7 +41,7 @@
             android:paddingLeft="@dimen/w34"
             android:paddingRight="@dimen/w34"
             android:text="满意"
-            android:textColor="@color/common_positive_color" />
+            android:textColor="@color/common_pink_white_color" />
 
         <RadioButton
             android:layout_width="wrap_content"
@@ -53,7 +53,7 @@
             android:paddingLeft="@dimen/w34"
             android:paddingRight="@dimen/w34"
             android:text="不满意"
-            android:textColor="@color/common_negative_color" />
+            android:textColor="@color/common_gray_white_color" />
     </LinearLayout>
     <EditText
         android:layout_width="match_parent"
