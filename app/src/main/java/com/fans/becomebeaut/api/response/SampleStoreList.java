@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created by lu on 2016/7/2.
  */
-public class SelectedStoreList implements RequestData {
+public class SampleStoreList implements RequestData {
 
 
     /**
