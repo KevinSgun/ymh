@@ -56,14 +56,14 @@
             android:process=":remote" >
         </service>
 
-        <supports-screens
-            android:anyDensity="true"
-            android:largeScreens="true"
-            android:normalScreens="false"
-            android:resizeable="true"
-            android:smallScreens="true" />
-        <!-- 百度地图相关配置 end-->
+
 
     </application>
-
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="false"
+        android:resizeable="true"
+        android:smallScreens="true" />
+    <!-- 百度地图相关配置 end-->
 </manifest>
