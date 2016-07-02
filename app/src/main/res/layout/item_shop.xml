@@ -17,6 +17,7 @@
             android:layout_width="@dimen/w72"
             android:layout_height="@dimen/w72"
             android:layout_gravity="center"
+            android:scaleType="centerCrop"
             android:src="@mipmap/ic_shop_default" />
     </FrameLayout>
 
