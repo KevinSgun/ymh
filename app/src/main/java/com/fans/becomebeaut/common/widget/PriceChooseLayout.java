@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.RadioGroup;
 
 import com.fans.becomebeaut.R;
@@ -39,7 +40,8 @@ public class PriceChooseLayout extends RadioGroup {
                 int width = totalWidth / priceList.size();
                 int height = getResources().getDimensionPixelOffset(R.dimen.w60);
                 for (int i = 0; i < priceList.size(); i++) {
-                    LayoutInflater.from(getContext()).inflate(R.layout.item_price, PriceChooseLayout.this);
+                    View child = LayoutInflater.from(getContext()).inflate(R.layout.item_price, null);
+                    addView(child, new LayoutParams(width, height));
                 }
             }
         });
