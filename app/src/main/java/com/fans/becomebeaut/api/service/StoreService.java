@@ -6,6 +6,7 @@ import com.fans.becomebeaut.api.entity.Message;
 import com.fans.becomebeaut.api.request.ID;
 import com.fans.becomebeaut.api.request.NearStoreRequest;
 import com.fans.becomebeaut.api.request.Request;
+import com.fans.becomebeaut.api.response.DesignerDetail;
 import com.fans.becomebeaut.api.response.HomePageResponse;
 import com.fans.becomebeaut.api.response.NearStoreListResposne;
 import com.fans.becomebeaut.api.response.SelectedStoreList;
@@ -159,7 +160,7 @@ public interface StoreService {
      */
     @POST(NetConstants.STORE_NEAR)
     @Headers("Content-Type:" + RetrofitClient.JSON)
-    Observable<ApiResponse<NearStoreListResposne>> getNearest(@Body Request body);
+    Observable<ApiResponse<DesignerDetail>> getDesignerDetail(@Body Request body);
 
     /**
      * 修改我的资料
@@ -180,9 +181,24 @@ public interface StoreService {
      * @return
      * @see com.fans.becomebeaut.api.response.StoreDetailRequest
      */
-    @POST(NetConstants.STORE_NEAR)
+    @POST(NetConstants.STORE_DETAILS)
     @Headers("Content-Type:" + RetrofitClient.JSON)
     Observable<ApiResponse<StoreDetailResponse>> getStoreDetail(@Body Request body);
+
+
+    /**
+     * 技师详细信息
+     *
+     * @param body
+     * @return
+     * @see ID
+     */
+    @POST(NetConstants.STORE_DESIGNERDETAILS)
+    @Headers("Content-Type:" + RetrofitClient.JSON)
+    Observable<ApiResponse<NearStoreListResposne>> getNearest(@Body Request body);
+
+
+
 //-------------------------文件上传待修改调试------------------------------
 
     /**
