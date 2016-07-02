@@ -1,5 +1,11 @@
 <resources>
     <string name="app_name">快来美</string>
+    <string name="select_from_the_phone_album">从手机相册选择</string>
+    <string name="album_error_prompt">相册</string>
+    <string name="alubm_title">相册</string>
+    <string name="image_noloading">进入相册失败</string>
+    <string name="image_count_limited">最多只能选择%d张图片</string>
+
     <!--登录、账号信息相关 stat-->
     <string name="please_input_phone">请输入手机号码</string>
     <string name="enter_right_phone_num">请输入正确的手机号</string>
@@ -32,4 +38,16 @@
     <string name="wait_comment">待评价(%d)</string>
     <string name="refund">退款(%d)</string>
     <!--订单相关 end -->
+
+    <!--时间、日期相关 start-->
+    <string name="rightnow">刚刚</string>
+    <string name="minuteBefore">分钟前</string>
+    <string name="hourBefore">小时前</string>
+    <string name="today">今天</string>
+    <string name="yestoday">昨天</string>
+    <string name="year">年</string>
+    <string name="month">月</string>
+    <string name="splithe">-</string>
+    <string name="day">日</string>
+    <!--时间、日期相关 end-->
 </resources>

@@ -17,6 +17,7 @@ public class UserInfoResponse {
     private String portrait;
     private String token;
     private String sex;
+    private String birthday;
 
     public String getMobile() {
         return mobile;
@@ -56,5 +57,13 @@ public class UserInfoResponse {
 
     public void setSex(String sex) {
         this.sex = sex;
+    }
+
+    public String getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
     }
 }

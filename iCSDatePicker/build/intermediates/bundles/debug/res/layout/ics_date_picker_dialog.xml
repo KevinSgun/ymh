@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:lib="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/datepicker_dialog_bg"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="日期选择"
+        android:textColor="#00C4E8"
+        android:textSize="20sp" />
+
+    <View
+        android:layout_width="300dp"
+        android:layout_height="1dp"
+        android:background="#00C4E8" />
+
+    <LinearLayout
+        android:id="@+id/date_picker_layout"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <ics.datepicker.DatePicker
+            android:id="@+id/datePicker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="#ffffff"
+            lib:dp_calendarViewShown="false"
+            lib:dp_spinnersShown="true" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="300dp"
+        android:layout_height="1dp"
+        android:background="#00C4E8" />
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="50dp" >
+
+        <TextView
+            android:id="@+id/cancel_btn"
+            android:layout_width="149dp"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:text="取消"
+            android:textColor="#595959" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="50dp"
+            android:background="#00C4E8" />
+
+        <TextView
+            android:id="@+id/confirm_btn"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:text="确定"
+            android:textColor="#595959" />
+    </LinearLayout>
+
+</LinearLayout>

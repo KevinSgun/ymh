@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.fans.becomebeaut.R;
 import com.fans.becomebeaut.api.entity.NearStore;
+import com.fans.becomebeaut.common.ListAdapter;
 import com.fans.becomebeaut.utils.ViewHolderUtil;
 import com.zitech.framework.transform.RoundedCornersTransformation;
 import com.zitech.framework.utils.ViewUtils;
@@ -16,7 +17,7 @@ import com.zitech.framework.widget.RemoteImageView;
 /**
  * Created by ymh on 2016/7/1 0001.
  */
-public class HomeDataAdapter extends ListAdapter<NearStore>{
+public class HomeDataAdapter extends ListAdapter<NearStore> {
 
     public HomeDataAdapter(Context context) {
         super(context);

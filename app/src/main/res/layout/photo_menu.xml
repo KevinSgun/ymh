@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <View
+        style="@style/DividerHorizontalLine"
+        android:layout_height="0.5dp" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h100"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <com.fans.becomebeaut.common.widget.RippleButton
+            android:id="@+id/preview"
+            style="@style/TextBlank.Medium"
+            android:layout_height="@dimen/h78"
+            android:layout_gravity="left|center_vertical"
+            android:textColor="@color/textColorPink"
+            android:layout_marginLeft="@dimen/w30"
+            android:background="@null"
+            android:drawablePadding="@dimen/w10"
+            android:text="预览"
+            android:textSize="@dimen/w25"
+            app:rv_centered="true"
+            />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/TextBlank.Medium"
+                android:text="已添加"
+                android:textSize="@dimen/w26" />
+
+            <TextView
+                android:id="@+id/current_pic_num"
+                style="@style/TextBlank.Medium"
+                android:text="2/6"
+                android:textColor="@color/textColorPink"
+                android:textSize="@dimen/w26" />
+
+            <TextView
+                style="@style/TextBlank.Medium"
+                android:text="张照片"
+                android:textSize="@dimen/w26" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/confirm"
+            style="@style/CommentButtonStyle"
+            android:layout_width="@dimen/w100"
+            android:layout_height="@dimen/h58"
+            android:layout_gravity="right|center_vertical"
+            android:gravity="center"
+            android:layout_marginTop="0dp"
+            android:layout_marginRight="@dimen/w29"
+            android:background="@color/textColorPink"
+            android:text="确定"
+            android:textColor="@color/white"
+            android:textSize="@dimen/w26" />
+    </FrameLayout>
+
+</LinearLayout>

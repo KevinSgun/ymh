@@ -165,7 +165,7 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
     @Override
     public void onRefreshData() {
         super.onRefreshData();
-        if (pagerAdapter.getCount() == 0 || mAdapter.getCount() == 0) {
+        if ((pagerAdapter!=null&&pagerAdapter.getCount() == 0 )|| (mAdapter!=null&&mAdapter.getCount() == 0)) {
             startLocation();
         }
     }

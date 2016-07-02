@@ -46,6 +46,19 @@
         <activity android:name=".login.ui.LoginActivity"
             android:screenOrientation="portrait"
             />
+        <activity android:name=".mine.ui.ProfileInfoActivity"
+            android:screenOrientation="portrait"
+            />
+        <activity
+            android:name=".common.ui.PhotoDirActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.zitech.framework.crop.CropActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".common.ui.PhotoGridActivity"
+            android:screenOrientation="portrait" />
+
         <!-- 百度地图相关配置 start-->
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"

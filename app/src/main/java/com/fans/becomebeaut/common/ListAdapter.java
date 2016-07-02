@@ -1,4 +1,4 @@
-package com.fans.becomebeaut.home.adapter;
+package com.fans.becomebeaut.common;
 
 import android.content.Context;
 import android.view.View;

@@ -12,6 +12,7 @@
         android:orientation="horizontal"
         android:paddingLeft="@dimen/w30"
         android:paddingRight="@dimen/w30"
+        android:background="@drawable/selector_comment_item"
          >
 
         <TextView
@@ -19,14 +20,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="我的美券"
+            android:text="头像"
             android:textSize="@dimen/w28" />
 
-        <TextView
-            style="@style/CommonTextPrimary"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/w28" />
+       <com.zitech.framework.widget.RemoteImageView
+           android:id="@+id/avatar_iv"
+           android:layout_width="@dimen/w100"
+           android:layout_height="@dimen/w100"
+           android:layout_marginRight="@dimen/w10"
+           android:src="@mipmap/ic_avatar"/>
 
         <ImageView
             android:layout_width="@dimen/w14"
@@ -53,15 +55,27 @@
             style="@style/CommonTextPrimary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="我的美券"
+            android:text="昵称"
             android:textSize="@dimen/w28" />
-
         <TextView
+            android:id="@+id/nickname_tv"
             style="@style/CommonTextPrimary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/w40"
+            android:text=""
             android:textSize="@dimen/w28" />
+        <EditText
+            android:id="@+id/input_nickname_et"
+            style="@style/CommonTextPrimary"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="right|center_vertical"
+            android:hint="请输入用户昵称"
+            android:textSize="@dimen/w28"
+            android:maxLength="15"
+            android:background="@color/transparent"/>
 
         <ImageView
             android:layout_width="@dimen/w14"
@@ -82,6 +96,7 @@
         android:orientation="horizontal"
         android:paddingLeft="@dimen/w30"
         android:paddingRight="@dimen/w30"
+        android:background="@drawable/selector_comment_item"
          >
 
         <TextView
@@ -89,14 +104,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="我的美券"
+            android:text="性别"
             android:textSize="@dimen/w28" />
 
         <TextView
+            android:id="@+id/gender_tv"
             style="@style/CommonTextPrimary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/w28" />
+            android:textSize="@dimen/w28"
+            android:text="男"/>
 
         <ImageView
             android:layout_width="@dimen/w14"
@@ -117,21 +134,24 @@
         android:orientation="horizontal"
         android:paddingLeft="@dimen/w30"
         android:paddingRight="@dimen/w30"
+        android:background="@drawable/selector_comment_item"
          >
 
         <TextView
             style="@style/CommonTextPrimary"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="我的美券"
+            android:text="出生日期"
             android:textSize="@dimen/w28" />
 
         <TextView
+            android:id="@+id/birthday_tv"
             style="@style/CommonTextPrimary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/w28" />
+            android:textSize="@dimen/w28"
+            android:text="1991-01-01"/>
 
         <ImageView
             android:layout_width="@dimen/w14"

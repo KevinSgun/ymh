@@ -56,7 +56,7 @@ public abstract class AppBarActivity extends BaseActivity {
 
     protected void onActionBarItemClick(int position){
         if(position == ToolBarHelper.ITEM_LEFT)
-            finish();
+            back();
     }
 
     public View.OnClickListener leftOnClickListener = new View.OnClickListener() {
@@ -72,6 +72,14 @@ public abstract class AppBarActivity extends BaseActivity {
             onActionBarItemClick(ToolBarHelper.ITEM_RIGHT);
         }
     };
+    protected void back() {
+        try {
+            onBackPressed();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
     @Override
     protected void onDestroy() {

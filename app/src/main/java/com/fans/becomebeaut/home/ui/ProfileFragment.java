@@ -9,6 +9,7 @@ import com.fans.becomebeaut.common.ui.BaseFragment;
 import com.fans.becomebeaut.common.widget.OnRippleCompleteListener;
 import com.fans.becomebeaut.common.widget.RippleLinearLayout;
 import com.fans.becomebeaut.login.ui.LoginActivity;
+import com.fans.becomebeaut.mine.ui.ProfileInfoActivity;
 import com.zitech.framework.utils.ViewUtils;
 import com.zitech.framework.widget.RemoteImageView;
 
@@ -102,7 +103,7 @@ public class ProfileFragment extends BaseFragment implements OnRippleCompleteLis
                 if(User.get().notLogin()){
                     LoginActivity.launch(getActivity(),false);
                 }else{
-
+                    ProfileInfoActivity.launch(getActivity());
                 }
                 break;
             case R.id.my_all_order_layout:

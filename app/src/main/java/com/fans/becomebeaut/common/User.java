@@ -17,12 +17,14 @@ public class User {
     private static final String NICKNAME="nickname";
     private static final String PORTRAIT="portrait";
     private static final String SEX="sex";
+    private static final String BIRTHDAY="birthday";
     private SP sp;
     private String mobile;
     private String nickname;
     private String portrait;
     private String token;
     private String sex;
+    private String birthday;
 
     public static User get() {
 
@@ -36,6 +38,7 @@ public class User {
         portrait = sp.getString(PORTRAIT, "");
         nickname = sp.getString(NICKNAME,"");
         sex = sp.getString(SEX, "");
+        birthday = sp.getString(BIRTHDAY,"");
     }
 
     public void storeFromUserInfo(UserInfoResponse userInfo) {
@@ -45,8 +48,15 @@ public class User {
         storePhoneNumber(userInfo.getMobile());
         storeSex(userInfo.getSex());
         storePortrait(userInfo.getPortrait());
+        storeBirthday(userInfo.getBirthday());
         notifyChange();
     }
+
+    private void storeBirthday(String birthday) {
+        this.birthday = birthday;
+        sp.putString(BIRTHDAY, portrait);
+    }
+
 
     public void storePortrait(String portrait) {
         this.portrait = portrait;
@@ -99,6 +109,18 @@ public class User {
         return sex;
     }
 
+    public String getSexTxt() {
+        if("0".equals(sex))
+            return "女";
+        else if("1".equals(sex))
+            return "男";
+        return "未知";
+    }
+
+    public String getBirthday(){
+        return birthday;
+    }
+
     public boolean isNotLogin(){
         return TextUtils.isEmpty(token);
     }
@@ -120,6 +142,8 @@ public class User {
         sp.remove(SEX);
         sex = "";
         //
+        sp.remove(BIRTHDAY);
+        birthday = "";
         notifyChange();
 
     }

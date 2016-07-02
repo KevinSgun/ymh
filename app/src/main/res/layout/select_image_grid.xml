@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.fans.becomebeaut.common.widget.ContentViewHolder xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/content_holder"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+
+        <GridView
+            android:id="@+id/gridview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:horizontalSpacing="@dimen/w20"
+            android:numColumns="4"
+            android:padding="@dimen/w20"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="@dimen/w20" />
+
+        <include layout="@layout/photo_menu" />
+    </LinearLayout>
+
+</com.fans.becomebeaut.common.widget.ContentViewHolder>

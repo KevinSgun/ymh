@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <com.zitech.framework.widget.RemoteImageView
+        android:id="@+id/iv"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/w155"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/app_name"
+        android:scaleType="centerCrop" />
+
+    <ImageView
+        android:id="@+id/check"
+        android:layout_width="@dimen/w40"
+        android:layout_height="@dimen/w40"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="@dimen/w5"
+        android:paddingTop="@dimen/w5"
+        android:contentDescription="@string/app_name"
+        android:src="@mipmap/checkbox_nor" />
+
+</RelativeLayout>

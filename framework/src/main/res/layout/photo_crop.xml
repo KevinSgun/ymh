@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black" >
+
+    <FrameLayout
+        android:id="@+id/photo_crop_navi"
+        android:layout_width="match_parent"
+        android:layout_height="32dp" >
+
+        <TextView
+            android:id="@+id/photo_crop_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:minWidth="60dp"
+            android:text="取消"
+            android:textColor="#61BDE5"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/photo_crop_done"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:gravity="center"
+            android:minWidth="60dp"
+            android:text="完成"
+            android:textColor="#61BDE5"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/photo_crop_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="编辑"
+            android:textColor="@android:color/white"
+            android:textSize="14sp" />
+    </FrameLayout>
+
+    <com.zitech.framework.crop.CropImageView
+        android:id="@+id/photo_crop_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/photo_crop_tool"
+        android:layout_below="@+id/photo_crop_navi" />
+
+    <LinearLayout
+        android:id="@+id/photo_crop_tool"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_alignParentBottom="true"
+        android:background="#1A1A1A"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@+id/photo_crop_load"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:scaleType="centerInside"
+            android:src="@mipmap/icon_crop_library"
+            android:visibility="invisible"/>
+
+        <ImageView 
+            android:id="@+id/photo_crop_mirror"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:scaleType="centerInside"
+            android:src="@mipmap/icon_crop_mirror"
+            android:visibility="invisible"/>
+        
+        <ImageView
+            android:id="@+id/photo_crop_rotate"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:scaleType="centerInside"
+            android:src="@mipmap/icon_crop_rotate" />
+    </LinearLayout>
+
+</RelativeLayout>
