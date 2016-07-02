@@ -13,9 +13,15 @@ import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.map.Marker;
 import com.baidu.mapapi.model.LatLng;
 import com.fans.becomebeaut.R;
+import com.fans.becomebeaut.api.ApiFactory;
+import com.fans.becomebeaut.api.request.NearStoreRequest;
+import com.fans.becomebeaut.api.request.Request;
+import com.fans.becomebeaut.api.response.NearStoreListResposne;
 import com.fans.becomebeaut.common.ui.BaseFragment;
 import com.fans.becomebeaut.map.BaiduMapHelper;
 import com.fans.becomebeaut.map.LocationCallBack;
+import com.zitech.framework.data.network.response.ApiResponse;
+import com.zitech.framework.data.network.subscribe.ProgressSubscriber;
 
 import java.util.ArrayList;
 
@@ -60,14 +66,14 @@ public class NearbyFragment extends BaseFragment implements BaiduMap.OnMarkerCli
         } catch (NumberFormatException e) {
             e.printStackTrace();
         }
-        mLatLng = new LatLng(mLat, mLng);
+//        mLatLng = new LatLng(mLat, mLng);
 
         initMapView();
-        setLoaction();
         setMapZoom(14.0f);
 
         maplayout.addView(mMapView);
         mBaiduMap.setOnMarkerClickListener(this);
+
     }
 
     @Override
@@ -75,6 +81,21 @@ public class NearbyFragment extends BaseFragment implements BaiduMap.OnMarkerCli
         super.onPrepareData();
         startLocation();
     }
+
+    private void getShopNet() {
+        NearStoreRequest nearStoreRequest = new NearStoreRequest();
+        nearStoreRequest.setLongitude(String.valueOf(mLocation.getLongitude()));
+        nearStoreRequest.setLatitude(String.valueOf(mLocation.getLatitude()));
+        Request request = new Request(nearStoreRequest);
+        request.sign();
+        ApiFactory.getNearest(request).subscribe(new ProgressSubscriber<ApiResponse<NearStoreListResposne>>(this) {
+            @Override
+            protected void onNextInActive(ApiResponse<NearStoreListResposne> nearStoreListResposneApiResponse) {
+
+            }
+        });
+    }
+
     public void startLocation() {
         new BaiduMapHelper().startLocation(getActivity(), new LocationCallBack() {
             @Override
@@ -82,6 +103,7 @@ public class NearbyFragment extends BaseFragment implements BaiduMap.OnMarkerCli
                 if (location != null) {
                     mLocation = location;
                     mLatLng = new LatLng(mLocation.getLatitude(), mLocation.getLongitude());
+                    getShopNet();
                     setLoaction();
                     new BaiduMapHelper().stopLoaction();
                 }
