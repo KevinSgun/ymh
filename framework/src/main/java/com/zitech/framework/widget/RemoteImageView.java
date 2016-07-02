@@ -71,7 +71,8 @@ public class RemoteImageView extends ImageView {
             }
             return;
         }
-        DrawableTypeRequest<String> request=Glide.with(getContext()).load(mUrl);
+        mUrl = url;
+        DrawableTypeRequest<String> request=Glide.with(getContext()).load(url);
         if (bitmapTransformation != null) {
             request.bitmapTransform(bitmapTransformation);
         }

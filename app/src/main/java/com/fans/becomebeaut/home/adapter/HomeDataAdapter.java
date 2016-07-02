@@ -14,9 +14,9 @@ import com.zitech.framework.widget.RemoteImageView;
 /**
  * Created by ymh on 2016/7/1 0001.
  */
-public class HomePageAdapter extends ListAdapter<NearStore>{
+public class HomeDataAdapter extends ListAdapter<NearStore>{
 
-    public HomePageAdapter(Context context) {
+    public HomeDataAdapter(Context context) {
         super(context);
     }
 
@@ -32,7 +32,7 @@ public class HomePageAdapter extends ListAdapter<NearStore>{
         TextView shopaddresstv = ViewHolderUtil.get(convertView,R.id.shop_address_tv);
 
         if(item != null){
-//           shopiv.setImageUri(Constants.ImageDefault.);
+            shopiv.setImageUri(R.mipmap.ic_shop_default,item.getIcon());
             shopnametv.setText(item.getName());
             distancetv.setText(item.getDistances()+"米");
             shopaddresstv.setText(item.getAddress());

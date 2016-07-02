@@ -2,6 +2,7 @@ package com.fans.becomebeaut.home.ui;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
@@ -18,6 +19,11 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
 
     private RadioGroup radioGroup;
     private long exitTime;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 
     @Override
     protected void setContentView() {
