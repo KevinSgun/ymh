@@ -196,6 +196,16 @@ public interface StoreService {
     @Headers("Content-Type:" + RetrofitClient.JSON)
     Observable<ApiResponse<NearStoreListResposne>> getNearest(@Body Request body);
 
+    /**
+     * 我的首页(会员)
+     *
+     * @param body
+     * @return
+     * @see NearStoreRequest
+     */
+    @POST(NetConstants.VIP_USER_HOME)
+    @Headers("Content-Type:" + RetrofitClient.JSON)
+    Observable<ApiResponse<NearStoreListResposne>> getVipUserHome(@Body Request body);
 
 
 //-------------------------文件上传待修改调试------------------------------

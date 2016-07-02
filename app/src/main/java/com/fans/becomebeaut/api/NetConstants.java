@@ -144,4 +144,7 @@ public class NetConstants extends Constants{
 
     //44.获取助理列表
     public static final String STORE_ASSISTANTLIST = COMMON_SUFFIX+"store/assistantList";
+    //45 我的首页(会员)
+    public static final String VIP_USER_HOME= COMMON_SUFFIX+"users/me";
+//    http://192.168.0.240:88/mall/api/users/me
 }
