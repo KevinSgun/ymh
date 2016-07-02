@@ -11,6 +11,7 @@ import com.baidu.mapapi.map.MapStatusUpdate;
 import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.map.Marker;
+import com.baidu.mapapi.map.TextureMapView;
 import com.baidu.mapapi.model.LatLng;
 import com.fans.becomebeaut.R;
 import com.fans.becomebeaut.common.ui.BaseFragment;
@@ -27,7 +28,7 @@ public class NearbyFragment extends BaseFragment implements BaiduMap.OnMarkerCli
     /**
      * MapView 是地图主控件
      */
-    private MapView mMapView;
+    private TextureMapView mMapView;
     private BaiduMap mBaiduMap;
     private BaiduMapOptions options;    //地图基础配置
     private double mLat = 40.056858;                //纬度
@@ -97,7 +98,7 @@ public class NearbyFragment extends BaseFragment implements BaiduMap.OnMarkerCli
     public void initMapView() {
         options = new BaiduMapOptions();
         options.zoomControlsEnabled(false); //隐藏缩放控件
-        mMapView = new MapView(getActivity(), options);
+        mMapView = new TextureMapView(getActivity(), options);
         mMapView.showZoomControls(false);
         mBaiduMap = mMapView.getMap();
         mBaiduMap.clear();
