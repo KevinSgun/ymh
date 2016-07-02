@@ -2,8 +2,11 @@ package com.fans.becomebeaut.home.ui;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 
 import com.baidu.location.BDLocation;
 import com.baidu.mapapi.map.BaiduMap;
@@ -39,7 +42,7 @@ import java.util.List;
  * Created by lu on 2016/6/17.
  */
 public class NearbyFragment extends BaseFragment implements BaiduMap.OnMarkerClickListener {
-    private FrameLayout maplayout;
+    private LinearLayout maplayout;
     /**
      * MapView 是地图主控件
      */
@@ -58,8 +61,14 @@ public class NearbyFragment extends BaseFragment implements BaiduMap.OnMarkerCli
     private ArrayList<Marker> mMarkers; //标注对象
     private List<StoreListBean> storeList;
     private BaiduMapHelper baiduMapHel;
-
-    //    private ArrayList<NetWorkPointVO> mCompanys;
+    private FrameLayout searchLayout;
+    private Handler mHandler = new Handler(new Handler.Callback() {
+        @Override
+        public boolean handleMessage(Message message) {
+            startLocation();
+            return false;
+        }
+    });
     @Override
     protected int getContentViewId() {
         return R.layout.fragment_near_map;
@@ -69,8 +78,8 @@ public class NearbyFragment extends BaseFragment implements BaiduMap.OnMarkerCli
     public void onInflateView(View contentView) {
         super.onInflateView(contentView);
 
-        maplayout = (FrameLayout) contentView.findViewById(R.id.map_layout);
-
+        maplayout = (LinearLayout) contentView.findViewById(R.id.map_layout);
+        searchLayout = (FrameLayout) contentView.findViewById(R.id.search_layout);
         mMarkers = new ArrayList<Marker>();
         SP sp = SP.getDefaultSP();
         String locationStr = sp.getString(Constants.BAI_DU_MAP, null);
@@ -95,13 +104,20 @@ public class NearbyFragment extends BaseFragment implements BaiduMap.OnMarkerCli
         maplayout.addView(mMapView);
         mBaiduMap.setOnMarkerClickListener(this);
 
+        searchLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
     }
 
     @Override
     public void onPrepareData() {
         super.onPrepareData();
         baiduMapHel = new BaiduMapHelper();
-        startLocation();
+        mHandler.sendEmptyMessageDelayed(11,200);
     }
 
     private void getShopNet() {
@@ -252,12 +268,14 @@ public class NearbyFragment extends BaseFragment implements BaiduMap.OnMarkerCli
 
     @Override
     public void onPause() {
+        maplayout.setVisibility(View.GONE);
         if (mMapView != null) mMapView.onPause();
         super.onPause();
     }
 
     @Override
     public void onResume() {
+        maplayout.setVisibility(View.VISIBLE);
         if (mMapView != null) mMapView.onResume();
         super.onResume();
     }
@@ -270,7 +288,9 @@ public class NearbyFragment extends BaseFragment implements BaiduMap.OnMarkerCli
 
     @Override
     public void onRefreshData() {
+        maplayout.setVisibility(View.VISIBLE);
         super.onRefreshData();
+
         startLocation();
     }
 

@@ -98,9 +98,11 @@ public class ProfileFragment extends BaseFragment implements OnRippleCompleteLis
         if(ViewUtils.isFastDoubleClick()) return;
         switch ( v.getId()){
             case R.id.mine_top_layout:
-                //顶部点击事件，去登陆注册
+                //顶部点击事件，未登录就去登陆注册，已登录就编辑个人资料
                 if(User.get().notLogin()){
                     LoginActivity.launch(getActivity(),false);
+                }else{
+
                 }
                 break;
             case R.id.my_all_order_layout:

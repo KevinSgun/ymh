@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
+    android:orientation="vertical">
+
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/h100"
+        android:layout_height="@dimen/action_bar_height"
         android:background="@color/bg_color">
 
         <TextView
@@ -17,19 +17,37 @@
             android:drawablePadding="@dimen/w10"
             android:gravity="center"
             android:maxWidth="@dimen/w450"
-            android:text="附近"
+            android:text="附近的店"
             android:textColor="@color/textColorPrimary"
             android:textSize="@dimen/w40" />
+
+        <FrameLayout
+            android:id="@+id/search_layout"
+            android:layout_width="@dimen/w100"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:background="@drawable/selector_comment_item"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="@dimen/w39"
+                android:layout_height="@dimen/w39"
+                android:layout_gravity="center"
+                android:src="@mipmap/ic_search" />
+        </FrameLayout>
+
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/w1"
             android:layout_gravity="bottom"
             android:background="@color/divider_color" />
     </FrameLayout>
-    <FrameLayout
+
+    <LinearLayout
+        android:id="@+id/map_layout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@color/bg_color"
-        android:id="@+id/map_layout"/>
+        android:orientation="vertical"
+        android:background="@color/bg_color" />
 </LinearLayout>

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <LinearLayout
+        android:id="@+id/choose_avatar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h136"
+        android:layout_marginTop="@dimen/h10"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/w30"
+        android:paddingRight="@dimen/w30"
+         >
+
+        <TextView
+            style="@style/CommonTextPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="我的美券"
+            android:textSize="@dimen/w28" />
+
+        <TextView
+            style="@style/CommonTextPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/w28" />
+
+        <ImageView
+            android:layout_width="@dimen/w14"
+            android:layout_height="@dimen/w25"
+            android:layout_marginLeft="@dimen/w10"
+            android:src="@mipmap/ic_gray_arrow" />
+    </LinearLayout>
+
+    <View
+        style="@style/DividerHorizontalLine"
+        android:paddingLeft="@dimen/w30" />
+    <LinearLayout
+        android:id="@+id/profile_nickname_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h100"
+        android:layout_marginTop="@dimen/h10"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/w30"
+        android:paddingRight="@dimen/w30"
+         >
+
+        <TextView
+            style="@style/CommonTextPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="我的美券"
+            android:textSize="@dimen/w28" />
+
+        <TextView
+            style="@style/CommonTextPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/w28" />
+
+        <ImageView
+            android:layout_width="@dimen/w14"
+            android:layout_height="@dimen/w25"
+            android:layout_marginLeft="@dimen/w10"
+            android:src="@mipmap/ic_gray_arrow" />
+    </LinearLayout>
+
+    <View
+        style="@style/DividerHorizontalLine"
+        android:paddingLeft="@dimen/w30" />
+    <LinearLayout
+        android:id="@+id/choose_gender_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h100"
+        android:layout_marginTop="@dimen/h10"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/w30"
+        android:paddingRight="@dimen/w30"
+         >
+
+        <TextView
+            style="@style/CommonTextPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="我的美券"
+            android:textSize="@dimen/w28" />
+
+        <TextView
+            style="@style/CommonTextPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/w28" />
+
+        <ImageView
+            android:layout_width="@dimen/w14"
+            android:layout_height="@dimen/w25"
+            android:layout_marginLeft="@dimen/w10"
+            android:src="@mipmap/ic_gray_arrow" />
+    </LinearLayout>
+
+    <View
+        style="@style/DividerHorizontalLine"
+        android:paddingLeft="@dimen/w30" />
+    <LinearLayout
+        android:id="@+id/choose_birthday_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h100"
+        android:layout_marginTop="@dimen/h10"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/w30"
+        android:paddingRight="@dimen/w30"
+         >
+
+        <TextView
+            style="@style/CommonTextPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="我的美券"
+            android:textSize="@dimen/w28" />
+
+        <TextView
+            style="@style/CommonTextPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/w28" />
+
+        <ImageView
+            android:layout_width="@dimen/w14"
+            android:layout_height="@dimen/w25"
+            android:layout_marginLeft="@dimen/w10"
+            android:src="@mipmap/ic_gray_arrow" />
+    </LinearLayout>
+
+    <View
+        style="@style/DividerHorizontalLine"
+        android:paddingLeft="@dimen/w30" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/bg_color"/>
+</LinearLayout>

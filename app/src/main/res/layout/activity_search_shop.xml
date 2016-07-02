@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/action_bar_height"
+        android:orientation="horizontal">
+        <FrameLayout
+            android:id="@+id/action_bar_left"
+            android:layout_width="@dimen/w100"
+            android:layout_height="match_parent"
+            android:layout_gravity="left"
+            android:background="@drawable/selector_comment_item">
+
+            <ImageView
+                android:id="@+id/action_left_img"
+                android:layout_width="@dimen/w21"
+                android:layout_height="@dimen/w34"
+                android:layout_gravity="center"
+                android:scaleType="fitCenter"
+                android:src="@mipmap/ic_appback" />
+        </FrameLayout>
+        <com.fans.becomebeaut.common.widget.ClearEditText
+            android:id="@+id/search_et"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/w70"
+            android:layout_weight="1"
+            android:layout_marginLeft="@dimen/w20"
+            android:paddingLeft="@dimen/w20"
+            android:gravity="center|left"
+            android:layout_gravity="center_vertical"
+            android:textSize="@dimen/w30"
+            android:textColor="@color/textColorPrimary"
+            android:textColorHint="@color/textColorSecondary"
+            android:background="@drawable/bg_stroke_pink_corner_10"
+            android:imeOptions="actionSearch"
+            android:maxLength="20"
+            android:maxLines="1"
+            android:hint="搜索附近的店"/>
+        <Button
+            android:id="@+id/search_gift_btn"
+            android:layout_width="@dimen/w120"
+            android:layout_height="@dimen/w60"
+            android:layout_marginTop="0dp"
+            android:layout_gravity="center_vertical|right"
+            android:textColor="@color/white"
+            android:text="搜索"
+            android:layout_marginLeft="@dimen/w30"
+            android:background="@drawable/btn_comment"
+            android:layout_marginRight="@dimen/w30"
+            />
+    </LinearLayout>
+    <View
+        style="@style/DividerHorizontalLine"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h15"
+        android:background="@color/bg_color"/>
+</LinearLayout>
