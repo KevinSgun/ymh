@@ -64,6 +64,7 @@ public class ProfileInfoActivity extends PhotoPickingActivity implements View.On
     protected void initView() {
         setTitle("用户资料");
         setRightText("保存");
+        rightSaveStatusToggle();
         chooseavatarlayout = (LinearLayout) findViewById(R.id.choose_avatar_layout);
         inputnicknameet = (EditText) findViewById(R.id.input_nickname_et);
         profilenicknamelayout = (LinearLayout) findViewById(R.id.profile_nickname_layout);
@@ -107,6 +108,7 @@ public class ProfileInfoActivity extends PhotoPickingActivity implements View.On
                     @Override
                     public void OnClick(View clickedView, int which) {
                         isChange = true;
+                        rightSaveStatusToggle();
                         if (which == 0) {
                             gendertv.setText("男");
                             chooseGender = "1";
@@ -131,6 +133,7 @@ public class ProfileInfoActivity extends PhotoPickingActivity implements View.On
                         @Override
                         public void onPickDate(Calendar calendar) {
                             isChange = true;
+                            rightSaveStatusToggle();
                             birthdaytv.setText(DateUtil.formart(calendar));
                         }
                     });
@@ -184,6 +187,7 @@ public class ProfileInfoActivity extends PhotoPickingActivity implements View.On
                 FilePathResponse reponse = apiResponse.getData();
                 if(reponse.getImgSrc()!=null&&reponse.getImgSrc().size()>0){
                     isChange = true;
+                    rightSaveStatusToggle();
                     avatarUrl = reponse.getImgSrc().get(0);
                     avatariv.setImageUri(avatarUrl);
                 }
@@ -191,6 +195,14 @@ public class ProfileInfoActivity extends PhotoPickingActivity implements View.On
         });
 
     }
+
+    private void rightSaveStatusToggle() {
+        if(isChange)
+            setRightTextVisiable(View.VISIBLE);
+        else
+            setRightTextVisiable(View.GONE);
+    }
+
     @Override
     public void onBackPressed() {
         if(isChange){
@@ -227,6 +239,7 @@ public class ProfileInfoActivity extends PhotoPickingActivity implements View.On
     public void afterTextChanged(Editable editable) {
         if(inputnicknameet.getText().length()>0&&!inputnicknameet.getText().toString().equals(User.get().getNickname())){
             isChange = true;
+            rightSaveStatusToggle();
         }
     }
 }

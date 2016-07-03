@@ -78,7 +78,7 @@ public class CustomToolBar extends Toolbar {
     /**
      * @param left  左边按钮显示状态
      */
-    public void setLeftVisiable(int left)
+    public void setLeftVisible(int left)
     {
         actionbarleft.setVisibility(left);
     }
@@ -86,7 +86,7 @@ public class CustomToolBar extends Toolbar {
     /**
      * @param right  右边按钮显示状态
      */
-    public void setRightVisiable(int right)
+    public void setRightVisible(int right)
     {
         actionbarright.setVisibility(right);
     }

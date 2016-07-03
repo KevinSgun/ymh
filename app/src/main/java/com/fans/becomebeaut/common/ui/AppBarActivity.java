@@ -44,6 +44,10 @@ public abstract class AppBarActivity extends BaseActivity {
         toolbar.setRightText(title);
     }
 
+    protected void setRightTextVisiable(int visiable){
+        toolbar.setRightVisible(visiable);
+    }
+
     protected void setRightImg(int imgId){
         toolbar.setBtnRight(imgId);
     }
