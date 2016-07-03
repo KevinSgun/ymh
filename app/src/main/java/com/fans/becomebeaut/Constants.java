@@ -21,6 +21,8 @@ public class Constants {
         String SID ="sid";
 
         String TITLE ="title";
+
+        String STATUS = "status";
     }
     public interface FragmentExtra{
 

@@ -10,8 +10,10 @@
         android:paddingRight="@dimen/w30"
         android:layout_width="match_parent"
         android:layout_height="@dimen/h60"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+        android:background="#fcfcfc">
         <TextView
+            android:id="@+id/order_num_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/w20"
@@ -21,6 +23,7 @@
             android:layout_weight="1"
             />
         <TextView
+            android:id="@+id/order_date_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/w20"
@@ -30,6 +33,7 @@
             android:layout_marginLeft="@dimen/w30"
             />
         <TextView
+            android:id="@+id/order_status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/w20"
@@ -53,6 +57,7 @@
             android:layout_height="@dimen/w140"
             android:background="@drawable/bg_stroke_gray">
             <com.zitech.framework.widget.RemoteImageView
+                android:id="@+id/shop_icon_iv"
                 android:layout_width="@dimen/w72"
                 android:layout_height="@dimen/w72"
                 android:layout_gravity="center"
@@ -66,6 +71,7 @@
             android:orientation="vertical"
             >
             <TextView
+                android:id="@+id/shop_name_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/textColorPrimary"
@@ -73,6 +79,7 @@
                 android:text="快来美美发店"
                 />
             <TextView
+                android:id="@+id/consumer_items_tv"
                 android:textSize="@dimen/w20"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -80,6 +87,7 @@
                 android:text="泰式洗头+造型总监发型精修"
                 android:textColor="@color/textColorSecondary"/>
             <TextView
+                android:id="@+id/consumer_technician_tv"
                 android:layout_marginTop="@dimen/h5"
                 android:textSize="@dimen/w20"
                 android:layout_width="wrap_content"
@@ -109,6 +117,7 @@
             android:textColor="@color/textColorPrimary"
             android:textSize="@dimen/w24"/>
         <TextView
+            android:id="@+id/order_total_money_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/textColorPink"
@@ -127,6 +136,7 @@
         android:paddingLeft="@dimen/w30"
         android:paddingRight="@dimen/w30">
         <Button
+            android:id="@+id/left_btn"
             android:layout_width="@dimen/w160"
             android:layout_height="@dimen/w60"
             android:background="@drawable/bg_stroke_dark_gray"
@@ -135,6 +145,7 @@
             android:text="马上付款"
             android:layout_marginRight="@dimen/w30"/>
         <Button
+            android:id="@+id/right_btn"
             android:layout_width="@dimen/w160"
             android:layout_height="@dimen/w60"
             android:background="@drawable/bg_stroke_pink"

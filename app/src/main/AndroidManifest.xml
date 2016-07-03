@@ -83,6 +83,9 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".mine.ui.MyFavoriteActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name=".mine.ui.MyOrderListActivity"
+            android:screenOrientation="portrait"/>
+
         <!-- 百度地图相关配置 start-->
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"

@@ -46,9 +46,9 @@ public class MyScoreActivity extends AppBarActivity{
         String[] titles = { "7天", "30天", "全部"};
 
         this.fragments = new LinkedList<>();
-        ScoreFragment fragment1 = ScoreFragment.getInstance("7");
-        ScoreFragment fragment2 = ScoreFragment.getInstance("30");
-        ScoreFragment fragment3 = ScoreFragment.getInstance("");
+        ScoreListFragment fragment1 = ScoreListFragment.getInstance("7");
+        ScoreListFragment fragment2 = ScoreListFragment.getInstance("30");
+        ScoreListFragment fragment3 = ScoreListFragment.getInstance("");
         this.fragments.add(fragment1);
         this.fragments.add(fragment2);
         this.fragments.add(fragment3);

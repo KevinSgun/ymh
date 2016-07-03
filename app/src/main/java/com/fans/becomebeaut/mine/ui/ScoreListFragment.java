@@ -19,7 +19,7 @@ import java.util.List;
 /**
  * Created by ymh on 2016/7/3 0003.
  */
-public class ScoreFragment extends BaseFragment{
+public class ScoreListFragment extends BaseFragment{
     private static final String QUERY_DATE = "query_date";
     private String queryDate;
     private SwipeRefreshLayout swipeRefreshLayout;
@@ -57,10 +57,10 @@ public class ScoreFragment extends BaseFragment{
         mvcHelper.refresh();
     }
 
-    public static ScoreFragment getInstance(String queryDate) {
+    public static ScoreListFragment getInstance(String queryDate) {
         Bundle bundle = new Bundle();
         bundle.putString(QUERY_DATE,queryDate);
-        ScoreFragment fragment = new ScoreFragment();
+        ScoreListFragment fragment = new ScoreListFragment();
         fragment.setArguments(bundle);
         return fragment;
     }

@@ -18,6 +18,7 @@ import com.fans.becomebeaut.login.ui.LoginActivity;
 import com.fans.becomebeaut.mine.ui.AboutUsActivity;
 import com.fans.becomebeaut.mine.ui.FeedBackActivity;
 import com.fans.becomebeaut.mine.ui.MyFavoriteActivity;
+import com.fans.becomebeaut.mine.ui.MyOrderListActivity;
 import com.fans.becomebeaut.mine.ui.ProfileInfoActivity;
 import com.fans.becomebeaut.mine.ui.MyScoreActivity;
 import com.fans.becomebeaut.mine.ui.SettingActivity;
@@ -64,12 +65,12 @@ public class ProfileFragment extends BaseFragment implements OnRippleCompleteLis
     }
 
     @Subscribe
-    public void onMainThreadUserInfoNotify(EventFactory.UserDataChange data){
+    public void onMainThreadUserInfoNotify(EventFactory.UserDataChange data) {
         refreshUI();
     }
 
     @Subscribe
-    public void onMainThreadOrderInfo(){
+    public void onMainThreadOrderInfo() {
         requestOrderInfo();
     }
 
@@ -124,15 +125,15 @@ public class ProfileFragment extends BaseFragment implements OnRippleCompleteLis
             @Override
             protected void onNextInActive(ApiResponse<UserHomeInfoResponse> userHomeInfoResponseApiResponse) {
                 UserHomeInfoResponse homeInfoResponse = userHomeInfoResponseApiResponse.getData();
-                if(homeInfoResponse!=null){
-                    if(homeInfoResponse.getNoPay()>0)
-                        waitpaytv.setText(String.format(getString(R.string.wait_pay),homeInfoResponse.getNoPay()));
-                    if(homeInfoResponse.getWaitComment()>0)
-                        waitcommenttv.setText(String.format(getString(R.string.wait_comment),homeInfoResponse.getWaitComment()));
-                    if(homeInfoResponse.getCompleted()>0)
-                        refundtv.setText(String.format(getString(R.string.refund),homeInfoResponse.getCompleted()));
+                if (homeInfoResponse != null) {
+                    if (homeInfoResponse.getNoPay() > 0)
+                        waitpaytv.setText(String.format(getString(R.string.wait_pay), homeInfoResponse.getNoPay()));
+                    if (homeInfoResponse.getWaitComment() > 0)
+                        waitcommenttv.setText(String.format(getString(R.string.wait_comment), homeInfoResponse.getWaitComment()));
+                    if (homeInfoResponse.getCompleted() > 0)
+                        refundtv.setText(String.format(getString(R.string.refund), homeInfoResponse.getCompleted()));
                     scoreCount = homeInfoResponse.getIntegral();
-                    if(scoreCount>0){
+                    if (scoreCount > 0) {
                         couponcoutntv.setText(String.valueOf(scoreCount));
                     }
                 }
@@ -142,9 +143,9 @@ public class ProfileFragment extends BaseFragment implements OnRippleCompleteLis
 
     private void refreshUI() {
         User user = User.get();
-        if(user.notLogin()){
+        if (user.notLogin()) {
             nametv.setText("登录/注册");
-        }else{
+        } else {
             avatar.setBitmapTransformation(new CropCircleTransformation(getActivity()));
             avatar.setImageUri(R.mipmap.ic_avatar, user.getPortrait());
             nametv.setText(user.getNickname());
@@ -156,41 +157,61 @@ public class ProfileFragment extends BaseFragment implements OnRippleCompleteLis
 
     @Override
     public void onComplete(View v) {
-        if(ViewUtils.isFastDoubleClick()) return;
-        switch ( v.getId()){
+        if (ViewUtils.isFastDoubleClick()) return;
+        switch (v.getId()) {
             case R.id.mine_top_layout:
                 //顶部点击事件，未登录就去登陆注册，已登录就编辑个人资料
-                if(User.get().notLogin()){
-                    LoginActivity.launch(getActivity(),false);
-                }else{
+                if (User.get().notLogin()) {
+                    LoginActivity.launch(getActivity(), false);
+                } else {
                     ProfileInfoActivity.launch(getActivity());
                 }
                 break;
             case R.id.my_all_order_layout:
                 //查看我的全部订单
+                if (User.get().notLogin()) {
+                    LoginActivity.launch(getActivity(), false);
+                } else {
+                    MyOrderListActivity.launch(getActivity(), 0);
+                }
                 break;
             case R.id.wait_pay_layout:
                 //查看待付款订单
+                if (User.get().notLogin()) {
+                    LoginActivity.launch(getActivity(), false);
+                } else {
+                    MyOrderListActivity.launch(getActivity(), 1);
+                }
                 break;
             case R.id.wait_comment_layout:
                 //查看待评论订单
+                if (User.get().notLogin()) {
+                    LoginActivity.launch(getActivity(), false);
+                } else {
+                    MyOrderListActivity.launch(getActivity(), 2);
+                }
                 break;
             case R.id.refund_layout:
-                //退款订单
+                //已完成订单
+                if (User.get().notLogin()) {
+                    LoginActivity.launch(getActivity(), false);
+                } else {
+                    MyOrderListActivity.launch(getActivity(), 3);
+                }
                 break;
             case R.id.my_coupon_layout:
                 //我的美券
-                if(User.get().notLogin()){
-                    LoginActivity.launch(getActivity(),false);
-                }else {
+                if (User.get().notLogin()) {
+                    LoginActivity.launch(getActivity(), false);
+                } else {
                     MyScoreActivity.launch(getActivity(), scoreCount);
                 }
                 break;
             case R.id.my_favorite_layout:
                 //我的收藏
-                if(User.get().notLogin()){
-                    LoginActivity.launch(getActivity(),false);
-                }else {
+                if (User.get().notLogin()) {
+                    LoginActivity.launch(getActivity(), false);
+                } else {
                     MyFavoriteActivity.launch(getActivity());
                 }
                 break;
@@ -200,9 +221,9 @@ public class ProfileFragment extends BaseFragment implements OnRippleCompleteLis
                 break;
             case R.id.feed_back_layout:
                 //意见反馈
-                if(User.get().notLogin()){
-                    LoginActivity.launch(getActivity(),false);
-                }else {
+                if (User.get().notLogin()) {
+                    LoginActivity.launch(getActivity(), false);
+                } else {
                     FeedBackActivity.launch(getActivity());
                 }
                 break;
