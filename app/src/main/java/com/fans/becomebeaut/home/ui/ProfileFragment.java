@@ -47,6 +47,7 @@ public class ProfileFragment extends BaseFragment implements OnRippleCompleteLis
     private TextView waitpaytv;
     private TextView waitcommenttv;
     private TextView refundtv;//已完成
+    private TextView couponcoutntv;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -87,6 +88,7 @@ public class ProfileFragment extends BaseFragment implements OnRippleCompleteLis
         waitpaytv = (TextView) contentView.findViewById(R.id.wait_pay_tv);
         waitcommenttv = (TextView) contentView.findViewById(R.id.wait_comment_tv);
         refundtv = (TextView) contentView.findViewById(R.id.refund_tv);
+        couponcoutntv = (TextView) contentView.findViewById(R.id.coupon_coutn_tv);
         initEvent();
         refreshUI();
     }
@@ -126,6 +128,9 @@ public class ProfileFragment extends BaseFragment implements OnRippleCompleteLis
                         waitcommenttv.setText(String.format(getString(R.string.wait_comment),homeInfoResponse.getWaitComment()));
                     if(homeInfoResponse.getCompleted()>0)
                         refundtv.setText(String.format(getString(R.string.refund),homeInfoResponse.getCompleted()));
+                    if(homeInfoResponse.getIntegral()>0){
+                        couponcoutntv.setText(String.valueOf(homeInfoResponse.getIntegral()));
+                    }
                 }
             }
         });

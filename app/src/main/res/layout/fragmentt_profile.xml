@@ -180,17 +180,19 @@
 
             <TextView
                 style="@style/CommonTextPrimary"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="我的美券"
                 android:textSize="@dimen/w28" />
 
             <TextView
+                android:id="@+id/coupon_coutn_tv"
                 style="@style/CommonTextPrimary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/w28" />
+                android:textSize="@dimen/w28"
+                />
 
             <ImageView
                 android:layout_width="@dimen/w14"

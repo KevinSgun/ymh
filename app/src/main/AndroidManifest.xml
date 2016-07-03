@@ -72,7 +72,12 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".mine.ui.SettingActivity"
             android:screenOrientation="portrait"/>
-
+        <activity android:name=".mine.ui.ScoreActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".mine.ui.OrderListActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".mine.ui.MyFavoriteActivity"
+            android:screenOrientation="portrait"/>
         <!-- 百度地图相关配置 start-->
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
