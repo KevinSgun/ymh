@@ -9,8 +9,8 @@ public class PageRequestData implements RequestData{
      * size : 10
      */
 
-    private int index;
-    private int size;
+    private int index =1;
+    private int size = 10;
 
 
 
