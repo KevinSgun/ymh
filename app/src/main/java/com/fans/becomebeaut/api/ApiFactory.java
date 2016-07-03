@@ -1,15 +1,17 @@
 package com.fans.becomebeaut.api;
 
+import com.fans.becomebeaut.api.request.PageRequest;
 import com.fans.becomebeaut.api.request.Request;
 import com.fans.becomebeaut.api.response.FilePathResponse;
-import com.fans.becomebeaut.api.response.MyFavoriteResponse;
-import com.fans.becomebeaut.api.response.ScoreListResponse;
-import com.fans.becomebeaut.api.response.UserHomeInfoResponse;
-import com.zitech.framework.data.network.response.FileUploadResponse;
 import com.fans.becomebeaut.api.response.GetwayResponse;
 import com.fans.becomebeaut.api.response.HomePageResponse;
+import com.fans.becomebeaut.api.response.MyFavoriteResponse;
 import com.fans.becomebeaut.api.response.NearStoreListResposne;
-import com.fans.becomebeaut.api.response.StoreListResponse;
+import com.fans.becomebeaut.api.response.OrderListResponse;
+import com.fans.becomebeaut.api.response.ScoreListResponse;
+import com.fans.becomebeaut.api.response.ShopDetailResponse;
+import com.fans.becomebeaut.api.response.ShopListResponse;
+import com.fans.becomebeaut.api.response.UserHomeInfoResponse;
 import com.fans.becomebeaut.api.response.UserInfoResponse;
 import com.fans.becomebeaut.api.service.AccountService;
 import com.fans.becomebeaut.api.service.GatewayService;
@@ -17,6 +19,7 @@ import com.fans.becomebeaut.api.service.StoreService;
 import com.zitech.framework.data.network.HttpResultFunc;
 import com.zitech.framework.data.network.RetrofitClient;
 import com.zitech.framework.data.network.response.ApiResponse;
+import com.zitech.framework.data.network.response.FileUploadResponse;
 import com.zitech.framework.data.network.subscribe.SchedulersCompat;
 
 import java.io.File;
@@ -154,7 +157,7 @@ public class ApiFactory {
      * @param request
      * @return
      */
-    public static Observable<ApiResponse<StoreListResponse>> getHomeSalonShops(Request request) {
+    public static Observable<ApiResponse<ShopListResponse>> getHomeSalonShops(Request request) {
         return getStoreService().getHomeSalonShops(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
     }
     /**
@@ -163,7 +166,7 @@ public class ApiFactory {
      * @param request
      * @return
      */
-    public static Observable<ApiResponse<StoreListResponse>> getSeletedShops(Request request) {
+    public static Observable<ApiResponse<ShopListResponse>> getSeletedShops(Request request) {
         return getStoreService().getSeletedShops(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
     }
 
@@ -245,12 +248,13 @@ public class ApiFactory {
         return getStoreService().getShopDetail(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
     }
     /**
-     * 店铺详细信息
+     * 我的订单列表
      *
      * @param request
      * @return
+     * @see com.fans.becomebeaut.api.request.OrderListRequest
      */
-    public static Observable<ApiResponse<ShopDetailResponse>> getShopDetail(Request request) {
-        return getStoreService().getShopDetail(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
+    public static Observable<ApiResponse<OrderListResponse>> getOrderList(PageRequest request) {
+        return getStoreService().getOrderList(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
     }
 }
