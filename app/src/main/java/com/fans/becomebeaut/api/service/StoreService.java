@@ -56,7 +56,7 @@ public interface StoreService {
      */
     @POST(NetConstants.HOME_SALON)
     @Headers("Content-Type:" + RetrofitClient.JSON)
-    Observable<ApiResponse<StoreListResponse>> getHomeSalonStores(@Body Request body);
+    Observable<ApiResponse<StoreListResponse>> getHomeSalonShops(@Body Request body);
 
 
     /**
@@ -134,7 +134,7 @@ public interface StoreService {
      */
     @POST(NetConstants.STORE_LIST)
     @Headers("Content-Type:" + RetrofitClient.JSON)
-    Observable<ApiResponse<StoreListResponse>> getSeletedStores(@Body Request body);
+    Observable<ApiResponse<StoreListResponse>> getSeletedShops(@Body Request body);
 
     /**
      * 消息接口

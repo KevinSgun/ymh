@@ -154,8 +154,8 @@ public class ApiFactory {
      * @param request
      * @return
      */
-    public static Observable<ApiResponse<StoreListResponse>> getHomeSalonStores(Request request) {
-        return getStoreService().getHomeSalonStores(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
+    public static Observable<ApiResponse<StoreListResponse>> getHomeSalonShops(Request request) {
+        return getStoreService().getHomeSalonShops(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
     }
     /**
      *  我要美容美发店铺筛选
@@ -163,8 +163,8 @@ public class ApiFactory {
      * @param request
      * @return
      */
-    public static Observable<ApiResponse<StoreListResponse>> getSeletedStores(Request request) {
-        return getStoreService().getSeletedStores(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
+    public static Observable<ApiResponse<StoreListResponse>> getSeletedShops(Request request) {
+        return getStoreService().getSeletedShops(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
     }
 
     /**

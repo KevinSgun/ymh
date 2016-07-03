@@ -1,5 +1,7 @@
 package com.fans.becomebeaut.common.util;
 
+import java.text.NumberFormat;
+
 /**
  * Created by lu on 2016/7/3.
  */
@@ -16,12 +18,13 @@ public class Utils extends com.zitech.framework.utils.Utils {
 
         }
     }
+
     public static String formarttDistance(String distance) {
         int distanceInt = 0;
-        try{
+        try {
             distanceInt = Integer.parseInt(distance);
-        }catch (NumberFormatException e){
-
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
         }
         return formarttDistance(distanceInt);
     }

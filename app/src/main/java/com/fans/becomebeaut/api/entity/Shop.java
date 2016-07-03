@@ -6,7 +6,7 @@ package com.fans.becomebeaut.api.entity;
 public class Shop {
     private String address;//: "广东深圳市南山区园西工业区25栋2单元605",
     private String corp;//": "深圳皇朝国际理发中心",
-    private int distances;//": "504",//距离以米为单位
+    private String distances;//": "504",//距离以米为单位
     private String icon;//": "http://img4.imgtn.bdimg.com/it/u=3854292911,2543367747&fm=11&gp=0.jpg",
     private String id;//": 10000,
     private String name;//": "",//店铺简称
@@ -29,11 +29,11 @@ public class Shop {
         this.corp = corp;
     }
 
-    public int getDistances() {
+    public String getDistances() {
         return distances;
     }
 
-    public void setDistances(int distances) {
+    public void setDistances(String distances) {
         this.distances = distances;
     }
 
