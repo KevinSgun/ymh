@@ -3,7 +3,7 @@ package com.fans.becomebeaut.api.response;
 import com.fans.becomebeaut.api.entity.Pagination;
 import com.fans.becomebeaut.api.entity.PricesBean;
 import com.fans.becomebeaut.api.entity.ServicesBean;
-import com.fans.becomebeaut.api.entity.Store;
+import com.fans.becomebeaut.api.entity.Shop;
 
 import java.util.List;
 
@@ -34,7 +34,7 @@ public class StoreListResponse {
      */
 
     private List<ServicesBean> services;
-    private List<Store> storeList;
+    private List<Shop> storeList;
 
     public Pagination getPagination() {
         return pagination;
@@ -60,11 +60,11 @@ public class StoreListResponse {
         this.services = services;
     }
 
-    public List<Store> getStoreList() {
+    public List<Shop> getStoreList() {
         return storeList;
     }
 
-    public void setStoreList(List<Store> storeList) {
+    public void setStoreList(List<Shop> storeList) {
         this.storeList = storeList;
     }
 }

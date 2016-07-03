@@ -1,9 +1,7 @@
 package com.fans.becomebeaut.home.datasource;
 
-import android.util.Log;
-
 import com.fans.becomebeaut.api.ApiFactory;
-import com.fans.becomebeaut.api.entity.Store;
+import com.fans.becomebeaut.api.entity.Shop;
 import com.fans.becomebeaut.api.request.Request;
 import com.fans.becomebeaut.api.request.StoreListRequest;
 import com.fans.becomebeaut.api.request.StoreSelectionRequest;
@@ -15,7 +13,6 @@ import com.shizhefei.mvc.ResponseSender;
 import com.zitech.framework.data.network.response.ApiResponse;
 
 import java.util.List;
-import java.util.logging.Logger;
 
 import rx.Subscription;
 import rx.functions.Action1;
@@ -23,7 +20,7 @@ import rx.functions.Action1;
 /**
  * Created by lu on 2016/4/12.
  */
-public class ShopListDataSource implements IAsyncDataSource<List<Store>> {
+public class ShopListDataSource implements IAsyncDataSource<List<Shop>> {
     private PagedProxy proxy = new PagedProxy(10);
     private Request request;
 
@@ -49,12 +46,12 @@ public class ShopListDataSource implements IAsyncDataSource<List<Store>> {
     }
 
     @Override
-    public RequestHandle refresh(ResponseSender<List<Store>> sender) throws Exception {
+    public RequestHandle refresh(ResponseSender<List<Shop>> sender) throws Exception {
         return loadStores(sender, proxy.reset());
     }
 
     @Override
-    public RequestHandle loadMore(ResponseSender<List<Store>> sender) throws Exception {
+    public RequestHandle loadMore(ResponseSender<List<Shop>> sender) throws Exception {
         return loadStores(sender, proxy.toNextPage());
     }
 
@@ -63,7 +60,7 @@ public class ShopListDataSource implements IAsyncDataSource<List<Store>> {
         return proxy.hasNextPage();
     }
 
-    private RequestHandle loadStores(final ResponseSender<List<Store>> sender, final int page) throws Exception {
+    private RequestHandle loadStores(final ResponseSender<List<Shop>> sender, final int page) throws Exception {
         StoreSelectionRequest data = (StoreSelectionRequest) request.getData();
         data.setIndex(page);
         final Subscription subscribe = ApiFactory.getSeletedStores(request).subscribe(new Action1<ApiResponse<StoreListResponse>>() {
@@ -75,7 +72,7 @@ public class ShopListDataSource implements IAsyncDataSource<List<Store>> {
                 }else{
                     com.baidu.mapapi.common.Logger.logI("xxx","---");
                 }
-                List<Store> items = data.getStoreList();
+                List<Shop> items = data.getStoreList();
                 if (items == null || items.size() == 0) {
                     proxy.setReachEnd(true);
                 }

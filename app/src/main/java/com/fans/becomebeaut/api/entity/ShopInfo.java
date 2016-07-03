@@ -1,6 +1,6 @@
 package com.fans.becomebeaut.api.entity;
 
-public  class StoreInfo {
+public  class ShopInfo {
         private int id;
         private String name;
         private String corp;

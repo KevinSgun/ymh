@@ -5,7 +5,7 @@ import com.fans.becomebeaut.api.request.RequestData;
 /**
  * Created by lu on 2016/7/2.
  */
-public class StoreDetailRequest implements RequestData{
+public class ShopDetailRequest implements RequestData{
 
     /**
      * cId : 10000

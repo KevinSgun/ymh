@@ -23,7 +23,7 @@ import com.baidu.mapapi.model.LatLng;
 import com.fans.becomebeaut.Constants;
 import com.fans.becomebeaut.R;
 import com.fans.becomebeaut.api.ApiFactory;
-import com.fans.becomebeaut.api.entity.StoreListBean;
+import com.fans.becomebeaut.api.entity.ShopListBean;
 import com.fans.becomebeaut.api.request.NearStoreRequest;
 import com.fans.becomebeaut.api.request.Request;
 import com.fans.becomebeaut.api.response.NearStoreListResposne;
@@ -59,7 +59,7 @@ public class NearbyFragment extends BaseFragment implements BaiduMap.OnMarkerCli
     private boolean isLocationStart;    //判断附近网点是否已经获取过
     private int currentType;            //联网请求标识
     private ArrayList<Marker> mMarkers; //标注对象
-    private List<StoreListBean> storeList;
+    private List<ShopListBean> storeList;
     private BaiduMapHelper baiduMapHel;
     private FrameLayout searchLayout;
     private Handler mHandler = new Handler(new Handler.Callback() {
@@ -194,7 +194,7 @@ public class NearbyFragment extends BaseFragment implements BaiduMap.OnMarkerCli
         if (storeList != null && storeList.size() > 0) {
             mBaiduMap.clear();
             mMarkers.clear();
-            for (StoreListBean storeListBean : storeList)
+            for (ShopListBean storeListBean : storeList)
                 setMarker(storeListBean);
 //            String content = response.getPointName() + " \r\n " + response.getPointAddress();
 //            addMarkCustomView(mMarkers.get(0), content, mLat, mLng, null);
@@ -206,7 +206,7 @@ public class NearbyFragment extends BaseFragment implements BaiduMap.OnMarkerCli
 //        }
     }
 
-    public void setMarker(StoreListBean store) {
+    public void setMarker(ShopListBean store) {
         double mLat = 0;
         double mLng = 0;
         try {

@@ -24,15 +24,16 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.fans.becomebeaut.R;
-import com.fans.becomebeaut.api.entity.Store;
+import com.fans.becomebeaut.api.entity.Shop;
+import com.fans.becomebeaut.common.util.Utils;
 import com.shizhefei.mvc.IDataAdapter;
 import com.zitech.framework.widget.RemoteImageView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ShopRecycleViewAdapter extends RecyclerView.Adapter<ShopRecycleViewAdapter.NewsViewHolder> implements IDataAdapter<List<Store>> {
-    private List<Store> storeList = new ArrayList<Store>();
+public class ShopRecycleViewAdapter extends RecyclerView.Adapter<ShopRecycleViewAdapter.NewsViewHolder> implements IDataAdapter<List<Shop>> {
+    private List<Shop> storeList = new ArrayList<Shop>();
     private LayoutInflater inflater;
     private Context mContext;
 
@@ -49,15 +50,16 @@ public class ShopRecycleViewAdapter extends RecyclerView.Adapter<ShopRecycleView
 
     @Override
     public void onBindViewHolder(NewsViewHolder holder, int position) {
-        Store store = storeList.get(position);
+        Shop store = storeList.get(position);
         TextView shopName = holder.shopName;
         TextView shopPrice = holder.shopPrice;
         TextView distance = holder.distance;
         TextView shopAddress = holder.shopAddress;
         RemoteImageView icon = holder.shopIv;
         shopName.setText(store.getName());
-        shopPrice.setText(store.getBottomPrice());
-        distance.setText(store.getDistances());
+        shopPrice.setText("￥"+store.getBottomPrice()+"起");
+
+        distance.setText(Utils.formarttDistance(store.getDistances()));
         shopAddress.setText(store.getAddress());
         icon.setImageUri(R.drawable.translucent_black_round_corner, store.getIcon());
     }
@@ -68,7 +70,7 @@ public class ShopRecycleViewAdapter extends RecyclerView.Adapter<ShopRecycleView
     }
 
     @Override
-    public void notifyDataChanged(List<Store> data, boolean isRefresh) {
+    public void notifyDataChanged(List<Shop> data, boolean isRefresh) {
         if (isRefresh) {
             storeList.clear();
         }
@@ -77,7 +79,7 @@ public class ShopRecycleViewAdapter extends RecyclerView.Adapter<ShopRecycleView
     }
 
     @Override
-    public List<Store> getData() {
+    public List<Shop> getData() {
         return storeList;
     }
 

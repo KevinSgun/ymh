@@ -1,7 +1,7 @@
 package com.fans.becomebeaut.api.response;
 
 import com.fans.becomebeaut.api.entity.Pagination;
-import com.fans.becomebeaut.api.entity.Store;
+import com.fans.becomebeaut.api.entity.Shop;
 import com.fans.becomebeaut.api.request.RequestData;
 
 import java.util.List;
@@ -20,7 +20,7 @@ public class SampleStoreList implements RequestData {
      */
 
     private Pagination pagination;
-    private List<Store> storeList;
+    private List<Shop> storeList;
 
     public Pagination getPagination() {
         return pagination;

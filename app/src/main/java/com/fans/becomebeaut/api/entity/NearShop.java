@@ -1,17 +1,17 @@
 package com.fans.becomebeaut.api.entity;
 
 /**
- * Created by lu on 2016/7/1.
+ * Created by ymh on 2016/7/1 0001.
  */
-public class Store {
-    private String address;//: "广东深圳市南山区园西工业区25栋2单元605",
-    private String corp;//": "深圳皇朝国际理发中心",
-    private String distances;//": "504",//距离以米为单位
-    private String icon;//": "http://img4.imgtn.bdimg.com/it/u=3854292911,2543367747&fm=11&gp=0.jpg",
-    private String id;//": 10000,
-    private String name;//": "",//店铺简称
-    private String status;//": 1,
-    private String bottomPrice;//":"12"//多少钱起
+public class NearShop {
+    private int id;
+    private int status;
+    private String address;
+    private String corp;
+    private String distances;
+    private String icon;
+    private String name;
+
 
     public String getAddress() {
         return address;
@@ -45,11 +45,11 @@ public class Store {
         this.icon = icon;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -61,19 +61,11 @@ public class Store {
         this.name = name;
     }
 
-    public String getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(int status) {
         this.status = status;
-    }
-
-    public String getBottomPrice() {
-        return bottomPrice;
-    }
-
-    public void setBottomPrice(String bottomPrice) {
-        this.bottomPrice = bottomPrice;
     }
 }
