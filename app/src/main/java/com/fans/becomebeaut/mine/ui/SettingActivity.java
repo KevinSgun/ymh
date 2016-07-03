@@ -11,6 +11,7 @@ import com.fans.becomebeaut.R;
 import com.fans.becomebeaut.common.User;
 import com.fans.becomebeaut.common.ui.AppBarActivity;
 import com.fans.becomebeaut.common.widget.CommonDialog;
+import com.fans.becomebeaut.login.ui.LoginActivity;
 import com.fans.becomebeaut.login.ui.ModifyPassWordActivity;
 
 /**
@@ -54,7 +55,12 @@ public class SettingActivity extends AppBarActivity implements View.OnClickListe
         switch (view.getId()){
             case R.id.modify_psd_layout:
                 //修改密码
-                ModifyPassWordActivity.launch(this);
+                if(User.get().notLogin()){
+                    LoginActivity.launch(this,false);
+                }else{
+                    ModifyPassWordActivity.launch(this);
+                }
+
                 break;
             case R.id.clear_cache_layout:
                //清除缓存

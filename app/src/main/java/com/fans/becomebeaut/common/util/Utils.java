@@ -1,7 +1,5 @@
 package com.fans.becomebeaut.common.util;
 
-import java.text.NumberFormat;
-
 /**
  * Created by lu on 2016/7/3.
  */
@@ -17,5 +15,14 @@ public class Utils extends com.zitech.framework.utils.Utils {
             return String.format("%.2f", value) + "km";
 
         }
+    }
+    public static String formarttDistance(String distance) {
+        int distanceInt = 0;
+        try{
+            distanceInt = Integer.parseInt(distance);
+        }catch (NumberFormatException e){
+
+        }
+        return formarttDistance(distanceInt);
     }
 }

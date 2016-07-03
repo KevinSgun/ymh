@@ -18,7 +18,7 @@ import java.util.List;
  * 积分即是我的美券
  * Created by ymh on 2016/7/3 0003.
  */
-public class ScoreActivity extends AppBarActivity{
+public class MyScoreActivity extends AppBarActivity{
     private int scoreCount;
     private SlidingTabs slidingtabs;
     private ViewPager pager;
@@ -71,7 +71,7 @@ public class ScoreActivity extends AppBarActivity{
      * @param scoreCount 积分数量即是美券数量
      */
     public static void launch(Activity act,int scoreCount){
-        Intent intent = new Intent(act,ScoreActivity.class);
+        Intent intent = new Intent(act,MyScoreActivity.class);
         intent.putExtra(Constants.ActivityExtra.SCORE_COUNT,scoreCount);
         act.startActivity(intent);
     }

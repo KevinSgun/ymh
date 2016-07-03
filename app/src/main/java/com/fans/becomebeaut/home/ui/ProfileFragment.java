@@ -19,7 +19,7 @@ import com.fans.becomebeaut.mine.ui.AboutUsActivity;
 import com.fans.becomebeaut.mine.ui.FeedBackActivity;
 import com.fans.becomebeaut.mine.ui.MyFavoriteActivity;
 import com.fans.becomebeaut.mine.ui.ProfileInfoActivity;
-import com.fans.becomebeaut.mine.ui.ScoreActivity;
+import com.fans.becomebeaut.mine.ui.MyScoreActivity;
 import com.fans.becomebeaut.mine.ui.SettingActivity;
 import com.zitech.framework.data.network.response.ApiResponse;
 import com.zitech.framework.data.network.subscribe.ProgressSubscriber;
@@ -183,7 +183,7 @@ public class ProfileFragment extends BaseFragment implements OnRippleCompleteLis
                 if(User.get().notLogin()){
                     LoginActivity.launch(getActivity(),false);
                 }else {
-                    ScoreActivity.launch(getActivity(), scoreCount);
+                    MyScoreActivity.launch(getActivity(), scoreCount);
                 }
                 break;
             case R.id.my_favorite_layout:

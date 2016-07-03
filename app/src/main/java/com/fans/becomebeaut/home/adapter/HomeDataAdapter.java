@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.fans.becomebeaut.R;
 import com.fans.becomebeaut.api.entity.NearShop;
 import com.fans.becomebeaut.common.ListAdapter;
+import com.fans.becomebeaut.common.util.Utils;
 import com.fans.becomebeaut.utils.ViewHolderUtil;
 import com.zitech.framework.transform.RoundedCornersTransformation;
 import com.zitech.framework.utils.ViewUtils;
@@ -38,7 +39,7 @@ public class HomeDataAdapter extends ListAdapter<NearShop> {
             shopiv.setBitmapTransformation(new RoundedCornersTransformation(mContext, ViewUtils.getDimenPx(R.dimen.w20)));
             shopiv.setImageUri(R.mipmap.ic_shop_default,item.getIcon());
             shopnametv.setText(item.getCorp());
-            distancetv.setText(item.getDistances()+"米");
+            distancetv.setText(Utils.formarttDistance(item.getDistances()));
             shopaddresstv.setText(item.getAddress());
         }
         return convertView;

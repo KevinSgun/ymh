@@ -77,7 +77,7 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".mine.ui.SettingActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".mine.ui.ScoreActivity"
+        <activity android:name=".mine.ui.MyScoreActivity"
             android:screenOrientation="portrait"/>
         <activity android:name=".mine.ui.OrderListActivity"
             android:screenOrientation="portrait"/>
