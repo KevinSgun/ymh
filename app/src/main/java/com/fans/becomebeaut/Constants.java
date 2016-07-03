@@ -23,6 +23,8 @@ public class Constants {
         String TITLE ="title";
 
         String STATUS = "status";
+
+        String ORDER_ID = "order_id";
     }
     public interface FragmentExtra{
 
