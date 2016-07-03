@@ -10,7 +10,7 @@ public class Constants {
     public static final String BAI_DU_MAP = "baidumap";
     public static final String BAI_DU_SPLIT = "$";
 
-    public interface ActivityExtra{
+    public interface ActivityExtra {
 
         String CHECK_POSITION = "check_position";
 
@@ -18,11 +18,14 @@ public class Constants {
 
         String SCORE_COUNT = "score_count";
 
-        String SID ="sid";
+        String SID = "sid";
 
-        String TITLE ="title";
+        String TITLE = "title";
+
+        String ID = "id";
     }
-    public interface FragmentExtra{
+
+    public interface FragmentExtra {
 
     }
 

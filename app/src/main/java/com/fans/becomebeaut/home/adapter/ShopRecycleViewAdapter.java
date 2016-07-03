@@ -32,7 +32,7 @@ import com.zitech.framework.widget.RemoteImageView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ShopRecycleViewAdapter extends RecyclerView.Adapter<ShopRecycleViewAdapter.NewsViewHolder> implements IDataAdapter<List<Shop>> {
+public class ShopRecycleViewAdapter extends RecyclerView.Adapter<ShopRecycleViewAdapter.ShopViewHolder> implements IDataAdapter<List<Shop>> {
     private List<Shop> storeList = new ArrayList<Shop>();
     private LayoutInflater inflater;
     private Context mContext;
@@ -44,12 +44,12 @@ public class ShopRecycleViewAdapter extends RecyclerView.Adapter<ShopRecycleView
     }
 
     @Override
-    public NewsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new NewsViewHolder(inflater.inflate(R.layout.item_shop_search_result, parent, false));
+    public ShopViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        return new ShopViewHolder(inflater.inflate(R.layout.item_shop_search_result, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(NewsViewHolder holder, int position) {
+    public void onBindViewHolder(ShopViewHolder holder, int position) {
         Shop store = storeList.get(position);
         TextView shopName = holder.shopName;
         TextView shopPrice = holder.shopPrice;
@@ -88,7 +88,7 @@ public class ShopRecycleViewAdapter extends RecyclerView.Adapter<ShopRecycleView
         return storeList.isEmpty();
     }
 
-    class NewsViewHolder extends ViewHolder {
+    class ShopViewHolder extends ViewHolder {
 
         TextView shopName;
         TextView shopAddress;
@@ -96,7 +96,7 @@ public class ShopRecycleViewAdapter extends RecyclerView.Adapter<ShopRecycleView
         TextView distance;
         RemoteImageView shopIv;
 
-        public NewsViewHolder(View view) {
+        public ShopViewHolder(View view) {
             super(view);
             shopName = (TextView) view.findViewById(R.id.shop_name_tv);
             shopAddress = (TextView) view.findViewById(R.id.shop_address_tv);

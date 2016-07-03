@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.fans.becomebeaut.R;
+import com.fans.becomebeaut.api.ApiFactory;
 import com.fans.becomebeaut.common.ui.AppBarActivity;
 import com.zitech.framework.widget.RemoteImageView;
 
@@ -44,6 +45,6 @@ public class ShopDetailActivity extends AppBarActivity {
 
     @Override
     protected void initData() {
-
+//        ApiFactory
     }
 }

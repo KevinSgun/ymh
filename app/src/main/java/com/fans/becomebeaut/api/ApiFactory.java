@@ -4,6 +4,7 @@ import com.fans.becomebeaut.api.request.Request;
 import com.fans.becomebeaut.api.response.FilePathResponse;
 import com.fans.becomebeaut.api.response.MyFavoriteResponse;
 import com.fans.becomebeaut.api.response.ScoreListResponse;
+import com.fans.becomebeaut.api.response.ShopDetailResponse;
 import com.fans.becomebeaut.api.response.UserHomeInfoResponse;
 import com.zitech.framework.data.network.response.FileUploadResponse;
 import com.fans.becomebeaut.api.response.GetwayResponse;
@@ -235,5 +236,13 @@ public class ApiFactory {
     public static Observable<ApiResponse<MyFavoriteResponse>> getMyFavorite(Request request) {
         return getStoreService().getMyFavorite(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
     }
-
+    /**
+     * 店铺详细信息
+     *
+     * @param request
+     * @return
+     */
+    public static Observable<ApiResponse<ShopDetailResponse>> getShopDetail(Request request) {
+        return getStoreService().getShopDetail(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
+    }
 }
