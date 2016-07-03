@@ -2,6 +2,7 @@ package com.fans.becomebeaut.api;
 
 import com.fans.becomebeaut.api.request.Request;
 import com.fans.becomebeaut.api.response.FilePathResponse;
+import com.fans.becomebeaut.api.response.ScoreListResponse;
 import com.fans.becomebeaut.api.response.UserHomeInfoResponse;
 import com.zitech.framework.data.network.response.FileUploadResponse;
 import com.fans.becomebeaut.api.response.GetwayResponse;
@@ -212,6 +213,16 @@ public class ApiFactory {
      */
     public static Observable<ApiResponse> feedback(Request request) {
         return getStoreService().feedback(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
+    }
+
+    /**
+     * 积分（美券明细列表）
+     *
+     * @param request
+     * @return
+     */
+    public static Observable<ApiResponse<ScoreListResponse>> getScoreList(Request request) {
+        return getStoreService().getScoreList(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
     }
 
 }

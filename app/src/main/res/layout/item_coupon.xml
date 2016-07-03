@@ -3,31 +3,36 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:paddingTop="@dimen/h20"
     android:paddingBottom="@dimen/h24"
     android:paddingLeft="@dimen/w30"
-    android:paddingRight="@dimen/w30">
+    android:paddingRight="@dimen/w30"
+    android:paddingTop="@dimen/h20">
+
     <TextView
         android:id="@+id/coupon_type"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/textColorPrimary"
         android:text="兑换消费"
-        android:textSize="@dimen/w24"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/h16"
-            android:textSize="@dimen/w20"
-            android:textColor="@color/textColorSecondary"
-            android:text="2015-11-12 11:22"
-            android:layout_below="@id/coupon_type"/>
+        android:textColor="@color/textColorPrimary"
+        android:textSize="@dimen/w24" />
+
     <TextView
+        android:id="@+id/consumer_date_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/coupon_type"
+        android:layout_marginTop="@dimen/h16"
+        android:text="2015-11-12 11:22"
+        android:textColor="@color/textColorSecondary"
+        android:textSize="@dimen/w20" />
+
+    <TextView
+        android:id="@+id/consumer_money_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:text="-1000.00"
-        android:textSize="@dimen/w32"
-        android:textColor="@color/textColorPink"/>
+        android:textColor="@color/textColorPink"
+        android:textSize="@dimen/w32" />
 </RelativeLayout>

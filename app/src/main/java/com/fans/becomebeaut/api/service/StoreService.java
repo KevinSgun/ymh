@@ -8,6 +8,7 @@ import com.fans.becomebeaut.api.request.NearStoreRequest;
 import com.fans.becomebeaut.api.request.Request;
 import com.fans.becomebeaut.api.response.DesignerDetail;
 import com.fans.becomebeaut.api.response.FilePathResponse;
+import com.fans.becomebeaut.api.response.ScoreListResponse;
 import com.fans.becomebeaut.api.response.UserHomeInfoResponse;
 import com.zitech.framework.data.network.response.FileUploadResponse;
 import com.fans.becomebeaut.api.response.HomePageResponse;
@@ -211,6 +212,16 @@ public interface StoreService {
     @Headers("Content-Type:" + RetrofitClient.JSON)
     Observable<ApiResponse<UserHomeInfoResponse>> getVipUserHome(@Body Request body);
 
+    /**
+     * 积分（美券）明细列表
+     *
+     * @param body
+     * @return
+     * @see com.fans.becomebeaut.api.request.ScoreListRequest
+     */
+    @POST(NetConstants.SCORE_LIST)
+    @Headers("Content-Type:" + RetrofitClient.JSON)
+    Observable<ApiResponse<ScoreListResponse>> getScoreList(@Body Request body);
 
 //-------------------------文件上传待修改调试------------------------------
 
