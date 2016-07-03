@@ -33,5 +33,6 @@
     <color name="white">#ffffffff</color>
     <color name="black">#000000</color>
     <color name="transparent">#00000000</color>
+    <color name="bg_easy_sliding_tabs_pressed">#ff63a5</color>
 
 </resources>

@@ -18,6 +18,7 @@ import com.fans.becomebeaut.login.ui.LoginActivity;
 import com.fans.becomebeaut.mine.ui.AboutUsActivity;
 import com.fans.becomebeaut.mine.ui.FeedBackActivity;
 import com.fans.becomebeaut.mine.ui.ProfileInfoActivity;
+import com.fans.becomebeaut.mine.ui.ScoreActivity;
 import com.fans.becomebeaut.mine.ui.SettingActivity;
 import com.zitech.framework.data.network.response.ApiResponse;
 import com.zitech.framework.data.network.subscribe.ProgressSubscriber;
@@ -48,6 +49,7 @@ public class ProfileFragment extends BaseFragment implements OnRippleCompleteLis
     private TextView waitcommenttv;
     private TextView refundtv;//已完成
     private TextView couponcoutntv;
+    private int scoreCount;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -128,8 +130,9 @@ public class ProfileFragment extends BaseFragment implements OnRippleCompleteLis
                         waitcommenttv.setText(String.format(getString(R.string.wait_comment),homeInfoResponse.getWaitComment()));
                     if(homeInfoResponse.getCompleted()>0)
                         refundtv.setText(String.format(getString(R.string.refund),homeInfoResponse.getCompleted()));
-                    if(homeInfoResponse.getIntegral()>0){
-                        couponcoutntv.setText(String.valueOf(homeInfoResponse.getIntegral()));
+                    scoreCount = homeInfoResponse.getIntegral();
+                    if(scoreCount>0){
+                        couponcoutntv.setText(String.valueOf(scoreCount));
                     }
                 }
             }
@@ -176,6 +179,7 @@ public class ProfileFragment extends BaseFragment implements OnRippleCompleteLis
                 break;
             case R.id.my_coupon_layout:
                 //我的美券
+                ScoreActivity.launch(getActivity(),scoreCount);
                 break;
             case R.id.my_favorite_layout:
                 //我的收藏

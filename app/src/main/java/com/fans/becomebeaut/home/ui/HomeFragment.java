@@ -251,7 +251,6 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
         if (ViewUtils.isFastDoubleClick()) return;
         int index = position > 0 && position - 1 >= 0 ? position - 1 : position;
         //TODO 进入店铺首页
-        ToastMaster.shortToast(index + "");
         ShopHomeActivity.launch(getActivity());
     }
 
@@ -263,12 +262,10 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
                 ToastMaster.shortToast("消息");
                 break;
             case R.id.want_beauty_layout:
-                ToastMaster.shortToast("我要美容");
                 String sid = getServiceId("美容");
                 BeautyActivity.launch(getActivity(),sid,"我要美容" );
                 break;
             case R.id.want_salon_layout:
-                ToastMaster.shortToast("我要美发");
                 String serviceId = getServiceId("美发");
                 BeautyActivity.launch(getActivity(), serviceId,"我要美发");
                 break;
