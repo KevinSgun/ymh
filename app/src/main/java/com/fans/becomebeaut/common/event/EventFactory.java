@@ -19,4 +19,11 @@ public class EventFactory {
         public double latitude;//纬度
         public double longitude;//经度
     }
+
+    /**
+     * 订单数量信息改变
+     */
+    public static class OrderCountDataChange{
+
+    }
 }

@@ -2,6 +2,7 @@ package com.fans.becomebeaut.api;
 
 import com.fans.becomebeaut.api.request.Request;
 import com.fans.becomebeaut.api.response.FilePathResponse;
+import com.fans.becomebeaut.api.response.UserHomeInfoResponse;
 import com.zitech.framework.data.network.response.FileUploadResponse;
 import com.fans.becomebeaut.api.response.GetwayResponse;
 import com.fans.becomebeaut.api.response.HomePageResponse;
@@ -182,4 +183,25 @@ public class ApiFactory {
     public static Observable<FileUploadResponse<FilePathResponse>> upload(List<MultipartBody.Part> parts) {
         return getStoreService().upload(parts).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
     }
+
+    /**
+     * 用户首页（VIP）数据
+     *
+     * @param request
+     * @return
+     */
+    public static Observable<ApiResponse<UserHomeInfoResponse>> getVipUserHome(Request request) {
+        return getStoreService().getVipUserHome(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
+    }
+
+    /**
+     * 意见反馈
+     *
+     * @param request
+     * @return
+     */
+    public static Observable<ApiResponse> feedback(Request request) {
+        return getStoreService().feedback(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
+    }
+
 }

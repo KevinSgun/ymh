@@ -8,6 +8,7 @@ import com.fans.becomebeaut.api.request.NearStoreRequest;
 import com.fans.becomebeaut.api.request.Request;
 import com.fans.becomebeaut.api.response.DesignerDetail;
 import com.fans.becomebeaut.api.response.FilePathResponse;
+import com.fans.becomebeaut.api.response.UserHomeInfoResponse;
 import com.zitech.framework.data.network.response.FileUploadResponse;
 import com.fans.becomebeaut.api.response.HomePageResponse;
 import com.fans.becomebeaut.api.response.NearStoreListResposne;
@@ -114,7 +115,7 @@ public interface StoreService {
      *
      * @param body
      * @return
-     * @see IDRequest
+     * @see {@link com.fans.becomebeaut.api.request.Feedback }
      */
     @POST(NetConstants.FEEDBACK)
     @Headers("Content-Type:" + RetrofitClient.JSON)
@@ -204,11 +205,11 @@ public interface StoreService {
      *
      * @param body
      * @return
-     * @see NearStoreRequest
+     * @see Request
      */
     @POST(NetConstants.VIP_USER_HOME)
     @Headers("Content-Type:" + RetrofitClient.JSON)
-    Observable<ApiResponse<NearStoreListResposne>> getVipUserHome(@Body Request body);
+    Observable<ApiResponse<UserHomeInfoResponse>> getVipUserHome(@Body Request body);
 
 
 //-------------------------文件上传待修改调试------------------------------

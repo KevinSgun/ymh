@@ -7,9 +7,11 @@
     android:paddingRight="@dimen/w30">
 
     <EditText
+        android:id="@+id/contact_method_et"
         android:layout_width="match_parent"
         android:layout_height="@dimen/h100"
-        android:background="@color/white"
+        android:layout_marginTop="@dimen/h30"
+        android:background="@drawable/bg_stroke_white_gray"
         android:gravity="center_vertical|left"
         android:hint="联系方式"
         android:paddingLeft="@dimen/w30"
@@ -19,10 +21,11 @@
         android:textColorHint="@color/textColorSecondary" />
 
     <EditText
+        android:id="@+id/suggest_et"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/h30"
-        android:background="@color/white"
+        android:background="@drawable/bg_stroke_white_gray"
         android:gravity="left|top"
         android:hint="输入您的问题或者建议（必填）"
         android:lines="10"
@@ -31,11 +34,11 @@
         android:textColorHint="@color/textColorSecondary" />
 
     <Button
+        android:id="@+id/commit_btn"
+        style="@style/CommentButtonStyle"
         android:layout_width="@dimen/w660"
         android:layout_height="@dimen/h80"
         android:layout_marginTop="@dimen/h50"
-        android:background="@color/textColorPink"
         android:text="提交"
-        android:textColor="@color/white"
         android:textSize="@dimen/w32" />
 </LinearLayout>

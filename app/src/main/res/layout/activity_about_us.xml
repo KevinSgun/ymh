@@ -22,6 +22,7 @@
         android:textSize="@dimen/w32" />
 
     <TextView
+        android:id="@+id/vision_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/h12"
@@ -52,6 +53,8 @@
             android:textColor="@color/textColorSecondary"/>
     </LinearLayout>
     <Button
+        android:id="@+id/check_update_btn"
+        style="@style/CommentButtonStyle"
         android:layout_marginTop="@dimen/h16"
         android:layout_width="@dimen/w600"
         android:layout_height="@dimen/h69"
@@ -59,7 +62,7 @@
         android:textColor="@color/white"
         android:gravity="center"
         android:text="检测新版本"
-        android:background="@color/textColorPink"/>
+        />
     <TextView
         android:layout_marginTop="@dimen/h84"
         android:layout_width="wrap_content"

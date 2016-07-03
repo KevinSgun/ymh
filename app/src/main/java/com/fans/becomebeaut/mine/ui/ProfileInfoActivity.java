@@ -83,12 +83,16 @@ public class ProfileInfoActivity extends PhotoPickingActivity implements View.On
     protected void initData() {
         User user = User.get();
         avatariv.setBitmapTransformation(new CropCircleTransformation(this));
-        avatariv.setImageUri(R.mipmap.ic_avatar,user.getPortrait());
-        if(!TextUtils.isEmpty(user.getNickname())){
-            inputnicknameet.setText(user.getNickname());
-        }
+
+        avatarUrl = user.getPortrait();
+        nickName = user.getNickname();
+        chooseGender = user.getSex();
+        birthday = user.getBirthday();
+
+        inputnicknameet.setText(nickName);
+        avatariv.setImageUri(R.mipmap.ic_avatar,avatarUrl);
         gendertv.setText(user.getSexTxt());
-        birthdaytv.setText(user.getBirthday());
+        birthdaytv.setText(birthday);
 
     }
 
@@ -150,11 +154,16 @@ public class ProfileInfoActivity extends PhotoPickingActivity implements View.On
         if(position == ToolBarHelper.ITEM_RIGHT&&isChange){
             nickName = inputnicknameet.getText().toString();
             birthday = birthdaytv.getText().toString();
+            if(TextUtils.isEmpty(nickName)){
+                ToastMaster.shortToast("请输入你的昵称");
+                return;
+            }
             UpdateProfileRequest profileRequest = new UpdateProfileRequest();
             profileRequest.setName(nickName);
             profileRequest.setSex(chooseGender);
             profileRequest.setBirthday(birthday);
-            profileRequest.setPortrait(avatarUrl);
+            if(!TextUtils.isEmpty(avatarUrl))
+                profileRequest.setPortrait(avatarUrl);
             Request request = new Request(profileRequest);
             request.sign();
             ApiFactory.updateProfile(request).subscribe(new ProgressSubscriber<ApiResponse>(this) {
@@ -163,10 +172,14 @@ public class ProfileInfoActivity extends PhotoPickingActivity implements View.On
                     Basic basic = apiResponse.getBasic();
                     ToastMaster.shortToast(basic.getMsg());
                     if(basic.getStatus() == 1){
-                        User.get().storePortrait(avatarUrl);
-                        User.get().storeNickname(nickName);
-                        User.get().storeSex(chooseGender);
-                        User.get().storeBirthday(birthday);
+                        if(!TextUtils.isEmpty(avatarUrl))
+                            User.get().storePortrait(avatarUrl);
+                        if(!TextUtils.isEmpty(nickName))
+                            User.get().storeNickname(nickName);
+                        if(!TextUtils.isEmpty(chooseGender))
+                            User.get().storeSex(chooseGender);
+                        if(!TextUtils.isEmpty(birthday))
+                            User.get().storeBirthday(birthday);
                         User.get().notifyChange();
                         finish();
                     }

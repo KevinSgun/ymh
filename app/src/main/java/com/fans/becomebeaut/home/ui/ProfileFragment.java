@@ -1,19 +1,31 @@
 package com.fans.becomebeaut.home.ui;
 
+import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
 import com.fans.becomebeaut.R;
+import com.fans.becomebeaut.api.ApiFactory;
+import com.fans.becomebeaut.api.request.Request;
+import com.fans.becomebeaut.api.response.NullDataRequest;
+import com.fans.becomebeaut.api.response.UserHomeInfoResponse;
 import com.fans.becomebeaut.common.User;
 import com.fans.becomebeaut.common.event.EventFactory;
 import com.fans.becomebeaut.common.ui.BaseFragment;
 import com.fans.becomebeaut.common.widget.OnRippleCompleteListener;
 import com.fans.becomebeaut.common.widget.RippleLinearLayout;
 import com.fans.becomebeaut.login.ui.LoginActivity;
+import com.fans.becomebeaut.mine.ui.AboutUsActivity;
+import com.fans.becomebeaut.mine.ui.FeedBackActivity;
 import com.fans.becomebeaut.mine.ui.ProfileInfoActivity;
+import com.fans.becomebeaut.mine.ui.SettingActivity;
+import com.zitech.framework.data.network.response.ApiResponse;
+import com.zitech.framework.data.network.subscribe.ProgressSubscriber;
+import com.zitech.framework.transform.CropCircleTransformation;
 import com.zitech.framework.utils.ViewUtils;
 import com.zitech.framework.widget.RemoteImageView;
 
+import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
 /**
@@ -37,6 +49,12 @@ public class ProfileFragment extends BaseFragment implements OnRippleCompleteLis
     private TextView refundtv;//已完成
 
     @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
     protected int getContentViewId() {
         return R.layout.fragmentt_profile;
     }
@@ -44,6 +62,11 @@ public class ProfileFragment extends BaseFragment implements OnRippleCompleteLis
     @Subscribe
     public void onMainThreadUserInfoNotify(EventFactory.UserDataChange data){
         refreshUI();
+    }
+
+    @Subscribe
+    public void onMainThreadOrderInfo(){
+        requestOrderInfo();
     }
 
     @Override
@@ -82,8 +105,30 @@ public class ProfileFragment extends BaseFragment implements OnRippleCompleteLis
         aboutuslayout.setOnRippleCompleteListener(this);
         feedbacklayout.setOnRippleCompleteListener(this);
         settinglayout.setOnRippleCompleteListener(this);
+    }
 
+    @Override
+    public void onPrepareData() {
+        super.onPrepareData();
+        requestOrderInfo();
+    }
 
+    private void requestOrderInfo() {
+        Request request = new Request(new NullDataRequest());
+        ApiFactory.getVipUserHome(request).subscribe(new ProgressSubscriber<ApiResponse<UserHomeInfoResponse>>(this) {
+            @Override
+            protected void onNextInActive(ApiResponse<UserHomeInfoResponse> userHomeInfoResponseApiResponse) {
+                UserHomeInfoResponse homeInfoResponse = userHomeInfoResponseApiResponse.getData();
+                if(homeInfoResponse!=null){
+                    if(homeInfoResponse.getNoPay()>0)
+                        waitpaytv.setText(String.format(getString(R.string.wait_pay),homeInfoResponse.getNoPay()));
+                    if(homeInfoResponse.getWaitComment()>0)
+                        waitcommenttv.setText(String.format(getString(R.string.wait_comment),homeInfoResponse.getWaitComment()));
+                    if(homeInfoResponse.getCompleted()>0)
+                        refundtv.setText(String.format(getString(R.string.refund),homeInfoResponse.getCompleted()));
+                }
+            }
+        });
     }
 
     private void refreshUI() {
@@ -91,11 +136,10 @@ public class ProfileFragment extends BaseFragment implements OnRippleCompleteLis
         if(user.notLogin()){
             nametv.setText("登录/注册");
         }else{
+            avatar.setBitmapTransformation(new CropCircleTransformation(getActivity()));
             avatar.setImageUri(R.mipmap.ic_avatar, user.getPortrait());
             nametv.setText(user.getNickname());
-            waitpaytv.setText(String.format(getString(R.string.wait_pay),1));
-            waitcommenttv.setText(String.format(getString(R.string.wait_comment),1));
-            refundtv.setText(String.format(getString(R.string.refund),1));
+
         }
 
 
@@ -133,13 +177,22 @@ public class ProfileFragment extends BaseFragment implements OnRippleCompleteLis
                 break;
             case R.id.about_us_layout:
                 //关于我们
+                AboutUsActivity.launch(getActivity());
                 break;
             case R.id.feed_back_layout:
                 //意见反馈
+                FeedBackActivity.launch(getActivity());
                 break;
             case R.id.setting_layout:
                 //系统设置
+                SettingActivity.launch(getActivity());
                 break;
         }
+    }
+
+    @Override
+    public void onDestroy() {
+        EventBus.getDefault().unregister(this);
+        super.onDestroy();
     }
 }
