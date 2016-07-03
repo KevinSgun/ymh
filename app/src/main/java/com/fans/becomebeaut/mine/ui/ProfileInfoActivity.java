@@ -15,6 +15,7 @@ import com.fans.becomebeaut.R;
 import com.fans.becomebeaut.api.ApiFactory;
 import com.fans.becomebeaut.api.request.Request;
 import com.fans.becomebeaut.api.request.UpdateProfileRequest;
+import com.fans.becomebeaut.api.response.FilePathResponse;
 import com.fans.becomebeaut.common.User;
 import com.fans.becomebeaut.common.ui.PhotoPickingActivity;
 import com.fans.becomebeaut.common.widget.CommonDialog;
@@ -23,11 +24,13 @@ import com.fans.becomebeaut.utils.DateUtil;
 import com.fans.becomebeaut.utils.ToastMaster;
 import com.zitech.framework.data.network.entity.Basic;
 import com.zitech.framework.data.network.response.ApiResponse;
+import com.zitech.framework.data.network.response.FileUploadResponse;
 import com.zitech.framework.data.network.subscribe.ProgressSubscriber;
 import com.zitech.framework.transform.CropCircleTransformation;
 import com.zitech.framework.widget.ActionSheet;
 import com.zitech.framework.widget.RemoteImageView;
 
+import java.io.File;
 import java.util.Calendar;
 
 import ics.datepicker.ICSDatePickerDialog;
@@ -48,6 +51,9 @@ public class ProfileInfoActivity extends PhotoPickingActivity implements View.On
     private RemoteImageView avatariv;
     private boolean isChange;
     private String chooseGender;
+    private String avatarUrl;
+    private String nickName;
+    private String birthday;
 
     @Override
     protected int getContentViewId() {
@@ -58,6 +64,7 @@ public class ProfileInfoActivity extends PhotoPickingActivity implements View.On
     protected void initView() {
         setTitle("用户资料");
         setRightText("保存");
+        rightSaveStatusToggle();
         chooseavatarlayout = (LinearLayout) findViewById(R.id.choose_avatar_layout);
         inputnicknameet = (EditText) findViewById(R.id.input_nickname_et);
         profilenicknamelayout = (LinearLayout) findViewById(R.id.profile_nickname_layout);
@@ -75,12 +82,17 @@ public class ProfileInfoActivity extends PhotoPickingActivity implements View.On
     @Override
     protected void initData() {
         User user = User.get();
-        avatariv.setImageUri(R.mipmap.ic_avatar,user.getPortrait());
-        if(!TextUtils.isEmpty(user.getNickname())){
-            inputnicknameet.setText(user.getNickname());
-        }
+        avatariv.setBitmapTransformation(new CropCircleTransformation(this));
+
+        avatarUrl = user.getPortrait();
+        nickName = user.getNickname();
+        chooseGender = user.getSex();
+        birthday = user.getBirthday();
+
+        inputnicknameet.setText(nickName);
+        avatariv.setImageUri(R.mipmap.ic_avatar,avatarUrl);
         gendertv.setText(user.getSexTxt());
-        birthdaytv.setText(user.getBirthday());
+        birthdaytv.setText(birthday);
 
     }
 
@@ -100,6 +112,7 @@ public class ProfileInfoActivity extends PhotoPickingActivity implements View.On
                     @Override
                     public void OnClick(View clickedView, int which) {
                         isChange = true;
+                        rightSaveStatusToggle();
                         if (which == 0) {
                             gendertv.setText("男");
                             chooseGender = "1";
@@ -124,6 +137,7 @@ public class ProfileInfoActivity extends PhotoPickingActivity implements View.On
                         @Override
                         public void onPickDate(Calendar calendar) {
                             isChange = true;
+                            rightSaveStatusToggle();
                             birthdaytv.setText(DateUtil.formart(calendar));
                         }
                     });
@@ -138,10 +152,18 @@ public class ProfileInfoActivity extends PhotoPickingActivity implements View.On
     protected void onActionBarItemClick(int position) {
         super.onActionBarItemClick(position);
         if(position == ToolBarHelper.ITEM_RIGHT&&isChange){
+            nickName = inputnicknameet.getText().toString();
+            birthday = birthdaytv.getText().toString();
+            if(TextUtils.isEmpty(nickName)){
+                ToastMaster.shortToast("请输入你的昵称");
+                return;
+            }
             UpdateProfileRequest profileRequest = new UpdateProfileRequest();
-            profileRequest.setName(inputnicknameet.getText().toString());
+            profileRequest.setName(nickName);
             profileRequest.setSex(chooseGender);
-            profileRequest.setBirthday(birthdaytv.getText().toString());
+            profileRequest.setBirthday(birthday);
+            if(!TextUtils.isEmpty(avatarUrl))
+                profileRequest.setPortrait(avatarUrl);
             Request request = new Request(profileRequest);
             request.sign();
             ApiFactory.updateProfile(request).subscribe(new ProgressSubscriber<ApiResponse>(this) {
@@ -149,8 +171,19 @@ public class ProfileInfoActivity extends PhotoPickingActivity implements View.On
                 protected void onNextInActive(ApiResponse apiResponse) {
                     Basic basic = apiResponse.getBasic();
                     ToastMaster.shortToast(basic.getMsg());
-                    if(basic.getStatus() == 1)
+                    if(basic.getStatus() == 1){
+                        if(!TextUtils.isEmpty(avatarUrl))
+                            User.get().storePortrait(avatarUrl);
+                        if(!TextUtils.isEmpty(nickName))
+                            User.get().storeNickname(nickName);
+                        if(!TextUtils.isEmpty(chooseGender))
+                            User.get().storeSex(chooseGender);
+                        if(!TextUtils.isEmpty(birthday))
+                            User.get().storeBirthday(birthday);
+                        User.get().notifyChange();
                         finish();
+                    }
+
                 }
             });
         }
@@ -160,12 +193,29 @@ public class ProfileInfoActivity extends PhotoPickingActivity implements View.On
     protected void onPhotoCut(String picturePath, String cutPicturePath) {
         super.onPhotoCut(picturePath, cutPicturePath);
 
-//        MultipartBody multipartBody = new MultipartBody();
-
-        avatariv.setBitmapTransformation(new CropCircleTransformation(this));
-        avatariv.setImageUri(cutPicturePath);
+        File file = new File(cutPicturePath);
+        ApiFactory.upload("1",file).subscribe(new ProgressSubscriber<FileUploadResponse<FilePathResponse>>(this) {
+            @Override
+            protected void onNextInActive(FileUploadResponse<FilePathResponse> apiResponse) {
+                FilePathResponse reponse = apiResponse.getData();
+                if(reponse.getImgSrc()!=null&&reponse.getImgSrc().size()>0){
+                    isChange = true;
+                    rightSaveStatusToggle();
+                    avatarUrl = reponse.getImgSrc().get(0);
+                    avatariv.setImageUri(avatarUrl);
+                }
+            }
+        });
 
     }
+
+    private void rightSaveStatusToggle() {
+        if(isChange)
+            setRightTextVisiable(View.VISIBLE);
+        else
+            setRightTextVisiable(View.GONE);
+    }
+
     @Override
     public void onBackPressed() {
         if(isChange){
@@ -200,8 +250,9 @@ public class ProfileInfoActivity extends PhotoPickingActivity implements View.On
 
     @Override
     public void afterTextChanged(Editable editable) {
-        if(inputnicknameet.getText().length()>0){
+        if(inputnicknameet.getText().length()>0&&!inputnicknameet.getText().toString().equals(User.get().getNickname())){
             isChange = true;
+            rightSaveStatusToggle();
         }
     }
 }

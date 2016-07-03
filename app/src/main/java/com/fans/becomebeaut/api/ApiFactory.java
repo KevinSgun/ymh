@@ -1,6 +1,9 @@
 package com.fans.becomebeaut.api;
 
 import com.fans.becomebeaut.api.request.Request;
+import com.fans.becomebeaut.api.response.FilePathResponse;
+import com.fans.becomebeaut.api.response.UserHomeInfoResponse;
+import com.zitech.framework.data.network.response.FileUploadResponse;
 import com.fans.becomebeaut.api.response.GetwayResponse;
 import com.fans.becomebeaut.api.response.HomePageResponse;
 import com.fans.becomebeaut.api.response.NearStoreListResposne;
@@ -168,7 +171,7 @@ public class ApiFactory {
      * @param file
      * @return
      */
-    public static Observable<ApiResponse> upload(String type,File file) {
+    public static Observable<FileUploadResponse<FilePathResponse>> upload(String type,File file) {
         RequestBody fileBody = RequestBody.create(MediaType.parse("application/octet-stream"), file);
         MultipartBody multipartBody = new MultipartBody.Builder()
                 //添加文件参数
@@ -187,7 +190,28 @@ public class ApiFactory {
      * @param parts
      * @return
      */
-    public static Observable<ApiResponse> upload(List<MultipartBody.Part> parts) {
+    public static Observable<FileUploadResponse<FilePathResponse>> upload(List<MultipartBody.Part> parts) {
         return getStoreService().upload(parts).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
     }
+
+    /**
+     * 用户首页（VIP）数据
+     *
+     * @param request
+     * @return
+     */
+    public static Observable<ApiResponse<UserHomeInfoResponse>> getVipUserHome(Request request) {
+        return getStoreService().getVipUserHome(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
+    }
+
+    /**
+     * 意见反馈
+     *
+     * @param request
+     * @return
+     */
+    public static Observable<ApiResponse> feedback(Request request) {
+        return getStoreService().feedback(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
+    }
+
 }

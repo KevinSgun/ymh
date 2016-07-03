@@ -1,5 +1,7 @@
 package com.fans.becomebeaut.login.ui;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -41,5 +43,10 @@ public class ModifyPassWordActivity extends AppBarActivity implements View.OnCli
         if(view.getId() == R.id.reset_psd_btn){
 
         }
+    }
+
+    public static void launch(Activity act){
+        Intent intent = new Intent(act,ModifyPassWordActivity.class);
+        act.startActivity(intent);
     }
 }
