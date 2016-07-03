@@ -2,5 +2,5 @@
 <resources>
 
     <drawable name="white">#ffffff</drawable>
-
+    <drawable name="f5f5f5">#f5f5f5</drawable>
 </resources>

@@ -60,5 +60,11 @@ public class StoreListResponse {
         this.services = services;
     }
 
+    public List<Store> getStoreList() {
+        return storeList;
+    }
 
+    public void setStoreList(List<Store> storeList) {
+        this.storeList = storeList;
+    }
 }

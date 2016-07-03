@@ -2,6 +2,7 @@ package com.fans.becomebeaut.api.response;
 
 import com.fans.becomebeaut.api.entity.HomePageBanner;
 import com.fans.becomebeaut.api.entity.NearStore;
+import com.fans.becomebeaut.api.entity.ServicesBean;
 
 import java.util.List;
 
@@ -41,7 +42,7 @@ public class HomePageResponse {
      * name : 美发
      */
 
-    private List<ServiceListBean> serviceList;
+    private List<ServicesBean> serviceList;
     /**
      * address : 广东深圳市南山区园西工业区25栋2单元605
      * corp : 深圳皇朝国际理发中心
@@ -78,11 +79,11 @@ public class HomePageResponse {
         this.banners = banners;
     }
 
-    public List<ServiceListBean> getServiceList() {
+    public List<ServicesBean> getServiceList() {
         return serviceList;
     }
 
-    public void setServiceList(List<ServiceListBean> serviceList) {
+    public void setServiceList(List<ServicesBean> serviceList) {
         this.serviceList = serviceList;
     }
 
@@ -151,24 +152,4 @@ public class HomePageResponse {
         }
     }
 
-    public static class ServiceListBean {
-        private int id;
-        private String name;
-
-        public int getId() {
-            return id;
-        }
-
-        public void setId(int id) {
-            this.id = id;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-    }
 }

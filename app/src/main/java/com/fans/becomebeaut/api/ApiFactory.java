@@ -4,6 +4,7 @@ import com.fans.becomebeaut.api.request.Request;
 import com.fans.becomebeaut.api.response.GetwayResponse;
 import com.fans.becomebeaut.api.response.HomePageResponse;
 import com.fans.becomebeaut.api.response.NearStoreListResposne;
+import com.fans.becomebeaut.api.response.StoreListResponse;
 import com.fans.becomebeaut.api.response.UserInfoResponse;
 import com.fans.becomebeaut.api.service.AccountService;
 import com.fans.becomebeaut.api.service.GatewayService;
@@ -148,8 +149,17 @@ public class ApiFactory {
      * @param request
      * @return
      */
-    public static Observable<ApiResponse> getHomeSalonStores(Request request) {
+    public static Observable<ApiResponse<StoreListResponse>> getHomeSalonStores(Request request) {
         return getStoreService().getHomeSalonStores(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
+    }
+    /**
+     *  我要美容美发店铺筛选
+     *
+     * @param request
+     * @return
+     */
+    public static Observable<ApiResponse<StoreListResponse>> getSeletedStores(Request request) {
+        return getStoreService().getSeletedStores(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
     }
 
     /**

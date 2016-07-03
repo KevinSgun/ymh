@@ -18,6 +18,7 @@ import com.fans.becomebeaut.Constants;
 import com.fans.becomebeaut.R;
 import com.fans.becomebeaut.api.ApiFactory;
 import com.fans.becomebeaut.api.entity.HomePageBanner;
+import com.fans.becomebeaut.api.entity.ServicesBean;
 import com.fans.becomebeaut.api.request.HomeDataRequest;
 import com.fans.becomebeaut.api.request.Request;
 import com.fans.becomebeaut.api.response.HomePageResponse;
@@ -32,6 +33,7 @@ import com.fans.becomebeaut.common.widget.RippleView;
 import com.fans.becomebeaut.home.adapter.HomeDataAdapter;
 import com.fans.becomebeaut.map.BaiduMapHelper;
 import com.fans.becomebeaut.map.LocationCallBack;
+import com.fans.becomebeaut.shop.ui.ShopHomeActivity;
 import com.fans.becomebeaut.utils.ToastMaster;
 import com.zitech.framework.data.network.response.ApiResponse;
 import com.zitech.framework.data.network.subscribe.ProgressSubscriber;
@@ -86,6 +88,7 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
     private BaiduMapHelper baiduMapHelper;
     public double latitude;//纬度
     public double longitude;//经度
+    private List<ServicesBean> serviceList;
 
     @Override
     protected int getContentViewId() {
@@ -165,7 +168,7 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
     @Override
     public void onRefreshData() {
         super.onRefreshData();
-        if ((pagerAdapter!=null&&pagerAdapter.getCount() == 0 )|| (mAdapter!=null&&mAdapter.getCount() == 0)) {
+        if ((pagerAdapter != null && pagerAdapter.getCount() == 0) || (mAdapter != null && mAdapter.getCount() == 0)) {
             startLocation();
         }
     }
@@ -183,6 +186,7 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
                 if (homePageResponse != null) {
                     refreshHeaderUI(homePageResponse);
                     mAdapter.setList(homePageResponse.getStoreList());
+                    serviceList = homePageResponse.getServiceList();
                 }
             }
         });
@@ -248,26 +252,43 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
         int index = position > 0 && position - 1 >= 0 ? position - 1 : position;
         //TODO 进入店铺首页
         ToastMaster.shortToast(index + "");
+        ShopHomeActivity.launch(getActivity());
     }
 
     @Override
     public void onComplete(View v) {
-        if(ViewUtils.isFastDoubleClick()) return;
+        if (ViewUtils.isFastDoubleClick()) return;
         switch (v.getId()) {
             case R.id.msg_layout:
                 ToastMaster.shortToast("消息");
                 break;
             case R.id.want_beauty_layout:
                 ToastMaster.shortToast("我要美容");
+                String sid = getServiceId("美容");
+                BeautyActivity.launch(getActivity(),sid,"我要美容" );
                 break;
             case R.id.want_salon_layout:
                 ToastMaster.shortToast("我要美发");
+                String serviceId = getServiceId("美发");
+                BeautyActivity.launch(getActivity(), serviceId,"我要美发");
                 break;
             case R.id.consumer_record_layout:
                 ToastMaster.shortToast("消费过的店铺");
                 break;
 
         }
+    }
+
+    private String getServiceId(String name) {
+
+        if (serviceList != null) {
+            for (ServicesBean service : serviceList) {
+                if (name.equals(service.getName())) {
+                    return service.getId();
+                }
+            }
+        }
+        return name.equals("美发") ? "10001" : "10000";
     }
 
     class HomePagerAdapter extends PagerAdapter {

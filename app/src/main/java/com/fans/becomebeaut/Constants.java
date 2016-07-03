@@ -15,6 +15,10 @@ public class Constants {
         String CHECK_POSITION = "check_position";
 
         String LOGIN_ABOUT = "login_about";
+
+        String SID ="sid";
+
+        String TITLE ="title";
     }
     public interface FragmentExtra{
 

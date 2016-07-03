@@ -31,7 +31,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <activity android:name=".home.ui.BeautyActivity"
+            android:screenOrientation="portrait"
+       />
+        <activity android:name=".shop.ui.ShopHomeActivity"
+            android:screenOrientation="portrait"
+            />
         <activity android:name=".login.ui.RegisterActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateVisible"/>
