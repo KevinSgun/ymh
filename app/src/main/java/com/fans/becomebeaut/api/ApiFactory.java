@@ -13,11 +13,14 @@ import com.zitech.framework.data.network.RetrofitClient;
 import com.zitech.framework.data.network.response.ApiResponse;
 import com.zitech.framework.data.network.subscribe.SchedulersCompat;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import okhttp3.MediaType;
 import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import rx.Observable;
 
 /**
@@ -32,11 +35,11 @@ public class ApiFactory {
         return getService(GatewayService.class);
     }
 
-    private static AccountService getAccountService(){
+    private static AccountService getAccountService() {
         return getService(AccountService.class);
     }
 
-    private static StoreService getStoreService(){
+    private static StoreService getStoreService() {
         return getService(StoreService.class);
     }
 
@@ -72,82 +75,100 @@ public class ApiFactory {
 
     /**
      * 获取验证码
+     *
      * @param request
      * @return
      */
-    public static Observable<ApiResponse> getVerifyCode(Request request){
+    public static Observable<ApiResponse> getVerifyCode(Request request) {
         return getAccountService().getVerifyCode(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
     }
 
     /**
      * 用户注册
+     *
      * @param request
      * @return
      */
-    public static Observable<ApiResponse<UserInfoResponse>> requestRegister(Request request){
+    public static Observable<ApiResponse<UserInfoResponse>> requestRegister(Request request) {
         return getAccountService().requestRegister(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
     }
 
     /**
      * 用户注册
+     *
      * @param request
      * @return
      */
-    public static Observable<ApiResponse<UserInfoResponse>> requestLogin(Request request){
+    public static Observable<ApiResponse<UserInfoResponse>> requestLogin(Request request) {
         return getAccountService().requestLogin(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
     }
 
     /**
      * 获取验证码
+     *
      * @param request
      * @return
      */
-    public static Observable<ApiResponse> requestResetPsd(Request request){
+    public static Observable<ApiResponse> requestResetPsd(Request request) {
         return getAccountService().requestResetPsd(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
     }
 
     /**
      * 获取首页数据
+     *
      * @param request
      * @return
      */
-    public static Observable<ApiResponse<HomePageResponse>> getHomeData(Request request){
+    public static Observable<ApiResponse<HomePageResponse>> getHomeData(Request request) {
         return getStoreService().getHomeData(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
     }
 
     /**
      * 获取附近店铺数据
+     *
      * @param request
      * @return
      */
-   public static Observable<ApiResponse<NearStoreListResposne>> getNearest(Request request){
+    public static Observable<ApiResponse<NearStoreListResposne>> getNearest(Request request) {
         return getStoreService().getNearest(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
     }
 
     /**
      * 修改我的资料
+     *
      * @param request
      * @return
      */
-    public static Observable<ApiResponse> updateProfile(Request request){
+    public static Observable<ApiResponse> updateProfile(Request request) {
         return getStoreService().updateProfile(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
     }
 
     /**
      * 文件上传
-     * @param request
+     *
+     * @param file
      * @return
      */
-    public static Observable<ApiResponse> upload(MultipartBody request){
-        return getStoreService().upload(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
+    public static Observable<ApiResponse> upload(File file) {
+        RequestBody fileBody = RequestBody.create(MediaType.parse("application/octet-stream"), file);
+        MultipartBody multipartBody = new MultipartBody.Builder()
+                //添加文件参数
+                .addFormDataPart("files", file.getName(), fileBody)
+                //添加Form参数
+                .addFormDataPart("id", "type")//
+                .addFormDataPart("name", "type")
+                .addFormDataPart("value", "1")
+                .build();
+        return getStoreService().upload(multipartBody).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
     }
 
     /**
      * 文件上传
+     *
      * @param parts
      * @return
      */
-    public static Observable<ApiResponse> upload(List<MultipartBody.Part> parts){
+    public static Observable<ApiResponse> upload(List<MultipartBody.Part> parts) {
         return getStoreService().upload(parts).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
     }
 }
