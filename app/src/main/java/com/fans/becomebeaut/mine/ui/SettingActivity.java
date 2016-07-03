@@ -4,9 +4,11 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.fans.becomebeaut.R;
+import com.fans.becomebeaut.common.User;
 import com.fans.becomebeaut.common.ui.AppBarActivity;
 import com.fans.becomebeaut.common.widget.CommonDialog;
 import com.fans.becomebeaut.login.ui.ModifyPassWordActivity;
@@ -17,6 +19,7 @@ import com.fans.becomebeaut.login.ui.ModifyPassWordActivity;
 public class SettingActivity extends AppBarActivity implements View.OnClickListener {
     private LinearLayout modifypsdlayout;
     private LinearLayout clearcachelayout;
+    private Button loginoutbtn;
 
     @Override
     protected int getContentViewId() {
@@ -28,9 +31,11 @@ public class SettingActivity extends AppBarActivity implements View.OnClickListe
         setTitle("系统设置");
         modifypsdlayout = (LinearLayout) findViewById(R.id.modify_psd_layout);
         clearcachelayout = (LinearLayout) findViewById(R.id.clear_cache_layout);
+        loginoutbtn = (Button) findViewById(R.id.login_out_btn);
 
         modifypsdlayout.setOnClickListener(this);
         clearcachelayout.setOnClickListener(this);
+        loginoutbtn.setOnClickListener(this);
     }
 
     @Override
@@ -55,6 +60,19 @@ public class SettingActivity extends AppBarActivity implements View.OnClickListe
                     }
                 });
                 dialog.show();
+                break;
+            case R.id.login_out_btn:
+                //退出登录
+                CommonDialog commonDialog = new CommonDialog(this,"确定要退出登录吗");
+                commonDialog.setOnPositiveButtonClickListener(new CommonDialog.OnPositiveButtonClickListener() {
+                    @Override
+                    public void onClick(Dialog dialog) {
+                        User.get().clear();
+                        User.get().notifyChange();
+                        finish();
+                    }
+                });
+                commonDialog.show();
                 break;
         }
     }
