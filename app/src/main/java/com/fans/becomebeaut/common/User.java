@@ -52,7 +52,7 @@ public class User {
         notifyChange();
     }
 
-    private void storeBirthday(String birthday) {
+    public void storeBirthday(String birthday) {
         this.birthday = birthday;
         sp.putString(BIRTHDAY, portrait);
     }

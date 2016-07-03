@@ -1,6 +1,8 @@
 package com.fans.becomebeaut.api;
 
 import com.fans.becomebeaut.api.request.Request;
+import com.fans.becomebeaut.api.response.FilePathResponse;
+import com.fans.becomebeaut.api.response.FileUploadResponse;
 import com.fans.becomebeaut.api.response.GetwayResponse;
 import com.fans.becomebeaut.api.response.HomePageResponse;
 import com.fans.becomebeaut.api.response.NearStoreListResposne;
@@ -149,7 +151,7 @@ public class ApiFactory {
      * @param file
      * @return
      */
-    public static Observable<ApiResponse> upload(File file) {
+    public static Observable<FileUploadResponse<FilePathResponse>> upload(File file) {
         RequestBody fileBody = RequestBody.create(MediaType.parse("application/octet-stream"), file);
         MultipartBody multipartBody = new MultipartBody.Builder()
                 //添加文件参数
@@ -168,7 +170,7 @@ public class ApiFactory {
      * @param parts
      * @return
      */
-    public static Observable<ApiResponse> upload(List<MultipartBody.Part> parts) {
+    public static Observable<FileUploadResponse<FilePathResponse>> upload(List<MultipartBody.Part> parts) {
         return getStoreService().upload(parts).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
     }
 }

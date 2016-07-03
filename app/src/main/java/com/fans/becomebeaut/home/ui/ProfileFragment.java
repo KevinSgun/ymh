@@ -5,6 +5,7 @@ import android.widget.TextView;
 
 import com.fans.becomebeaut.R;
 import com.fans.becomebeaut.common.User;
+import com.fans.becomebeaut.common.event.EventFactory;
 import com.fans.becomebeaut.common.ui.BaseFragment;
 import com.fans.becomebeaut.common.widget.OnRippleCompleteListener;
 import com.fans.becomebeaut.common.widget.RippleLinearLayout;
@@ -12,6 +13,8 @@ import com.fans.becomebeaut.login.ui.LoginActivity;
 import com.fans.becomebeaut.mine.ui.ProfileInfoActivity;
 import com.zitech.framework.utils.ViewUtils;
 import com.zitech.framework.widget.RemoteImageView;
+
+import org.greenrobot.eventbus.Subscribe;
 
 /**
  * Created by lu on 2016/6/17.
@@ -31,11 +34,16 @@ public class ProfileFragment extends BaseFragment implements OnRippleCompleteLis
     private TextView nametv;
     private TextView waitpaytv;
     private TextView waitcommenttv;
-    private TextView refundtv;
+    private TextView refundtv;//已完成
 
     @Override
     protected int getContentViewId() {
         return R.layout.fragmentt_profile;
+    }
+
+    @Subscribe
+    public void onMainThreadUserInfoNotify(EventFactory.UserDataChange data){
+        refreshUI();
     }
 
     @Override
@@ -85,10 +93,9 @@ public class ProfileFragment extends BaseFragment implements OnRippleCompleteLis
         }else{
             avatar.setImageUri(R.mipmap.ic_avatar, user.getPortrait());
             nametv.setText(user.getNickname());
-            //暂时不加显示数量，以后可能要加
-//            waitpaytv.setText(String.format(getString(R.string.wait_pay),1));
-//            waitcommenttv.setText(String.format(getString(R.string.wait_comment),1));
-//            refundtv.setText(String.format(getString(R.string.refund),1));
+            waitpaytv.setText(String.format(getString(R.string.wait_pay),1));
+            waitcommenttv.setText(String.format(getString(R.string.wait_comment),1));
+            refundtv.setText(String.format(getString(R.string.refund),1));
         }
 
 

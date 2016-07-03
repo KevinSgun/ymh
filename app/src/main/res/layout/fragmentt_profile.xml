@@ -151,7 +151,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/h13"
-                        android:text="退款"
+                        android:text="已完成"
                         android:textColor="#666666"
                         android:textSize="@dimen/w20" />
                 </com.fans.becomebeaut.common.widget.RippleLinearLayout>

@@ -15,6 +15,8 @@ import com.fans.becomebeaut.R;
 import com.fans.becomebeaut.api.ApiFactory;
 import com.fans.becomebeaut.api.request.Request;
 import com.fans.becomebeaut.api.request.UpdateProfileRequest;
+import com.fans.becomebeaut.api.response.FilePathResponse;
+import com.fans.becomebeaut.api.response.FileUploadResponse;
 import com.fans.becomebeaut.common.User;
 import com.fans.becomebeaut.common.ui.PhotoPickingActivity;
 import com.fans.becomebeaut.common.widget.CommonDialog;
@@ -28,6 +30,7 @@ import com.zitech.framework.transform.CropCircleTransformation;
 import com.zitech.framework.widget.ActionSheet;
 import com.zitech.framework.widget.RemoteImageView;
 
+import java.io.File;
 import java.util.Calendar;
 
 import ics.datepicker.ICSDatePickerDialog;
@@ -48,6 +51,9 @@ public class ProfileInfoActivity extends PhotoPickingActivity implements View.On
     private RemoteImageView avatariv;
     private boolean isChange;
     private String chooseGender;
+    private String avatarUrl;
+    private String nickName;
+    private String birthday;
 
     @Override
     protected int getContentViewId() {
@@ -138,10 +144,12 @@ public class ProfileInfoActivity extends PhotoPickingActivity implements View.On
     protected void onActionBarItemClick(int position) {
         super.onActionBarItemClick(position);
         if(position == ToolBarHelper.ITEM_RIGHT&&isChange){
+            nickName = inputnicknameet.getText().toString();
+            birthday = birthdaytv.getText().toString();
             UpdateProfileRequest profileRequest = new UpdateProfileRequest();
-            profileRequest.setName(inputnicknameet.getText().toString());
+            profileRequest.setName(nickName);
             profileRequest.setSex(chooseGender);
-            profileRequest.setBirthday(birthdaytv.getText().toString());
+            profileRequest.setBirthday(birthday);
             Request request = new Request(profileRequest);
             request.sign();
             ApiFactory.updateProfile(request).subscribe(new ProgressSubscriber<ApiResponse>(this) {
@@ -149,8 +157,15 @@ public class ProfileInfoActivity extends PhotoPickingActivity implements View.On
                 protected void onNextInActive(ApiResponse apiResponse) {
                     Basic basic = apiResponse.getBasic();
                     ToastMaster.shortToast(basic.getMsg());
-                    if(basic.getStatus() == 1)
+                    if(basic.getStatus() == 1){
+                        User.get().storePortrait(avatarUrl);
+                        User.get().storeNickname(nickName);
+                        User.get().storeSex(chooseGender);
+                        User.get().storeBirthday(birthday);
+                        User.get().notifyChange();
                         finish();
+                    }
+
                 }
             });
         }
@@ -160,7 +175,17 @@ public class ProfileInfoActivity extends PhotoPickingActivity implements View.On
     protected void onPhotoCut(String picturePath, String cutPicturePath) {
         super.onPhotoCut(picturePath, cutPicturePath);
 
-//        MultipartBody multipartBody = new MultipartBody();
+        File file = new File(cutPicturePath);
+        ApiFactory.upload(file).subscribe(new ProgressSubscriber<FileUploadResponse<FilePathResponse>>(this) {
+            @Override
+            protected void onNextInActive(FileUploadResponse<FilePathResponse> apiResponse) {
+                FilePathResponse reponse = apiResponse.getData();
+                if(reponse.getImgSrc()!=null&&reponse.getImgSrc().size()>0){
+                    isChange = true;
+                    avatarUrl = reponse.getImgSrc().get(0);
+                }
+            }
+        });
 
         avatariv.setBitmapTransformation(new CropCircleTransformation(this));
         avatariv.setImageUri(cutPicturePath);
