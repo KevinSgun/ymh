@@ -28,7 +28,7 @@ public class ScoreFragment extends BaseFragment{
 
     @Override
     protected int getContentViewId() {
-        return R.layout.fagment_score;
+        return R.layout.fragment_score_list;
     }
 
     @Override

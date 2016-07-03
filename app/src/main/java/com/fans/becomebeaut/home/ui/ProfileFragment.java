@@ -17,6 +17,7 @@ import com.fans.becomebeaut.common.widget.RippleLinearLayout;
 import com.fans.becomebeaut.login.ui.LoginActivity;
 import com.fans.becomebeaut.mine.ui.AboutUsActivity;
 import com.fans.becomebeaut.mine.ui.FeedBackActivity;
+import com.fans.becomebeaut.mine.ui.MyFavoriteActivity;
 import com.fans.becomebeaut.mine.ui.ProfileInfoActivity;
 import com.fans.becomebeaut.mine.ui.ScoreActivity;
 import com.fans.becomebeaut.mine.ui.SettingActivity;
@@ -179,10 +180,19 @@ public class ProfileFragment extends BaseFragment implements OnRippleCompleteLis
                 break;
             case R.id.my_coupon_layout:
                 //我的美券
-                ScoreActivity.launch(getActivity(),scoreCount);
+                if(User.get().notLogin()){
+                    LoginActivity.launch(getActivity(),false);
+                }else {
+                    ScoreActivity.launch(getActivity(), scoreCount);
+                }
                 break;
             case R.id.my_favorite_layout:
                 //我的收藏
+                if(User.get().notLogin()){
+                    LoginActivity.launch(getActivity(),false);
+                }else {
+                    MyFavoriteActivity.launch(getActivity());
+                }
                 break;
             case R.id.about_us_layout:
                 //关于我们
@@ -190,7 +200,11 @@ public class ProfileFragment extends BaseFragment implements OnRippleCompleteLis
                 break;
             case R.id.feed_back_layout:
                 //意见反馈
-                FeedBackActivity.launch(getActivity());
+                if(User.get().notLogin()){
+                    LoginActivity.launch(getActivity(),false);
+                }else {
+                    FeedBackActivity.launch(getActivity());
+                }
                 break;
             case R.id.setting_layout:
                 //系统设置

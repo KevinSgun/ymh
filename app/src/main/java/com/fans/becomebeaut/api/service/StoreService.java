@@ -8,6 +8,7 @@ import com.fans.becomebeaut.api.request.NearStoreRequest;
 import com.fans.becomebeaut.api.request.Request;
 import com.fans.becomebeaut.api.response.DesignerDetail;
 import com.fans.becomebeaut.api.response.FilePathResponse;
+import com.fans.becomebeaut.api.response.MyFavoriteResponse;
 import com.fans.becomebeaut.api.response.ScoreListResponse;
 import com.fans.becomebeaut.api.response.UserHomeInfoResponse;
 import com.zitech.framework.data.network.response.FileUploadResponse;
@@ -222,6 +223,17 @@ public interface StoreService {
     @POST(NetConstants.SCORE_LIST)
     @Headers("Content-Type:" + RetrofitClient.JSON)
     Observable<ApiResponse<ScoreListResponse>> getScoreList(@Body Request body);
+
+    /**
+     * 我的收藏列表
+     *
+     * @param body
+     * @return
+     * @see com.fans.becomebeaut.api.request.PageRequestData
+     */
+    @POST(NetConstants.STORE_STOREUPLIST)
+    @Headers("Content-Type:" + RetrofitClient.JSON)
+    Observable<ApiResponse<MyFavoriteResponse>> getMyFavorite(@Body Request body);
 
 //-------------------------文件上传待修改调试------------------------------
 

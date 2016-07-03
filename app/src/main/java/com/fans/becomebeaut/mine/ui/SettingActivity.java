@@ -14,7 +14,8 @@ import com.fans.becomebeaut.common.widget.CommonDialog;
 import com.fans.becomebeaut.login.ui.ModifyPassWordActivity;
 
 /**
- * Created by ymh on 2016/7/3 0003.
+ * Created by
+ * ymh on 2016/7/3 0003.
  */
 public class SettingActivity extends AppBarActivity implements View.OnClickListener {
     private LinearLayout modifypsdlayout;
@@ -36,6 +37,11 @@ public class SettingActivity extends AppBarActivity implements View.OnClickListe
         modifypsdlayout.setOnClickListener(this);
         clearcachelayout.setOnClickListener(this);
         loginoutbtn.setOnClickListener(this);
+        if(User.get().notLogin()){
+            loginoutbtn.setVisibility(View.GONE);
+        }else{
+            loginoutbtn.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
