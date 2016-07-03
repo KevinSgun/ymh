@@ -2,7 +2,7 @@ package com.fans.becomebeaut.api;
 
 import com.fans.becomebeaut.api.request.Request;
 import com.fans.becomebeaut.api.response.FilePathResponse;
-import com.fans.becomebeaut.api.response.FileUploadResponse;
+import com.zitech.framework.data.network.response.FileUploadResponse;
 import com.fans.becomebeaut.api.response.GetwayResponse;
 import com.fans.becomebeaut.api.response.HomePageResponse;
 import com.fans.becomebeaut.api.response.NearStoreListResposne;
@@ -144,6 +144,15 @@ public class ApiFactory {
     public static Observable<ApiResponse> updateProfile(Request request) {
         return getStoreService().updateProfile(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
     }
+    /**
+     * 我要美容美发,获取店铺等
+     *
+     * @param request
+     * @return
+     */
+    public static Observable<ApiResponse> getHomeSalonStores(Request request) {
+        return getStoreService().getHomeSalonStores(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
+    }
 
     /**
      * 文件上传
@@ -151,7 +160,7 @@ public class ApiFactory {
      * @param file
      * @return
      */
-    public static Observable<FileUploadResponse<FilePathResponse>> upload(File file) {
+    public static Observable<FileUploadResponse<FilePathResponse>> upload(String type,File file) {
         RequestBody fileBody = RequestBody.create(MediaType.parse("application/octet-stream"), file);
         MultipartBody multipartBody = new MultipartBody.Builder()
                 //添加文件参数
@@ -161,7 +170,7 @@ public class ApiFactory {
                 .addFormDataPart("name", "type")
                 .addFormDataPart("value", "1")
                 .build();
-        return getStoreService().upload(multipartBody).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
+        return getStoreService().upload(type,multipartBody).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
     }
 
     /**

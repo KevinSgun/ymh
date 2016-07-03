@@ -1,4 +1,4 @@
-package com.fans.becomebeaut.api.response;
+package com.zitech.framework.data.network.response;
 
 import com.zitech.framework.data.network.response.ApiResponse;
 

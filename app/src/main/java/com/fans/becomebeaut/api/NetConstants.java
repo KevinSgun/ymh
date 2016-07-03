@@ -63,8 +63,6 @@ public class NetConstants extends Constants{
 
     //17.上传文件
     public static final String UPLOAD = MANAGE_SUFFIX+"upload";
-    //17.1 上传个人头像
-    public static final String UPLOAD_USER_AVATAR = UPLOAD+"?type=1";
 
     //18.我要美容美发店铺筛选
     public static final String STORE_LIST = COMMON_SUFFIX+"store/list";

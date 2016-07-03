@@ -16,7 +16,6 @@ import com.fans.becomebeaut.api.ApiFactory;
 import com.fans.becomebeaut.api.request.Request;
 import com.fans.becomebeaut.api.request.UpdateProfileRequest;
 import com.fans.becomebeaut.api.response.FilePathResponse;
-import com.fans.becomebeaut.api.response.FileUploadResponse;
 import com.fans.becomebeaut.common.User;
 import com.fans.becomebeaut.common.ui.PhotoPickingActivity;
 import com.fans.becomebeaut.common.widget.CommonDialog;
@@ -25,6 +24,7 @@ import com.fans.becomebeaut.utils.DateUtil;
 import com.fans.becomebeaut.utils.ToastMaster;
 import com.zitech.framework.data.network.entity.Basic;
 import com.zitech.framework.data.network.response.ApiResponse;
+import com.zitech.framework.data.network.response.FileUploadResponse;
 import com.zitech.framework.data.network.subscribe.ProgressSubscriber;
 import com.zitech.framework.transform.CropCircleTransformation;
 import com.zitech.framework.widget.ActionSheet;
@@ -81,6 +81,7 @@ public class ProfileInfoActivity extends PhotoPickingActivity implements View.On
     @Override
     protected void initData() {
         User user = User.get();
+        avatariv.setBitmapTransformation(new CropCircleTransformation(this));
         avatariv.setImageUri(R.mipmap.ic_avatar,user.getPortrait());
         if(!TextUtils.isEmpty(user.getNickname())){
             inputnicknameet.setText(user.getNickname());
@@ -150,6 +151,7 @@ public class ProfileInfoActivity extends PhotoPickingActivity implements View.On
             profileRequest.setName(nickName);
             profileRequest.setSex(chooseGender);
             profileRequest.setBirthday(birthday);
+            profileRequest.setPortrait(avatarUrl);
             Request request = new Request(profileRequest);
             request.sign();
             ApiFactory.updateProfile(request).subscribe(new ProgressSubscriber<ApiResponse>(this) {
@@ -176,19 +178,17 @@ public class ProfileInfoActivity extends PhotoPickingActivity implements View.On
         super.onPhotoCut(picturePath, cutPicturePath);
 
         File file = new File(cutPicturePath);
-        ApiFactory.upload(file).subscribe(new ProgressSubscriber<FileUploadResponse<FilePathResponse>>(this) {
+        ApiFactory.upload("1",file).subscribe(new ProgressSubscriber<FileUploadResponse<FilePathResponse>>(this) {
             @Override
             protected void onNextInActive(FileUploadResponse<FilePathResponse> apiResponse) {
                 FilePathResponse reponse = apiResponse.getData();
                 if(reponse.getImgSrc()!=null&&reponse.getImgSrc().size()>0){
                     isChange = true;
                     avatarUrl = reponse.getImgSrc().get(0);
+                    avatariv.setImageUri(avatarUrl);
                 }
             }
         });
-
-        avatariv.setBitmapTransformation(new CropCircleTransformation(this));
-        avatariv.setImageUri(cutPicturePath);
 
     }
     @Override
@@ -225,7 +225,7 @@ public class ProfileInfoActivity extends PhotoPickingActivity implements View.On
 
     @Override
     public void afterTextChanged(Editable editable) {
-        if(inputnicknameet.getText().length()>0){
+        if(inputnicknameet.getText().length()>0&&!inputnicknameet.getText().toString().equals(User.get().getNickname())){
             isChange = true;
         }
     }

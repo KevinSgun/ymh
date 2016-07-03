@@ -8,7 +8,7 @@ import com.fans.becomebeaut.api.request.NearStoreRequest;
 import com.fans.becomebeaut.api.request.Request;
 import com.fans.becomebeaut.api.response.DesignerDetail;
 import com.fans.becomebeaut.api.response.FilePathResponse;
-import com.fans.becomebeaut.api.response.FileUploadResponse;
+import com.zitech.framework.data.network.response.FileUploadResponse;
 import com.fans.becomebeaut.api.response.HomePageResponse;
 import com.fans.becomebeaut.api.response.NearStoreListResposne;
 import com.fans.becomebeaut.api.response.StoreDetailResponse;
@@ -24,6 +24,7 @@ import retrofit2.http.Headers;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
+import retrofit2.http.Query;
 import rx.Observable;
 
 /**
@@ -230,5 +231,5 @@ public interface StoreService {
      * @return 状态信息
      */
     @POST(NetConstants.UPLOAD)
-    Observable<FileUploadResponse<FilePathResponse>> upload(@Body MultipartBody multipartBody);
+    Observable<FileUploadResponse<FilePathResponse>> upload(@Query("type") String type, @Body MultipartBody multipartBody);
 }

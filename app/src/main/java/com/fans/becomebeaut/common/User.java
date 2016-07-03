@@ -54,7 +54,7 @@ public class User {
 
     public void storeBirthday(String birthday) {
         this.birthday = birthday;
-        sp.putString(BIRTHDAY, portrait);
+        sp.putString(BIRTHDAY, birthday);
     }
 
 
