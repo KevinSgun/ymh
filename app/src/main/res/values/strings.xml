@@ -37,6 +37,7 @@
     <string name="wait_pay">待付款(%d)</string>
     <string name="wait_comment">待评价(%d)</string>
     <string name="refund">退款(%d)</string>
+    <string name="rmb">￥%.2f</string>
     <!--订单相关 end -->
 
     <!--时间、日期相关 start-->

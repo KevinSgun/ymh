@@ -11,6 +11,7 @@ import com.fans.becomebeaut.api.request.ShopSelectionRequest;
 import com.fans.becomebeaut.api.response.DesignerDetail;
 import com.fans.becomebeaut.api.response.FilePathResponse;
 import com.fans.becomebeaut.api.response.MyFavoriteResponse;
+import com.fans.becomebeaut.api.response.OrderListResponse;
 import com.fans.becomebeaut.api.response.ScoreListResponse;
 import com.fans.becomebeaut.api.response.ShopDetailRequest;
 import com.fans.becomebeaut.api.response.UserHomeInfoResponse;
@@ -237,6 +238,17 @@ public interface StoreService {
     @POST(NetConstants.STORE_STOREUPLIST)
     @Headers("Content-Type:" + RetrofitClient.JSON)
     Observable<ApiResponse<MyFavoriteResponse>> getMyFavorite(@Body Request body);
+
+    /**
+     * 我的订单列表
+     *
+     * @param body
+     * @return
+     * @see com.fans.becomebeaut.api.request.OrderListRequest
+     */
+    @POST(NetConstants.ORDER_LIST)
+    @Headers("Content-Type:" + RetrofitClient.JSON)
+    Observable<ApiResponse<OrderListResponse>> getOrderList(@Body Request body);
 
 //-------------------------文件上传待修改调试------------------------------
 
