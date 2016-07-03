@@ -63,7 +63,7 @@ public class ShopListDataSource implements IAsyncDataSource<List<Shop>> {
     private RequestHandle loadStores(final ResponseSender<List<Shop>> sender, final int page) throws Exception {
         StoreSelectionRequest data = (StoreSelectionRequest) request.getData();
         data.setIndex(page);
-        final Subscription subscribe = ApiFactory.getSeletedStores(request).subscribe(new Action1<ApiResponse<StoreListResponse>>() {
+        final Subscription subscribe = ApiFactory.getSeletedShops(request).subscribe(new Action1<ApiResponse<StoreListResponse>>() {
             @Override
             public void call(ApiResponse<StoreListResponse> storeListResponseApiResponse) {
                 StoreListResponse data = storeListResponseApiResponse.getData();

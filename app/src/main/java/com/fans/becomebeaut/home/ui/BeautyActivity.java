@@ -122,7 +122,7 @@ public class BeautyActivity extends AppBarActivity  {
         mvcHelper.setAdapter(new ShopRecycleViewAdapter(this));
         // 加载数据
         mvcHelper.refresh();
-        ApiFactory.getHomeSalonStores(request).subscribe(new Action1<ApiResponse<StoreListResponse>>() {
+        ApiFactory.getHomeSalonShops(request).subscribe(new Action1<ApiResponse<StoreListResponse>>() {
             @Override
             public void call(ApiResponse<StoreListResponse> storeListResponseApiResponse) {
                 contentViewHolder.showContent();

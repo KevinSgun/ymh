@@ -61,7 +61,7 @@ public class ShopRecycleViewAdapter extends RecyclerView.Adapter<ShopRecycleView
 
         distance.setText(Utils.formarttDistance(store.getDistances()));
         shopAddress.setText(store.getAddress());
-        icon.setImageUri(R.drawable.translucent_black_round_corner, store.getIcon());
+        icon.setImageUri(R.mipmap.ic_shop_default, store.getIcon());
     }
 
     @Override
