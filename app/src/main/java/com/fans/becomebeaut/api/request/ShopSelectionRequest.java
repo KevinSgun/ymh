@@ -3,7 +3,7 @@ package com.fans.becomebeaut.api.request;
 /**
  * Created by lu on 2016/7/2.
  */
-public class StoreSelectionRequest implements RequestData {
+public class ShopSelectionRequest implements RequestData {
 
     /**
      * cId : 10001

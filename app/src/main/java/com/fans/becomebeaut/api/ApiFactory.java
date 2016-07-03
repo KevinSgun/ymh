@@ -9,7 +9,7 @@ import com.zitech.framework.data.network.response.FileUploadResponse;
 import com.fans.becomebeaut.api.response.GetwayResponse;
 import com.fans.becomebeaut.api.response.HomePageResponse;
 import com.fans.becomebeaut.api.response.NearStoreListResposne;
-import com.fans.becomebeaut.api.response.StoreListResponse;
+import com.fans.becomebeaut.api.response.ShopListResponse;
 import com.fans.becomebeaut.api.response.UserInfoResponse;
 import com.fans.becomebeaut.api.service.AccountService;
 import com.fans.becomebeaut.api.service.GatewayService;
@@ -154,7 +154,7 @@ public class ApiFactory {
      * @param request
      * @return
      */
-    public static Observable<ApiResponse<StoreListResponse>> getHomeSalonShops(Request request) {
+    public static Observable<ApiResponse<ShopListResponse>> getHomeSalonShops(Request request) {
         return getStoreService().getHomeSalonShops(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
     }
     /**
@@ -163,7 +163,7 @@ public class ApiFactory {
      * @param request
      * @return
      */
-    public static Observable<ApiResponse<StoreListResponse>> getSeletedShops(Request request) {
+    public static Observable<ApiResponse<ShopListResponse>> getSeletedShops(Request request) {
         return getStoreService().getSeletedShops(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
     }
 

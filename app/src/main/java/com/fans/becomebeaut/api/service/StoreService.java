@@ -6,6 +6,8 @@ import com.fans.becomebeaut.api.entity.Message;
 import com.fans.becomebeaut.api.request.IDRequest;
 import com.fans.becomebeaut.api.request.NearStoreRequest;
 import com.fans.becomebeaut.api.request.Request;
+import com.fans.becomebeaut.api.request.ShopListRequest;
+import com.fans.becomebeaut.api.request.ShopSelectionRequest;
 import com.fans.becomebeaut.api.response.DesignerDetail;
 import com.fans.becomebeaut.api.response.FilePathResponse;
 import com.fans.becomebeaut.api.response.MyFavoriteResponse;
@@ -16,7 +18,7 @@ import com.zitech.framework.data.network.response.FileUploadResponse;
 import com.fans.becomebeaut.api.response.HomePageResponse;
 import com.fans.becomebeaut.api.response.NearStoreListResposne;
 import com.fans.becomebeaut.api.response.ShopDetailResponse;
-import com.fans.becomebeaut.api.response.StoreListResponse;
+import com.fans.becomebeaut.api.response.ShopListResponse;
 import com.zitech.framework.data.network.RetrofitClient;
 import com.zitech.framework.data.network.response.ApiResponse;
 
@@ -52,11 +54,11 @@ public interface StoreService {
      *
      * @param body
      * @return
-     * @see com.fans.becomebeaut.api.request.StoreListRequest
+     * @see ShopListRequest
      */
     @POST(NetConstants.HOME_SALON)
     @Headers("Content-Type:" + RetrofitClient.JSON)
-    Observable<ApiResponse<StoreListResponse>> getHomeSalonShops(@Body Request body);
+    Observable<ApiResponse<ShopListResponse>> getHomeSalonShops(@Body Request body);
 
 
     /**
@@ -130,11 +132,11 @@ public interface StoreService {
      *
      * @param body
      * @return
-     * @see com.fans.becomebeaut.api.request.StoreSelectionRequest
+     * @see ShopSelectionRequest
      */
     @POST(NetConstants.STORE_LIST)
     @Headers("Content-Type:" + RetrofitClient.JSON)
-    Observable<ApiResponse<StoreListResponse>> getSeletedShops(@Body Request body);
+    Observable<ApiResponse<ShopListResponse>> getSeletedShops(@Body Request body);
 
     /**
      * 消息接口
@@ -189,7 +191,7 @@ public interface StoreService {
      */
     @POST(NetConstants.STORE_DETAILS)
     @Headers("Content-Type:" + RetrofitClient.JSON)
-    Observable<ApiResponse<ShopDetailResponse>> getStoreDetail(@Body Request body);
+    Observable<ApiResponse<ShopDetailResponse>> getShopDetail(@Body Request body);
 
 
     /**

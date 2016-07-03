@@ -15,8 +15,8 @@ import com.fans.becomebeaut.api.entity.PricesBean;
 import com.fans.becomebeaut.api.entity.ServicesBean;
 import com.fans.becomebeaut.api.entity.Shop;
 import com.fans.becomebeaut.api.request.Request;
-import com.fans.becomebeaut.api.request.StoreListRequest;
-import com.fans.becomebeaut.api.response.StoreListResponse;
+import com.fans.becomebeaut.api.request.ShopListRequest;
+import com.fans.becomebeaut.api.response.ShopListResponse;
 import com.fans.becomebeaut.common.SP;
 import com.fans.becomebeaut.common.ui.AppBarActivity;
 import com.fans.becomebeaut.common.widget.BeautyServiceLayout;
@@ -109,7 +109,7 @@ public class BeautyActivity extends AppBarActivity  {
     }
 
     public void requestData() {
-        StoreListRequest storeListRequest = new StoreListRequest();
+        ShopListRequest storeListRequest = new ShopListRequest();
         storeListRequest.setLongitude(String.valueOf(longitude));
         storeListRequest.setLatitude(String.valueOf(latitude));
         storeListRequest.setCId(sid);
@@ -122,9 +122,9 @@ public class BeautyActivity extends AppBarActivity  {
         mvcHelper.setAdapter(new ShopRecycleViewAdapter(this));
         // 加载数据
         mvcHelper.refresh();
-        ApiFactory.getHomeSalonShops(request).subscribe(new Action1<ApiResponse<StoreListResponse>>() {
+        ApiFactory.getHomeSalonShops(request).subscribe(new Action1<ApiResponse<ShopListResponse>>() {
             @Override
-            public void call(ApiResponse<StoreListResponse> storeListResponseApiResponse) {
+            public void call(ApiResponse<ShopListResponse> storeListResponseApiResponse) {
                 contentViewHolder.showContent();
                 render(storeListResponseApiResponse.getData());
             }
@@ -139,7 +139,7 @@ public class BeautyActivity extends AppBarActivity  {
         });
     }
 
-    private void render(final StoreListResponse data) {
+    private void render(final ShopListResponse data) {
         priceLayout.setPriceList(data.getPrices());
         priceLayout.setOnPriceCheckChangedListener(new PriceChooseLayout.OnPriceCheckChangedListener() {
             @Override
