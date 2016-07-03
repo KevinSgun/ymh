@@ -4,28 +4,12 @@
         "source": "E:\\AndroidStudioProjects\\BecomeBeautiful\\iCSDatePicker\\build\\intermediates\\bundles\\debug\\res\\layout\\date_picker_holo.xml"
     },
     {
-        "merged": "C:\\zhitech\\ymh\\iCSDatePicker\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\calendar_view.xml",
-        "source": "C:\\zhitech\\ymh\\iCSDatePicker\\build\\intermediates\\bundles\\debug\\res\\layout\\calendar_view.xml"
-    },
-    {
         "merged": "E:\\AndroidStudioProjects\\BecomeBeautiful\\iCSDatePicker\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\calendar_view.xml",
         "source": "E:\\AndroidStudioProjects\\BecomeBeautiful\\iCSDatePicker\\build\\intermediates\\bundles\\debug\\res\\layout\\calendar_view.xml"
     },
     {
-        "merged": "C:\\zhitech\\ymh\\iCSDatePicker\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\number_picker_with_selector_wheel.xml",
-        "source": "C:\\zhitech\\ymh\\iCSDatePicker\\build\\intermediates\\bundles\\debug\\res\\layout\\number_picker_with_selector_wheel.xml"
-    },
-    {
         "merged": "E:\\AndroidStudioProjects\\BecomeBeautiful\\iCSDatePicker\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\activity_samples.xml",
         "source": "E:\\AndroidStudioProjects\\BecomeBeautiful\\iCSDatePicker\\build\\intermediates\\bundles\\debug\\res\\layout\\activity_samples.xml"
-    },
-    {
-        "merged": "C:\\zhitech\\ymh\\iCSDatePicker\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\activity_samples.xml",
-        "source": "C:\\zhitech\\ymh\\iCSDatePicker\\build\\intermediates\\bundles\\debug\\res\\layout\\activity_samples.xml"
-    },
-    {
-        "merged": "C:\\zhitech\\ymh\\iCSDatePicker\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\date_picker_holo.xml",
-        "source": "C:\\zhitech\\ymh\\iCSDatePicker\\build\\intermediates\\bundles\\debug\\res\\layout\\date_picker_holo.xml"
     },
     {
         "merged": "E:\\AndroidStudioProjects\\BecomeBeautiful\\iCSDatePicker\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\ics_date_picker_dialog.xml",
@@ -38,13 +22,5 @@
     {
         "merged": "E:\\AndroidStudioProjects\\BecomeBeautiful\\iCSDatePicker\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\date_picker_dialog.xml",
         "source": "E:\\AndroidStudioProjects\\BecomeBeautiful\\iCSDatePicker\\build\\intermediates\\bundles\\debug\\res\\layout\\date_picker_dialog.xml"
-    },
-    {
-        "merged": "C:\\zhitech\\ymh\\iCSDatePicker\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\date_picker_dialog.xml",
-        "source": "C:\\zhitech\\ymh\\iCSDatePicker\\build\\intermediates\\bundles\\debug\\res\\layout\\date_picker_dialog.xml"
-    },
-    {
-        "merged": "C:\\zhitech\\ymh\\iCSDatePicker\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\ics_date_picker_dialog.xml",
-        "source": "C:\\zhitech\\ymh\\iCSDatePicker\\build\\intermediates\\bundles\\debug\\res\\layout\\ics_date_picker_dialog.xml"
     }
 ]

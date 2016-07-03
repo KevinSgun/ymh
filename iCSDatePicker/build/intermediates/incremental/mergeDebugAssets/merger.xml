@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="C:\zhitech\ymh\iCSDatePicker\src\main\assets"/><source path="C:\zhitech\ymh\iCSDatePicker\build\generated\assets\shaders\debug"/></dataSet><dataSet config="debug"><source path="C:\zhitech\ymh\iCSDatePicker\src\debug\assets"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="E:\AndroidStudioProjects\BecomeBeautiful\iCSDatePicker\src\main\assets"/><source path="E:\AndroidStudioProjects\BecomeBeautiful\iCSDatePicker\build\generated\assets\shaders\debug"/></dataSet><dataSet config="debug"><source path="E:\AndroidStudioProjects\BecomeBeautiful\iCSDatePicker\src\debug\assets"/></dataSet></merger>
