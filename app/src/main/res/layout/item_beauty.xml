@@ -6,9 +6,10 @@
     android:button="@null"
     android:checked="false"
     android:gravity="center"
-    android:text="adc"
+    android:text="adcd"
     android:textColor="@color/textColorPrimary"
     android:textSize="@dimen/w24"
+
     >
 
 </RadioButton>

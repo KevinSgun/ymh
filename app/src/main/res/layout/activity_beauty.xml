@@ -1,42 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.fans.becomebeaut.common.widget.ContentViewHolder xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/content_root"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/bg_color"
-    android:orientation="vertical">
-
-    <com.fans.becomebeaut.common.widget.PriceChooseLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/h100"
-        android:layout_marginTop="@dimen/h19"
-        android:paddingLeft="@dimen/w41"
-        android:paddingRight="@dimen/w41">
-
-    </com.fans.becomebeaut.common.widget.PriceChooseLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/h1"
-        android:background="@color/divider_color" />
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:background="@color/bg_color"
+        android:orientation="vertical">
 
-        <android.support.v4.widget.NestedScrollView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent">
-
-            <com.fans.becomebeaut.common.widget.BeautyServiceLayout
-                android:layout_width="@dimen/w160"
-                android:layout_height="match_parent"></com.fans.becomebeaut.common.widget.BeautyServiceLayout>
-        </android.support.v4.widget.NestedScrollView>
-
-        <android.support.v7.widget.RecyclerView
+        <com.fans.becomebeaut.common.widget.PriceChooseLayout
+            android:id="@+id/choose_price_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="@dimen/h100"
+            android:layout_marginTop="@dimen/h19"
+            android:background="@color/white"
+            android:paddingLeft="@dimen/w41"
+            android:paddingRight="@dimen/w41">
 
-        </android.support.v7.widget.RecyclerView>
+        </com.fans.becomebeaut.common.widget.PriceChooseLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/h1"
+            android:background="@color/divider_color" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="horizontal">
+
+            <android.support.v4.widget.NestedScrollView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <com.fans.becomebeaut.common.widget.BeautyServiceLayout
+                    android:id="@+id/choose_service_layout"
+                    android:layout_width="@dimen/w160"
+                    android:layout_height="match_parent">
+
+                </com.fans.becomebeaut.common.widget.BeautyServiceLayout>
+            </android.support.v4.widget.NestedScrollView>
+
+            <android.support.v4.widget.SwipeRefreshLayout
+                android:id="@+id/swipeRefreshLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/store_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="12dp"
+                    android:paddingRight="12dp" />
+            </android.support.v4.widget.SwipeRefreshLayout>
+        </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+</com.fans.becomebeaut.common.widget.ContentViewHolder>

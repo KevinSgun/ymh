@@ -14,10 +14,10 @@ public class StoreListRequest implements RequestData {
      */
 
     private String cId;
-    private String index;
+    private int index=1;
     private String latitude;
     private String longitude;
-    private String size;
+    private int size=10;
 
     public String getCId() {
         return cId;
@@ -27,13 +27,6 @@ public class StoreListRequest implements RequestData {
         this.cId = cId;
     }
 
-    public String getIndex() {
-        return index;
-    }
-
-    public void setIndex(String index) {
-        this.index = index;
-    }
 
     public String getLatitude() {
         return latitude;
@@ -51,11 +44,19 @@ public class StoreListRequest implements RequestData {
         this.longitude = longitude;
     }
 
-    public String getSize() {
+    public int getIndex() {
+        return index;
+    }
+
+    public void setIndex(int index) {
+        this.index = index;
+    }
+
+    public int getSize() {
         return size;
     }
 
-    public void setSize(String size) {
+    public void setSize(int size) {
         this.size = size;
     }
 }

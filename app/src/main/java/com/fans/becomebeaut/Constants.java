@@ -17,6 +17,10 @@ public class Constants {
         String LOGIN_ABOUT = "login_about";
 
         String SCORE_COUNT = "score_count";
+
+        String SID ="sid";
+
+        String TITLE ="title";
     }
     public interface FragmentExtra{
 
