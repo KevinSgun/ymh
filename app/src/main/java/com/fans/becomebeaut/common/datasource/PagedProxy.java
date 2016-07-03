@@ -54,7 +54,7 @@ public class PagedProxy {
     }
 
     public boolean hasNextPage() {
-        boolean hasNext = this.mReachEnd ? false : !this.mPageCountSet || mCurrentPage <= this.mPageCount;
+        boolean hasNext = this.mReachEnd ? false : !this.mPageCountSet || mCurrentPage < this.mPageCount;
         return hasNext;
     }
 

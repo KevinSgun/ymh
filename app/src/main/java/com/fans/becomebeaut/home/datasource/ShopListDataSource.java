@@ -1,5 +1,7 @@
 package com.fans.becomebeaut.home.datasource;
 
+import android.util.Log;
+
 import com.fans.becomebeaut.api.ApiFactory;
 import com.fans.becomebeaut.api.entity.Store;
 import com.fans.becomebeaut.api.request.Request;
@@ -13,6 +15,7 @@ import com.shizhefei.mvc.ResponseSender;
 import com.zitech.framework.data.network.response.ApiResponse;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 import rx.Subscription;
 import rx.functions.Action1;
@@ -61,13 +64,16 @@ public class ShopListDataSource implements IAsyncDataSource<List<Store>> {
     }
 
     private RequestHandle loadStores(final ResponseSender<List<Store>> sender, final int page) throws Exception {
-
+        StoreSelectionRequest data = (StoreSelectionRequest) request.getData();
+        data.setIndex(page);
         final Subscription subscribe = ApiFactory.getSeletedStores(request).subscribe(new Action1<ApiResponse<StoreListResponse>>() {
             @Override
             public void call(ApiResponse<StoreListResponse> storeListResponseApiResponse) {
                 StoreListResponse data = storeListResponseApiResponse.getData();
                 if (!proxy.isPageCountSet()) {
                     proxy.setDataCount(data.getPagination().getRows());
+                }else{
+                    com.baidu.mapapi.common.Logger.logI("xxx","---");
                 }
                 List<Store> items = data.getStoreList();
                 if (items == null || items.size() == 0) {
