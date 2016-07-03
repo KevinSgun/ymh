@@ -1,14 +1,14 @@
 package com.fans.becomebeaut.api.response;
 
 import com.fans.becomebeaut.api.entity.Employee;
-import com.fans.becomebeaut.api.entity.StoreInfo;
+import com.fans.becomebeaut.api.entity.ShopInfo;
 
 import java.util.List;
 
 /**
  * Created by lu on 2016/7/2.
  */
-public class StoreDetailResponse {
+public class ShopDetailResponse {
 
     /**
      * id : 10000
@@ -29,7 +29,7 @@ public class StoreDetailResponse {
      * satisfactory : 40%
      */
 
-    private StoreInfo storeInfo;
+    private ShopInfo storeInfo;
     /**
      * alias : １号设计师
      * bottomPrice : 19
@@ -43,11 +43,11 @@ public class StoreDetailResponse {
 
     private List<Employee> employeeList;
 
-    public StoreInfo getStoreInfo() {
+    public ShopInfo getStoreInfo() {
         return storeInfo;
     }
 
-    public void setStoreInfo(StoreInfo storeInfo) {
+    public void setStoreInfo(ShopInfo storeInfo) {
         this.storeInfo = storeInfo;
     }
 

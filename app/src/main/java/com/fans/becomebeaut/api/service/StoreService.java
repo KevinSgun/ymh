@@ -10,11 +10,12 @@ import com.fans.becomebeaut.api.response.DesignerDetail;
 import com.fans.becomebeaut.api.response.FilePathResponse;
 import com.fans.becomebeaut.api.response.MyFavoriteResponse;
 import com.fans.becomebeaut.api.response.ScoreListResponse;
+import com.fans.becomebeaut.api.response.ShopDetailRequest;
 import com.fans.becomebeaut.api.response.UserHomeInfoResponse;
 import com.zitech.framework.data.network.response.FileUploadResponse;
 import com.fans.becomebeaut.api.response.HomePageResponse;
 import com.fans.becomebeaut.api.response.NearStoreListResposne;
-import com.fans.becomebeaut.api.response.StoreDetailResponse;
+import com.fans.becomebeaut.api.response.ShopDetailResponse;
 import com.fans.becomebeaut.api.response.StoreListResponse;
 import com.zitech.framework.data.network.RetrofitClient;
 import com.zitech.framework.data.network.response.ApiResponse;
@@ -184,11 +185,11 @@ public interface StoreService {
      *
      * @param body
      * @return
-     * @see com.fans.becomebeaut.api.response.StoreDetailRequest
+     * @see ShopDetailRequest
      */
     @POST(NetConstants.STORE_DETAILS)
     @Headers("Content-Type:" + RetrofitClient.JSON)
-    Observable<ApiResponse<StoreDetailResponse>> getStoreDetail(@Body Request body);
+    Observable<ApiResponse<ShopDetailResponse>> getStoreDetail(@Body Request body);
 
 
     /**

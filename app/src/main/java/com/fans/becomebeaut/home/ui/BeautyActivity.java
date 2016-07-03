@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.baidu.location.BDLocation;
 import com.fans.becomebeaut.Constants;
@@ -12,7 +13,7 @@ import com.fans.becomebeaut.R;
 import com.fans.becomebeaut.api.ApiFactory;
 import com.fans.becomebeaut.api.entity.PricesBean;
 import com.fans.becomebeaut.api.entity.ServicesBean;
-import com.fans.becomebeaut.api.entity.Store;
+import com.fans.becomebeaut.api.entity.Shop;
 import com.fans.becomebeaut.api.request.Request;
 import com.fans.becomebeaut.api.request.StoreListRequest;
 import com.fans.becomebeaut.api.response.StoreListResponse;
@@ -39,7 +40,7 @@ import rx.functions.Action1;
  * 我要美容or美发
  * Created by lu on 2016/7/2.
  */
-public class BeautyActivity extends AppBarActivity {
+public class BeautyActivity extends AppBarActivity  {
 
 
     private ContentViewHolder contentViewHolder;
@@ -51,8 +52,8 @@ public class BeautyActivity extends AppBarActivity {
     private BeautyServiceLayout serciceLayout;
     private SwipeRefreshLayout swipeRefreshLayout;
     private RecyclerView recyclerView;
-    private MVCHelper<List<Store>> mvcHelper;
-    private IAsyncDataSource<List<Store>> dataSource;
+    private MVCHelper<List<Shop>> mvcHelper;
+    private IAsyncDataSource<List<Shop>> dataSource;
 
     @Override
     protected int getContentViewId() {
@@ -63,6 +64,13 @@ public class BeautyActivity extends AppBarActivity {
     protected void initView() {
         setTitle(getIntent().getStringExtra(Constants.ActivityExtra.TITLE));
         contentViewHolder = (ContentViewHolder) findViewById(R.id.content_root);
+        contentViewHolder.setRetryListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                requestData();
+                contentViewHolder.showLoading();
+            }
+        });
         priceLayout = (PriceChooseLayout) findViewById(R.id.choose_price_layout);
         serciceLayout = (BeautyServiceLayout) findViewById(R.id.choose_service_layout);
         swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshLayout);
@@ -107,7 +115,7 @@ public class BeautyActivity extends AppBarActivity {
         storeListRequest.setCId(sid);
         Request request = new Request(storeListRequest);
         request.sign();
-        mvcHelper = new MVCSwipeRefreshHelper<List<Store>>(swipeRefreshLayout);
+        mvcHelper = new MVCSwipeRefreshHelper<List<Shop>>(swipeRefreshLayout);
         dataSource = new ShopListDataSource(storeListRequest);
         mvcHelper.setDataSource(dataSource);
         // 设置适配器
@@ -125,6 +133,7 @@ public class BeautyActivity extends AppBarActivity {
         }, new Action1<Throwable>() {
             @Override
             public void call(Throwable throwable) {
+                throwable.printStackTrace();
                 contentViewHolder.showRetry();
             }
         });
