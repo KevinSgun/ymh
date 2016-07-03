@@ -110,11 +110,11 @@ public class User {
     }
 
     public String getSexTxt() {
-        if("0".equals(sex))
+        if("2".equals(sex))
             return "女";
         else if("1".equals(sex))
             return "男";
-        return "未知";
+        return "保密";
     }
 
     public String getBirthday(){

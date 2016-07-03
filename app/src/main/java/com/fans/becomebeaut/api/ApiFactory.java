@@ -14,8 +14,10 @@ import com.zitech.framework.data.network.response.ApiResponse;
 import com.zitech.framework.data.network.subscribe.SchedulersCompat;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import okhttp3.MultipartBody;
 import rx.Observable;
 
 /**
@@ -120,5 +122,32 @@ public class ApiFactory {
      */
    public static Observable<ApiResponse<NearStoreListResposne>> getNearest(Request request){
         return getStoreService().getNearest(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
+    }
+
+    /**
+     * 修改我的资料
+     * @param request
+     * @return
+     */
+    public static Observable<ApiResponse> updateProfile(Request request){
+        return getStoreService().updateProfile(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
+    }
+
+    /**
+     * 文件上传
+     * @param request
+     * @return
+     */
+    public static Observable<ApiResponse> upload(MultipartBody request){
+        return getStoreService().upload(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
+    }
+
+    /**
+     * 文件上传
+     * @param parts
+     * @return
+     */
+    public static Observable<ApiResponse> upload(List<MultipartBody.Part> parts){
+        return getStoreService().upload(parts).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
     }
 }

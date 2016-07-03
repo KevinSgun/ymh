@@ -1,5 +1,6 @@
 package com.fans.becomebeaut.api.request;
 
+import com.fans.becomebeaut.common.User;
 import com.fans.becomebeaut.utils.Md5;
 import com.google.gson.Gson;
 import com.zitech.framework.data.network.entity.Global;
@@ -18,6 +19,7 @@ public class Request extends ApiRequest {
 
     public Request(RequestData data) {
         this.data = data;
+        global.setToken(User.get().getToken());
     }
 
     // 它签名的类容就是query生成的json+一个固定的字符串生成的,在JsonParamsBuilder类getPostBody方法中调用

@@ -10,7 +10,7 @@ public class UpdateProfileRequest implements RequestData {
      */
 
     private String name;
-    private int sex;//0 1 2 性别  0 保密 1男 2女
+    private String sex;//0 1 2 性别  0 保密 1男 2女
     private String birthday;
     private String portrait;//用户图像地址
 
@@ -22,11 +22,11 @@ public class UpdateProfileRequest implements RequestData {
         this.name = name;
     }
 
-    public int getSex() {
+    public String getSex() {
         return sex;
     }
 
-    public void setSex(int sex) {
+    public void setSex(String sex) {
         this.sex = sex;
     }
 

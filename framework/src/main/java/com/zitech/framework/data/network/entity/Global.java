@@ -10,6 +10,7 @@ public class Global {
      */
     private String os;
     private String sign;
+    private String token;
 
     public Global(){
         os = "1";
@@ -31,4 +32,11 @@ public class Global {
         this.sign = sign;
     }
 
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
 }

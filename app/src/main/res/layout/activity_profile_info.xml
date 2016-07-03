@@ -57,14 +57,6 @@
             android:layout_height="wrap_content"
             android:text="昵称"
             android:textSize="@dimen/w28" />
-        <TextView
-            android:id="@+id/nickname_tv"
-            style="@style/CommonTextPrimary"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/w40"
-            android:text=""
-            android:textSize="@dimen/w28" />
         <EditText
             android:id="@+id/input_nickname_et"
             style="@style/CommonTextPrimary"
