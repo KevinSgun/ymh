@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.support.v4.widget.SwipeRefreshLayout;
 
 import com.fans.becomebeaut.R;
-import com.fans.becomebeaut.api.entity.NearStore;
+import com.fans.becomebeaut.api.entity.NearShop;
 import com.fans.becomebeaut.api.request.PageRequest;
 import com.fans.becomebeaut.api.request.PageRequestData;
 import com.fans.becomebeaut.common.ui.AppBarActivity;
@@ -21,7 +21,7 @@ import java.util.List;
  */
 public class MyFavoriteActivity extends AppBarActivity{
     private SwipeRefreshLayout swipeRefreshLayout;
-    private MVCSwipeRefreshHelper<List<NearStore>> mvcHelper;
+    private MVCSwipeRefreshHelper<List<NearShop>> mvcHelper;
     private FavoriteListDataSource dataSource;
 
     @Override
@@ -40,11 +40,11 @@ public class MyFavoriteActivity extends AppBarActivity{
     protected void initData() {
         PageRequest request = new PageRequest(new PageRequestData());
         request.sign();
-        mvcHelper = new MVCSwipeRefreshHelper<List<NearStore>>(swipeRefreshLayout);
+        mvcHelper = new MVCSwipeRefreshHelper<List<NearShop>>(swipeRefreshLayout);
         dataSource = new FavoriteListDataSource(request);
         mvcHelper.setDataSource(dataSource);
         // 设置适配器
-        mvcHelper.setAdapter(new MyFavoriteAdapter(this,new ArrayList<NearStore>()));
+        mvcHelper.setAdapter(new MyFavoriteAdapter(this,new ArrayList<NearShop>()));
         // 加载数据
         mvcHelper.refresh();
     }

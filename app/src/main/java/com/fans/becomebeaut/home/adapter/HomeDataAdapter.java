@@ -37,7 +37,7 @@ public class HomeDataAdapter extends ListAdapter<NearShop> {
         if(item != null){
             shopiv.setBitmapTransformation(new RoundedCornersTransformation(mContext, ViewUtils.getDimenPx(R.dimen.w20)));
             shopiv.setImageUri(R.mipmap.ic_shop_default,item.getIcon());
-            shopnametv.setText(item.getName());
+            shopnametv.setText(item.getCorp());
             distancetv.setText(item.getDistances()+"米");
             shopaddresstv.setText(item.getAddress());
         }

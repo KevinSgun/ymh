@@ -1,11 +1,9 @@
 package com.fans.becomebeaut.mine.datasource;
 
 import com.fans.becomebeaut.api.ApiFactory;
-import com.fans.becomebeaut.api.entity.NearStore;
-import com.fans.becomebeaut.api.entity.ScoreBean;
+import com.fans.becomebeaut.api.entity.NearShop;
 import com.fans.becomebeaut.api.request.PageRequest;
 import com.fans.becomebeaut.api.response.MyFavoriteResponse;
-import com.fans.becomebeaut.api.response.ScoreListResponse;
 import com.fans.becomebeaut.common.datasource.PagedProxy;
 import com.shizhefei.mvc.IAsyncDataSource;
 import com.shizhefei.mvc.RequestHandle;
@@ -20,7 +18,7 @@ import rx.functions.Action1;
 /**
  * Created by ymh on 2016/7/3 0003.
  */
-public class FavoriteListDataSource implements IAsyncDataSource<List<NearStore>> {
+public class FavoriteListDataSource implements IAsyncDataSource<List<NearShop>> {
     private PagedProxy proxy = new PagedProxy(10);
     private PageRequest request;
 
@@ -30,12 +28,12 @@ public class FavoriteListDataSource implements IAsyncDataSource<List<NearStore>>
     }
 
     @Override
-    public RequestHandle refresh(ResponseSender<List<NearStore>> sender) throws Exception {
+    public RequestHandle refresh(ResponseSender<List<NearShop>> sender) throws Exception {
         return loadStores(sender, proxy.reset());
     }
 
     @Override
-    public RequestHandle loadMore(ResponseSender<List<NearStore>> sender) throws Exception {
+    public RequestHandle loadMore(ResponseSender<List<NearShop>> sender) throws Exception {
         return loadStores(sender, proxy.toNextPage());
     }
 
@@ -44,7 +42,7 @@ public class FavoriteListDataSource implements IAsyncDataSource<List<NearStore>>
         return proxy.hasNextPage();
     }
 
-    private RequestHandle loadStores(final ResponseSender<List<NearStore>> sender, final int page) throws Exception {
+    private RequestHandle loadStores(final ResponseSender<List<NearShop>> sender, final int page) throws Exception {
         request.setCurrentPage(page);
         final Subscription subscribe = ApiFactory.getMyFavorite(request).subscribe(new Action1<ApiResponse<MyFavoriteResponse>>() {
             @Override
@@ -53,7 +51,7 @@ public class FavoriteListDataSource implements IAsyncDataSource<List<NearStore>>
                 if (!proxy.isPageCountSet()) {
                     proxy.setDataCount(data.getPagination().getRows());
                 }
-                List<NearStore> items = data.getStoreList();
+                List<NearShop> items = data.getStoreList();
                 if (items == null || items.size() == 0) {
                     proxy.setReachEnd(true);
                 }
