@@ -3,9 +3,9 @@ package com.fans.becomebeaut.home.datasource;
 import com.fans.becomebeaut.api.ApiFactory;
 import com.fans.becomebeaut.api.entity.Shop;
 import com.fans.becomebeaut.api.request.Request;
-import com.fans.becomebeaut.api.request.StoreListRequest;
-import com.fans.becomebeaut.api.request.StoreSelectionRequest;
-import com.fans.becomebeaut.api.response.StoreListResponse;
+import com.fans.becomebeaut.api.request.ShopListRequest;
+import com.fans.becomebeaut.api.request.ShopSelectionRequest;
+import com.fans.becomebeaut.api.response.ShopListResponse;
 import com.fans.becomebeaut.common.datasource.PagedProxy;
 import com.shizhefei.mvc.IAsyncDataSource;
 import com.shizhefei.mvc.RequestHandle;
@@ -24,9 +24,9 @@ public class ShopListDataSource implements IAsyncDataSource<List<Shop>> {
     private PagedProxy proxy = new PagedProxy(10);
     private Request request;
 
-    public ShopListDataSource(StoreListRequest request) {
+    public ShopListDataSource(ShopListRequest request) {
         super();
-        StoreSelectionRequest storeSelectionRequest = new StoreSelectionRequest();
+        ShopSelectionRequest storeSelectionRequest = new ShopSelectionRequest();
         storeSelectionRequest.setCId(request.getCId());
         storeSelectionRequest.setIndex(request.getIndex());
         storeSelectionRequest.setSize(request.getSize());
@@ -36,12 +36,12 @@ public class ShopListDataSource implements IAsyncDataSource<List<Shop>> {
     }
 
     public void filterCid(String cid) {
-        StoreSelectionRequest data = (StoreSelectionRequest) request.getData();
+        ShopSelectionRequest data = (ShopSelectionRequest) request.getData();
         data.setCId(cid);
     }
 
     public void filterPrice(String price) {
-        StoreSelectionRequest data = (StoreSelectionRequest) request.getData();
+        ShopSelectionRequest data = (ShopSelectionRequest) request.getData();
         data.setBottomPrice(price);
     }
 
@@ -61,12 +61,12 @@ public class ShopListDataSource implements IAsyncDataSource<List<Shop>> {
     }
 
     private RequestHandle loadStores(final ResponseSender<List<Shop>> sender, final int page) throws Exception {
-        StoreSelectionRequest data = (StoreSelectionRequest) request.getData();
+        ShopSelectionRequest data = (ShopSelectionRequest) request.getData();
         data.setIndex(page);
-        final Subscription subscribe = ApiFactory.getSeletedShops(request).subscribe(new Action1<ApiResponse<StoreListResponse>>() {
+        final Subscription subscribe = ApiFactory.getSeletedShops(request).subscribe(new Action1<ApiResponse<ShopListResponse>>() {
             @Override
-            public void call(ApiResponse<StoreListResponse> storeListResponseApiResponse) {
-                StoreListResponse data = storeListResponseApiResponse.getData();
+            public void call(ApiResponse<ShopListResponse> storeListResponseApiResponse) {
+                ShopListResponse data = storeListResponseApiResponse.getData();
                 if (!proxy.isPageCountSet()) {
                     proxy.setDataCount(data.getPagination().getRows());
                 }else{

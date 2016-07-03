@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Created by lu on 2016/7/1.
  */
-public class StoreListResponse {
+public class ShopListResponse {
 
     /**
      * index : 1

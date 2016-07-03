@@ -18,6 +18,7 @@ import com.fans.becomebeaut.Constants;
 import com.fans.becomebeaut.R;
 import com.fans.becomebeaut.api.ApiFactory;
 import com.fans.becomebeaut.api.entity.HomePageBanner;
+import com.fans.becomebeaut.api.entity.NearShop;
 import com.fans.becomebeaut.api.entity.ServicesBean;
 import com.fans.becomebeaut.api.request.HomeDataRequest;
 import com.fans.becomebeaut.api.request.Request;
@@ -250,8 +251,13 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
         if (ViewUtils.isFastDoubleClick()) return;
         int index = position > 0 && position - 1 >= 0 ? position - 1 : position;
+//        List<HomePageBanner> pagerAdapter.getItemList();
+        NearShop shop = mAdapter.getList().get(position);
+
+//        NearShop
+//        adapterView.ge
         //TODO 进入店铺首页
-        ShopHomeActivity.launch(getActivity());
+        ShopHomeActivity.launch(getActivity(), String.valueOf(shop.getId()));
     }
 
     @Override
@@ -263,11 +269,11 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
                 break;
             case R.id.want_beauty_layout:
                 String sid = getServiceId("美容");
-                BeautyActivity.launch(getActivity(),sid,"我要美容" );
+                BeautyActivity.launch(getActivity(), sid, "我要美容");
                 break;
             case R.id.want_salon_layout:
                 String serviceId = getServiceId("美发");
-                BeautyActivity.launch(getActivity(), serviceId,"我要美发");
+                BeautyActivity.launch(getActivity(), serviceId, "我要美发");
                 break;
             case R.id.consumer_record_layout:
                 ToastMaster.shortToast("消费过的店铺");

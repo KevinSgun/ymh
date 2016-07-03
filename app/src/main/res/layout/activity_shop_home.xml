@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+    android:background="@color/bg_color"
     >
 
     <android.support.design.widget.AppBarLayout
@@ -26,7 +26,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:paddingBottom="@dimen/h50">
+                android:paddingBottom="@dimen/h60">
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -191,7 +191,7 @@
                     android:layout_height="@dimen/h1"
                     android:background="@color/divider_color" />
 
-                <com.fans.becomebeaut.common.widget.MutilRadioGroup
+                <LinearLayout
                     android:id="@+id/review_chooser"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -208,119 +208,148 @@
                         android:paddingBottom="@dimen/h20"
                         android:paddingTop="@dimen/h30">
 
-                        <RadioButton
+                        <TextView
+                            android:id="@+id/all_reviews"
                             android:layout_width="wrap_content"
                             android:layout_height="@dimen/w56"
-                            android:background="@drawable/sl_comment_positive"
+                            android:background="@drawable/sl_comment_checked"
                             android:button="@null"
+                            android:checked="false"
                             android:gravity="center"
                             android:paddingLeft="@dimen/w20"
                             android:paddingRight="@dimen/w20"
                             android:text="全部评价(9999)"
-                            android:textColor="@color/common_pink_white_color"
-                            android:checked="false"
-                            android:id="@+id/all_reviews" />
+                            android:textColor="@color/white" />
 
-                        <RadioButton
+                        <TextView
+                            android:id="@+id/high_positive_reviews"
                             android:layout_width="wrap_content"
                             android:layout_height="@dimen/w56"
                             android:layout_marginLeft="@dimen/w20"
                             android:background="@drawable/sl_comment_positive"
                             android:button="@null"
+                            android:checked="false"
                             android:gravity="center"
                             android:paddingLeft="@dimen/w20"
                             android:paddingRight="@dimen/w20"
                             android:text="满意(123)"
-                            android:textColor="@color/common_pink_white_color"
-                            android:checked="false"
-                            android:id="@+id/high_positive_reviews" />
+                            android:textColor="@color/common_pink_white_color" />
 
-                        <RadioButton
+                        <TextView
+                            android:id="@+id/positive_reviews"
                             android:layout_width="wrap_content"
                             android:layout_height="@dimen/w56"
                             android:layout_marginLeft="@dimen/w20"
                             android:background="@drawable/sl_comment_positive"
                             android:button="@null"
+                            android:checked="false"
                             android:gravity="center"
                             android:paddingLeft="@dimen/w20"
                             android:paddingRight="@dimen/w20"
                             android:text="满意(999999)"
-                            android:textColor="@color/common_pink_white_color"
-                            android:checked="false"
-                            android:id="@+id/positive_reviews" />
+                            android:textColor="@color/common_pink_white_color" />
                     </LinearLayout>
 
-                    <RadioButton
+                    <TextView
+                        android:id="@+id/negative_reviews"
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/w56"
                         android:background="@drawable/sl_comment_negative"
                         android:button="@null"
+                        android:checked="false"
                         android:gravity="center"
                         android:paddingLeft="@dimen/w20"
                         android:paddingRight="@dimen/w20"
                         android:text="不满意(999999)"
-                        android:textColor="@color/common_gray_white_color"
-                        android:checked="false"
-                        android:id="@+id/negative_reviews" />
-                </com.fans.becomebeaut.common.widget.MutilRadioGroup>
+                        android:textColor="@color/common_gray_white_color" />
+                </LinearLayout>
             </LinearLayout>
         </android.support.design.widget.CollapsingToolbarLayout>
 
     </android.support.design.widget.AppBarLayout>
 
-
-    <android.support.v4.view.ViewPager
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/h50"
+        android:layout_marginTop="@dimen/h60"
         android:scrollbars="none"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        android:id="@+id/designers_pager" />
-
-    <RadioGroup
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+    <ViewAnimator
+        android:id="@+id/designers_pager"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/h100"
-        android:gravity="center"
-        android:orientation="horizontal"
+        android:layout_height="match_parent"
+
+        >
+
+        <android.support.v7.widget.RecyclerView
+
+            android:id="@+id/salon_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        </android.support.v7.widget.RecyclerView>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/beauty_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </android.support.v7.widget.RecyclerView>
+    </ViewAnimator>
+    </android.support.v4.widget.NestedScrollView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
         app:layout_anchor="@id/app_bar_layout"
         app:layout_anchorGravity="bottom|center_horizontal|end">
-
-
-        <RadioButton
-            android:id="@+id/salon_choice"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/w29"
-            android:layout_weight="1"
-            android:background="@drawable/bg_shop_service_choice"
-            android:button="@null"
-            android:checked="true"
-            android:drawableLeft="@drawable/sl_shop_hair"
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/h19"
+            android:background="@color/divider_color" />
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/h100"
             android:gravity="center"
-            android:paddingLeft="@dimen/w70"
-            android:text="我要美发"
-            android:textColor="@color/shop_service_choice_text_color"
-            android:textSize="@dimen/w32" />
+            android:orientation="horizontal"
+            >
 
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/bg_shop_service_choice_yellow"
-            android:button="@null"
-            android:drawableLeft="@drawable/sl_shop_face"
-            android:gravity="center"
-            android:paddingLeft="@dimen/w70"
-            android:text="我要美容"
-            android:textColor="@color/shop_service_choice_text_color"
-            android:textSize="@dimen/w32"
-            android:checked="false"
-            android:id="@+id/beauty_choice" />
-    </RadioGroup>
+            <RadioButton
+                android:id="@+id/salon_choice"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/bg_shop_service_choice"
+                android:button="@null"
+                android:drawableLeft="@drawable/sl_shop_hair"
+                android:gravity="center"
+                android:paddingLeft="@dimen/w70"
+                android:text="我要美发"
+                android:textColor="@color/shop_service_choice_text_color"
+                android:textSize="@dimen/w32" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/h1"
-        android:background="@color/divider_color" />
+            <RadioButton
+                android:id="@+id/beauty_choice"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/bg_shop_service_choice_yellow"
+                android:button="@null"
+                android:checked="false"
+                android:drawableLeft="@drawable/sl_shop_face"
+                android:gravity="center"
+                android:paddingLeft="@dimen/w70"
+                android:text="我要美容"
+                android:textColor="@color/shop_service_choice_text_color"
+                android:textSize="@dimen/w32" />
+        </RadioGroup>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/h1"
+            android:background="@color/divider_color" />
+    </LinearLayout>
+
 
 </android.support.design.widget.CoordinatorLayout>

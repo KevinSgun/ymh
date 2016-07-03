@@ -6,10 +6,27 @@
     android:paddingLeft="@dimen/w60"
     android:paddingRight="@dimen/w60">
 
-    <com.zitech.framework.widget.RemoteImageView
+    <FrameLayout
         android:layout_width="@dimen/w240"
         android:layout_height="@dimen/w240"
-        android:layout_marginTop="@dimen/h53" />
+        android:layout_marginTop="@dimen/h53">
+
+        <com.zitech.framework.widget.RemoteImageView
+            android:id="@+id/avatar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/tag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|top"
+            android:layout_marginTop="@dimen/h10"
+            android:background="@mipmap/ic_tag"
+            android:textColor="@color/white"
+            android:textSize="@dimen/w20" />
+    </FrameLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,16 +36,18 @@
         android:orientation="horizontal">
 
         <TextView
+            android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:paddingRight="@dimen/w20"
+            android:singleLine="true"
             android:text="李寻欢"
             android:textColor="@color/textColorPrimary"
-            android:textSize="@dimen/w28"
-            android:singleLine="true"
-            android:paddingRight="@dimen/w20"/>
+            android:textSize="@dimen/w28" />
 
         <TextView
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="满意度"
@@ -36,6 +55,7 @@
             android:textSize="@dimen/w20" />
 
         <TextView
+            android:id="@+id/rate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/w5"
@@ -45,9 +65,10 @@
     </LinearLayout>
 
     <Button
-        android:layout_marginTop="@dimen/h25"
+        android:id="@+id/choose"
+        style="@style/CommonButtonPositive"
         android:layout_width="@dimen/w240"
         android:layout_height="@dimen/w48"
-        style="@style/CommonButtonPositive"
-        android:text="选择助理"/>
+        android:layout_marginTop="@dimen/h25"
+        android:text="选择助理" />
 </com.fans.becomebeaut.common.widget.RippleLinearLayout>

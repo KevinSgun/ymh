@@ -5,7 +5,7 @@
     android:orientation="vertical">
 
     <com.fans.becomebeaut.common.widget.RemoteImageView
-        android:id="@+id/img_store"
+        android:id="@+id/shop_img"
         android:layout_width="fill_parent"
         android:layout_height="@dimen/h350" />
 
