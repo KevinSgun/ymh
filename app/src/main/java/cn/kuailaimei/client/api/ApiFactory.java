@@ -1,21 +1,5 @@
 package cn.kuailaimei.client.api;
 
-import cn.kuailaimei.client.api.request.PageRequest;
-import cn.kuailaimei.client.api.request.Request;
-import cn.kuailaimei.client.api.response.FilePathResponse;
-import cn.kuailaimei.client.api.response.GetwayResponse;
-import cn.kuailaimei.client.api.response.HomePageResponse;
-import cn.kuailaimei.client.api.response.MyFavoriteResponse;
-import cn.kuailaimei.client.api.response.NearStoreListResposne;
-import cn.kuailaimei.client.api.response.OrderListResponse;
-import cn.kuailaimei.client.api.response.ScoreListResponse;
-import cn.kuailaimei.client.api.response.ShopDetailResponse;
-import cn.kuailaimei.client.api.response.ShopListResponse;
-import cn.kuailaimei.client.api.response.UserHomeInfoResponse;
-import cn.kuailaimei.client.api.response.UserInfoResponse;
-import cn.kuailaimei.client.api.service.AccountService;
-import cn.kuailaimei.client.api.service.GatewayService;
-import cn.kuailaimei.client.api.service.StoreService;
 import com.zitech.framework.data.network.HttpResultFunc;
 import com.zitech.framework.data.network.RetrofitClient;
 import com.zitech.framework.data.network.response.ApiResponse;
@@ -29,7 +13,24 @@ import java.util.Map;
 
 import cn.kuailaimei.client.api.request.ModifyPsdRequest;
 import cn.kuailaimei.client.api.request.OrderListRequest;
+import cn.kuailaimei.client.api.request.PageRequest;
+import cn.kuailaimei.client.api.request.Request;
 import cn.kuailaimei.client.api.request.SIDRequest;
+import cn.kuailaimei.client.api.response.FilePathResponse;
+import cn.kuailaimei.client.api.response.GetwayResponse;
+import cn.kuailaimei.client.api.response.HomePageResponse;
+import cn.kuailaimei.client.api.response.MyFavoriteResponse;
+import cn.kuailaimei.client.api.response.NearStoreListResposne;
+import cn.kuailaimei.client.api.response.OrderListResponse;
+import cn.kuailaimei.client.api.response.PayInfoResponse;
+import cn.kuailaimei.client.api.response.ScoreListResponse;
+import cn.kuailaimei.client.api.response.ShopDetailResponse;
+import cn.kuailaimei.client.api.response.ShopListResponse;
+import cn.kuailaimei.client.api.response.UserHomeInfoResponse;
+import cn.kuailaimei.client.api.response.UserInfoResponse;
+import cn.kuailaimei.client.api.service.AccountService;
+import cn.kuailaimei.client.api.service.GatewayService;
+import cn.kuailaimei.client.api.service.StoreService;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -281,5 +282,16 @@ public class ApiFactory {
      */
     public static Observable<ApiResponse> deleteFavorite(Request request) {
         return getStoreService().deleteFavorite(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
+    }
+
+    /**
+     * 删除收藏店铺
+     *
+     * @param request
+     * @return
+     * @see cn.kuailaimei.client.api.request.CommitOrderRequest
+     */
+    public static Observable<ApiResponse<PayInfoResponse>> commitShopOrder(Request request) {
+        return getStoreService().commitShopOrder(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
     }
 }

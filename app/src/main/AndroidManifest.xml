@@ -30,7 +30,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:name="cn.kuailaimei.client.BeautApplication">
-        <activity android:name="cn.kuailaimei.client.home.ui.MainActivity">
+        <activity android:name="cn.kuailaimei.client.home.ui.MainActivity"
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -84,6 +85,7 @@
         <activity android:name="cn.kuailaimei.client.mine.ui.MyFavoriteActivity"
             android:screenOrientation="portrait"/>
         <activity android:name="cn.kuailaimei.client.mine.ui.MyOrderListActivity"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
         <activity android:name="cn.kuailaimei.client.mall.ui.ScoreOrderDetailActivity"
             android:screenOrientation="portrait"/>

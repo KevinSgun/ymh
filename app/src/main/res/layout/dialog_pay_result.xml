@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/w600"
+    android:layout_height="@dimen/w649"
+    android:background="@color/textColorPink"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/TextBlank.Large"
+        android:layout_gravity="center_horizontal"
+        android:paddingBottom="@dimen/w25"
+        android:paddingTop="@dimen/w25"
+        android:text="支付成功"
+        android:textColor="@color/white" />
+
+    <LinearLayout
+        android:layout_width="@dimen/w520"
+        android:layout_height="@dimen/w520"
+        android:layout_gravity="center"
+        android:gravity="center_horizontal"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_marginTop="@dimen/w30">
+
+            <TextView
+                style="@style/TextBlank.Medium"
+                android:layout_gravity="center_horizontal"
+                android:paddingBottom="@dimen/w25"
+                android:paddingTop="@dimen/w25"
+                android:text="获得美券返还" />
+
+            <TextView
+                android:id="@+id/coupon_count_tv"
+                style="@style/TextBlank.Medium"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/textColorPink"
+                android:layout_marginLeft="@dimen/w40"
+                android:paddingBottom="@dimen/w15"
+                android:paddingTop="@dimen/w15"
+                android:textSize="@dimen/w48"
+                android:text="100" />
+        </LinearLayout>
+        <Button
+            android:id="@+id/back_to_home_btn"
+            style="@style/CommentButtonStyle"
+            android:layout_width="@dimen/w300"
+            android:layout_height="@dimen/w70"
+            android:layout_marginTop="@dimen/w40"
+            android:text="返回首页"/>
+        <Button
+            android:id="@+id/go_to_order_detail_btn"
+            style="@style/CommentButtonStyle"
+            android:layout_width="@dimen/w300"
+            android:layout_height="@dimen/w70"
+            android:layout_marginTop="@dimen/w30"
+            android:text="查看订单"/>
+        <TextView
+            style="@style/TextBlank.Small"
+            android:textColor="@color/textColorPrimaryGray"
+            android:layout_gravity="left"
+            android:layout_marginLeft="@dimen/w30"
+            android:layout_marginTop="@dimen/w60"
+            android:text="美券说明："/>
+        <TextView
+            style="@style/TextBlank.Small"
+            android:textColor="@color/textColorPrimaryGray"
+            android:layout_gravity="left"
+            android:layout_marginLeft="@dimen/w30"
+            android:layout_marginTop="@dimen/w10"
+            android:text="1、可用于兑换商品和服务；"/>
+        <TextView
+            style="@style/TextBlank.Small"
+            android:textColor="@color/textColorPrimaryGray"
+            android:layout_gravity="left"
+            android:layout_marginLeft="@dimen/w30"
+            android:layout_marginTop="@dimen/w10"
+            android:text="2、本平台拥有最终解释权。"/>
+    </LinearLayout>
+</LinearLayout>

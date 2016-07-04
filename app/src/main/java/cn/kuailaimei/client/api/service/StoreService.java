@@ -1,38 +1,39 @@
 package cn.kuailaimei.client.api.service;
 
-import cn.kuailaimei.client.api.NetConstants;
-import cn.kuailaimei.client.api.entity.Address;
-import cn.kuailaimei.client.api.entity.Message;
-import cn.kuailaimei.client.api.request.IDRequest;
-import cn.kuailaimei.client.api.request.NearStoreRequest;
-import cn.kuailaimei.client.api.request.PageRequestData;
-import cn.kuailaimei.client.api.request.Request;
-import cn.kuailaimei.client.api.request.ShopListRequest;
-import cn.kuailaimei.client.api.request.ShopSelectionRequest;
-import cn.kuailaimei.client.api.response.DesignerDetail;
-import cn.kuailaimei.client.api.response.FilePathResponse;
-import cn.kuailaimei.client.api.response.MyFavoriteResponse;
-import cn.kuailaimei.client.api.request.ScoreListRequest;
-import cn.kuailaimei.client.api.request.UpdateAddress;
-import cn.kuailaimei.client.api.response.OrderListResponse;
-import cn.kuailaimei.client.api.response.ScoreListResponse;
-import cn.kuailaimei.client.api.response.ShopDetailRequest;
-import cn.kuailaimei.client.api.response.UserHomeInfoResponse;
-import com.zitech.framework.data.network.response.FileUploadResponse;
-import cn.kuailaimei.client.api.response.HomePageResponse;
-import cn.kuailaimei.client.api.response.NearStoreListResposne;
-import cn.kuailaimei.client.api.response.ShopDetailResponse;
-import cn.kuailaimei.client.api.response.ShopListResponse;
 import com.zitech.framework.data.network.RetrofitClient;
 import com.zitech.framework.data.network.response.ApiResponse;
+import com.zitech.framework.data.network.response.FileUploadResponse;
 
 import java.util.List;
 
+import cn.kuailaimei.client.api.NetConstants;
+import cn.kuailaimei.client.api.entity.Address;
+import cn.kuailaimei.client.api.entity.Message;
 import cn.kuailaimei.client.api.request.Feedback;
 import cn.kuailaimei.client.api.request.HomeDataRequest;
+import cn.kuailaimei.client.api.request.IDRequest;
+import cn.kuailaimei.client.api.request.NearStoreRequest;
 import cn.kuailaimei.client.api.request.OrderListRequest;
+import cn.kuailaimei.client.api.request.PageRequestData;
+import cn.kuailaimei.client.api.request.Request;
 import cn.kuailaimei.client.api.request.SIDRequest;
+import cn.kuailaimei.client.api.request.ScoreListRequest;
+import cn.kuailaimei.client.api.request.ShopListRequest;
+import cn.kuailaimei.client.api.request.ShopSelectionRequest;
+import cn.kuailaimei.client.api.request.UpdateAddress;
 import cn.kuailaimei.client.api.request.UpdateProfileRequest;
+import cn.kuailaimei.client.api.response.DesignerDetail;
+import cn.kuailaimei.client.api.response.FilePathResponse;
+import cn.kuailaimei.client.api.response.HomePageResponse;
+import cn.kuailaimei.client.api.response.MyFavoriteResponse;
+import cn.kuailaimei.client.api.response.NearStoreListResposne;
+import cn.kuailaimei.client.api.response.OrderListResponse;
+import cn.kuailaimei.client.api.response.PayInfoResponse;
+import cn.kuailaimei.client.api.response.ScoreListResponse;
+import cn.kuailaimei.client.api.response.ShopDetailRequest;
+import cn.kuailaimei.client.api.response.ShopDetailResponse;
+import cn.kuailaimei.client.api.response.ShopListResponse;
+import cn.kuailaimei.client.api.response.UserHomeInfoResponse;
 import okhttp3.MultipartBody;
 import retrofit2.http.Body;
 import retrofit2.http.Headers;
@@ -268,6 +269,17 @@ public interface StoreService {
     @POST(NetConstants.STORE_DELSTOREUP)
     @Headers("Content-Type:" + RetrofitClient.JSON)
     Observable<ApiResponse> deleteFavorite(@Body Request body);
+
+    /**
+     * 提交店鋪訂單信息
+     *
+     * @param body
+     * @return
+     * @see cn.kuailaimei.client.api.request.CommitOrderRequest
+     */
+    @POST(NetConstants.ORDER_SUBMIT)
+    @Headers("Content-Type:" + RetrofitClient.JSON)
+    Observable<ApiResponse<PayInfoResponse>> commitShopOrder(@Body Request body);
 
 //-------------------------文件上传待修改调试------------------------------
 

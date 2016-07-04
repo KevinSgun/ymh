@@ -333,6 +333,7 @@
         android:background="@color/bg_color"
         />
     <Button
+        android:id="@+id/commit_btn"
         android:layout_width="match_parent"
         android:layout_height="@dimen/h100"
         android:textSize="@dimen/w32"
