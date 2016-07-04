@@ -2,112 +2,125 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/white"
-    >
+    android:orientation="vertical">
+
     <LinearLayout
-        android:paddingLeft="@dimen/w30"
-        android:paddingRight="@dimen/w30"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/h60"
+        android:layout_height="@dimen/w80"
+        android:background="@color/bg_color"
         android:gravity="center_vertical"
-        android:background="#fcfcfc">
-        <TextView
-            android:id="@+id/order_num_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/w20"
-            android:textColor="@color/textColorPrimaryGray"
-            android:text="订单编号：2016010112001300ABCD"
-            android:singleLine="true"
+        android:paddingLeft="@dimen/w30"
+        android:paddingRight="@dimen/w30">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            />
-        <TextView
-            android:id="@+id/order_date_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/w20"
-            android:textColor="@color/textColorPrimaryGray"
-            android:text="2011-11-22"
-            android:singleLine="true"
-            android:layout_marginLeft="@dimen/w30"
-            />
+            android:orientation="vertical"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/order_num_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text="订单编号：2016010112001300ABCD"
+                android:textColor="@color/textColorPrimaryGray"
+                android:textSize="@dimen/w20" />
+
+            <TextView
+                android:id="@+id/order_date_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:layout_marginTop="@dimen/w10"
+                android:text="下单时间：2011-11-22"
+                android:textColor="@color/textColorPrimaryGray"
+                android:textSize="@dimen/w20" />
+        </LinearLayout>
+
         <TextView
             android:id="@+id/order_status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/w20"
-            android:textColor="@color/textColorPink"
-            android:text="待付款"
-            android:singleLine="true"
             android:layout_marginLeft="@dimen/w55"
-            />
+            android:singleLine="true"
+            android:text="待付款"
+            android:textColor="@color/textColorPink"
+            android:textSize="@dimen/w26" />
     </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/h1"
-        android:background="@color/divider_color"/>
+        android:background="@color/divider_color" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/w30"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="@dimen/w30">
+
         <FrameLayout
             android:layout_width="@dimen/w140"
             android:layout_height="@dimen/w140"
             android:background="@drawable/bg_stroke_gray">
+
             <com.zitech.framework.widget.RemoteImageView
                 android:id="@+id/shop_icon_iv"
                 android:layout_width="@dimen/w72"
                 android:layout_height="@dimen/w72"
                 android:layout_gravity="center"
-                android:src="@mipmap/ic_shop_default"/>
+                android:src="@mipmap/ic_shop_default" />
         </FrameLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/w20"
-            android:orientation="vertical"
-            >
+            android:orientation="vertical">
+
             <TextView
                 android:id="@+id/shop_name_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/textColorPrimary"
-                android:textSize="@dimen/w24"
                 android:text="快来美美发店"
-                />
+                android:textColor="@color/textColorPrimary"
+                android:textSize="@dimen/w24" />
+
             <TextView
                 android:id="@+id/consumer_items_tv"
-                android:textSize="@dimen/w20"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/h19"
                 android:text="泰式洗头+造型总监发型精修"
-                android:textColor="@color/textColorSecondary"/>
+                android:textColor="@color/textColorSecondary"
+                android:textSize="@dimen/w20" />
+
             <TextView
                 android:id="@+id/consumer_technician_tv"
-                android:layout_marginTop="@dimen/h5"
-                android:textSize="@dimen/w20"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="泰式洗头+造型总监发型精修"
-                android:textColor="@color/textColorSecondary"/>
+                android:layout_marginTop="@dimen/h5"
+                android:text="1号 刘一党"
+                android:textColor="@color/textColorSecondary"
+                android:textSize="@dimen/w20" />
         </LinearLayout>
     </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/h1"
-        android:background="@color/divider_color"/>
+        android:background="@color/divider_color" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/h76"
         android:gravity="center_vertical"
         android:paddingLeft="@dimen/w30"
-        android:paddingRight="@dimen/w30"
-        >
+        android:paddingRight="@dimen/w30">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -115,42 +128,46 @@
             android:gravity="right"
             android:text="订单总额"
             android:textColor="@color/textColorPrimary"
-            android:textSize="@dimen/w24"/>
+            android:textSize="@dimen/w24" />
+
         <TextView
             android:id="@+id/order_total_money_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/textColorPink"
-            android:textSize="@dimen/w32"
             android:text="￥228"
-            />
+            android:textColor="@color/textColorPink"
+            android:textSize="@dimen/w32" />
     </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/h1"
-        android:background="@color/divider_color"/>
+        android:background="@color/divider_color" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/h100"
         android:gravity="right|center_vertical"
         android:paddingLeft="@dimen/w30"
         android:paddingRight="@dimen/w30">
+
         <Button
             android:id="@+id/left_btn"
             android:layout_width="@dimen/w160"
             android:layout_height="@dimen/w60"
+            android:layout_marginRight="@dimen/w30"
             android:background="@drawable/bg_stroke_dark_gray"
+            android:text="取消订单"
             android:textColor="@color/textColorPrimaryGray"
-            android:textSize="@dimen/w26"
-            android:text="马上付款"
-            android:layout_marginRight="@dimen/w30"/>
+            android:textSize="@dimen/w26" />
+
         <Button
             android:id="@+id/right_btn"
             android:layout_width="@dimen/w160"
             android:layout_height="@dimen/w60"
             android:background="@drawable/bg_stroke_pink"
+            android:text="马上付款"
             android:textColor="@color/textColorPink"
-            android:textSize="@dimen/w26"
-            android:text="马上付款"/>
+            android:textSize="@dimen/w26" />
     </LinearLayout>
 </LinearLayout>

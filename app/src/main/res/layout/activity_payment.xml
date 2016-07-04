@@ -23,11 +23,12 @@
             android:textSize="@dimen/w28" />
 
         <TextView
+            android:id="@+id/pay_amount_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/w30"
             android:layout_marginRight="@dimen/w10"
-            android:text="￥198.00"
+            android:text="@string/rmb"
             android:textColor="@color/textColorPink"
             android:textSize="@dimen/w28" />
     </LinearLayout>
@@ -42,6 +43,7 @@
         android:textSize="@dimen/w24" />
 
     <cn.kuailaimei.client.common.widget.MutilRadioGroup
+        android:id="@+id/pay_type_rg"
         android:layout_marginTop="@dimen/h16"
         android:layout_width="match_parent"
         android:layout_height="@dimen/h152"
@@ -49,6 +51,7 @@
         android:background="@color/white">
 
         <LinearLayout
+            android:id="@+id/wx_pay_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -58,10 +61,12 @@
            >
 
             <RadioButton
+                android:id="@+id/wx_rb"
                 android:layout_width="@dimen/w34"
                 android:layout_height="@dimen/w34"
                 android:background="@drawable/sl_payment"
-                android:button="@null" />
+                android:button="@null"
+                android:checked="true"/>
             <ImageView
                 android:layout_width="@dimen/w40"
                 android:layout_height="@dimen/w40"
@@ -82,6 +87,7 @@
             android:background="@color/divider_color" />
 
         <LinearLayout
+            android:id="@+id/zfb_pay_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -90,6 +96,7 @@
             android:paddingRight="@dimen/w30">
 
             <RadioButton
+                android:id="@+id/zfb_rb"
                 android:layout_width="@dimen/w34"
                 android:layout_height="@dimen/w34"
                 android:background="@drawable/sl_payment"
@@ -108,4 +115,13 @@
                 android:text="支付宝支付"/>
         </LinearLayout>
     </cn.kuailaimei.client.common.widget.MutilRadioGroup>
+    <View style="@style/SpaceAutoFit"/>
+    <Button
+        android:id="@+id/commit_btn"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h100"
+        android:textSize="@dimen/w32"
+        android:textColor="@color/white"
+        android:background="@color/textColorPink"
+        android:text="确认支付"/>
 </LinearLayout>

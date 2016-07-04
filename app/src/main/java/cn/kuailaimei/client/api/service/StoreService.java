@@ -28,7 +28,8 @@ import cn.kuailaimei.client.api.response.HomePageResponse;
 import cn.kuailaimei.client.api.response.MyFavoriteResponse;
 import cn.kuailaimei.client.api.response.NearStoreListResposne;
 import cn.kuailaimei.client.api.response.OrderListResponse;
-import cn.kuailaimei.client.api.response.PayInfoResponse;
+import cn.kuailaimei.client.api.response.OrderPayListResponse;
+import cn.kuailaimei.client.api.response.OrderPayResult;
 import cn.kuailaimei.client.api.response.ScoreListResponse;
 import cn.kuailaimei.client.api.response.ShopDetailRequest;
 import cn.kuailaimei.client.api.response.ShopDetailResponse;
@@ -279,7 +280,40 @@ public interface StoreService {
      */
     @POST(NetConstants.ORDER_SUBMIT)
     @Headers("Content-Type:" + RetrofitClient.JSON)
-    Observable<ApiResponse<PayInfoResponse>> commitShopOrder(@Body Request body);
+    Observable<ApiResponse<OrderPayResult>> commitShopOrder(@Body Request body);
+
+    /**
+     * 获取支付类型列表
+     *
+     * @param body
+     * @return
+     * @see cn.kuailaimei.client.api.request.CommitOrderRequest
+     */
+    @POST(NetConstants.ORDER_PAYLIST)
+    @Headers("Content-Type:" + RetrofitClient.JSON)
+    Observable<ApiResponse<OrderPayListResponse>> getOrderPayList(@Body Request body);
+
+    /**
+     * 取消订单
+     *
+     * @param body
+     * @return
+     * @see cn.kuailaimei.client.api.request.OrderIDRequest
+     */
+    @POST(NetConstants.ORDER_ORDERCANCEL)
+    @Headers("Content-Type:" + RetrofitClient.JSON)
+    Observable<ApiResponse> cancelOrder(@Body Request body);
+
+    /**
+     * 未支付订单支付
+     *
+     * @param body
+     * @return
+     * @see cn.kuailaimei.client.api.request.PayRequest
+     */
+    @POST(NetConstants.ORDER_ORDERPAY)
+    @Headers("Content-Type:" + RetrofitClient.JSON)
+    Observable<ApiResponse<OrderPayResult>> doOrderRePay(@Body Request body);
 
 //-------------------------文件上传待修改调试------------------------------
 

@@ -91,6 +91,10 @@
             android:screenOrientation="portrait"/>
         <activity android:name="cn.kuailaimei.client.shop.ui.ConfirmOrderActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name="cn.kuailaimei.client.mine.ui.CommentActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="cn.kuailaimei.client.mine.ui.PayWithExistOrderActivity"
+            android:screenOrientation="portrait"/>
 
         <!-- 百度地图相关配置 start-->
         <meta-data
