@@ -10,14 +10,14 @@ import com.zitech.framework.utils.ViewUtils;
 import com.zitech.framework.widget.ValidDialog;
 
 import cn.kuailaimei.client.R;
-import cn.kuailaimei.client.api.response.PayInfoResponse;
+import cn.kuailaimei.client.api.entity.Order;
 
 /**
  * Created by ymh on 2016/7/4 0004.
  */
 public class PayResultDialog extends ValidDialog{
 
-    private PayInfoResponse.OrderBean orderBean;
+    private Order orderBean;
     private TextView couponcounttv;
     private Button backtohomebtn;
     private Button gotoorderdetailbtn;
@@ -32,7 +32,7 @@ public class PayResultDialog extends ValidDialog{
     }
 
 
-    public PayResultDialog(Context context, PayInfoResponse.OrderBean orderBean) {
+    public PayResultDialog(Context context, Order orderBean) {
         super(context, R.style.CommonDialog);
         this.orderBean = orderBean;
         init();

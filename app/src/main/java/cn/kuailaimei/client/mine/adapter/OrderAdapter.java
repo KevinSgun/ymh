@@ -1,5 +1,6 @@
 package cn.kuailaimei.client.mine.adapter;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,17 +9,26 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import cn.kuailaimei.client.R;
-import cn.kuailaimei.client.api.entity.OrderItem;
-import cn.kuailaimei.client.common.ListAdapter;
-import cn.kuailaimei.client.common.widget.CommonDialog;
-import cn.kuailaimei.client.utils.ViewHolderUtil;
 import com.shizhefei.mvc.IDataAdapter;
+import com.zitech.framework.data.network.IContext;
+import com.zitech.framework.data.network.response.ApiResponse;
+import com.zitech.framework.data.network.subscribe.ProgressSubscriber;
 import com.zitech.framework.transform.RoundedCornersTransformation;
 import com.zitech.framework.utils.ViewUtils;
 import com.zitech.framework.widget.RemoteImageView;
 
 import java.util.List;
+
+import cn.kuailaimei.client.R;
+import cn.kuailaimei.client.api.ApiFactory;
+import cn.kuailaimei.client.api.entity.OrderItem;
+import cn.kuailaimei.client.api.request.OrderIDRequest;
+import cn.kuailaimei.client.api.request.Request;
+import cn.kuailaimei.client.common.ListAdapter;
+import cn.kuailaimei.client.common.widget.CommonDialog;
+import cn.kuailaimei.client.mine.ui.PayWithExistOrderActivity;
+import cn.kuailaimei.client.utils.ToastMaster;
+import cn.kuailaimei.client.utils.ViewHolderUtil;
 
 /**
  * Created by ymh on 2016/7/3 0003.
@@ -35,9 +45,9 @@ public class OrderAdapter extends ListAdapter<OrderItem> implements IDataAdapter
        if(convertView == null){
            convertView = LayoutInflater.from(mContext).inflate(R.layout.item_order,null);
        }
-        OrderItem item = mList.get(position);
+        final OrderItem item = mList.get(position);
         TextView ordernumtv = ViewHolderUtil.get(convertView,R.id.order_num_tv);
-        TextView orderdatetv = ViewHolderUtil.get(convertView,R.id.order_date_tv);
+        final TextView orderdatetv = ViewHolderUtil.get(convertView,R.id.order_date_tv);
         TextView orderstatus = ViewHolderUtil.get(convertView,R.id.order_status);
         RemoteImageView shopiconiv = ViewHolderUtil.get(convertView,R.id.shop_icon_iv);
         TextView  shopnametv = ViewHolderUtil.get(convertView,R.id.shop_name_tv);
@@ -50,8 +60,8 @@ public class OrderAdapter extends ListAdapter<OrderItem> implements IDataAdapter
             shopiconiv.setBitmapTransformation(new RoundedCornersTransformation(mContext, ViewUtils.getDimenPx(R.dimen.w20)));
             shopiconiv.setImageUri(R.mipmap.ic_shop_default,item.getSIcon());
 
-            ordernumtv.setText(item.getOrderId());
-            orderdatetv.setText(item.getAddDate());
+            ordernumtv.setText("订单编号："+item.getOrderId());
+            orderdatetv.setText("下单时间："+item.getAddDate());
             orderstatus.setText(item.getMsg());
             shopnametv.setText(item.getSName());
             consumeritemstv.setText(item.getServiceName());
@@ -78,6 +88,17 @@ public class OrderAdapter extends ListAdapter<OrderItem> implements IDataAdapter
                             @Override
                             public void onClick(Dialog dialog) {
                                 //TODO 取消订单
+                                OrderIDRequest orderIDRequest = new OrderIDRequest();
+                                orderIDRequest.setOrderId(item.getOrderId());
+                                Request request = new Request(orderIDRequest);
+                                request.sign();
+                                ApiFactory.cancelOrder(request).subscribe(new ProgressSubscriber<ApiResponse>((IContext) mContext) {
+                                    @Override
+                                    protected void onNextInActive(ApiResponse apiResponse) {
+                                        ToastMaster.shortToast(apiResponse.getBasic().getMsg());
+                                        notifyDataSetChanged();
+                                    }
+                                });
                             }
                         });
                         dialog.show();
@@ -90,12 +111,13 @@ public class OrderAdapter extends ListAdapter<OrderItem> implements IDataAdapter
                 public void onClick(View view) {
                     if(status == OrderItem.WAIT_PAY){
                         //TODO 马上付款
-//                        PayActivity
+                        PayWithExistOrderActivity.launch((Activity) mContext,item);
                     }else if(status == OrderItem.WAIT_COMMENT){
                         //TODO 发表评价
 //                        CommentActivity
                     }else if(status == OrderItem.COMPLETE){
-                        //TODO 再次购买
+                        //TODO 再次购买，跳转到造型师首页
+
                     }
                 }
             });

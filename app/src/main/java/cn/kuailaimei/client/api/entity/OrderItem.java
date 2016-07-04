@@ -1,6 +1,9 @@
 package cn.kuailaimei.client.api.entity;
 
-public class OrderItem {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class OrderItem implements Parcelable{
     public static final int WAIT_PAY = 1;//待付款
     public static final int WAIT_COMMENT = 2;//待评价
     public static final int COMPLETE = 3;//已完成
@@ -15,6 +18,50 @@ public class OrderItem {
     private String sName;
     private String serviceName;
     private int status;
+
+    protected OrderItem(Parcel in) {
+        addDate = in.readString();
+        amount = in.readFloat();
+        designerName = in.readString();
+        msg = in.readString();
+        orderId = in.readString();
+        sIcon = in.readString();
+        sId = in.readInt();
+        sName = in.readString();
+        serviceName = in.readString();
+        status = in.readInt();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(addDate);
+        dest.writeFloat(amount);
+        dest.writeString(designerName);
+        dest.writeString(msg);
+        dest.writeString(orderId);
+        dest.writeString(sIcon);
+        dest.writeInt(sId);
+        dest.writeString(sName);
+        dest.writeString(serviceName);
+        dest.writeInt(status);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<OrderItem> CREATOR = new Creator<OrderItem>() {
+        @Override
+        public OrderItem createFromParcel(Parcel in) {
+            return new OrderItem(in);
+        }
+
+        @Override
+        public OrderItem[] newArray(int size) {
+            return new OrderItem[size];
+        }
+    };
 
     public String getAddDate() {
         return addDate;

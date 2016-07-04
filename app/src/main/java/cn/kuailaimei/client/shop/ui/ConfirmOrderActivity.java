@@ -13,12 +13,18 @@ import com.zitech.framework.data.network.response.ApiResponse;
 import com.zitech.framework.data.network.subscribe.ProgressSubscriber;
 import com.zitech.framework.utils.ViewUtils;
 
+import java.util.List;
+
 import cn.kuailaimei.client.R;
 import cn.kuailaimei.client.api.ApiFactory;
 import cn.kuailaimei.client.api.entity.CommitOrderInfo;
+import cn.kuailaimei.client.api.entity.Order;
+import cn.kuailaimei.client.api.entity.PayListBean;
 import cn.kuailaimei.client.api.request.CommitOrderRequest;
 import cn.kuailaimei.client.api.request.Request;
-import cn.kuailaimei.client.api.response.PayInfoResponse;
+import cn.kuailaimei.client.api.response.NullDataRequest;
+import cn.kuailaimei.client.api.response.OrderPayListResponse;
+import cn.kuailaimei.client.api.response.OrderPayResult;
 import cn.kuailaimei.client.common.ui.AppBarActivity;
 import cn.kuailaimei.client.common.widget.MutilRadioGroup;
 import cn.kuailaimei.client.common.widget.PayResultDialog;
@@ -58,7 +64,9 @@ public class ConfirmOrderActivity extends AppBarActivity implements MutilRadioGr
     private TextView vipTv;
     private Button commitbtn;
     private PayTools payTools;
-    private PayInfoResponse.OrderBean orderBean;
+    private Order orderBean;
+    private View vipTopLine;
+    private View zfbTopLine;
 
     @Override
     protected int getContentViewId() {
@@ -89,6 +97,8 @@ public class ConfirmOrderActivity extends AppBarActivity implements MutilRadioGr
         assistantLayout = (LinearLayout) findViewById(R.id.assistant_layout);
         assistantLine = findViewById(R.id.assistant_line);
         commitbtn = (Button) findViewById(R.id.commit_btn);
+        vipTopLine = findViewById(R.id.vip_top_line);
+        zfbTopLine = findViewById(R.id.zfb_top_line);
         wxTv = (TextView) findViewById(R.id.wx_tv);
         zfbTv = (TextView) findViewById(R.id.zfb_tv);
         vipTv = (TextView) findViewById(R.id.vip_tv);
@@ -99,13 +109,13 @@ public class ConfirmOrderActivity extends AppBarActivity implements MutilRadioGr
         vippaylayout.setOnClickListener(this);
         commitbtn.setOnClickListener(this);
 
-        payTools  = PayTools.getInstance(this);
+        payTools = PayTools.getInstance(this);
         payTools.setOnPayResultListener(this);
     }
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.wx_pay_layout:
                 paytyperg.check(R.id.wx_rb);
                 break;
@@ -117,7 +127,7 @@ public class ConfirmOrderActivity extends AppBarActivity implements MutilRadioGr
                 break;
             case R.id.commit_btn:
                 //提交訂單
-                if(ViewUtils.isFastDoubleClick()) return;
+                if (ViewUtils.isFastDoubleClick()) return;
                 CommitOrderRequest commitOrderRequest = new CommitOrderRequest();
                 commitOrderRequest.setName(commitOrderInfo.getName());
                 commitOrderRequest.setAmount(commitOrderRequest.getAmount());
@@ -128,22 +138,22 @@ public class ConfirmOrderActivity extends AppBarActivity implements MutilRadioGr
                 commitOrderRequest.setPayId(payType);
                 Request request = new Request(commitOrderRequest);
                 request.sign();
-                ApiFactory.commitShopOrder(request).subscribe(new ProgressSubscriber<ApiResponse<PayInfoResponse>>(this) {
+                ApiFactory.commitShopOrder(request).subscribe(new ProgressSubscriber<ApiResponse<OrderPayResult>>(this) {
                     @Override
-                    protected void onNextInActive(ApiResponse<PayInfoResponse> response) {
+                    protected void onNextInActive(ApiResponse<OrderPayResult> response) {
                         String payInfo = "";
-                        try{
-                           payInfo = response.getData().getPayInfo().getPayInfo();
+                        try {
+                            payInfo = response.getData().getPayInfo().getPayInfo();
                             orderBean = response.getData().getOrder();
-                       }catch (NullPointerException ignored){
+                        } catch (NullPointerException ignored) {
 
-                       }
+                        }
 
-                        if(PayTools.WX_WAY.equals(payType)){
+                        if (PayTools.WX_WAY.equals(payType)) {
 //                            payTools.payByWX();
-                        }else if(PayTools.ZFB_WAY.equals(payType)){
-                              payTools.payByZFB(payInfo);
-                        }else if(VIP_WAY.equals(payType)){
+                        } else if (PayTools.ZFB_WAY.equals(payType)) {
+                            payTools.payByZFB(payInfo);
+                        } else if (VIP_WAY.equals(payType)) {
                             ToastMaster.shortToast(response.getBasic().getMsg());
                             showResultDialog();
                         }
@@ -154,14 +164,14 @@ public class ConfirmOrderActivity extends AppBarActivity implements MutilRadioGr
     }
 
     private void showResultDialog() {
-        PayResultDialog payResultDialog = new PayResultDialog(ConfirmOrderActivity.this,orderBean);
+        PayResultDialog payResultDialog = new PayResultDialog(ConfirmOrderActivity.this, orderBean);
         payResultDialog.setOnButtonClickListener(new PayResultDialog.OnButtonClickListener() {
             @Override
             public void onButtonClick(PayResultDialog.StuffType stuffType) {
-                if(stuffType == PayResultDialog.StuffType.GO_MAIN_ACT){
+                if (stuffType == PayResultDialog.StuffType.GO_MAIN_ACT) {
                     MainActivity.launch(ConfirmOrderActivity.this);
-                }else{
-                    MyOrderListActivity.launch(ConfirmOrderActivity.this,2);
+                } else {
+                    MyOrderListActivity.launch(ConfirmOrderActivity.this, 2);
                 }
             }
         });
@@ -182,7 +192,7 @@ public class ConfirmOrderActivity extends AppBarActivity implements MutilRadioGr
 
     @Override
     public void onCheckedChanged(MutilRadioGroup group, int checkedId) {
-        switch (checkedId){
+        switch (checkedId) {
             case R.id.wx_rb:
                 payType = PayTools.WX_WAY;
                 wxpaylayout.setBackgroundColor(getResources().getColor(R.color.transparent_pink));
@@ -218,33 +228,86 @@ public class ConfirmOrderActivity extends AppBarActivity implements MutilRadioGr
 
     @Override
     protected void initData() {
-        if(commitOrderInfo!=null){
+        if (commitOrderInfo != null) {
             serviceitemstv.setText(commitOrderInfo.getName());
-            if(TextUtils.isEmpty(commitOrderInfo.getmId1())){
+            if (TextUtils.isEmpty(commitOrderInfo.getmId1())) {
                 assistantLayout.setVisibility(View.GONE);
                 assistantLine.setVisibility(View.GONE);
-            }else{
+            } else {
                 assistantLayout.setVisibility(View.VISIBLE);
                 assistantLine.setVisibility(View.VISIBLE);
-                assistantnametv.setText(commitOrderInfo.getmId1()+"  "+commitOrderInfo.getAssistantName());
+                assistantnametv.setText(commitOrderInfo.getmId1() + "  " + commitOrderInfo.getAssistantName());
             }
-            designernametv.setText(commitOrderInfo.getmId()+"  "+commitOrderInfo.getDesignName());
+            designernametv.setText(commitOrderInfo.getmId() + "  " + commitOrderInfo.getDesignName());
             consumertipstv.setText(commitOrderInfo.getContent());
-            consumermoneytv.setText(String.format(getString(R.string.rmb),commitOrderInfo.getAmount()));
-        }else {
+            consumermoneytv.setText(String.format(getString(R.string.rmb), commitOrderInfo.getAmount()));
+        } else {
             ToastMaster.shortToast("订单信息错误");
             finish();
+        }
+
+        Request request = new Request(new NullDataRequest());
+        ApiFactory.getOrderPayList(request).subscribe(new ProgressSubscriber<ApiResponse<OrderPayListResponse>>(this) {
+            @Override
+            protected void onNextInActive(ApiResponse<OrderPayListResponse> response) {
+                List<PayListBean> payList = response.getData().getPayList();
+                refreshPayListUI(payList);
+            }
+        });
+    }
+
+    private void refreshPayListUI(List<PayListBean> payList) {
+        String wxType = null;
+        String zfbType = null;
+        String vipType = null;
+        for (PayListBean bean : payList) {
+            if (PayTools.WX_WAY.equals(bean.getValue())) {
+                wxType = PayTools.WX_WAY;
+                wxpaytipstv.setText(bean.getRemark());
+            }
+
+            if (PayTools.ZFB_WAY.equals(bean.getValue())) {
+                zfbType = PayTools.ZFB_WAY;
+                zfbpaytipstv.setText(bean.getRemark());
+            }
+
+            if (VIP_WAY.equals(bean.getValue())) {
+                vipType = VIP_WAY;
+                vippaytipstv.setText(bean.getRemark());
+            }
+
+        }
+        if (PayTools.WX_WAY.equals(wxType)) {
+           wxpaylayout.setVisibility(View.VISIBLE);
+            zfbTopLine.setVisibility(View.VISIBLE);
+        }else{
+            wxpaylayout.setVisibility(View.GONE);
+            zfbTopLine.setVisibility(View.GONE);
+        }
+
+        if (PayTools.ZFB_WAY.equals(zfbType)) {
+            zfbpaylayout.setVisibility(View.VISIBLE);
+            vipTopLine.setVisibility(View.VISIBLE);
+        }else{
+            zfbpaylayout.setVisibility(View.GONE);
+            vipTopLine.setVisibility(View.GONE);
+        }
+
+        if (VIP_WAY.equals(vipType)) {
+            vippaylayout.setVisibility(View.VISIBLE);
+        }else{
+            vippaylayout.setVisibility(View.GONE);
+            vipTopLine.setVisibility(View.GONE);
         }
     }
 
     /**
-     *
      * @param act
      * @param commitOrderInfo 提交訂單時需要的信息
      */
-    public static void launch(Activity act, CommitOrderInfo commitOrderInfo){
-        Intent intent = new Intent(act,ConfirmOrderActivity.class);
-        intent.putExtra(COMMIT_ORDER_INFO,commitOrderInfo);
+    public static void launch(Activity act, CommitOrderInfo commitOrderInfo) {
+        Intent intent = new Intent(act, ConfirmOrderActivity.class);
+        intent.putExtra(COMMIT_ORDER_INFO, commitOrderInfo);
         act.startActivity(intent);
     }
 

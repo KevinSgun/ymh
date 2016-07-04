@@ -24,14 +24,13 @@
         android:resizeable="true"
         android:smallScreens="true" />
     <application
-        android:name="cn.kuailaimei.client.BeautApplication"
         android:allowBackup="true"
         android:icon="@mipmap/logo"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity
-            android:name="cn.kuailaimei.client.home.ui.MainActivity"
+        android:theme="@style/AppTheme"
+        android:name="cn.kuailaimei.client.BeautApplication">
+        <activity android:name="cn.kuailaimei.client.home.ui.MainActivity"
             android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -39,35 +38,29 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="cn.kuailaimei.client.home.ui.BeautyActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="cn.kuailaimei.client.shop.ui.ShopHomeActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="cn.kuailaimei.client.shop.ui.DesignerHomeActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="cn.kuailaimei.client.login.ui.RegisterActivity"
+        <activity android:name="cn.kuailaimei.client.home.ui.BeautyActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize|stateVisible" />
+       />
+        <activity android:name="cn.kuailaimei.client.shop.ui.ShopHomeActivity"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name="cn.kuailaimei.client.login.ui.RegisterActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateVisible"/>
 
-        <activity
-            android:name="cn.kuailaimei.client.login.ui.ModifyPassWordActivity"
+        <activity android:name="cn.kuailaimei.client.login.ui.ModifyPassWordActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize|stateVisible" />
+            android:windowSoftInputMode="adjustResize|stateVisible"/>
 
-        <activity
-            android:name="cn.kuailaimei.client.login.ui.ForgetPassWordActivity"
+        <activity android:name="cn.kuailaimei.client.login.ui.ForgetPassWordActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize|stateVisible" />
-        <activity
-            android:name="cn.kuailaimei.client.login.ui.LoginActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="cn.kuailaimei.client.mine.ui.ProfileInfoActivity"
-            android:screenOrientation="portrait" />
+            android:windowSoftInputMode="adjustResize|stateVisible"/>
+        <activity android:name="cn.kuailaimei.client.login.ui.LoginActivity"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name="cn.kuailaimei.client.mine.ui.ProfileInfoActivity"
+            android:screenOrientation="portrait"
+            />
         <activity
             android:name="cn.kuailaimei.client.common.ui.PhotoDirActivity"
             android:screenOrientation="portrait" />
@@ -77,36 +70,31 @@
         <activity
             android:name="cn.kuailaimei.client.common.ui.PhotoGridActivity"
             android:screenOrientation="portrait" />
-        <activity
-            android:name="cn.kuailaimei.client.mine.ui.AboutUsActivity"
-            android:screenOrientation="portrait" />
+        <activity android:name="cn.kuailaimei.client.mine.ui.AboutUsActivity"
+            android:screenOrientation="portrait"/>
 
-        <activity
-            android:name="cn.kuailaimei.client.mine.ui.FeedBackActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize|stateVisible" />
-        <activity
-            android:name="cn.kuailaimei.client.mine.ui.SettingActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="cn.kuailaimei.client.mine.ui.MyScoreActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="cn.kuailaimei.client.mine.ui.OrderListActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="cn.kuailaimei.client.mine.ui.MyFavoriteActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="cn.kuailaimei.client.mine.ui.MyOrderListActivity"
+        <activity android:name="cn.kuailaimei.client.mine.ui.FeedBackActivity"
+            android:windowSoftInputMode="adjustResize|stateVisible"
+            android:screenOrientation="portrait"/>
+        <activity android:name="cn.kuailaimei.client.mine.ui.SettingActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="cn.kuailaimei.client.mine.ui.MyScoreActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="cn.kuailaimei.client.mine.ui.OrderListActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="cn.kuailaimei.client.mine.ui.MyFavoriteActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="cn.kuailaimei.client.mine.ui.MyOrderListActivity"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="cn.kuailaimei.client.mall.ui.ScoreOrderDetailActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="cn.kuailaimei.client.shop.ui.ConfirmOrderActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
+        <activity android:name="cn.kuailaimei.client.mall.ui.ScoreOrderDetailActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="cn.kuailaimei.client.shop.ui.ConfirmOrderActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="cn.kuailaimei.client.mine.ui.CommentActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="cn.kuailaimei.client.mine.ui.PayWithExistOrderActivity"
+            android:screenOrientation="portrait"/>
 
         <!-- 百度地图相关配置 start-->
         <meta-data
@@ -115,7 +103,8 @@
         <service
             android:name="com.baidu.location.f"
             android:enabled="true"
-            android:process=":remote"></service>
+            android:process=":remote" >
+        </service>
         <!-- 百度地图相关配置 end-->
 
         <!-- alipay sdk begin -->
@@ -124,7 +113,8 @@
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
             android:exported="false"
             android:screenOrientation="behind"
-            android:windowSoftInputMode="adjustResize|stateHidden"></activity>
+            android:windowSoftInputMode="adjustResize|stateHidden" >
+        </activity>
         <!-- alipay sdk end -->
         <!-- wxpay begin -->
         <activity
@@ -133,12 +123,13 @@
             android:launchMode="singleTop"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
-        <receiver android:name="cn.kuailaimei.client.wxapi.AppRegister">
+        <receiver android:name="cn.kuailaimei.client.wxapi.AppRegister" >
             <intent-filter>
                 <action android:name="com.tencent.mm.plugin.openapi.Intent.ACTION_REFRESH_WXAPP" />
             </intent-filter>
         </receiver>
         <!-- wxpay end -->
+
 
 
     </application>

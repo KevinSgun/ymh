@@ -5,26 +5,23 @@ import com.zitech.framework.data.network.RetrofitClient;
 import com.zitech.framework.data.network.response.ApiResponse;
 import com.zitech.framework.data.network.response.FileUploadResponse;
 import com.zitech.framework.data.network.subscribe.SchedulersCompat;
-
 import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import cn.kuailaimei.client.api.request.IDRequest;
 import cn.kuailaimei.client.api.request.ModifyPsdRequest;
 import cn.kuailaimei.client.api.request.OrderListRequest;
 import cn.kuailaimei.client.api.request.PageRequest;
 import cn.kuailaimei.client.api.request.Request;
 import cn.kuailaimei.client.api.request.SIDRequest;
-import cn.kuailaimei.client.api.response.DesignerDetail;
 import cn.kuailaimei.client.api.response.FilePathResponse;
 import cn.kuailaimei.client.api.response.GetwayResponse;
 import cn.kuailaimei.client.api.response.HomePageResponse;
 import cn.kuailaimei.client.api.response.MyFavoriteResponse;
 import cn.kuailaimei.client.api.response.NearStoreListResposne;
 import cn.kuailaimei.client.api.response.OrderListResponse;
-import cn.kuailaimei.client.api.response.PayInfoResponse;
+import cn.kuailaimei.client.api.response.OrderPayListResponse;
+import cn.kuailaimei.client.api.response.OrderPayResult;
 import cn.kuailaimei.client.api.response.ScoreListResponse;
 import cn.kuailaimei.client.api.response.ShopDetailResponse;
 import cn.kuailaimei.client.api.response.ShopListResponse;
@@ -36,9 +33,6 @@ import cn.kuailaimei.client.api.service.StoreService;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
-import retrofit2.http.Body;
-import retrofit2.http.Headers;
-import retrofit2.http.POST;
 import rx.Observable;
 
 /**
@@ -288,24 +282,48 @@ public class ApiFactory {
     public static Observable<ApiResponse> deleteFavorite(Request request) {
         return getStoreService().deleteFavorite(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
     }
+
     /**
-     * 技师详细信息
-     *
-     * @param request
-     * @return
-     * @see IDRequest
-     */
-    public static Observable<ApiResponse<DesignerDetail>> getDesignerDetail(Request request) {
-        return getStoreService().getDesignerDetail(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
-    }
-    /**
-     * 提交店铺订单信息
+     * 提交店铺订单
      *
      * @param request
      * @return
      * @see cn.kuailaimei.client.api.request.CommitOrderRequest
      */
-    public static Observable<ApiResponse<PayInfoResponse>> commitShopOrder(Request request) {
+    public static Observable<ApiResponse<OrderPayResult>> commitShopOrder(Request request) {
         return getStoreService().commitShopOrder(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
+    }
+
+    /**
+     * 获取支付类型列表
+     *
+     * @param request
+     * @return
+     * @see cn.kuailaimei.client.api.request.Request
+     */
+    public static Observable<ApiResponse<OrderPayListResponse>> getOrderPayList(Request request) {
+        return getStoreService().getOrderPayList(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
+    }
+
+    /**
+     * 取消订单
+     *
+     * @param request
+     * @return
+     * @see cn.kuailaimei.client.api.request.OrderIDRequest
+     */
+    public static Observable<ApiResponse> cancelOrder(Request request) {
+        return getStoreService().cancelOrder(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
+    }
+
+    /**
+     * 未支付订单支付
+     *
+     * @param request
+     * @return
+     * @see cn.kuailaimei.client.api.request.PayRequest
+     */
+    public static Observable<ApiResponse<OrderPayResult>> doOrderRePay(Request request) {
+        return getStoreService().doOrderRePay(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
     }
 }
