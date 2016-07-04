@@ -326,4 +326,15 @@ public class ApiFactory {
     public static Observable<ApiResponse<OrderPayResult>> doOrderRePay(Request request) {
         return getStoreService().doOrderRePay(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
     }
+
+    /**
+     * 发表评论
+     *
+     * @param request
+     * @return
+     * @see cn.kuailaimei.client.api.request.OrderCommentRequest
+     */
+    public static Observable<ApiResponse> orderComment(Request request) {
+        return getStoreService().orderComment(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
+    }
 }

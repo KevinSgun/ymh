@@ -315,6 +315,17 @@ public interface StoreService {
     @Headers("Content-Type:" + RetrofitClient.JSON)
     Observable<ApiResponse<OrderPayResult>> doOrderRePay(@Body Request body);
 
+    /**
+     *
+     *
+     * @param body
+     * @return
+     * @see cn.kuailaimei.client.api.request.OrderCommentRequest
+     */
+    @POST(NetConstants.ORDER_EVALUATE)
+    @Headers("Content-Type:" + RetrofitClient.JSON)
+    Observable<ApiResponse> orderComment(@Body Request body);
+
 //-------------------------文件上传待修改调试------------------------------
 
     /**

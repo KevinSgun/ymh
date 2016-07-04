@@ -11,6 +11,8 @@ import android.widget.TextView;
 import com.zitech.framework.data.network.response.ApiResponse;
 import com.zitech.framework.data.network.subscribe.ProgressSubscriber;
 
+import org.greenrobot.eventbus.EventBus;
+
 import cn.kuailaimei.client.Constants;
 import cn.kuailaimei.client.R;
 import cn.kuailaimei.client.api.ApiFactory;
@@ -19,6 +21,7 @@ import cn.kuailaimei.client.api.entity.OrderItem;
 import cn.kuailaimei.client.api.request.PayRequest;
 import cn.kuailaimei.client.api.request.Request;
 import cn.kuailaimei.client.api.response.OrderPayResult;
+import cn.kuailaimei.client.common.event.EventFactory;
 import cn.kuailaimei.client.common.ui.AppBarActivity;
 import cn.kuailaimei.client.common.widget.MutilRadioGroup;
 import cn.kuailaimei.client.common.widget.PayResultDialog;
@@ -132,10 +135,16 @@ public class PayWithExistOrderActivity extends AppBarActivity implements MutilRa
 
     @Override
     public void failedPayResult(String payType, String message) {
+        EventFactory.OrderListDataChange orerdata = new EventFactory.OrderListDataChange();
+        orerdata.status = "1";
+        EventBus.getDefault().post(orerdata);
         ToastMaster.shortToast(message);
     }
 
     private void showResultDialog() {
+        EventFactory.OrderListDataChange orerdata = new EventFactory.OrderListDataChange();
+        orerdata.status = "2";
+        EventBus.getDefault().post(orerdata);
         PayResultDialog payResultDialog = new PayResultDialog(PayWithExistOrderActivity.this, orderBean);
         payResultDialog.setOnButtonClickListener(new PayResultDialog.OnButtonClickListener() {
             @Override

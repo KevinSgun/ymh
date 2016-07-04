@@ -84,7 +84,7 @@
         <item name="android:layout_weight">1</item>
     </style>
 
-    <style name="CommentEditStyle" parent="CommonTextPrimary">
+    <style name="CommentEditStyle" parent="TextBlank.Medium">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/w95</item>
         <item name="android:layout_marginLeft">@dimen/w50</item>

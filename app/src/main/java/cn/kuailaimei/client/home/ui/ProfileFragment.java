@@ -4,6 +4,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.zitech.framework.data.network.response.ApiResponse;
+import com.zitech.framework.data.network.subscribe.ProgressSubscriber;
+import com.zitech.framework.transform.CropCircleTransformation;
+import com.zitech.framework.utils.ViewUtils;
+import com.zitech.framework.widget.RemoteImageView;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+
 import cn.kuailaimei.client.R;
 import cn.kuailaimei.client.api.ApiFactory;
 import cn.kuailaimei.client.api.request.Request;
@@ -19,17 +28,9 @@ import cn.kuailaimei.client.mine.ui.AboutUsActivity;
 import cn.kuailaimei.client.mine.ui.FeedBackActivity;
 import cn.kuailaimei.client.mine.ui.MyFavoriteActivity;
 import cn.kuailaimei.client.mine.ui.MyOrderListActivity;
-import cn.kuailaimei.client.mine.ui.ProfileInfoActivity;
 import cn.kuailaimei.client.mine.ui.MyScoreActivity;
+import cn.kuailaimei.client.mine.ui.ProfileInfoActivity;
 import cn.kuailaimei.client.mine.ui.SettingActivity;
-import com.zitech.framework.data.network.response.ApiResponse;
-import com.zitech.framework.data.network.subscribe.ProgressSubscriber;
-import com.zitech.framework.transform.CropCircleTransformation;
-import com.zitech.framework.utils.ViewUtils;
-import com.zitech.framework.widget.RemoteImageView;
-
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
 
 /**
  * Created by lu on 2016/6/17.
@@ -70,7 +71,7 @@ public class ProfileFragment extends BaseFragment implements OnRippleCompleteLis
     }
 
     @Subscribe
-    public void onMainThreadOrderInfo() {
+    public void onMainThreadOrderInfo(EventFactory.OrderCountDataChange data) {
         requestOrderInfo();
     }
 

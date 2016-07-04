@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/action_bar_height"
+        android:background="@color/bg_color"
+        android:paddingRight="@dimen/w30">
+
+        <TextView
+            android:id="@+id/cancel_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="left"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="@dimen/w30"
+            android:text="取消"
+            android:textColor="@color/textColorPink"
+            android:textSize="@dimen/w40" />
+
+        <TextView
+            android:id="@+id/action_bar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:maxWidth="@dimen/w450"
+            android:text="订单评价"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="@dimen/w40" />
+
+        <Button
+            android:id="@+id/post_btn"
+            style="@style/CommentButtonStyle"
+            android:layout_width="@dimen/w125"
+            android:layout_height="@dimen/w63"
+            android:layout_gravity="right|center_vertical"
+            android:layout_marginTop="0dp"
+            android:text="发表" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/w1"
+            android:layout_gravity="bottom"
+            android:background="@color/divider_color" />
+    </FrameLayout>
+
+    <TextView
+        style="@style/TextBlank.Medium"
+        android:padding="@dimen/w30"
+        android:text="请对服务做出评价" />
+
+    <RadioGroup
+        android:id="@+id/comment_rg"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/w66"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/w30">
+
+        <RadioButton
+            android:id="@+id/positive_rb"
+            android:layout_width="@dimen/w150"
+            android:layout_height="match_parent"
+            android:background="@drawable/sl_evaluate_positive"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center"
+            android:text="很满意"
+            android:textColor="@color/evaluation_positive_text_color" />
+        <RadioButton
+            android:id="@+id/just_so_so_rb"
+            android:layout_width="@dimen/w150"
+            android:layout_height="match_parent"
+            android:background="@drawable/sl_evaluate_positive"
+            android:layout_marginLeft="@dimen/w30"
+            android:button="@null"
+            android:gravity="center"
+            android:text="满意"
+            android:textColor="@color/evaluation_positive_text_color" />
+        <RadioButton
+            android:id="@+id/negative_rb"
+            android:layout_width="@dimen/w150"
+            android:layout_height="match_parent"
+            android:background="@drawable/sl_evaluate_negative"
+            android:layout_marginLeft="@dimen/w30"
+            android:button="@null"
+            android:gravity="center"
+            android:text="不满意"
+            android:textColor="@color/evaluation_negative_text_color" />
+    </RadioGroup>
+
+    <View style="@style/DividerHorizontalLine"/>
+
+    <EditText
+        android:id="@+id/commentt_et"
+        style="@style/CommentEditStyle"
+        android:layout_marginLeft="0dp"
+        android:layout_height="@dimen/w500"
+        android:padding="@dimen/w30"
+        android:maxLength="200"
+        android:gravity="left"
+        android:hint="亲，给我么的服务做出详细评价吧"/>
+    <View android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/bg_color"/>
+</LinearLayout>

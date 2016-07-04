@@ -26,4 +26,11 @@ public class EventFactory {
     public static class OrderCountDataChange{
 
     }
+
+    /**
+     * 订单列表信息改变
+     */
+    public static class OrderListDataChange{
+        public String status = "-1";
+    }
 }

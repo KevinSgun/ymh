@@ -13,6 +13,8 @@ import com.zitech.framework.data.network.response.ApiResponse;
 import com.zitech.framework.data.network.subscribe.ProgressSubscriber;
 import com.zitech.framework.utils.ViewUtils;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.util.List;
 
 import cn.kuailaimei.client.R;
@@ -25,6 +27,7 @@ import cn.kuailaimei.client.api.request.Request;
 import cn.kuailaimei.client.api.response.NullDataRequest;
 import cn.kuailaimei.client.api.response.OrderPayListResponse;
 import cn.kuailaimei.client.api.response.OrderPayResult;
+import cn.kuailaimei.client.common.event.EventFactory;
 import cn.kuailaimei.client.common.ui.AppBarActivity;
 import cn.kuailaimei.client.common.widget.MutilRadioGroup;
 import cn.kuailaimei.client.common.widget.PayResultDialog;
@@ -164,6 +167,9 @@ public class ConfirmOrderActivity extends AppBarActivity implements MutilRadioGr
     }
 
     private void showResultDialog() {
+        EventFactory.OrderListDataChange orerdata = new EventFactory.OrderListDataChange();
+        orerdata.status = "2";
+        EventBus.getDefault().post(orerdata);
         PayResultDialog payResultDialog = new PayResultDialog(ConfirmOrderActivity.this, orderBean);
         payResultDialog.setOnButtonClickListener(new PayResultDialog.OnButtonClickListener() {
             @Override
@@ -187,6 +193,9 @@ public class ConfirmOrderActivity extends AppBarActivity implements MutilRadioGr
 
     @Override
     public void failedPayResult(String payType, String message) {
+        EventFactory.OrderListDataChange orerdata = new EventFactory.OrderListDataChange();
+        orerdata.status = "1";
+        EventBus.getDefault().post(orerdata);
         ToastMaster.shortToast(message);
     }
 
