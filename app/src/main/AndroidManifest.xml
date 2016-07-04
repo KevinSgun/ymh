@@ -25,7 +25,7 @@
         android:smallScreens="true" />
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/logo"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
@@ -87,6 +87,9 @@
             android:screenOrientation="portrait"/>
         <activity android:name="cn.kuailaimei.client.mall.ui.ScoreOrderDetailActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name="cn.kuailaimei.client.shop.ui.ConfirmOrderActivity"
+            android:screenOrientation="portrait"/>
+
         <!-- 百度地图相关配置 start-->
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
@@ -107,6 +110,21 @@
             android:windowSoftInputMode="adjustResize|stateHidden" >
         </activity>
         <!-- alipay sdk end -->
+        <!-- wxpay begin -->
+        <activity
+            android:name="cn.kuailaimei.client.wxapi.WXPayEntryActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <receiver android:name="cn.kuailaimei.client.wxapi.AppRegister" >
+            <intent-filter>
+                <action android:name="com.tencent.mm.plugin.openapi.Intent.ACTION_REFRESH_WXAPP" />
+            </intent-filter>
+        </receiver>
+        <!-- wxpay end -->
+
+
 
     </application>
 

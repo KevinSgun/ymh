@@ -14,6 +14,13 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.baidu.location.BDLocation;
+import com.zitech.framework.data.network.response.ApiResponse;
+import com.zitech.framework.data.network.subscribe.ProgressSubscriber;
+import com.zitech.framework.utils.ViewUtils;
+import com.zitech.framework.widget.RemoteImageView;
+
+import java.util.List;
+
 import cn.kuailaimei.client.Constants;
 import cn.kuailaimei.client.R;
 import cn.kuailaimei.client.api.ApiFactory;
@@ -34,14 +41,9 @@ import cn.kuailaimei.client.common.widget.RippleView;
 import cn.kuailaimei.client.home.adapter.HomeDataAdapter;
 import cn.kuailaimei.client.map.BaiduMapHelper;
 import cn.kuailaimei.client.map.LocationCallBack;
+import cn.kuailaimei.client.shop.ui.ConfirmOrderActivity;
 import cn.kuailaimei.client.shop.ui.ShopHomeActivity;
 import cn.kuailaimei.client.utils.ToastMaster;
-import com.zitech.framework.data.network.response.ApiResponse;
-import com.zitech.framework.data.network.subscribe.ProgressSubscriber;
-import com.zitech.framework.utils.ViewUtils;
-import com.zitech.framework.widget.RemoteImageView;
-
-import java.util.List;
 
 /**
  * Created by lu on 2016/6/16.
@@ -276,6 +278,7 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
                 BeautyActivity.launch(getActivity(), serviceId, "我要美发");
                 break;
             case R.id.consumer_record_layout:
+                //TODO 进入消费过的店铺首页
                 ToastMaster.shortToast("消费过的店铺");
                 break;
 

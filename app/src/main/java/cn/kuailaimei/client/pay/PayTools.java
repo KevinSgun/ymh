@@ -10,9 +10,9 @@ import android.text.TextUtils;
  * */
 public class PayTools {
 	/** 支付宝支付方式*/
-	public static final String ZFB_WAY = "1";
+	public static final String ZFB_WAY = "2";
 	/** 微信支付方式*/
-	public static final String WX_WAY = "2";
+	public static final String WX_WAY = "1";
 
 	protected static final int ZFB_PAY_FLAG = 0x1010;
 	private static PayTools mInstance;

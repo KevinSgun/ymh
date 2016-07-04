@@ -11,17 +11,6 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import cn.kuailaimei.client.R;
-import cn.kuailaimei.client.api.ApiFactory;
-import cn.kuailaimei.client.api.request.Request;
-import cn.kuailaimei.client.api.request.UpdateProfileRequest;
-import cn.kuailaimei.client.api.response.FilePathResponse;
-import cn.kuailaimei.client.common.User;
-import cn.kuailaimei.client.common.ui.PhotoPickingActivity;
-import cn.kuailaimei.client.common.widget.CommonDialog;
-import cn.kuailaimei.client.common.widget.ToolBarHelper;
-import cn.kuailaimei.client.utils.DateUtil;
-import cn.kuailaimei.client.utils.ToastMaster;
 import com.zitech.framework.data.network.entity.Basic;
 import com.zitech.framework.data.network.response.ApiResponse;
 import com.zitech.framework.data.network.response.FileUploadResponse;
@@ -33,6 +22,17 @@ import com.zitech.framework.widget.RemoteImageView;
 import java.io.File;
 import java.util.Calendar;
 
+import cn.kuailaimei.client.R;
+import cn.kuailaimei.client.api.ApiFactory;
+import cn.kuailaimei.client.api.request.Request;
+import cn.kuailaimei.client.api.request.UpdateProfileRequest;
+import cn.kuailaimei.client.api.response.FilePathResponse;
+import cn.kuailaimei.client.common.User;
+import cn.kuailaimei.client.common.ui.PhotoPickingActivity;
+import cn.kuailaimei.client.common.widget.CommonDialog;
+import cn.kuailaimei.client.common.widget.ToolBarHelper;
+import cn.kuailaimei.client.utils.DateUtil;
+import cn.kuailaimei.client.utils.ToastMaster;
 import ics.datepicker.ICSDatePickerDialog;
 
 /**

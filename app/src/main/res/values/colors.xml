@@ -12,4 +12,5 @@
     <color name="divider_color_dark">#979797</color>
     <color name="title_layout_color">#f9f9f8</color>
     <color name="light_gray">#eeeeee</color>
+    <color name="transparent_pink">#50ff63a5</color>
 </resources>
