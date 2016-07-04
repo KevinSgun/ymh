@@ -26,7 +26,9 @@ import android.widget.TextView;
 
 import cn.kuailaimei.client.R;
 import cn.kuailaimei.client.api.entity.Employee;
+import cn.kuailaimei.client.shop.ui.DesignerHomeActivity;
 import cn.kuailaimei.client.utils.ToastMaster;
+
 import com.zitech.framework.widget.RemoteImageView;
 
 import java.util.ArrayList;
@@ -46,12 +48,18 @@ public class DesignerRecycleViewAdapter extends RecyclerView.Adapter<DesignerRec
 
     @Override
     public DesignerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new DesignerViewHolder(inflater.inflate(R.layout.item_shop_search_result, parent, false));
+        return new DesignerViewHolder(inflater.inflate(R.layout.item_assistant_order, parent, false));
     }
 
     @Override
     public void onBindViewHolder(DesignerViewHolder holder, int position) {
         final Employee employee = employeeList.get(position);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DesignerHomeActivity.launch(mContext, String.valueOf(employee.getUid()));
+            }
+        });
         RemoteImageView avatar = holder.avatar;
         TextView name = holder.name;
         TextView tag = holder.tag;
@@ -88,6 +96,7 @@ public class DesignerRecycleViewAdapter extends RecyclerView.Adapter<DesignerRec
 
         public DesignerViewHolder(View view) {
             super(view);
+            name = (TextView) view.findViewById(R.id.name);
             avatar = (RemoteImageView) view.findViewById(R.id.avatar);
             tag = (TextView) view.findViewById(R.id.tag);
             rate = (TextView) view.findViewById(R.id.rate);

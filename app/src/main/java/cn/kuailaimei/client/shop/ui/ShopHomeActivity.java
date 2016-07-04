@@ -19,6 +19,7 @@ import cn.kuailaimei.client.api.response.ShopDetailRequest;
 import cn.kuailaimei.client.api.response.ShopDetailResponse;
 import cn.kuailaimei.client.common.ui.AppBarActivity;
 import cn.kuailaimei.client.home.adapter.DesignerRecycleViewAdapter;
+
 import com.zitech.framework.data.network.response.ApiResponse;
 import com.zitech.framework.data.network.subscribe.ProgressSubscriber;
 import com.zitech.framework.widget.RemoteImageView;
@@ -40,13 +41,13 @@ public class ShopHomeActivity extends AppBarActivity {
     //    private MutilRadioGroup reviewChooser;
     //    private CollapsingToolbarLayout collapsingtoolbar;
     private AppBarLayout appbarLayout;
-    private ViewAnimator designersPager;
+    //    private ViewAnimator designersPager;
     private RadioGroup typeChooser;
     private RadioButton salonChoice;
     private RadioButton beautyChoice;
     private String id;
-    private RecyclerView allOrSalonList;
-    private RecyclerView beautyList;
+    private RecyclerView salonList;
+//    private RecyclerView beautyList;
 
 
     @Override
@@ -59,7 +60,7 @@ public class ShopHomeActivity extends AppBarActivity {
         setTitle("快来美");
         this.beautyChoice = (RadioButton) findViewById(R.id.beauty_choice);
         this.salonChoice = (RadioButton) findViewById(R.id.salon_choice);
-        this.designersPager = (ViewAnimator) findViewById(R.id.designers_pager);
+//        this.designersPager = (ViewAnimator) findViewById(R.id.designers_pager);
         this.appbarLayout = (AppBarLayout) findViewById(R.id.app_bar_layout);
 //        this.collapsingtoolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
 //        this.reviewChooser = (MutilRadioGroup) findViewById(R.id.review_chooser);
@@ -73,14 +74,15 @@ public class ShopHomeActivity extends AppBarActivity {
         this.shopHours = (TextView) findViewById(R.id.shop_hours);
         this.shopName = (TextView) findViewById(R.id.shop_name);
         this.shopImg = (RemoteImageView) findViewById(R.id.img_store);
-        this.allOrSalonList = (RecyclerView) findViewById(R.id.salon_list);
-        this.beautyList = (RecyclerView) findViewById(R.id.beauty_list);
-        allOrSalonList.setLayoutManager(new GridLayoutManager(this, 2));
-        beautyList.setLayoutManager(new GridLayoutManager(this, 2));
+        this.salonList = (RecyclerView) findViewById(R.id.salon_list);
+        this.typeChooser = (RadioGroup) findViewById(R.id.type_chooser);
+//        this.beautyList = (RecyclerView) findViewById(R.id.beauty_list);
+        salonList.setLayoutManager(new GridLayoutManager(this, 2));
+//        beautyList.setLayoutManager(new GridLayoutManager(this, 2));
 
     }
 
-    private void render(ShopDetailResponse response) {
+    private void render(final ShopDetailResponse response) {
         ShopInfo shopInfo = response.getStoreInfo();//.getPerfectCount();
         allReviews.setText("全部(" + shopInfo.getAllComment() + ")");
         highPositiveReviews.setText("很满意(" + shopInfo.getPerfectCount() + ")");
@@ -94,16 +96,45 @@ public class ShopHomeActivity extends AppBarActivity {
 //        salonList.setAdapter();
 //        allOrSalonList=new
         DesignerRecycleViewAdapter adapter = new DesignerRecycleViewAdapter(this, response.getEmployeeList());
-        allOrSalonList.setAdapter(adapter);
+        salonList.setAdapter(adapter);
+//        allOrSalonList.setonI
+
+        typeChooser.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (response.getServiceList() != null && response.getServiceList().size() == 2) {
+
+                    if (checkedId == salonChoice.getId()) {
+                        if (response.getServiceList().get(0).getName().contains("美发")) {
+                            requestData(id, response.getServiceList().get(0).getId());
+                        } else {
+                            requestData(id, response.getServiceList().get(1).getId());
+                        }
+                    } else {
+                        if (response.getServiceList().get(0).getName().contains("美容")) {
+                            requestData(id, response.getServiceList().get(0).getId());
+                        } else {
+                            requestData(id, response.getServiceList().get(1).getId());
+                        }
+                    }
+                }
+
+            }
+        });
     }
 
     @Override
     protected void initData() {
 //        RequestData
         id = getIntent().getStringExtra(Constants.ActivityExtra.ID);
+        requestData(id, null);
+
+    }
+
+    private void requestData(String id, String cid) {
         ShopDetailRequest data = new ShopDetailRequest();
         data.setId(id);
-//        data.set
+        data.setCId(cid);
         Request request = new Request(data);
         ApiFactory.getShopDetail(request).subscribe(new ProgressSubscriber<ApiResponse<ShopDetailResponse>>(this) {
             @Override

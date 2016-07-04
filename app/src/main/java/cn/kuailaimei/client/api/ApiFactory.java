@@ -5,15 +5,18 @@ import com.zitech.framework.data.network.RetrofitClient;
 import com.zitech.framework.data.network.response.ApiResponse;
 import com.zitech.framework.data.network.response.FileUploadResponse;
 import com.zitech.framework.data.network.subscribe.SchedulersCompat;
+
 import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import cn.kuailaimei.client.api.request.ModifyPsdRequest;
 import cn.kuailaimei.client.api.request.OrderListRequest;
 import cn.kuailaimei.client.api.request.PageRequest;
 import cn.kuailaimei.client.api.request.Request;
 import cn.kuailaimei.client.api.request.SIDRequest;
+import cn.kuailaimei.client.api.response.DesignerDetail;
 import cn.kuailaimei.client.api.response.FilePathResponse;
 import cn.kuailaimei.client.api.response.GetwayResponse;
 import cn.kuailaimei.client.api.response.HomePageResponse;
@@ -154,6 +157,7 @@ public class ApiFactory {
     public static Observable<ApiResponse> updateProfile(Request request) {
         return getStoreService().updateProfile(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
     }
+
     /**
      * 我要美容美发,获取店铺等
      *
@@ -163,8 +167,9 @@ public class ApiFactory {
     public static Observable<ApiResponse<ShopListResponse>> getHomeSalonShops(Request request) {
         return getStoreService().getHomeSalonShops(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
     }
+
     /**
-     *  我要美容美发店铺筛选
+     * 我要美容美发店铺筛选
      *
      * @param request
      * @return
@@ -189,7 +194,7 @@ public class ApiFactory {
                 .addFormDataPart("name", "type")
                 .addFormDataPart("value", "1")
                 .build();
-        return getStoreService().upload(type,multipartBody).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
+        return getStoreService().upload(type, multipartBody).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
     }
 
     /**
@@ -241,6 +246,7 @@ public class ApiFactory {
     public static Observable<ApiResponse<MyFavoriteResponse>> getMyFavorite(Request request) {
         return getStoreService().getMyFavorite(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
     }
+
     /**
      * 店铺详细信息
      *
@@ -250,6 +256,7 @@ public class ApiFactory {
     public static Observable<ApiResponse<ShopDetailResponse>> getShopDetail(Request request) {
         return getStoreService().getShopDetail(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
     }
+
     /**
      * 我的订单列表
      *
@@ -336,5 +343,15 @@ public class ApiFactory {
      */
     public static Observable<ApiResponse> orderComment(Request request) {
         return getStoreService().orderComment(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
+    }
+
+    /**
+     * 技师详细信息
+     *
+     * @param request
+     * @return
+     */
+    public static Observable<ApiResponse<DesignerDetail>> getDesignerDetail(Request request) {
+        return getStoreService().getDesignerDetail(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
     }
 }
