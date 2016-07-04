@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_color"
-    >
+    android:background="@color/bg_color">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar_layout"
@@ -26,7 +25,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:paddingBottom="@dimen/h60">
+                android:paddingBottom="@dimen/h50">
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -263,57 +262,61 @@
                         android:text="不满意(999999)"
                         android:textColor="@color/common_gray_white_color" />
                 </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/h19"
+                    android:background="@color/divider_color" />
             </LinearLayout>
         </android.support.design.widget.CollapsingToolbarLayout>
 
     </android.support.design.widget.AppBarLayout>
 
-    <android.support.v4.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/h60"
-        android:scrollbars="none"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-    <ViewAnimator
-        android:id="@+id/designers_pager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-
-        >
-
-        <android.support.v7.widget.RecyclerView
-
-            android:id="@+id/salon_list"
+    <!-- <android.support.v4.widget.NestedScrollView
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:layout_marginTop="@dimen/h60"
+         android:scrollbars="none"
+         app:layout_behavior="@string/appbar_scrolling_view_behavior"
+         android:background="@color/textColorRed">-->
+    <!--
+        <ViewAnimator
+            android:id="@+id/designers_pager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scrollbars="none"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+            android:background="@color/textColorPink"
+            >
+    -->
 
-        </android.support.v7.widget.RecyclerView>
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/beauty_list"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/salon_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        </android.support.v7.widget.RecyclerView>
-    </ViewAnimator>
-    </android.support.v4.widget.NestedScrollView>
+    </android.support.v7.widget.RecyclerView>
+    <!--  <android.support.v7.widget.RecyclerView
+          android:id="@+id/beauty_list"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent">
+
+      </android.support.v7.widget.RecyclerView>
+  </ViewAnimator>-->
+    <!-- </android.support.v4.widget.NestedScrollView>-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_anchor="@id/app_bar_layout"
         app:layout_anchorGravity="bottom|center_horizontal|end">
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/h19"
-            android:background="@color/divider_color" />
+
         <RadioGroup
+            android:id="@+id/type_chooser"
             android:layout_width="match_parent"
             android:layout_height="@dimen/h100"
             android:gravity="center"
-            android:orientation="horizontal"
-            >
+            android:orientation="horizontal">
 
             <RadioButton
                 android:id="@+id/salon_choice"

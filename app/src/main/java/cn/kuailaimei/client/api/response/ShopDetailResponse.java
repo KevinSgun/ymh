@@ -1,6 +1,7 @@
 package cn.kuailaimei.client.api.response;
 
 import cn.kuailaimei.client.api.entity.Employee;
+import cn.kuailaimei.client.api.entity.ServicesBean;
 import cn.kuailaimei.client.api.entity.ShopInfo;
 
 import java.util.List;
@@ -42,6 +43,8 @@ public class ShopDetailResponse {
      */
 
     private List<Employee> employeeList;
+    private List<ServicesBean> serviceList;
+
 
     public ShopInfo getStoreInfo() {
         return storeInfo;
@@ -59,7 +62,13 @@ public class ShopDetailResponse {
         this.employeeList = employeeList;
     }
 
+    public List<ServicesBean> getServiceList() {
+        return serviceList;
+    }
 
+    public void setServiceList(List<ServicesBean> serviceList) {
+        this.serviceList = serviceList;
+    }
 }
 
 

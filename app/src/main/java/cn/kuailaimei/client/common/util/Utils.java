@@ -22,7 +22,7 @@ public class Utils extends com.zitech.framework.utils.Utils {
         try {
             distanceInt = Integer.parseInt(distance);
         } catch (NumberFormatException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
         return formarttDistance(distanceInt);
     }

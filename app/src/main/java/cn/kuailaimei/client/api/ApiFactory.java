@@ -11,11 +11,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import cn.kuailaimei.client.api.request.IDRequest;
 import cn.kuailaimei.client.api.request.ModifyPsdRequest;
 import cn.kuailaimei.client.api.request.OrderListRequest;
 import cn.kuailaimei.client.api.request.PageRequest;
 import cn.kuailaimei.client.api.request.Request;
 import cn.kuailaimei.client.api.request.SIDRequest;
+import cn.kuailaimei.client.api.response.DesignerDetail;
 import cn.kuailaimei.client.api.response.FilePathResponse;
 import cn.kuailaimei.client.api.response.GetwayResponse;
 import cn.kuailaimei.client.api.response.HomePageResponse;
@@ -34,6 +36,9 @@ import cn.kuailaimei.client.api.service.StoreService;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
+import retrofit2.http.Body;
+import retrofit2.http.Headers;
+import retrofit2.http.POST;
 import rx.Observable;
 
 /**
@@ -283,9 +288,18 @@ public class ApiFactory {
     public static Observable<ApiResponse> deleteFavorite(Request request) {
         return getStoreService().deleteFavorite(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
     }
-
     /**
-     * 删除收藏店铺
+     * 技师详细信息
+     *
+     * @param request
+     * @return
+     * @see IDRequest
+     */
+    public static Observable<ApiResponse<DesignerDetail>> getDesignerDetail(Request request) {
+        return getStoreService().getDesignerDetail(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
+    }
+    /**
+     * 提交店铺订单信息
      *
      * @param request
      * @return

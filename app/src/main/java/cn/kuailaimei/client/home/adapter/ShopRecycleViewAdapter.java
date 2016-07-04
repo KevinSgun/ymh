@@ -26,6 +26,8 @@ import android.widget.TextView;
 import cn.kuailaimei.client.R;
 import cn.kuailaimei.client.api.entity.Shop;
 import cn.kuailaimei.client.common.util.Utils;
+import cn.kuailaimei.client.shop.ui.ShopHomeActivity;
+
 import com.shizhefei.mvc.IDataAdapter;
 import com.zitech.framework.widget.RemoteImageView;
 
@@ -50,7 +52,13 @@ public class ShopRecycleViewAdapter extends RecyclerView.Adapter<ShopRecycleView
 
     @Override
     public void onBindViewHolder(ShopViewHolder holder, int position) {
-        Shop store = storeList.get(position);
+        final Shop store = storeList.get(position);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ShopHomeActivity.launch(mContext,store.getId());
+            }
+        });
         TextView shopName = holder.shopName;
         TextView shopPrice = holder.shopPrice;
         TextView distance = holder.distance;
