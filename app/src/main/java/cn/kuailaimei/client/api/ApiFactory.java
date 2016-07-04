@@ -14,6 +14,7 @@ import cn.kuailaimei.client.api.request.OrderListRequest;
 import cn.kuailaimei.client.api.request.PageRequest;
 import cn.kuailaimei.client.api.request.Request;
 import cn.kuailaimei.client.api.request.SIDRequest;
+import cn.kuailaimei.client.api.response.DesignerDetail;
 import cn.kuailaimei.client.api.response.FilePathResponse;
 import cn.kuailaimei.client.api.response.GetwayResponse;
 import cn.kuailaimei.client.api.response.HomePageResponse;
@@ -325,5 +326,14 @@ public class ApiFactory {
      */
     public static Observable<ApiResponse<OrderPayResult>> doOrderRePay(Request request) {
         return getStoreService().doOrderRePay(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
+    }
+    /**
+     * 技师详细信息
+     *
+     * @param request
+     * @return
+     */
+    public static Observable<ApiResponse<DesignerDetail>> getDesignerDetail(Request request) {
+        return getStoreService().getDesignerDetail(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
     }
 }
