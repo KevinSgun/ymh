@@ -9,6 +9,6 @@ import com.fans.becomebeaut.common.ui.BaseFragment;
 public class ExchangeFragment extends BaseFragment {
     @Override
     protected int getContentViewId() {
-        return R.layout.fragment_score_mall;
+        return R.layout.fragment_exchange;
     }
 }

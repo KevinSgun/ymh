@@ -65,6 +65,16 @@ public interface AccountService {
     @Headers("Content-Type:" + RetrofitClient.JSON)
     Observable<ApiResponse> requestResetPsd(@Body Request body);
 
+    /**
+     * 修改密码
+     *
+     * @param body
+     * @return
+     * @see {@link com.fans.becomebeaut.api.request.ModifyPsdRequest}
+     */
+    @POST(NetConstants.USERS_UPDATEPASSWORD)
+    @Headers("Content-Type:" + RetrofitClient.JSON)
+    Observable<ApiResponse> requestModifyPsd(@Body Request body);
 
 
 }

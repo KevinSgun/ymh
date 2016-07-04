@@ -4,7 +4,13 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:orientation="vertical">
-
+    <EditText
+        android:id="@+id/input_old_psd_et"
+        style="@style/CommentEditStyle"
+        android:inputType="textPassword"
+        android:hint="@string/please_set_old_psd"
+        />
+    <View style="@style/DividerHorizontalLine" />
     <EditText
         android:id="@+id/input_new_psd_et"
         style="@style/CommentEditStyle"

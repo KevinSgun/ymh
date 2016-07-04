@@ -26,6 +26,7 @@
     <string name="tenants_login">店家登录</string>
     <string name="employee_login">员工登录</string>
     <string name="please_set_new_psd">请输入新密码</string>
+    <string name="please_set_old_psd">请输入原密码</string>
     <string name="please_input_new_psd_tip">请输入新密码，不少于6位</string>
     <string name="please_input_new_psd_again">请再次输入新密码</string>
     <string name="commit">提交</string>

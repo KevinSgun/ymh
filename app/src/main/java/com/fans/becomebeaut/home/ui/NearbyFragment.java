@@ -29,11 +29,13 @@ import com.fans.becomebeaut.api.request.Request;
 import com.fans.becomebeaut.api.response.NearStoreListResposne;
 import com.fans.becomebeaut.common.SP;
 import com.fans.becomebeaut.common.ui.BaseFragment;
+import com.fans.becomebeaut.common.widget.CommonDialog;
 import com.fans.becomebeaut.map.BaiduMapHelper;
 import com.fans.becomebeaut.map.LocationCallBack;
-import com.fans.becomebeaut.utils.ToastMaster;
+import com.fans.becomebeaut.shop.ui.ShopHomeActivity;
 import com.zitech.framework.data.network.response.ApiResponse;
 import com.zitech.framework.data.network.subscribe.ProgressSubscriber;
+import com.zitech.framework.utils.ViewUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -69,6 +71,7 @@ public class NearbyFragment extends BaseFragment implements BaiduMap.OnMarkerCli
             return false;
         }
     });
+
     @Override
     protected int getContentViewId() {
         return R.layout.fragment_near_map;
@@ -79,7 +82,7 @@ public class NearbyFragment extends BaseFragment implements BaiduMap.OnMarkerCli
         super.onInflateView(contentView);
 
         maplayout = (LinearLayout) contentView.findViewById(R.id.map_layout);
-        searchLayout = (FrameLayout) contentView.findViewById(R.id.search_layout);
+//        searchLayout = (FrameLayout) contentView.findViewById(R.id.search_layout);
         mMarkers = new ArrayList<Marker>();
         SP sp = SP.getDefaultSP();
         String locationStr = sp.getString(Constants.BAI_DU_MAP, null);
@@ -104,12 +107,12 @@ public class NearbyFragment extends BaseFragment implements BaiduMap.OnMarkerCli
         maplayout.addView(mMapView);
         mBaiduMap.setOnMarkerClickListener(this);
 
-        searchLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
+//        searchLayout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//            }
+//        });
 
     }
 
@@ -117,7 +120,7 @@ public class NearbyFragment extends BaseFragment implements BaiduMap.OnMarkerCli
     public void onPrepareData() {
         super.onPrepareData();
         baiduMapHel = new BaiduMapHelper();
-        mHandler.sendEmptyMessageDelayed(11,200);
+        mHandler.sendEmptyMessageDelayed(11, 200);
     }
 
     private void getShopNet() {
@@ -215,7 +218,7 @@ public class NearbyFragment extends BaseFragment implements BaiduMap.OnMarkerCli
         } catch (NumberFormatException e) {
             e.printStackTrace();
         }
-        Marker marker = initOyerLay(mLat, mLng, 2, String.valueOf(store.getId()) + "$" + store.getName());
+        Marker marker = initOyerLay(mLat, mLng, 2, store.getId() + Constants.BAI_DU_SPLIT + store.getStatus());
         mMarkers.add(marker);
     }
 
@@ -262,7 +265,18 @@ public class NearbyFragment extends BaseFragment implements BaiduMap.OnMarkerCli
 
     @Override
     public boolean onMarkerClick(Marker marker) {
-        ToastMaster.shortToast(marker.getTitle());
+        if (ViewUtils.isFastDoubleClick()) return false;
+        String str = marker.getTitle();
+        if (str != null) {
+            String[] markerStr = str.split(Constants.BAI_DU_SPLIT);
+            if ("0".equals(markerStr[1])) {
+                CommonDialog dialog = new CommonDialog(getActivity(), "该店铺正在审核中，敬请期待");
+                dialog.show();
+            } else {
+                ShopHomeActivity.launch(getActivity(), markerStr[0]);
+            }
+        }
+
         return true;
     }
 

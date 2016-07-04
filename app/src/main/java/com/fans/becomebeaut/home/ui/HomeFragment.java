@@ -252,7 +252,7 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
         if (ViewUtils.isFastDoubleClick()) return;
         int index = position > 0 && position - 1 >= 0 ? position - 1 : position;
 //        List<HomePageBanner> pagerAdapter.getItemList();
-        NearShop shop = mAdapter.getList().get(position);
+        NearShop shop = mAdapter.getList().get(index);
 
 //        NearShop
 //        adapterView.ge

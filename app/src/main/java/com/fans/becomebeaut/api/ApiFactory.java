@@ -257,4 +257,26 @@ public class ApiFactory {
     public static Observable<ApiResponse<OrderListResponse>> getOrderList(PageRequest request) {
         return getStoreService().getOrderList(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
     }
+
+    /**
+     * 修改密码
+     *
+     * @param request
+     * @return
+     * @see com.fans.becomebeaut.api.request.ModifyPsdRequest
+     */
+    public static Observable<ApiResponse> requestModifyPsd(Request request) {
+        return getAccountService().requestModifyPsd(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
+    }
+
+    /**
+     * 删除收藏店铺
+     *
+     * @param request
+     * @return
+     * @see com.fans.becomebeaut.api.request.SIDRequest
+     */
+    public static Observable<ApiResponse> deleteFavorite(Request request) {
+        return getStoreService().deleteFavorite(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
+    }
 }

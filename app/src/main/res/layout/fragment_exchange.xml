@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_color"
+    android:orientation="vertical">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/action_bar_height"
+        android:background="@color/bg_color">
+
+        <TextView
+            android:id="@+id/action_bar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:drawablePadding="@dimen/w10"
+            android:gravity="center"
+            android:maxWidth="@dimen/w450"
+            android:text="免费兑换"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="@dimen/w40" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/w1"
+            android:layout_gravity="bottom"
+            android:background="@color/divider_color" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h128"
+        android:background="@color/white">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="@dimen/w40"
+                android:layout_height="@dimen/w40"
+                android:src="@mipmap/ic_exchange_history" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/h16"
+                android:text="兑换记录"
+                android:textColor="@color/textColorPink" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="@dimen/w1"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/h20"
+            android:layout_marginTop="@dimen/h20"
+            android:background="#ffc6de" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="@dimen/w44"
+                android:layout_height="@dimen/w33"
+                android:src="@mipmap/ic_coupon_account" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/h16"
+                android:text="美券账户"
+                android:textColor="@color/textColorPink" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

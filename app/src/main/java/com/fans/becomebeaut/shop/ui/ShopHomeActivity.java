@@ -73,7 +73,7 @@ public class ShopHomeActivity extends AppBarActivity {
         this.shopAddress = (TextView) findViewById(R.id.shop_address);
         this.shopHours = (TextView) findViewById(R.id.shop_hours);
         this.shopName = (TextView) findViewById(R.id.shop_name);
-        this.shopImg = (RemoteImageView) findViewById(R.id.shop_img);
+        this.shopImg = (RemoteImageView) findViewById(R.id.img_store);
         this.allOrSalonList = (RecyclerView) findViewById(R.id.salon_list);
         this.beautyList = (RecyclerView) findViewById(R.id.beauty_list);
         allOrSalonList.setLayoutManager(new GridLayoutManager(this, 2));

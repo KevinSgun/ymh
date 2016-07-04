@@ -229,7 +229,7 @@ public interface StoreService {
     Observable<ApiResponse<ScoreListResponse>> getScoreList(@Body Request body);
 
     /**
-     * 我的收藏列表
+     * 我的收藏(店铺)列表
      *
      * @param body
      * @return
@@ -249,6 +249,17 @@ public interface StoreService {
     @POST(NetConstants.ORDER_LIST)
     @Headers("Content-Type:" + RetrofitClient.JSON)
     Observable<ApiResponse<OrderListResponse>> getOrderList(@Body Request body);
+
+    /**
+     * 删除收藏店铺
+     *
+     * @param body
+     * @return
+     * @see com.fans.becomebeaut.api.request.SIDRequest
+     */
+    @POST(NetConstants.STORE_DELSTOREUP)
+    @Headers("Content-Type:" + RetrofitClient.JSON)
+    Observable<ApiResponse> deleteFavorite(@Body Request body);
 
 //-------------------------文件上传待修改调试------------------------------
 
