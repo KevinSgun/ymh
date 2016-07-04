@@ -28,4 +28,6 @@ dependencies {
     compile files('libs/jackson-all-1.9.10.jar')
     compile files('libs/BaiduLBS_Android.jar')
     compile project(':iCSDatePicker')
+    compile files('libs/alipaySdk-20160516.jar')
+    compile files('libs/libammsdk.jar')
 }

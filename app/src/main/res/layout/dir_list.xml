@@ -1,4 +1,4 @@
-<com.fans.becomebeaut.common.widget.ContentViewHolder xmlns:android="http://schemas.android.com/apk/res/android"
+<cn.kuailaimei.client.common.widget.ContentViewHolder xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/content_holder"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
@@ -15,4 +15,4 @@
         android:listSelector="@drawable/selector_comment_item" >
     </ListView>
 
-</com.fans.becomebeaut.common.widget.ContentViewHolder>
+</cn.kuailaimei.client.common.widget.ContentViewHolder>

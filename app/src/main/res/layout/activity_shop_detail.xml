@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.fans.becomebeaut.common.widget.RemoteImageView
+    <com.kuailaimei.client.common.widget.RemoteImageView
         android:id="@+id/shop_img"
         android:layout_width="fill_parent"
         android:layout_height="@dimen/h350" />
@@ -16,7 +16,7 @@
         android:background="@color/white"
         android:orientation="vertical">
 
-        <com.fans.becomebeaut.common.widget.RippleLinearLayout
+        <cn.kuailaimei.client.common.widget.RippleLinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -38,14 +38,14 @@
                 android:textSize="@dimen/w30"
                 android:layout_width="match_parent"
                 android:id="@+id/tv_shop_name" />
-        </com.fans.becomebeaut.common.widget.RippleLinearLayout>
+        </cn.kuailaimei.client.common.widget.RippleLinearLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/h1"
             android:background="@color/divider_color" />
 
-        <com.fans.becomebeaut.common.widget.RippleLinearLayout
+        <cn.kuailaimei.client.common.widget.RippleLinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -66,14 +66,14 @@
                 android:textSize="@dimen/w30"
                 android:layout_width="match_parent"
                 android:id="@+id/tv_shop_hours" />
-        </com.fans.becomebeaut.common.widget.RippleLinearLayout>
+        </cn.kuailaimei.client.common.widget.RippleLinearLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/h1"
             android:background="@color/divider_color" />
 
-        <com.fans.becomebeaut.common.widget.RippleLinearLayout
+        <cn.kuailaimei.client.common.widget.RippleLinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -94,14 +94,14 @@
                 android:textSize="@dimen/w30"
                 android:layout_width="match_parent"
                 android:id="@+id/tv_shop_address" />
-        </com.fans.becomebeaut.common.widget.RippleLinearLayout>
+        </cn.kuailaimei.client.common.widget.RippleLinearLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/h1"
             android:background="@color/divider_color" />
 
-        <com.fans.becomebeaut.common.widget.RippleLinearLayout
+        <cn.kuailaimei.client.common.widget.RippleLinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -122,14 +122,14 @@
                 android:textSize="@dimen/w30"
                 android:layout_width="match_parent"
                 android:id="@+id/tv_shop_phone" />
-        </com.fans.becomebeaut.common.widget.RippleLinearLayout>
+        </cn.kuailaimei.client.common.widget.RippleLinearLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/h1"
             android:background="@color/divider_color" />
 
-        <com.fans.becomebeaut.common.widget.RippleLinearLayout
+        <cn.kuailaimei.client.common.widget.RippleLinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -151,7 +151,7 @@
                 android:text="快来美"
                 android:textSize="@dimen/w30"
                 android:id="@+id/tv_shop_intro" />
-        </com.fans.becomebeaut.common.widget.RippleLinearLayout>
+        </cn.kuailaimei.client.common.widget.RippleLinearLayout>
 
 
     </LinearLayout>

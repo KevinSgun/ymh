@@ -10,12 +10,12 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/h300">
 
-        <com.fans.becomebeaut.common.widget.LoopViewPager
+        <cn.kuailaimei.client.common.widget.LoopViewPager
             android:id="@+id/home_pager"
             android:layout_width="match_parent"
             android:layout_height="@dimen/h300" />
 
-        <com.fans.becomebeaut.common.widget.CirclePageIndicator
+        <cn.kuailaimei.client.common.widget.CirclePageIndicator
             android:id="@+id/home_pager_indicator"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:background="@color/white">
 
-        <com.fans.becomebeaut.common.widget.RippleFrameLayout
+        <cn.kuailaimei.client.common.widget.RippleFrameLayout
             android:id="@+id/want_beauty_layout"
             android:layout_width="0dp"
             android:layout_height="@dimen/h135"
@@ -50,14 +50,14 @@
                 android:layout_gravity="center_vertical|right"
                 android:layout_marginRight="@dimen/w40"
                 android:src="@mipmap/face" />
-        </com.fans.becomebeaut.common.widget.RippleFrameLayout>
+        </cn.kuailaimei.client.common.widget.RippleFrameLayout>
 
         <View
             android:layout_width="@dimen/w1"
             android:layout_height="match_parent"
             android:background="@color/divider_color" />
 
-        <com.fans.becomebeaut.common.widget.RippleFrameLayout
+        <cn.kuailaimei.client.common.widget.RippleFrameLayout
             android:id="@+id/want_salon_layout"
             android:layout_width="0dp"
             android:layout_height="@dimen/h135"
@@ -79,10 +79,10 @@
                 android:layout_gravity="center_vertical|right"
                 android:layout_marginRight="@dimen/w40"
                 android:src="@mipmap/hair" />
-        </com.fans.becomebeaut.common.widget.RippleFrameLayout>
+        </cn.kuailaimei.client.common.widget.RippleFrameLayout>
     </LinearLayout>
 
-    <com.fans.becomebeaut.common.widget.RippleLinearLayout
+    <cn.kuailaimei.client.common.widget.RippleLinearLayout
         android:id="@+id/consumer_record_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -191,7 +191,7 @@
                     android:textSize="@dimen/w28" />
             </LinearLayout>
         </LinearLayout>
-    </com.fans.becomebeaut.common.widget.RippleLinearLayout>
+    </cn.kuailaimei.client.common.widget.RippleLinearLayout>
 
     <View style="@style/DividerHorizontalLine" />
 

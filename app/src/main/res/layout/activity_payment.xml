@@ -41,7 +41,7 @@
         android:textColor="@color/textColorPrimaryGray"
         android:textSize="@dimen/w24" />
 
-    <com.fans.becomebeaut.common.widget.MutilRadioGroup
+    <cn.kuailaimei.client.common.widget.MutilRadioGroup
         android:layout_marginTop="@dimen/h16"
         android:layout_width="match_parent"
         android:layout_height="@dimen/h152"
@@ -107,5 +107,5 @@
                 android:textSize="@dimen/w24"
                 android:text="支付宝支付"/>
         </LinearLayout>
-    </com.fans.becomebeaut.common.widget.MutilRadioGroup>
+    </cn.kuailaimei.client.common.widget.MutilRadioGroup>
 </LinearLayout>

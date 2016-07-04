@@ -15,7 +15,7 @@
         android:background="@color/white"
         android:orientation="horizontal">
 
-        <com.fans.becomebeaut.common.widget.RippleButton
+        <cn.kuailaimei.client.common.widget.RippleButton
             android:id="@+id/preview"
             style="@style/TextBlank.Medium"
             android:layout_height="@dimen/h78"

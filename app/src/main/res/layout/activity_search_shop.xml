@@ -23,7 +23,7 @@
                 android:scaleType="fitCenter"
                 android:src="@mipmap/ic_appback" />
         </FrameLayout>
-        <com.fans.becomebeaut.common.widget.ClearEditText
+        <cn.kuailaimei.client.common.widget.ClearEditText
             android:id="@+id/search_et"
             android:layout_width="0dp"
             android:layout_height="@dimen/w70"

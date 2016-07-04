@@ -15,7 +15,7 @@
         android:gravity="center"
         android:orientation="vertical" >
 
-        <com.fans.becomebeaut.common.widget.RippleButton
+        <cn.kuailaimei.client.common.widget.RippleButton
             android:id="@+id/retry_btn"
             style="@style/CommentButtonStyle"
             android:layout_width="@dimen/w293"

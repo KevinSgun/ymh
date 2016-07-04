@@ -41,7 +41,7 @@
             android:layout_height="@dimen/h1"
             android:background="@color/divider_color" />
 
-        <com.fans.becomebeaut.common.widget.MutilRadioGroup
+        <cn.kuailaimei.client.common.widget.MutilRadioGroup
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -98,7 +98,7 @@
                 android:text="满意(999999)"
                 android:textColor="@color/common_gray_white_color"
                 />
-        </com.fans.becomebeaut.common.widget.MutilRadioGroup>
+        </cn.kuailaimei.client.common.widget.MutilRadioGroup>
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

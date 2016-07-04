@@ -9,7 +9,7 @@
 
     >
 
-    <com.fans.becomebeaut.common.widget.CustomToolBar
+    <cn.kuailaimei.client.common.widget.CustomToolBar
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/id_tool_bar"
         android:layout_width="match_parent"

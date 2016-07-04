@@ -22,7 +22,7 @@
             android:textColor="@color/textColorPrimary"
             android:textSize="@dimen/w40" />
 
-        <com.fans.becomebeaut.common.widget.RippleLinearLayout
+        <cn.kuailaimei.client.common.widget.RippleLinearLayout
             android:id="@+id/msg_layout"
             android:layout_width="@dimen/w95"
             android:layout_height="match_parent"
@@ -43,7 +43,7 @@
                 android:text="消息"
                 android:textColor="@color/textColorPink"
                 android:textSize="@dimen/w18" />
-        </com.fans.becomebeaut.common.widget.RippleLinearLayout>
+        </cn.kuailaimei.client.common.widget.RippleLinearLayout>
 
         <View
             android:layout_width="match_parent"
