@@ -71,6 +71,7 @@ public class ToolBarHelper {
     }
 
     /*初始化toolbar*/
+    @SuppressWarnings("ResourceType")
     private void addContentLayout(int id) {
         mUserView = mInflater.inflate(id, null);
         FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);

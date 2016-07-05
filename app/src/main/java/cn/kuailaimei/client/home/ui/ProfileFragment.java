@@ -16,7 +16,7 @@ import org.greenrobot.eventbus.Subscribe;
 import cn.kuailaimei.client.R;
 import cn.kuailaimei.client.api.ApiFactory;
 import cn.kuailaimei.client.api.request.Request;
-import cn.kuailaimei.client.api.response.NullDataRequest;
+import cn.kuailaimei.client.api.request.NullDataRequest;
 import cn.kuailaimei.client.api.response.UserHomeInfoResponse;
 import cn.kuailaimei.client.common.User;
 import cn.kuailaimei.client.common.event.EventFactory;

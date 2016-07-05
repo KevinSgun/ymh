@@ -135,16 +135,14 @@ public class PayWithExistOrderActivity extends AppBarActivity implements MutilRa
 
     @Override
     public void failedPayResult(String payType, String message) {
-        EventFactory.OrderListDataChange orerdata = new EventFactory.OrderListDataChange();
-        orerdata.status = "1";
-        EventBus.getDefault().post(orerdata);
+//        EventFactory.OrderListDataChange orerdata = new EventFactory.OrderListDataChange();
+//        orerdata.status = "1";
+//        EventBus.getDefault().post(orerdata);
         ToastMaster.shortToast(message);
     }
 
     private void showResultDialog() {
-        EventFactory.OrderListDataChange orerdata = new EventFactory.OrderListDataChange();
-        orerdata.status = "2";
-        EventBus.getDefault().post(orerdata);
+        EventBus.getDefault().post(new EventFactory.OrderListDataChange());
         PayResultDialog payResultDialog = new PayResultDialog(PayWithExistOrderActivity.this, orderBean);
         payResultDialog.setOnButtonClickListener(new PayResultDialog.OnButtonClickListener() {
             @Override

@@ -24,7 +24,7 @@ import cn.kuailaimei.client.api.entity.Order;
 import cn.kuailaimei.client.api.entity.PayListBean;
 import cn.kuailaimei.client.api.request.CommitOrderRequest;
 import cn.kuailaimei.client.api.request.Request;
-import cn.kuailaimei.client.api.response.NullDataRequest;
+import cn.kuailaimei.client.api.request.NullDataRequest;
 import cn.kuailaimei.client.api.response.OrderPayListResponse;
 import cn.kuailaimei.client.api.response.OrderPayResult;
 import cn.kuailaimei.client.common.event.EventFactory;
@@ -167,9 +167,7 @@ public class ConfirmOrderActivity extends AppBarActivity implements MutilRadioGr
     }
 
     private void showResultDialog() {
-        EventFactory.OrderListDataChange orerdata = new EventFactory.OrderListDataChange();
-        orerdata.status = "2";
-        EventBus.getDefault().post(orerdata);
+        EventBus.getDefault().post(new EventFactory.OrderListDataChange());
         PayResultDialog payResultDialog = new PayResultDialog(ConfirmOrderActivity.this, orderBean);
         payResultDialog.setOnButtonClickListener(new PayResultDialog.OnButtonClickListener() {
             @Override
@@ -193,9 +191,7 @@ public class ConfirmOrderActivity extends AppBarActivity implements MutilRadioGr
 
     @Override
     public void failedPayResult(String payType, String message) {
-        EventFactory.OrderListDataChange orerdata = new EventFactory.OrderListDataChange();
-        orerdata.status = "1";
-        EventBus.getDefault().post(orerdata);
+        EventBus.getDefault().post(new EventFactory.OrderListDataChange());
         ToastMaster.shortToast(message);
     }
 

@@ -14,12 +14,15 @@ import android.widget.TextView;
 import com.zitech.framework.data.network.response.ApiResponse;
 import com.zitech.framework.data.network.subscribe.ProgressSubscriber;
 
+import org.greenrobot.eventbus.EventBus;
+
 import cn.kuailaimei.client.Constants;
 import cn.kuailaimei.client.R;
 import cn.kuailaimei.client.api.ApiFactory;
 import cn.kuailaimei.client.api.entity.OrderItem;
 import cn.kuailaimei.client.api.request.OrderCommentRequest;
 import cn.kuailaimei.client.api.request.Request;
+import cn.kuailaimei.client.common.event.EventFactory;
 import cn.kuailaimei.client.common.ui.AppBarActivity;
 import cn.kuailaimei.client.common.widget.CommonDialog;
 import cn.kuailaimei.client.utils.ToastMaster;
@@ -90,7 +93,7 @@ public class CommentActivity extends AppBarActivity implements View.OnClickListe
             case R.id.post_btn:
                 OrderCommentRequest commentRequest = new OrderCommentRequest();
                 commentRequest.setOrderId(orderItem.getOrderId());
-                commentRequest.setSId(String.valueOf(orderItem.getSId()));
+                commentRequest.setSId(String.valueOf(orderItem.getsId()));
                 commentRequest.setType(type);
                 if(!TextUtils.isEmpty(commenttet.getText().toString())){
                     commentRequest.setContent(commenttet.getText().toString());
@@ -103,6 +106,7 @@ public class CommentActivity extends AppBarActivity implements View.OnClickListe
                     @Override
                     protected void onNextInActive(ApiResponse apiResponse) {
                         ToastMaster.shortToast(apiResponse.getBasic().getMsg());
+                        EventBus.getDefault().post(new EventFactory.OrderListDataChange());
                         finish();
                     }
                 });

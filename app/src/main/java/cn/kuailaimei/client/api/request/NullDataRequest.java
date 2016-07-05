@@ -1,4 +1,4 @@
-package cn.kuailaimei.client.api.response;
+package cn.kuailaimei.client.api.request;
 
 import cn.kuailaimei.client.api.request.RequestData;
 

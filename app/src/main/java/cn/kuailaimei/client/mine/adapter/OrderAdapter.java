@@ -17,6 +17,8 @@ import com.zitech.framework.transform.RoundedCornersTransformation;
 import com.zitech.framework.utils.ViewUtils;
 import com.zitech.framework.widget.RemoteImageView;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.util.List;
 
 import cn.kuailaimei.client.R;
@@ -25,8 +27,11 @@ import cn.kuailaimei.client.api.entity.OrderItem;
 import cn.kuailaimei.client.api.request.OrderIDRequest;
 import cn.kuailaimei.client.api.request.Request;
 import cn.kuailaimei.client.common.ListAdapter;
+import cn.kuailaimei.client.common.event.EventFactory;
 import cn.kuailaimei.client.common.widget.CommonDialog;
+import cn.kuailaimei.client.mine.ui.CommentActivity;
 import cn.kuailaimei.client.mine.ui.PayWithExistOrderActivity;
+import cn.kuailaimei.client.shop.ui.DesignerHomeActivity;
 import cn.kuailaimei.client.utils.ToastMaster;
 import cn.kuailaimei.client.utils.ViewHolderUtil;
 
@@ -58,12 +63,12 @@ public class OrderAdapter extends ListAdapter<OrderItem> implements IDataAdapter
         final Button rightbtn = ViewHolderUtil.get(convertView,R.id.right_btn);
         if(item != null){
             shopiconiv.setBitmapTransformation(new RoundedCornersTransformation(mContext, ViewUtils.getDimenPx(R.dimen.w20)));
-            shopiconiv.setImageUri(R.mipmap.ic_shop_default,item.getSIcon());
+            shopiconiv.setImageUri(R.mipmap.ic_shop_default,item.getsIcon());
 
             ordernumtv.setText("订单编号："+item.getOrderId());
             orderdatetv.setText("下单时间："+item.getAddDate());
             orderstatus.setText(item.getMsg());
-            shopnametv.setText(item.getSName());
+            shopnametv.setText(item.getsName());
             consumeritemstv.setText(item.getServiceName());
             consumertechniciantv.setText(item.getDesignerName());
             ordertotalmoneytv.setText(String.format(mContext.getString(R.string.rmb),item.getAmount()));
@@ -96,6 +101,9 @@ public class OrderAdapter extends ListAdapter<OrderItem> implements IDataAdapter
                                     @Override
                                     protected void onNextInActive(ApiResponse apiResponse) {
                                         ToastMaster.shortToast(apiResponse.getBasic().getMsg());
+                                        EventFactory.OrderListDataChange data = new EventFactory.OrderListDataChange();
+                                        data.status = "0";
+                                        EventBus.getDefault().post(data);
                                         notifyDataSetChanged();
                                     }
                                 });
@@ -110,14 +118,14 @@ public class OrderAdapter extends ListAdapter<OrderItem> implements IDataAdapter
                 @Override
                 public void onClick(View view) {
                     if(status == OrderItem.WAIT_PAY){
-                        //TODO 马上付款
+                        /** 马上付款 */
                         PayWithExistOrderActivity.launch((Activity) mContext,item);
                     }else if(status == OrderItem.WAIT_COMMENT){
-                        //TODO 发表评价
-//                        CommentActivity
+                        /** 发表评价 */
+                        CommentActivity.launch((Activity) mContext,item);
                     }else if(status == OrderItem.COMPLETE){
-                        //TODO 再次购买，跳转到造型师首页
-
+                         /** 再次购买，跳转到造型师首页 */
+                        DesignerHomeActivity.launch(mContext,item.getDesignerId());
                     }
                 }
             });

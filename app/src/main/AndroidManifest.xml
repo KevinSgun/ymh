@@ -133,7 +133,7 @@
         </receiver>
         <!-- wxpay end -->
 
-
+        <service android:name="com.szxxyd.gifttabletlib.service.DownLoadApkService"/>
 
     </application>
 

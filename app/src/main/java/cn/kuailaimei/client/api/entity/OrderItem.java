@@ -8,42 +8,45 @@ public class OrderItem implements Parcelable{
     public static final int WAIT_COMMENT = 2;//待评价
     public static final int COMPLETE = 3;//已完成
 
-    private String addDate;
+    private int sId;
     private float amount;
+    private int status;
     private String designerName;
     private String msg;
     private String orderId;
     private String sIcon;
-    private int sId;
+    private String addDate;
     private String sName;
     private String serviceName;
-    private int status;
+    private String designerId;
 
     protected OrderItem(Parcel in) {
-        addDate = in.readString();
+        sId = in.readInt();
         amount = in.readFloat();
+        status = in.readInt();
         designerName = in.readString();
         msg = in.readString();
         orderId = in.readString();
         sIcon = in.readString();
-        sId = in.readInt();
+        addDate = in.readString();
         sName = in.readString();
         serviceName = in.readString();
-        status = in.readInt();
+        designerId = in.readString();
     }
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(addDate);
+        dest.writeInt(sId);
         dest.writeFloat(amount);
+        dest.writeInt(status);
         dest.writeString(designerName);
         dest.writeString(msg);
         dest.writeString(orderId);
         dest.writeString(sIcon);
-        dest.writeInt(sId);
+        dest.writeString(addDate);
         dest.writeString(sName);
         dest.writeString(serviceName);
-        dest.writeInt(status);
+        dest.writeString(designerId);
     }
 
     @Override
@@ -63,12 +66,12 @@ public class OrderItem implements Parcelable{
         }
     };
 
-    public String getAddDate() {
-        return addDate;
+    public int getsId() {
+        return sId;
     }
 
-    public void setAddDate(String addDate) {
-        this.addDate = addDate;
+    public void setsId(int sId) {
+        this.sId = sId;
     }
 
     public float getAmount() {
@@ -77,6 +80,14 @@ public class OrderItem implements Parcelable{
 
     public void setAmount(float amount) {
         this.amount = amount;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     public String getDesignerName() {
@@ -103,27 +114,27 @@ public class OrderItem implements Parcelable{
         this.orderId = orderId;
     }
 
-    public String getSIcon() {
+    public String getsIcon() {
         return sIcon;
     }
 
-    public void setSIcon(String sIcon) {
+    public void setsIcon(String sIcon) {
         this.sIcon = sIcon;
     }
 
-    public int getSId() {
-        return sId;
+    public String getAddDate() {
+        return addDate;
     }
 
-    public void setSId(int sId) {
-        this.sId = sId;
+    public void setAddDate(String addDate) {
+        this.addDate = addDate;
     }
 
-    public String getSName() {
+    public String getsName() {
         return sName;
     }
 
-    public void setSName(String sName) {
+    public void setsName(String sName) {
         this.sName = sName;
     }
 
@@ -135,11 +146,11 @@ public class OrderItem implements Parcelable{
         this.serviceName = serviceName;
     }
 
-    public int getStatus() {
-        return status;
+    public String getDesignerId() {
+        return designerId;
     }
 
-    public void setStatus(int status) {
-        this.status = status;
+    public void setDesignerId(String designerId) {
+        this.designerId = designerId;
     }
 }
