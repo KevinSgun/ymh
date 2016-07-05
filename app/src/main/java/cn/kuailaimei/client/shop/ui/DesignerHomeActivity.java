@@ -1,12 +1,10 @@
 package cn.kuailaimei.client.shop.ui;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.zitech.framework.data.network.response.ApiResponse;
 import com.zitech.framework.data.network.subscribe.ProgressSubscriber;
@@ -19,12 +17,13 @@ import cn.kuailaimei.client.R;
 import cn.kuailaimei.client.api.ApiFactory;
 import cn.kuailaimei.client.api.entity.Designer;
 import cn.kuailaimei.client.api.entity.DesignerService;
-import cn.kuailaimei.client.api.entity.ServicesBean;
 import cn.kuailaimei.client.api.request.IDRequest;
 import cn.kuailaimei.client.api.request.Request;
 import cn.kuailaimei.client.api.response.DesignerDetail;
 import cn.kuailaimei.client.common.ui.AppBarActivity;
+import cn.kuailaimei.client.common.widget.OnRippleCompleteListener;
 import cn.kuailaimei.client.common.widget.RippleButton;
+import cn.kuailaimei.client.common.widget.RippleLinearLayout;
 import cn.kuailaimei.client.common.widget.ServiceRadioGroup;
 import cn.kuailaimei.client.utils.ToastMaster;
 
@@ -42,7 +41,7 @@ public class DesignerHomeActivity extends AppBarActivity {
     private TextView order;
     private TextView reveiw;
     private TextView rate;
-    private TextView shopName;
+    private RippleLinearLayout shopLayout;
     private ServiceRadioGroup serviceItems;
     private RippleButton orderNow;
     private String desiginerId;
@@ -58,7 +57,7 @@ public class DesignerHomeActivity extends AppBarActivity {
         setTitle("造型师详情");
         this.orderNow = (RippleButton) findViewById(R.id.order_now);
         this.serviceItems = (ServiceRadioGroup) findViewById(R.id.service_items);
-        this.shopName = (TextView) findViewById(R.id.shop_name);
+        this.shopLayout = (RippleLinearLayout) findViewById(R.id.shop_layout);
         this.rate = (TextView) findViewById(R.id.rate);
         this.reveiw = (TextView) findViewById(R.id.reveiw);
         this.order = (TextView) findViewById(R.id.order);
@@ -70,12 +69,12 @@ public class DesignerHomeActivity extends AppBarActivity {
     }
 
     private void render(DesignerDetail detail) {
-        Designer designer = detail.getDesigner();
-        shopName.setText(designer.getAlias());
+        final Designer designer = detail.getDesigner();
+//        shopName.setText(designer.getAlias());
         rate.setText(designer.getOrderRate());
         reveiw.setText("" + designer.getCommentCount());
-        schedule.setText(""+designer.getReserveCount());
-        order.setText(""+designer.getOrderRate());
+        schedule.setText("" + designer.getReserveCount());
+        order.setText("" + designer.getOrderRate());
         rate.setText(designer.getSatisfactory());
 //        designerIntro.setText();
         designerLevel.setText(designer.getSignature());
@@ -95,8 +94,19 @@ public class DesignerHomeActivity extends AppBarActivity {
                 choosedService = service;
             }
         });
-    }
+        shopLayout.setOnRippleCompleteListener(new OnRippleCompleteListener() {
+            @Override
+            public void onComplete(View v) {
+                ShopHomeActivity.launch(DesignerHomeActivity.this, String.valueOf(designer.getAgent()));
+            }
+        });
+        orderNow.setOnRippleCompleteListener(new OnRippleCompleteListener() {
+            @Override
+            public void onComplete(View v) {
 
+            }
+        });
+    }
 
     @Override
     protected void initData() {

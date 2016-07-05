@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.design.widget.AppBarLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -83,7 +84,7 @@ public class ShopHomeActivity extends AppBarActivity {
     }
 
     private void render(final ShopDetailResponse response) {
-        ShopInfo shopInfo = response.getStoreInfo();//.getPerfectCount();
+        final ShopInfo shopInfo = response.getStoreInfo();//.getPerfectCount();
         allReviews.setText("全部(" + shopInfo.getAllComment() + ")");
         highPositiveReviews.setText("很满意(" + shopInfo.getPerfectCount() + ")");
         positiveReviews.setText("满意(" + shopInfo.getGoodCount() + ")");
@@ -92,6 +93,12 @@ public class ShopHomeActivity extends AppBarActivity {
         shopName.setText(shopInfo.getName());
         shopPhonenumber.setText(shopInfo.getPhone());
         evaluationRate.setText(shopInfo.getSatisfactory());
+        this.shopImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ShopDetailActivity.launch(ShopHomeActivity.this,shopInfo);
+            }
+        });
 //        reviewChooser
 //        salonList.setAdapter();
 //        allOrSalonList=new

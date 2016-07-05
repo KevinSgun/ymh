@@ -44,6 +44,9 @@
         <activity android:name="cn.kuailaimei.client.shop.ui.ShopHomeActivity"
             android:screenOrientation="portrait"
             />
+        <activity android:name="cn.kuailaimei.client.shop.ui.ShopDetailActivity"
+            android:screenOrientation="portrait"
+            />
         <activity android:name="cn.kuailaimei.client.shop.ui.DesignerHomeActivity"
             android:screenOrientation="portrait"
             />
