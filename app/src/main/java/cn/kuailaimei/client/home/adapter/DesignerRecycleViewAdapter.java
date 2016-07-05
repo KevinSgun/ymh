@@ -48,7 +48,7 @@ public class DesignerRecycleViewAdapter extends RecyclerView.Adapter<DesignerRec
 
     @Override
     public DesignerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new DesignerViewHolder(inflater.inflate(R.layout.item_assistant_order, parent, false));
+        return new DesignerViewHolder(inflater.inflate(R.layout.item_designer_order, parent, false));
     }
 
     @Override

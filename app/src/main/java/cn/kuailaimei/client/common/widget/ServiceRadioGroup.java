@@ -2,9 +2,13 @@ package cn.kuailaimei.client.common.widget;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.RadioButton;
+import android.widget.TextView;
+
+import com.baidu.mapapi.common.Logger;
 
 import java.util.List;
 
@@ -38,14 +42,14 @@ public class ServiceRadioGroup extends MutilRadioGroup {
             @Override
             public void onCheckedChanged(MutilRadioGroup group, int checkedId) {
                 View v = findViewById(checkedId);
-                int positon = Integer.parseInt((String) v.getTag());
+                int positon = checkedId;
                 DesignerService designerService = services.get(positon);
                 if (designerService != currentServcie) {
                     currentServcie = designerService;
                     if (onServiceCheckedListener != null)
                         onServiceCheckedListener.onServiceChecked(currentServcie);
                 }
-
+                Logger.logI("tag","check:"+checkedId);
             }
         });
     }
@@ -57,7 +61,12 @@ public class ServiceRadioGroup extends MutilRadioGroup {
         for (int i = 0; i < items.size(); i++) {
             View view = LayoutInflater.from(getContext()).inflate(R.layout.item_service, this);
             RadioButton serviceChoice = (RadioButton) view.findViewById(R.id.service_choice);
-            serviceChoice.setTag(String.valueOf(i));
+            TextView price= (TextView) view.findViewById(R.id.price);
+            serviceChoice.setId(i);
+            serviceChoice.setText(items.get(i).getName());
+            price.setText("￥"+items.get(i).getPrice());
+            Logger.logI("tag",""+serviceChoice.getId());
+//            serviceChoice.setTag(String.valueOf(i));
         }
     }
 

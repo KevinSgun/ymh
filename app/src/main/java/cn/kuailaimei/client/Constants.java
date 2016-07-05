@@ -27,6 +27,7 @@ public class Constants {
 
         String ORDER_ID = "order_id";
         String ORDER = "order";
+        String SHOP_INFO ="shop_info" ;
     }
     public interface FragmentExtra{
 

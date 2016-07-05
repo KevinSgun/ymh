@@ -131,7 +131,7 @@
         android:layout_height="@dimen/h10"
         android:background="@color/bg_color" />
 
-    <LinearLayout
+    <cn.kuailaimei.client.common.widget.RippleLinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/h86"
         android:gravity="center_vertical"
@@ -165,9 +165,11 @@
             android:layout_height="@dimen/h24"
             android:layout_marginLeft="@dimen/w19"
             android:src="@mipmap/ic_gray_arrow" />
-    </LinearLayout>
-
-    <LinearLayout
+    </cn.kuailaimei.client.common.widget.RippleLinearLayout>
+    <View
+        style="@style/DividerHorizontalLine"/>
+    <cn.kuailaimei.client.common.widget.RippleLinearLayout
+        android:id="@+id/shop_layout"
         android:layout_width="match_parent"
         android:layout_height="@dimen/h86"
         android:gravity="center_vertical"
@@ -183,10 +185,8 @@
             android:textSize="@dimen/w24" />
 
         <TextView
-            android:id="@+id/shop_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="几乎"
             android:textColor="@color/textColorPink" />
 
         <ImageView
@@ -194,7 +194,7 @@
             android:layout_height="@dimen/h24"
             android:layout_marginLeft="@dimen/w19"
             android:src="@mipmap/ic_gray_arrow" />
-    </LinearLayout>
+    </cn.kuailaimei.client.common.widget.RippleLinearLayout>
 
     <View
         android:layout_width="match_parent"
@@ -222,7 +222,8 @@
     <cn.kuailaimei.client.common.widget.ServiceRadioGroup
         android:id="@+id/service_items"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
     </cn.kuailaimei.client.common.widget.ServiceRadioGroup>
 
