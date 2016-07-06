@@ -33,6 +33,9 @@ public class CommitOrderInfo implements Parcelable{
     private String assistantName;
     private String content;
 
+    public CommitOrderInfo() {
+    }
+
     protected CommitOrderInfo(Parcel in) {
         amount = in.readFloat();
         sId = in.readString();

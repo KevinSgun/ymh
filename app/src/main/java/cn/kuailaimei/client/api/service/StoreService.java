@@ -8,6 +8,7 @@ import java.util.List;
 
 import cn.kuailaimei.client.api.NetConstants;
 import cn.kuailaimei.client.api.entity.Address;
+import cn.kuailaimei.client.api.entity.Employee;
 import cn.kuailaimei.client.api.entity.Message;
 import cn.kuailaimei.client.api.request.Feedback;
 import cn.kuailaimei.client.api.request.HomeDataRequest;
@@ -22,6 +23,7 @@ import cn.kuailaimei.client.api.request.ShopListRequest;
 import cn.kuailaimei.client.api.request.ShopSelectionRequest;
 import cn.kuailaimei.client.api.request.UpdateAddress;
 import cn.kuailaimei.client.api.request.UpdateProfileRequest;
+import cn.kuailaimei.client.api.response.AssistantListResposne;
 import cn.kuailaimei.client.api.response.DesignerDetail;
 import cn.kuailaimei.client.api.response.FilePathResponse;
 import cn.kuailaimei.client.api.response.HomePageResponse;
@@ -325,6 +327,18 @@ public interface StoreService {
     @POST(NetConstants.ORDER_EVALUATE)
     @Headers("Content-Type:" + RetrofitClient.JSON)
     Observable<ApiResponse> orderComment(@Body Request body);
+
+
+    /**
+     *44 获取助理列表
+     *
+     * @param body
+     * @return
+     * @see cn.kuailaimei.client.api.request.SIDRequest
+     */
+    @POST(NetConstants.STORE_ASSISTANTLIST)
+    @Headers("Content-Type:" + RetrofitClient.JSON)
+    Observable<ApiResponse<AssistantListResposne>> getAssistantList(@Body Request body);
 
 //-------------------------文件上传待修改调试------------------------------
 

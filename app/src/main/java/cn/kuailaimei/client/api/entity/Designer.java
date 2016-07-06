@@ -1,6 +1,9 @@
 package cn.kuailaimei.client.api.entity;
 
-public class Designer {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Designer implements Parcelable {
     private int agent;
     private String alias;
     private int commentCount;
@@ -13,6 +16,7 @@ public class Designer {
     private String satisfactory;
     private String signature;
     private int sumScore;
+
 
     public int getAgent() {
         return agent;
@@ -109,4 +113,55 @@ public class Designer {
     public void setSumScore(int sumScore) {
         this.sumScore = sumScore;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(this.agent);
+        dest.writeString(this.alias);
+        dest.writeInt(this.commentCount);
+        dest.writeInt(this.id);
+        dest.writeInt(this.orderCount);
+        dest.writeString(this.orderRate);
+        dest.writeString(this.portrait);
+        dest.writeString(this.position);
+        dest.writeInt(this.reserveCount);
+        dest.writeString(this.satisfactory);
+        dest.writeString(this.signature);
+        dest.writeInt(this.sumScore);
+    }
+
+    public Designer() {
+    }
+
+    protected Designer(Parcel in) {
+        this.agent = in.readInt();
+        this.alias = in.readString();
+        this.commentCount = in.readInt();
+        this.id = in.readInt();
+        this.orderCount = in.readInt();
+        this.orderRate = in.readString();
+        this.portrait = in.readString();
+        this.position = in.readString();
+        this.reserveCount = in.readInt();
+        this.satisfactory = in.readString();
+        this.signature = in.readString();
+        this.sumScore = in.readInt();
+    }
+
+    public static final Parcelable.Creator<Designer> CREATOR = new Parcelable.Creator<Designer>() {
+        @Override
+        public Designer createFromParcel(Parcel source) {
+            return new Designer(source);
+        }
+
+        @Override
+        public Designer[] newArray(int size) {
+            return new Designer[size];
+        }
+    };
 }

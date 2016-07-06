@@ -50,6 +50,9 @@
         <activity android:name="cn.kuailaimei.client.shop.ui.DesignerHomeActivity"
             android:screenOrientation="portrait"
             />
+        <activity android:name="cn.kuailaimei.client.shop.ui.ChooseAssistantActivity"
+            android:screenOrientation="portrait"
+            />
         <activity android:name="cn.kuailaimei.client.login.ui.RegisterActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateVisible"/>

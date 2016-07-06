@@ -63,11 +63,15 @@
             android:textSize="@dimen/w20" />
     </LinearLayout>
 
-    <Button
+    <RadioButton
+        android:gravity="center"
         android:id="@+id/choose"
-        style="@style/CommonButtonPositive"
         android:layout_width="@dimen/w240"
         android:layout_height="@dimen/w48"
         android:layout_marginTop="@dimen/h25"
-        android:text="选择助理" />
+        android:text="选择助理"
+        android:textColor="@color/common_pink_white_color"
+        android:button="@null"
+        android:background="@drawable/sl_assistant_btn"
+        android:checked="false" />
 </cn.kuailaimei.client.common.widget.RippleLinearLayout>

@@ -1,7 +1,10 @@
 package cn.kuailaimei.client.api.entity;
 
-public class DesignerService {
-    private String isGroup;
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class DesignerService implements Parcelable {
+    private int isGroup;//是否组合套餐 0 不是 1是
     private String content;
     private String name;
     private String price;
@@ -9,11 +12,11 @@ public class DesignerService {
     private int mid;
     private int sid;
 
-    public String getIsGroup() {
+    public int getIsGroup() {
         return isGroup;
     }
 
-    public void setIsGroup(String isGroup) {
+    public void setIsGroup(int isGroup) {
         this.isGroup = isGroup;
     }
 
@@ -64,4 +67,45 @@ public class DesignerService {
     public void setSid(int sid) {
         this.sid = sid;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(this.isGroup);
+        dest.writeString(this.content);
+        dest.writeString(this.name);
+        dest.writeString(this.price);
+        dest.writeInt(this.cid);
+        dest.writeInt(this.mid);
+        dest.writeInt(this.sid);
+    }
+
+    public DesignerService() {
+    }
+
+    protected DesignerService(Parcel in) {
+        this.isGroup = in.readInt();
+        this.content = in.readString();
+        this.name = in.readString();
+        this.price = in.readString();
+        this.cid = in.readInt();
+        this.mid = in.readInt();
+        this.sid = in.readInt();
+    }
+
+    public static final Parcelable.Creator<DesignerService> CREATOR = new Parcelable.Creator<DesignerService>() {
+        @Override
+        public DesignerService createFromParcel(Parcel source) {
+            return new DesignerService(source);
+        }
+
+        @Override
+        public DesignerService[] newArray(int size) {
+            return new DesignerService[size];
+        }
+    };
 }

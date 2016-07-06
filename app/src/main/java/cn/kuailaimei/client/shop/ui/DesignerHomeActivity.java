@@ -1,5 +1,6 @@
 package cn.kuailaimei.client.shop.ui;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.View;
@@ -15,6 +16,7 @@ import com.zitech.framework.widget.RemoteImageView;
 import cn.kuailaimei.client.Constants;
 import cn.kuailaimei.client.R;
 import cn.kuailaimei.client.api.ApiFactory;
+import cn.kuailaimei.client.api.entity.CommitOrderInfo;
 import cn.kuailaimei.client.api.entity.Designer;
 import cn.kuailaimei.client.api.entity.DesignerService;
 import cn.kuailaimei.client.api.request.IDRequest;
@@ -68,7 +70,7 @@ public class DesignerHomeActivity extends AppBarActivity {
         this.designerAvatar = (RemoteImageView) findViewById(R.id.designer_avatar);
     }
 
-    private void render(DesignerDetail detail) {
+    private void render(final DesignerDetail detail) {
         final Designer designer = detail.getDesigner();
 //        shopName.setText(designer.getAlias());
         rate.setText(designer.getOrderRate());
@@ -81,12 +83,6 @@ public class DesignerHomeActivity extends AppBarActivity {
         designerName.setText(designer.getAlias());
         designerAvatar.setBitmapTransformation(new RoundedCornersTransformation(this, ViewUtils.getDimenPx(R.dimen.w10)));
         designerAvatar.setImageUri(designer.getPortrait());
-        orderNow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ToastMaster.popToast(getContext(), "去订购");
-            }
-        });
         serviceItems.setServiceItems(detail.getServiceList());
         serviceItems.setOnServiceCheckedListener(new ServiceRadioGroup.OnServiceCheckedListener() {
             @Override
@@ -103,7 +99,25 @@ public class DesignerHomeActivity extends AppBarActivity {
         orderNow.setOnRippleCompleteListener(new OnRippleCompleteListener() {
             @Override
             public void onComplete(View v) {
-
+                if (choosedService == null) {
+                    ToastMaster.popToast(getContext(), "请选择服务项目");
+                    return;
+                }
+                if (choosedService.getIsGroup() == 1) {
+                    ChooseAssistantActivity.launch(getContext(), designer, choosedService);
+                } else {
+                    CommitOrderInfo info = new CommitOrderInfo();
+                    info.setsId(String.valueOf(choosedService.getSid()));
+                    info.setAmount(Float.parseFloat(choosedService.getPrice()));
+                    info.setContent(choosedService.getContent());
+                    info.setmId(String.valueOf(designer.getId()));
+                    info.setcId(String.valueOf(choosedService.getCid()));
+                    info.setDesignName(designer.getAlias());
+                    info.setName(choosedService.getName());
+//                    info.setAmount(designerService.getPrice());
+//                    info.setmId(designerService.get);
+                    ConfirmOrderActivity.launch((Activity) getContext(), info);
+                }
             }
         });
     }
