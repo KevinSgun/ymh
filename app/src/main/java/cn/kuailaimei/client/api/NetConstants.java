@@ -86,7 +86,7 @@ public class NetConstants extends Constants{
     public static final String STORE_DESIGNERDETAILS = COMMON_SUFFIX+"store/designerDetails";
 
     //25.支付方式列表
-    public static final String ORDER_PAYLIST = COMMON_SUFFIX+"order/payList";
+    public static final String ORDER_PAYLIST = COMMON_SUFFIX+"store/order/payList";
 
     //26.提交订单
     public static final String ORDER_SUBMIT= COMMON_SUFFIX+"store/order/submit";

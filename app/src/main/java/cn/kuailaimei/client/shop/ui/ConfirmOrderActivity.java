@@ -133,11 +133,11 @@ public class ConfirmOrderActivity extends AppBarActivity implements MutilRadioGr
                 if (ViewUtils.isFastDoubleClick()) return;
                 CommitOrderRequest commitOrderRequest = new CommitOrderRequest();
                 commitOrderRequest.setName(commitOrderInfo.getName());
-                commitOrderRequest.setAmount(commitOrderRequest.getAmount());
-                commitOrderRequest.setCId(commitOrderRequest.getCId());
-                commitOrderRequest.setSId(commitOrderRequest.getSId());
-                commitOrderRequest.setMId(commitOrderRequest.getMId());
-                commitOrderRequest.setMId1(commitOrderRequest.getMId1());
+                commitOrderRequest.setAmount(String.valueOf(commitOrderInfo.getAmount()));
+                commitOrderRequest.setCId(commitOrderInfo.getcId());
+                commitOrderRequest.setSId(commitOrderInfo.getsId());
+                commitOrderRequest.setMId(commitOrderInfo.getmId());
+                commitOrderRequest.setMId1(commitOrderInfo.getmId1());
                 commitOrderRequest.setPayId(payType);
                 Request request = new Request(commitOrderRequest);
                 request.sign();
