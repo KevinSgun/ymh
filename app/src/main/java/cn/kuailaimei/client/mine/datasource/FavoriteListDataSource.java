@@ -1,10 +1,5 @@
 package cn.kuailaimei.client.mine.datasource;
 
-import cn.kuailaimei.client.api.ApiFactory;
-import cn.kuailaimei.client.api.entity.NearShop;
-import cn.kuailaimei.client.api.request.PageRequest;
-import cn.kuailaimei.client.api.response.MyFavoriteResponse;
-import cn.kuailaimei.client.common.datasource.PagedProxy;
 import com.shizhefei.mvc.IAsyncDataSource;
 import com.shizhefei.mvc.RequestHandle;
 import com.shizhefei.mvc.ResponseSender;
@@ -12,6 +7,11 @@ import com.zitech.framework.data.network.response.ApiResponse;
 
 import java.util.List;
 
+import cn.kuailaimei.client.api.ApiFactory;
+import cn.kuailaimei.client.api.entity.NearShop;
+import cn.kuailaimei.client.api.request.PageRequest;
+import cn.kuailaimei.client.api.response.MyFavoriteResponse;
+import cn.kuailaimei.client.common.datasource.PagedProxy;
 import rx.Subscription;
 import rx.functions.Action1;
 
