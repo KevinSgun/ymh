@@ -80,7 +80,7 @@ public class AssistantRecycleViewAdapter extends RecyclerView.Adapter<AssistantR
             public void onClick(View v) {
 
                 //
-                if (choose.isChecked()) {
+                if (!choose.isChecked()) {
                     choose.setChecked(true);
                 }
 

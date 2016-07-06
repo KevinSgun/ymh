@@ -26,6 +26,7 @@ import cn.kuailaimei.client.common.ui.AppBarActivity;
 import cn.kuailaimei.client.common.widget.OnRippleCompleteListener;
 import cn.kuailaimei.client.common.widget.RippleButton;
 import cn.kuailaimei.client.shop.adapter.AssistantRecycleViewAdapter;
+import cn.kuailaimei.client.utils.ToastMaster;
 
 /**
  * Created by lu on 2016/7/5.
@@ -50,12 +51,7 @@ public class ChooseAssistantActivity extends AppBarActivity {
         assistantList.setLayoutManager(new GridLayoutManager(this, 2));
         confirm = (RippleButton) findViewById(R.id.confirm);
         designer = getIntent().getParcelableExtra(Constants.ActivityExtra.DESIGNER);
-        adapter.setOnAssistantChoosedListener(new AssistantRecycleViewAdapter.OnAssistantChoosedListener() {
-            @Override
-            public void onAssistantChoosed(Employee employee) {
-                choosedEmployee = employee;
-            }
-        });
+
         confirm.setOnRippleCompleteListener(new OnRippleCompleteListener() {
             @Override
             public void onComplete(View v) {
@@ -74,6 +70,8 @@ public class ChooseAssistantActivity extends AppBarActivity {
 //                    info.setAmount(designerService.getPrice());
 //                    info.setmId(designerService.get);
                     ConfirmOrderActivity.launch((Activity) getContext(), info);
+                }else {
+                    ToastMaster.popToast(getContext(),"请选择助理");
                 }
             }
         });
@@ -91,6 +89,13 @@ public class ChooseAssistantActivity extends AppBarActivity {
                 List<Employee> assistants = listApiResponse.getData().getEmployeeList();
                 adapter = new AssistantRecycleViewAdapter(getContext(), assistants);
                 assistantList.setAdapter(adapter);
+
+                adapter.setOnAssistantChoosedListener(new AssistantRecycleViewAdapter.OnAssistantChoosedListener() {
+                    @Override
+                    public void onAssistantChoosed(Employee employee) {
+                        choosedEmployee = employee;
+                    }
+                });
             }
         });
     }
