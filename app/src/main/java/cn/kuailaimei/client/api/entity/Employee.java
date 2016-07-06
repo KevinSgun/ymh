@@ -9,6 +9,15 @@ public class Employee {
     private String satisfactory;// "100%",//满意度
     private int sumScore;//: 0,
     private int uid;// 11905//用户ID
+    private  volatile boolean checked;
+
+    public boolean isChecked() {
+        return checked;
+    }
+
+    public void setChecked(boolean checked) {
+        this.checked = checked;
+    }
 
     public String getAlias() {
         return alias;

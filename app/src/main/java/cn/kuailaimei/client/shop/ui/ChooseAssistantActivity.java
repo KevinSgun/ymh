@@ -20,7 +20,6 @@ import cn.kuailaimei.client.api.entity.Designer;
 import cn.kuailaimei.client.api.entity.DesignerService;
 import cn.kuailaimei.client.api.entity.Employee;
 import cn.kuailaimei.client.api.request.Request;
-import cn.kuailaimei.client.api.request.RequestData;
 import cn.kuailaimei.client.api.request.SIDRequest;
 import cn.kuailaimei.client.api.response.AssistantListResposne;
 import cn.kuailaimei.client.common.ui.AppBarActivity;
@@ -51,6 +50,12 @@ public class ChooseAssistantActivity extends AppBarActivity {
         assistantList.setLayoutManager(new GridLayoutManager(this, 2));
         confirm = (RippleButton) findViewById(R.id.confirm);
         designer = getIntent().getParcelableExtra(Constants.ActivityExtra.DESIGNER);
+        adapter.setOnAssistantChoosedListener(new AssistantRecycleViewAdapter.OnAssistantChoosedListener() {
+            @Override
+            public void onAssistantChoosed(Employee employee) {
+                choosedEmployee = employee;
+            }
+        });
         confirm.setOnRippleCompleteListener(new OnRippleCompleteListener() {
             @Override
             public void onComplete(View v) {

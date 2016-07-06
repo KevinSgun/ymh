@@ -33,15 +33,13 @@ import java.util.List;
 
 import cn.kuailaimei.client.R;
 import cn.kuailaimei.client.api.entity.Employee;
-import cn.kuailaimei.client.shop.ui.DesignerHomeActivity;
-import cn.kuailaimei.client.utils.ToastMaster;
 
 public class AssistantRecycleViewAdapter extends RecyclerView.Adapter<AssistantRecycleViewAdapter.DesignerViewHolder> {
     private List<Employee> employeeList = new ArrayList<Employee>();
     private LayoutInflater inflater;
     private Context mContext;
     private OnAssistantChoosedListener onAssistantChoosedListener;
-
+    private Employee currentChecked;
 
     public void setOnAssistantChoosedListener(OnAssistantChoosedListener onAssistantChoosedListener) {
         this.onAssistantChoosedListener = onAssistantChoosedListener;
@@ -69,7 +67,7 @@ public class AssistantRecycleViewAdapter extends RecyclerView.Adapter<AssistantR
         final Employee employee = employeeList.get(position);
         RemoteImageView avatar = holder.avatar;
         TextView name = holder.name;
-        TextView tag = holder.tag;
+        final TextView tag = holder.tag;
         TextView rate = holder.rate;
         final RadioButton choose = holder.choose;
         name.setText(employee.getAlias());
@@ -81,16 +79,27 @@ public class AssistantRecycleViewAdapter extends RecyclerView.Adapter<AssistantR
             @Override
             public void onClick(View v) {
 
+                //
                 if (choose.isChecked()) {
                     choose.setChecked(true);
                 }
+
             }
         });
         choose.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    onAssistantChoosedListener.onAssistantChoosed(employee);
+                    if (employee != currentChecked) {
+                        if (currentChecked != null) {
+                            currentChecked.setChecked(false);
+                        }
+                        employee.setChecked(true);
+                        currentChecked = employee;
+                        notifyDataSetChanged();
+                        onAssistantChoosedListener.onAssistantChoosed(employee);
+                    }
+
                 }
             }
         });
