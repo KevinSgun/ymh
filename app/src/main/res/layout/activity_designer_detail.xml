@@ -1,246 +1,251 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    android:gravity="center_horizontal"
-    android:orientation="vertical">
-
-    <com.zitech.framework.widget.RemoteImageView
-        android:id="@+id/designer_avatar"
-        android:layout_width="@dimen/w160"
-        android:layout_height="@dimen/w160"
-        android:layout_marginTop="@dimen/h50" />
-
-    <TextView
-        android:id="@+id/designer_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/h20"
-        android:text="刘禹锡"
-        android:textColor="@color/textColorPrimary"
-        android:textSize="@dimen/w32" />
-
-    <TextView
-        android:id="@+id/designer_level"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/h23"
-        android:text="资深形象设计师"
-
-        android:textSize="@dimen/w20" />
-
-    <TextView
-        android:id="@+id/designer_intro"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/h51"
-        android:text=" 每个理发师都听不懂“稍微修一下，不要太短”这句话"
-        android:textColor="@color/textColorPrimaryGray"
-        android:textSize="@dimen/w20" />
+    android:background="@color/white">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/h72"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/schedule"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="127"
-                android:textColor="@color/textColorPink"
-                android:textSize="@dimen/w36" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/h6"
-                android:text="预约"
-                android:textSize="@dimen/w24" />
-        </LinearLayout>
-
-        <View
-            android:layout_width="@dimen/w1"
-            android:layout_height="@dimen/h51"
-            android:background="@color/divider_color_dark" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/order"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="127"
-                android:textColor="@color/textColorPink"
-                android:textSize="@dimen/w36" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/h6"
-                android:text="签单"
-                android:textSize="@dimen/w24" />
-        </LinearLayout>
-
-        <View
-            android:layout_width="@dimen/w1"
-            android:layout_height="@dimen/h51"
-            android:background="@color/divider_color_dark" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/reveiw"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="127"
-                android:textColor="@color/textColorPink"
-                android:textSize="@dimen/w36" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/h6"
-                android:text="评价"
-                android:textSize="@dimen/w24" />
-        </LinearLayout>
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/h10"
-        android:background="@color/bg_color" />
-
-    <cn.kuailaimei.client.common.widget.RippleLinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/h86"
-        android:gravity="center_vertical"
-        android:paddingLeft="@dimen/w30"
-        android:paddingRight="@dimen/w30">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="客户评价"
-            android:textColor="@color/textColorPrimary"
-            android:textSize="@dimen/w24" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="满意度："
-            android:textColor="@color/textColorPrimary" />
-
-        <TextView
-            android:id="@+id/rate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="100%"
-            android:textColor="@color/textColorPink"
-            android:textSize="@dimen/w24" />
-
-        <ImageView
-            android:layout_width="@dimen/w15"
-            android:layout_height="@dimen/h24"
-            android:layout_marginLeft="@dimen/w19"
-            android:src="@mipmap/ic_gray_arrow" />
-    </cn.kuailaimei.client.common.widget.RippleLinearLayout>
-    <View
-        style="@style/DividerHorizontalLine"/>
-    <cn.kuailaimei.client.common.widget.RippleLinearLayout
-        android:id="@+id/shop_layout"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/h86"
-        android:gravity="center_vertical"
-        android:paddingLeft="@dimen/w30"
-        android:paddingRight="@dimen/w30">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="所在店铺"
-            android:textColor="@color/textColorPrimary"
-            android:textSize="@dimen/w24" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/textColorPink" />
-
-        <ImageView
-            android:layout_width="@dimen/w15"
-            android:layout_height="@dimen/h24"
-            android:layout_marginLeft="@dimen/w19"
-            android:src="@mipmap/ic_gray_arrow" />
-    </cn.kuailaimei.client.common.widget.RippleLinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/h10"
-        android:background="@color/bg_color" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/h60"
-        android:gravity="center">
-
-        <ImageView
-            android:layout_width="@dimen/w39"
-            android:layout_height="@dimen/w39"
-            android:src="@mipmap/ic_hairdresser_avatar" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/w28"
-            android:text="服务项目"
-            android:textColor="@color/textColorSecondary" />
-    </LinearLayout>
-
-    <cn.kuailaimei.client.common.widget.ServiceRadioGroup
-        android:id="@+id/service_items"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
         android:orientation="vertical">
 
-    </cn.kuailaimei.client.common.widget.ServiceRadioGroup>
+        <com.zitech.framework.widget.RemoteImageView
+            android:id="@+id/designer_avatar"
+            android:layout_width="@dimen/w160"
+            android:layout_height="@dimen/w160"
+            android:layout_marginTop="@dimen/h50" />
 
-    <View style="@style/SpaceAutoFit"
-        android:layout_weight="1"/>
+        <TextView
+            android:id="@+id/designer_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/h20"
+            android:text="刘禹锡"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="@dimen/w32" />
 
-    <cn.kuailaimei.client.common.widget.RippleButton
-        android:id="@+id/order_now"
-        style="@style/CommentButtonStyle"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/h68"
-        android:gravity="center"
-        android:text="立即预约"
-        android:textColor="@color/white"
-        android:textSize="@dimen/w32"
-        android:layout_marginBottom="@dimen/h15"
-        android:background="@drawable/btn_common"
-        android:layout_marginLeft="@dimen/w60"
-        android:layout_marginRight="@dimen/w60"/>
-</LinearLayout>
+        <TextView
+            android:id="@+id/designer_level"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/h23"
+            android:text="资深形象设计师"
+
+            android:textSize="@dimen/w20" />
+
+        <TextView
+            android:id="@+id/designer_intro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/h51"
+            android:text=" 每个理发师都听不懂“稍微修一下，不要太短”这句话"
+            android:textColor="@color/textColorPrimaryGray"
+            android:textSize="@dimen/w20" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/h72"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/schedule"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="127"
+                    android:textColor="@color/textColorPink"
+                    android:textSize="@dimen/w36" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/h6"
+                    android:text="预约"
+                    android:textSize="@dimen/w24" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="@dimen/w1"
+                android:layout_height="@dimen/h51"
+                android:background="@color/divider_color_dark" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/order"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="127"
+                    android:textColor="@color/textColorPink"
+                    android:textSize="@dimen/w36" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/h6"
+                    android:text="签单"
+                    android:textSize="@dimen/w24" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="@dimen/w1"
+                android:layout_height="@dimen/h51"
+                android:background="@color/divider_color_dark" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/reveiw"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="127"
+                    android:textColor="@color/textColorPink"
+                    android:textSize="@dimen/w36" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/h6"
+                    android:text="评价"
+                    android:textSize="@dimen/w24" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/h10"
+            android:background="@color/bg_color" />
+
+        <cn.kuailaimei.client.common.widget.RippleLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/h86"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/w30"
+            android:paddingRight="@dimen/w30">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="客户评价"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="@dimen/w24" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="满意度："
+                android:textColor="@color/textColorPrimary" />
+
+            <TextView
+                android:id="@+id/rate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="100%"
+                android:textColor="@color/textColorPink"
+                android:textSize="@dimen/w24" />
+
+            <ImageView
+                android:layout_width="@dimen/w15"
+                android:layout_height="@dimen/h24"
+                android:layout_marginLeft="@dimen/w19"
+                android:src="@mipmap/ic_gray_arrow" />
+        </cn.kuailaimei.client.common.widget.RippleLinearLayout>
+
+        <View style="@style/DividerHorizontalLine" />
+
+        <cn.kuailaimei.client.common.widget.RippleLinearLayout
+            android:id="@+id/shop_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/h86"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/w30"
+            android:paddingRight="@dimen/w30">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="所在店铺"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="@dimen/w24" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/textColorPink" />
+
+            <ImageView
+                android:layout_width="@dimen/w15"
+                android:layout_height="@dimen/h24"
+                android:layout_marginLeft="@dimen/w19"
+                android:src="@mipmap/ic_gray_arrow" />
+        </cn.kuailaimei.client.common.widget.RippleLinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/h10"
+            android:background="@color/bg_color" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/h60"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="@dimen/w39"
+                android:layout_height="@dimen/w39"
+                android:src="@mipmap/ic_hairdresser_avatar" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/w28"
+                android:text="服务项目"
+                android:textColor="@color/textColorSecondary" />
+        </LinearLayout>
+
+        <cn.kuailaimei.client.common.widget.ServiceRadioGroup
+            android:id="@+id/service_items"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        </cn.kuailaimei.client.common.widget.ServiceRadioGroup>
+
+
+        <cn.kuailaimei.client.common.widget.RippleButton
+            android:layout_marginTop="@dimen/h10"
+            android:id="@+id/order_now"
+            style="@style/CommentButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/h68"
+            android:layout_marginBottom="@dimen/h15"
+            android:layout_marginLeft="@dimen/w60"
+            android:layout_marginRight="@dimen/w60"
+            android:background="@drawable/btn_common"
+            android:gravity="center"
+            android:text="立即预约"
+            android:textColor="@color/white"
+            android:textSize="@dimen/w32" />
+    </LinearLayout>
+</ScrollView>
