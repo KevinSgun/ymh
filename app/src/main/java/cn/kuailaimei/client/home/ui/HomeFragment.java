@@ -41,7 +41,6 @@ import cn.kuailaimei.client.common.widget.RippleView;
 import cn.kuailaimei.client.home.adapter.HomeDataAdapter;
 import cn.kuailaimei.client.map.BaiduMapHelper;
 import cn.kuailaimei.client.map.LocationCallBack;
-import cn.kuailaimei.client.shop.ui.ConfirmOrderActivity;
 import cn.kuailaimei.client.shop.ui.ShopHomeActivity;
 import cn.kuailaimei.client.utils.ToastMaster;
 
@@ -92,6 +91,7 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
     public double latitude;//纬度
     public double longitude;//经度
     private List<ServicesBean> serviceList;
+    private int lastStoreId;
 
     @Override
     protected int getContentViewId() {
@@ -206,6 +206,8 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
             shopnametv.setText(lastStoreBean.getName());
 //                distancetv.setText(lastStoreBean.get);
             shopaddresstv.setText(lastStoreBean.getAddress());
+
+            lastStoreId = lastStoreBean.getId();
         } else {
             consumerrecordlayout.setVisibility(View.GONE);
         }
@@ -279,7 +281,7 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
                 break;
             case R.id.consumer_record_layout:
                 //TODO 进入消费过的店铺首页
-                ToastMaster.shortToast("消费过的店铺");
+                ShopHomeActivity.launch(getActivity(), String.valueOf(lastStoreId));
                 break;
 
         }
