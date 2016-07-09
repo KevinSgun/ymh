@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.zitech.framework.data.network.response.ApiResponse;
@@ -27,7 +26,7 @@ import cn.kuailaimei.client.common.widget.OnRippleCompleteListener;
 import cn.kuailaimei.client.common.widget.RippleButton;
 import cn.kuailaimei.client.common.widget.RippleLinearLayout;
 import cn.kuailaimei.client.common.widget.ServiceRadioGroup;
-import cn.kuailaimei.client.utils.ToastMaster;
+import cn.kuailaimei.client.common.utils.ToastMaster;
 
 /**
  * Created by lu on 2016/7/4.

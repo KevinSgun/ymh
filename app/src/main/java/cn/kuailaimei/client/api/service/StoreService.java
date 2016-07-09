@@ -25,6 +25,7 @@ import cn.kuailaimei.client.api.request.UpdateAddress;
 import cn.kuailaimei.client.api.request.UpdateProfileRequest;
 import cn.kuailaimei.client.api.response.AssistantListResposne;
 import cn.kuailaimei.client.api.response.DesignerDetail;
+import cn.kuailaimei.client.api.response.ExchangeListResponse;
 import cn.kuailaimei.client.api.response.FilePathResponse;
 import cn.kuailaimei.client.api.response.HomePageResponse;
 import cn.kuailaimei.client.api.response.MyFavoriteResponse;
@@ -318,8 +319,6 @@ public interface StoreService {
     Observable<ApiResponse<OrderPayResult>> doOrderRePay(@Body Request body);
 
     /**
-     *
-     *
      * @param body
      * @return
      * @see cn.kuailaimei.client.api.request.OrderCommentRequest
@@ -330,7 +329,18 @@ public interface StoreService {
 
 
     /**
-     *44 获取助理列表
+     * 35 积分商品列表
+     *
+     * @param body
+     * @return
+     * @see cn.kuailaimei.client.api.request.OrderCommentRequest
+     */
+    @POST(NetConstants.ORDER_EVALUATE)
+    @Headers("Content-Type:" + RetrofitClient.JSON)
+    Observable<ApiResponse<ExchangeListResponse>> getExchangList(@Body Request body);
+
+    /**
+     * 44 获取助理列表
      *
      * @param body
      * @return

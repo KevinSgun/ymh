@@ -31,8 +31,8 @@ import cn.kuailaimei.client.common.User;
 import cn.kuailaimei.client.common.ui.PhotoPickingActivity;
 import cn.kuailaimei.client.common.widget.CommonDialog;
 import cn.kuailaimei.client.common.widget.ToolBarHelper;
-import cn.kuailaimei.client.utils.DateUtil;
-import cn.kuailaimei.client.utils.ToastMaster;
+import cn.kuailaimei.client.common.utils.DateUtil;
+import cn.kuailaimei.client.common.utils.ToastMaster;
 import ics.datepicker.ICSDatePickerDialog;
 
 /**

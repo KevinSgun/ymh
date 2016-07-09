@@ -3,38 +3,38 @@ package cn.kuailaimei.client.api.request;
 /**
  * Created by lu on 2016/7/2.
  */
-public class ExchangeListRequest {
+public class ExchangeListRequest implements RequestData{
     /**
      * goodsType : 1
      * index : 1
      * size : 10
      */
 
-    private String goodsType;
-    private String index;
-    private String size;
+    private int goodsType;
+    private int index;
+    private int size;
 
-    public String getGoodsType() {
+    public int getGoodsType() {
         return goodsType;
     }
 
-    public void setGoodsType(String goodsType) {
+    public void setGoodsType(int goodsType) {
         this.goodsType = goodsType;
     }
 
-    public String getIndex() {
+    public int getIndex() {
         return index;
     }
 
-    public void setIndex(String index) {
+    public void setIndex(int index) {
         this.index = index;
     }
 
-    public String getSize() {
+    public int getSize() {
         return size;
     }
 
-    public void setSize(String size) {
+    public void setSize(int size) {
         this.size = size;
     }
 }

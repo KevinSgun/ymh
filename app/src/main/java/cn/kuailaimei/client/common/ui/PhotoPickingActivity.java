@@ -7,7 +7,7 @@ import android.view.View;
 
 import cn.kuailaimei.client.BeautApplication;
 import cn.kuailaimei.client.R;
-import cn.kuailaimei.client.utils.ToastMaster;
+import cn.kuailaimei.client.common.utils.ToastMaster;
 import com.zitech.framework.crop.CropActivity;
 import com.zitech.framework.utils.ImageUtils;
 import com.zitech.framework.utils.Utils;

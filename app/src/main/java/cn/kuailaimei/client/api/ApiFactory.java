@@ -19,6 +19,7 @@ import cn.kuailaimei.client.api.request.Request;
 import cn.kuailaimei.client.api.request.SIDRequest;
 import cn.kuailaimei.client.api.response.AssistantListResposne;
 import cn.kuailaimei.client.api.response.DesignerDetail;
+import cn.kuailaimei.client.api.response.ExchangeListResponse;
 import cn.kuailaimei.client.api.response.FilePathResponse;
 import cn.kuailaimei.client.api.response.GetwayResponse;
 import cn.kuailaimei.client.api.response.HomePageResponse;
@@ -360,7 +361,15 @@ public class ApiFactory {
         return getStoreService().getDesignerDetail(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
     }
 
-
+    /**
+     * 技师详细信息
+     *
+     * @param request
+     * @return
+     */
+    public static Observable<ApiResponse<ExchangeListResponse>> getExchangList(Request request) {
+        return getStoreService().getExchangList(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
+    }
     /**
      *44 获取助理列表
      *
@@ -371,4 +380,5 @@ public class ApiFactory {
     public static  Observable<ApiResponse<AssistantListResposne>> getAssistantList(@Body Request request){
         return getStoreService().getAssistantList(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
     }
+
 }

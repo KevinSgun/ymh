@@ -34,7 +34,7 @@ import cn.kuailaimei.client.common.widget.PayResultDialog;
 import cn.kuailaimei.client.home.ui.MainActivity;
 import cn.kuailaimei.client.mine.ui.MyOrderListActivity;
 import cn.kuailaimei.client.pay.PayTools;
-import cn.kuailaimei.client.utils.ToastMaster;
+import cn.kuailaimei.client.common.utils.ToastMaster;
 
 /**
  * Created by ymh on 2016/7/4 0004.

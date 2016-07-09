@@ -25,7 +25,7 @@ import cn.kuailaimei.client.common.vo.Photo;
 import cn.kuailaimei.client.common.widget.ContentViewHolder;
 import cn.kuailaimei.client.common.widget.ToolBarHelper;
 import cn.kuailaimei.client.common.ListAdapter;
-import cn.kuailaimei.client.utils.ToastMaster;
+import cn.kuailaimei.client.common.utils.ToastMaster;
 import com.zitech.framework.utils.FileDiskAllocator;
 import com.zitech.framework.utils.ImageUtils;
 import com.zitech.framework.widget.RemoteImageView;

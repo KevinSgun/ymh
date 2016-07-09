@@ -27,7 +27,7 @@ import cn.kuailaimei.client.home.adapter.ShopRecycleViewAdapter;
 import cn.kuailaimei.client.home.datasource.ShopListDataSource;
 import cn.kuailaimei.client.map.BaiduMapHelper;
 import cn.kuailaimei.client.map.LocationCallBack;
-import cn.kuailaimei.client.utils.ToastMaster;
+import cn.kuailaimei.client.common.utils.ToastMaster;
 import com.shizhefei.mvc.IAsyncDataSource;
 import com.shizhefei.mvc.MVCHelper;
 import com.zitech.framework.data.network.response.ApiResponse;

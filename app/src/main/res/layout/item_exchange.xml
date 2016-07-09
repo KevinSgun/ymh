@@ -19,7 +19,8 @@
             android:layout_width="@dimen/w127"
             android:layout_height="@dimen/w117"
             android:layout_gravity="center"
-            android:scaleType="fitCenter" />
+            android:scaleType="fitCenter"
+            android:id="@+id/icon" />
     </FrameLayout>
 
     <LinearLayout
@@ -34,7 +35,8 @@
             android:layout_height="wrap_content"
             android:text="Tangle teezer梳子 英国按摩梳美发梳子卷发梳王妃顺发梳 TT梳子"
             android:textColor="@color/textColorPrimary"
-            android:textSize="@dimen/w20" />
+            android:textSize="@dimen/w20"
+            android:id="@+id/name" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -48,14 +50,16 @@
                 android:layout_height="wrap_content"
                 android:text="￥100+500美劵"
                 android:textColor="@color/textColorPink"
-                android:textSize="@dimen/w24" />
+                android:textSize="@dimen/w24"
+                android:id="@+id/price" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/w18"
                 android:textColor="@color/textColorSecondary"
                 android:layout_marginLeft="@dimen/w30"
-                android:text="官方原价：￥100+500美券"/>
+                android:text="官方原价：￥100+500美券"
+                android:id="@+id/old_price" />
 
         </LinearLayout>
         <Button
@@ -67,6 +71,7 @@
             android:textColor="#f60068"
             android:gravity="center"
             android:textSize="@dimen/w18"
-            android:layout_marginTop="@dimen/h6"/>
+            android:layout_marginTop="@dimen/h6"
+            android:id="@+id/desp" />
     </LinearLayout>
 </LinearLayout>

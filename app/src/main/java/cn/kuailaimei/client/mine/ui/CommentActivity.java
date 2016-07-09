@@ -25,7 +25,7 @@ import cn.kuailaimei.client.api.request.Request;
 import cn.kuailaimei.client.common.event.EventFactory;
 import cn.kuailaimei.client.common.ui.AppBarActivity;
 import cn.kuailaimei.client.common.widget.CommonDialog;
-import cn.kuailaimei.client.utils.ToastMaster;
+import cn.kuailaimei.client.common.utils.ToastMaster;
 
 /**
  * Created by ymh on 2016/7/4 0004.

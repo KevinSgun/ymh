@@ -1,4 +1,4 @@
-package cn.kuailaimei.client.common.util;
+package cn.kuailaimei.client.common.utils;
 
 /**
  * Created by lu on 2016/7/3.

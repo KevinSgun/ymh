@@ -32,8 +32,8 @@ import cn.kuailaimei.client.common.widget.CommonDialog;
 import cn.kuailaimei.client.mine.ui.CommentActivity;
 import cn.kuailaimei.client.mine.ui.PayWithExistOrderActivity;
 import cn.kuailaimei.client.shop.ui.DesignerHomeActivity;
-import cn.kuailaimei.client.utils.ToastMaster;
-import cn.kuailaimei.client.utils.ViewHolderUtil;
+import cn.kuailaimei.client.common.utils.ToastMaster;
+import cn.kuailaimei.client.common.utils.ViewHolderUtil;
 
 /**
  * Created by ymh on 2016/7/3 0003.

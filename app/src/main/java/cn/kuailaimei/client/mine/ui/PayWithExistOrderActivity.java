@@ -27,7 +27,7 @@ import cn.kuailaimei.client.common.widget.MutilRadioGroup;
 import cn.kuailaimei.client.common.widget.PayResultDialog;
 import cn.kuailaimei.client.home.ui.MainActivity;
 import cn.kuailaimei.client.pay.PayTools;
-import cn.kuailaimei.client.utils.ToastMaster;
+import cn.kuailaimei.client.common.utils.ToastMaster;
 
 /**
  * 为已存在的订单发起支付

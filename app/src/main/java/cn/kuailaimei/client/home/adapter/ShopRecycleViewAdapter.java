@@ -25,7 +25,7 @@ import android.widget.TextView;
 
 import cn.kuailaimei.client.R;
 import cn.kuailaimei.client.api.entity.Shop;
-import cn.kuailaimei.client.common.util.Utils;
+import cn.kuailaimei.client.common.utils.Utils;
 import cn.kuailaimei.client.shop.ui.ShopHomeActivity;
 
 import com.shizhefei.mvc.IDataAdapter;

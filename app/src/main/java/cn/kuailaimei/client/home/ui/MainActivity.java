@@ -13,7 +13,7 @@ import cn.kuailaimei.client.Constants;
 import cn.kuailaimei.client.R;
 import cn.kuailaimei.client.common.ui.BaseActivity;
 import cn.kuailaimei.client.common.ui.BaseFragment;
-import cn.kuailaimei.client.utils.ToastMaster;
+import cn.kuailaimei.client.common.utils.ToastMaster;
 
 public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedChangeListener {
 

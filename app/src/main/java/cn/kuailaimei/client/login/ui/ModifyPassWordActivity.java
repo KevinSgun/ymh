@@ -12,7 +12,7 @@ import cn.kuailaimei.client.api.ApiFactory;
 import cn.kuailaimei.client.api.request.ModifyPsdRequest;
 import cn.kuailaimei.client.api.request.Request;
 import cn.kuailaimei.client.common.ui.AppBarActivity;
-import cn.kuailaimei.client.utils.ToastMaster;
+import cn.kuailaimei.client.common.utils.ToastMaster;
 import com.zitech.framework.data.network.response.ApiResponse;
 import com.zitech.framework.data.network.subscribe.ProgressSubscriber;
 import com.zitech.framework.utils.ViewUtils;

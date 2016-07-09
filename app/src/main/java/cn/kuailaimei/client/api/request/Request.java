@@ -1,7 +1,7 @@
 package cn.kuailaimei.client.api.request;
 
 import cn.kuailaimei.client.common.User;
-import cn.kuailaimei.client.utils.Md5;
+import cn.kuailaimei.client.common.utils.Md5;
 import com.google.gson.Gson;
 import com.zitech.framework.data.network.entity.Global;
 import com.zitech.framework.data.network.request.ApiRequest;

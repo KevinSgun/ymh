@@ -9,7 +9,7 @@ import android.widget.TextView;
 import cn.kuailaimei.client.R;
 import cn.kuailaimei.client.api.entity.NearShop;
 import cn.kuailaimei.client.common.ListAdapter;
-import cn.kuailaimei.client.utils.ViewHolderUtil;
+import cn.kuailaimei.client.common.utils.ViewHolderUtil;
 import com.shizhefei.mvc.IDataAdapter;
 import com.zitech.framework.transform.RoundedCornersTransformation;
 import com.zitech.framework.utils.ViewUtils;

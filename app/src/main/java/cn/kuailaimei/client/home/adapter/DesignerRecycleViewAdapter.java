@@ -27,7 +27,7 @@ import android.widget.TextView;
 import cn.kuailaimei.client.R;
 import cn.kuailaimei.client.api.entity.Employee;
 import cn.kuailaimei.client.shop.ui.DesignerHomeActivity;
-import cn.kuailaimei.client.utils.ToastMaster;
+import cn.kuailaimei.client.common.utils.ToastMaster;
 
 import com.zitech.framework.widget.RemoteImageView;
 

@@ -1,4 +1,4 @@
-package cn.kuailaimei.client.utils;
+package cn.kuailaimei.client.common.utils;
 
 import android.util.SparseArray;
 import android.view.View;

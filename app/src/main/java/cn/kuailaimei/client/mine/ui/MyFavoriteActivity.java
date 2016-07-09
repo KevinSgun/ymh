@@ -21,7 +21,7 @@ import cn.kuailaimei.client.common.widget.MVCSwipeRefreshHelper;
 import cn.kuailaimei.client.mine.adapter.MyFavoriteAdapter;
 import cn.kuailaimei.client.mine.datasource.FavoriteListDataSource;
 import cn.kuailaimei.client.shop.ui.ShopHomeActivity;
-import cn.kuailaimei.client.utils.ToastMaster;
+import cn.kuailaimei.client.common.utils.ToastMaster;
 import com.zitech.framework.data.network.response.ApiResponse;
 import com.zitech.framework.data.network.subscribe.ProgressSubscriber;
 

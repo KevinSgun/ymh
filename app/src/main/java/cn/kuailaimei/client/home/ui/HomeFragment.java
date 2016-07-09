@@ -42,7 +42,7 @@ import cn.kuailaimei.client.home.adapter.HomeDataAdapter;
 import cn.kuailaimei.client.map.BaiduMapHelper;
 import cn.kuailaimei.client.map.LocationCallBack;
 import cn.kuailaimei.client.shop.ui.ShopHomeActivity;
-import cn.kuailaimei.client.utils.ToastMaster;
+import cn.kuailaimei.client.common.utils.ToastMaster;
 
 /**
  * Created by lu on 2016/6/16.

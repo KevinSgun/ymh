@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package cn.kuailaimei.client.utils;
+package cn.kuailaimei.client.common.utils;
 
 import android.app.Activity;
 import android.content.Context;
