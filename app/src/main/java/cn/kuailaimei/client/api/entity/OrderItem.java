@@ -4,6 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class OrderItem implements Parcelable{
+    public static final int ALL = 0;//全部
     public static final int WAIT_PAY = 1;//待付款
     public static final int WAIT_COMMENT = 2;//待评价
     public static final int COMPLETE = 3;//已完成

@@ -42,16 +42,12 @@ public class BaiduMapHelper {
 //    };
 
     public LocationClient mLocationClient;
-    public static boolean isNeedLocation; //标识是否需要接受定位信息值 在接受定位信息成功后在外部关闭
-
-    public void setIsNeedLocation(boolean flag) {
-        isNeedLocation = flag;
-        stopLoaction();
-    }
+    public boolean isNeedLocation = true; //标识是否需要接受定位信息值 在接受定位信息成功后在外部关闭
 
     public void stopLoaction(){
         if(mLocationClient != null){
             mLocationClient.stop();
+            isNeedLocation = false;
         }
     }
 
@@ -102,6 +98,9 @@ public class BaiduMapHelper {
 
         @Override
         public void onReceiveLocation(BDLocation location) {
+            if (!isNeedLocation) {
+                return;
+            }
             //Receive Location
             StringBuffer sb = new StringBuffer(256);
             sb.append("time : ");
@@ -170,9 +169,6 @@ public class BaiduMapHelper {
 //            String county = location.getCountry();
 //            String countyCode = location.getCountryCode();
 
-//            if (!isNeedLocation) {
-//                return;
-//            }
             if (!TextUtils.isEmpty(address)) {
                 locationCallBack.onLocationSuccess(location);
             } else {

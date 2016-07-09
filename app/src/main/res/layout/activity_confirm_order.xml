@@ -42,7 +42,7 @@
             android:layout_weight="1"
             android:paddingLeft="@dimen/w40"
             android:gravity="left|center_vertical"
-            android:text="泰式洗剪吹"
+            android:text=""
             />
     </LinearLayout>
 
@@ -75,7 +75,7 @@
             android:layout_weight="1"
             android:paddingLeft="@dimen/w40"
             android:gravity="left|center_vertical"
-            android:text="1號 劉一黨"
+            android:text=""
             />
     </LinearLayout>
 
@@ -108,7 +108,7 @@
             android:layout_weight="1"
             android:paddingLeft="@dimen/w40"
             android:gravity="left|center_vertical"
-            android:text="盧代倩"
+            android:text=""
             />
     </LinearLayout>
 
@@ -141,7 +141,7 @@
             android:singleLine="true"
             android:paddingLeft="@dimen/w40"
             android:gravity="left|center_vertical"
-            android:text="驚喜30分鐘+總監服務"
+            android:text=""
             />
     </LinearLayout>
 
@@ -234,7 +234,7 @@
                 android:gravity="right"
                 android:textColor="@color/textColorPink"
                 android:textSize="@dimen/w24"
-                android:text="%100積分返還（商品兌換）"/>
+                android:text="%100积分返还（商品兌換）"/>
         </LinearLayout>
 
         <View
@@ -281,7 +281,7 @@
                 android:gravity="right"
                 android:textColor="@color/textColorPink"
                 android:textSize="@dimen/w24"
-                android:text="%100積分返還（商品兌換）"/>
+                android:text="%100积分返还（商品兌換）"/>
         </LinearLayout>
         <View
             android:id="@+id/vip_top_line"
@@ -326,12 +326,12 @@
                 android:gravity="right"
                 android:textColor="@color/textColorPink"
                 android:textSize="@dimen/w24"
-                android:text="%100積分返還（商品兌換）"/>
+                android:text="%50积分返还（商品兌換）"/>
         </LinearLayout>
     </cn.kuailaimei.client.common.widget.MutilRadioGroup>
     <View style="@style/DividerHorizontalLine"/>
     <View android:layout_width="match_parent"
-        android:layout_height="@dimen/h80"
+        android:layout_height="@dimen/h60"
         android:background="@color/bg_color"
         />
     <Button

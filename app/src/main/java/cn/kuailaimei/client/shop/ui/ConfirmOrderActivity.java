@@ -176,6 +176,7 @@ public class ConfirmOrderActivity extends AppBarActivity implements MutilRadioGr
                     MainActivity.launch(ConfirmOrderActivity.this);
                 } else {
                     MyOrderListActivity.launch(ConfirmOrderActivity.this, 2);
+                    ConfirmOrderActivity.this.finish();
                 }
             }
         });
@@ -241,9 +242,9 @@ public class ConfirmOrderActivity extends AppBarActivity implements MutilRadioGr
             } else {
                 assistantLayout.setVisibility(View.VISIBLE);
                 assistantLine.setVisibility(View.VISIBLE);
-                assistantnametv.setText(commitOrderInfo.getmId1() + "  " + commitOrderInfo.getAssistantName());
+                assistantnametv.setText(commitOrderInfo.getmId1() + "号  " + commitOrderInfo.getAssistantName());
             }
-            designernametv.setText(commitOrderInfo.getmId() + "  " + commitOrderInfo.getDesignName());
+            designernametv.setText(commitOrderInfo.getmId() + "号  " + commitOrderInfo.getDesignName());
             consumertipstv.setText(commitOrderInfo.getContent());
             consumermoneytv.setText(String.format(getString(R.string.rmb), commitOrderInfo.getAmount()));
         } else {

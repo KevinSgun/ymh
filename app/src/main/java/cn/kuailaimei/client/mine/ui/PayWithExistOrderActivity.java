@@ -99,31 +99,6 @@ public class PayWithExistOrderActivity extends AppBarActivity implements MutilRa
             case R.id.zfb_rb:
                 payType = PayTools.ZFB_WAY;
                 break;
-            case R.id.commit_btn:
-                PayRequest payRequest = new PayRequest();
-                payRequest.setPayType(payType);
-                payRequest.setPo(orderItem.getOrderId());
-                Request request = new Request(payRequest);
-                request.sign();
-                ApiFactory.doOrderRePay(request).subscribe(new ProgressSubscriber<ApiResponse<OrderPayResult>>(this) {
-                    @Override
-                    protected void onNextInActive(ApiResponse<OrderPayResult> response) {
-                        String payInfo = "";
-                        try {
-                            payInfo = response.getData().getPayInfo().getPayInfo();
-                            orderBean = response.getData().getOrder();
-                        } catch (NullPointerException ignored) {
-
-                        }
-
-                        if (PayTools.WX_WAY.equals(payType)) {
-//                            payTools.payByWX();
-                        } else if (PayTools.ZFB_WAY.equals(payType)) {
-                            payTools.payByZFB(payInfo);
-                        }
-                    }
-                });
-                break;
         }
     }
 
@@ -165,6 +140,31 @@ public class PayWithExistOrderActivity extends AppBarActivity implements MutilRa
                 break;
             case R.id.zfb_pay_layout:
                 paytyperg.check(R.id.zfb_rb);
+                break;
+            case R.id.commit_btn:
+                PayRequest payRequest = new PayRequest();
+                payRequest.setPayType(payType);
+                payRequest.setPo(orderItem.getOrderId());
+                Request request = new Request(payRequest);
+                request.sign();
+                ApiFactory.doOrderRePay(request).subscribe(new ProgressSubscriber<ApiResponse<OrderPayResult>>(this) {
+                    @Override
+                    protected void onNextInActive(ApiResponse<OrderPayResult> response) {
+                        String payInfo = "";
+                        try {
+                            payInfo = response.getData().getPayInfo().getPayInfo();
+                            orderBean = response.getData().getOrder();
+                        } catch (NullPointerException ignored) {
+
+                        }
+
+                        if (PayTools.WX_WAY.equals(payType)) {
+//                            payTools.payByWX();
+                        } else if (PayTools.ZFB_WAY.equals(payType)) {
+                            payTools.payByZFB(payInfo);
+                        }
+                    }
+                });
                 break;
         }
     }

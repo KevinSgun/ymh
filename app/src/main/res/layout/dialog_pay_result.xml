@@ -37,13 +37,11 @@
             <TextView
                 android:id="@+id/coupon_count_tv"
                 style="@style/TextBlank.Medium"
-                android:layout_gravity="center_horizontal"
+                android:layout_gravity="center_vertical"
                 android:textColor="@color/textColorPink"
                 android:layout_marginLeft="@dimen/w40"
-                android:paddingBottom="@dimen/w15"
-                android:paddingTop="@dimen/w15"
                 android:textSize="@dimen/w48"
-                android:text="100" />
+                android:text="0" />
         </LinearLayout>
         <Button
             android:id="@+id/back_to_home_btn"
