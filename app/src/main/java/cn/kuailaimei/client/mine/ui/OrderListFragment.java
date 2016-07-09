@@ -57,6 +57,7 @@ public class OrderListFragment extends BaseFragment{
     public void onMainThreadOrderInfoChange(EventFactory.OrderListDataChange data){
         if("-1".equals(data.status)||("0".equals(status)||data.status.equals(status))&&mvcHelper!=null){
             mvcHelper.refresh();
+            EventBus.getDefault().post(new EventFactory.OrderCountDataChange());
         }
     }
 

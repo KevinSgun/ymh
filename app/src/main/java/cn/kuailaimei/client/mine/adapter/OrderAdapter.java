@@ -46,7 +46,7 @@ public class OrderAdapter extends ListAdapter<OrderItem> implements IDataAdapter
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
        if(convertView == null){
            convertView = LayoutInflater.from(mContext).inflate(R.layout.item_order,null);
        }
@@ -102,8 +102,9 @@ public class OrderAdapter extends ListAdapter<OrderItem> implements IDataAdapter
                                     protected void onNextInActive(ApiResponse apiResponse) {
                                         ToastMaster.shortToast(apiResponse.getBasic().getMsg());
                                         EventFactory.OrderListDataChange data = new EventFactory.OrderListDataChange();
-                                        data.status = "0";
+                                        data.status = "-1";
                                         EventBus.getDefault().post(data);
+                                        mList.remove(position);
                                         notifyDataSetChanged();
                                     }
                                 });
