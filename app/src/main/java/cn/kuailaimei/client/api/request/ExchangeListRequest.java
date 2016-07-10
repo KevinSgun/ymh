@@ -10,15 +10,15 @@ public class ExchangeListRequest implements RequestData{
      * size : 10
      */
 
-    private int goodsType;
+    private String goodsType;
     private int index;
     private int size;
 
-    public int getGoodsType() {
+    public String getGoodsType() {
         return goodsType;
     }
 
-    public void setGoodsType(int goodsType) {
+    public void setGoodsType(String goodsType) {
         this.goodsType = goodsType;
     }
 

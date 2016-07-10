@@ -1,11 +1,14 @@
 package cn.kuailaimei.client.api.entity;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.List;
 
 /**
  * Created by lu on 2016/7/2.
  */
-public class GoodsDetail {
+public class GoodsDetail implements Parcelable {
 
     /**
      * content : c
@@ -130,4 +133,55 @@ public class GoodsDetail {
     public void setPhotos(List<String> photos) {
         this.photos = photos;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.content);
+        dest.writeInt(this.fare);
+        dest.writeInt(this.id);
+        dest.writeInt(this.inventory);
+        dest.writeString(this.name);
+        dest.writeInt(this.oldprice);
+        dest.writeInt(this.price);
+        dest.writeInt(this.sales);
+        dest.writeInt(this.score);
+        dest.writeString(this.subtitle);
+        dest.writeString(this.tooltip);
+        dest.writeStringList(this.photos);
+    }
+
+    public GoodsDetail() {
+    }
+
+    protected GoodsDetail(Parcel in) {
+        this.content = in.readString();
+        this.fare = in.readInt();
+        this.id = in.readInt();
+        this.inventory = in.readInt();
+        this.name = in.readString();
+        this.oldprice = in.readInt();
+        this.price = in.readInt();
+        this.sales = in.readInt();
+        this.score = in.readInt();
+        this.subtitle = in.readString();
+        this.tooltip = in.readString();
+        this.photos = in.createStringArrayList();
+    }
+
+    public static final Parcelable.Creator<GoodsDetail> CREATOR = new Parcelable.Creator<GoodsDetail>() {
+        @Override
+        public GoodsDetail createFromParcel(Parcel source) {
+            return new GoodsDetail(source);
+        }
+
+        @Override
+        public GoodsDetail[] newArray(int size) {
+            return new GoodsDetail[size];
+        }
+    };
 }

@@ -4,6 +4,7 @@ import cn.kuailaimei.client.api.entity.GoodsDetail;
 import cn.kuailaimei.client.api.entity.SkuItem;
 import cn.kuailaimei.client.api.entity.StockItem;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -11,8 +12,8 @@ import java.util.List;
  */
 public class ExchangeDetailResponse {
     private GoodsDetail goods;
-    private List<SkuItem> sku;
-    private List<StockItem> stock;
+    private ArrayList<SkuItem> sku;
+    private ArrayList<StockItem> stock;
 
     public GoodsDetail getGoods() {
         return goods;
@@ -22,19 +23,19 @@ public class ExchangeDetailResponse {
         this.goods = goods;
     }
 
-    public List<SkuItem> getSku() {
+    public ArrayList<SkuItem> getSku() {
         return sku;
     }
 
-    public void setSku(List<SkuItem> sku) {
+    public void setSku(ArrayList<SkuItem> sku) {
         this.sku = sku;
     }
 
-    public List<StockItem> getStock() {
+    public ArrayList<StockItem> getStock() {
         return stock;
     }
 
-    public void setStock(List<StockItem> stock) {
+    public void setStock(ArrayList<StockItem> stock) {
         this.stock = stock;
     }
 }

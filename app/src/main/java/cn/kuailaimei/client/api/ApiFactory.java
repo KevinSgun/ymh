@@ -19,6 +19,7 @@ import cn.kuailaimei.client.api.request.Request;
 import cn.kuailaimei.client.api.request.SIDRequest;
 import cn.kuailaimei.client.api.response.AssistantListResposne;
 import cn.kuailaimei.client.api.response.DesignerDetail;
+import cn.kuailaimei.client.api.response.ExchangeDetailResponse;
 import cn.kuailaimei.client.api.response.ExchangeListResponse;
 import cn.kuailaimei.client.api.response.FilePathResponse;
 import cn.kuailaimei.client.api.response.GetwayResponse;
@@ -362,13 +363,23 @@ public class ApiFactory {
     }
 
     /**
-     * 技师详细信息
+     *  35 积分商品列表
      *
      * @param request
      * @return
      */
     public static Observable<ApiResponse<ExchangeListResponse>> getExchangList(Request request) {
         return getStoreService().getExchangList(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
+    }
+
+    /**
+     * 36.积分商品详情
+     *
+     * @param request
+     * @return
+     */
+    public static Observable<ApiResponse<ExchangeDetailResponse>> getExchangeDetail(Request request) {
+        return getStoreService().getExchangeDetail(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
     }
     /**
      *44 获取助理列表

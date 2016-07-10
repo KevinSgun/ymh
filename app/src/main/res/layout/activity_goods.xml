@@ -1,172 +1,239 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    >
-    <android.support.v4.view.ViewPager
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/h608"
-        android:paddingLeft="@dimen/w33"
-        android:paddingRight="@dimen/w33"/>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/h1"
-        android:background="@color/divider_color"/>
-    <TextView
-        android:layout_marginTop="@dimen/h30"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/w30"
-        android:layout_marginRight="@dimen/w30"
-        android:textSize="@dimen/w28"
-        android:textColor="@color/textColorPrimary"
-        android:text="tangle teezer梳子 英国按摩梳美发梳子卷发梳王妃顺发梳 TT梳子"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/h9"
-        android:paddingLeft="@dimen/w30"
-        android:paddingRight="@dimen/w30">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/textColorPink"
-            android:textSize="@dimen/w30"
-            android:text="500美券"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/w20"
-            android:textColor="@color/textColorSecondary"
-            android:text="运费￥12.00 km"
-            android:layout_weight="1"
-            android:layout_marginLeft="@dimen/w20"
-            />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/w20"
-            android:textColor="@color/textColorSecondary"
-            android:text="可兑换 1000件"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/w20"
-            android:textColor="@color/textColorSecondary"
-            android:text="已兑换 100件"
-            android:layout_marginLeft="@dimen/w35"
-            />
-    </LinearLayout>
+    android:orientation="vertical">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/bg_color"
-        android:paddingTop="@dimen/h10"
-        android:paddingBottom="@dimen/h30"
-        android:paddingLeft="@dimen/w30"
-        android:paddingRight="@dimen/w30"
-        android:orientation="vertical">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/textColorPrimaryGray"
-            android:textSize="@dimen/w18"
-            android:text="1. 本商品只支持平台邮寄兑换（所需邮费￥12）"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/textColorPrimaryGray"
-            android:textSize="@dimen/w18"
-            android:text="2. 不支持商家现场兑换，每个用户每次只能兑换一个"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/h80"
-        android:paddingLeft="@dimen/w30"
-        android:paddingRight="@dimen/w30"
-        android:gravity="center_vertical">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="选择规格"
-            android:layout_weight="1"
-            android:textColor="@color/textColorPrimary"
-            android:textSize="@dimen/w28"
-            />
-        <ImageView
-            android:layout_width="@dimen/w14"
-            android:layout_height="@dimen/w25"
-            android:src="@mipmap/ic_gray_arrow"/>
-    </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/h1"
-        android:background="@color/divider_color"/>
+        android:layout_height="match_parent"
+        android:background="@color/bg_color">
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/h80"
-        android:paddingLeft="@dimen/w30"
-        android:paddingRight="@dimen/w30"
-        android:gravity="center_vertical">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="商品描述"
-            android:layout_weight="1"
-            android:textColor="@color/textColorPrimary"
-            android:textSize="@dimen/w28"
-            />
-        <ImageView
-            android:layout_width="@dimen/w14"
-            android:layout_height="@dimen/w25"
-            android:src="@mipmap/ic_gray_arrow"/>
-    </LinearLayout>
-    <View
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/h90"
-        android:paddingLeft="@dimen/w30"
-        android:paddingRight="@dimen/w30"
-        android:gravity="center_vertical">
         <LinearLayout
-            android:layout_width="@dimen/w173"
-            android:layout_height="@dimen/w60"
-            android:gravity="center"
-            android:background="@drawable/bg_stroke_pink"
-            >
-            <ImageView
-                android:layout_width="@dimen/w40"
-                android:layout_height="@dimen/w40"
-                android:src="@mipmap/ic_phone_inner"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="联系客服"
-                android:layout_marginLeft="@dimen/w7"
-                android:textSize="@dimen/w24"
-                android:textColor="@color/textColorPink"/>
-        </LinearLayout>
-        <View
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
-        <Button
-            android:layout_width="@dimen/w173"
-            android:layout_height="@dimen/w60"
-            android:text="立即兑换"
-            android:textColor="@color/white"
-            android:background="@drawable/btn_common_r5"
-            android:textSize="@dimen/w24"/>
-    </LinearLayout>
-</LinearLayout>
+            android:background="@color/white"
+            android:orientation="vertical">
+
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <cn.kuailaimei.client.common.widget.LoopViewPager
+                    android:id="@+id/banner"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/h608"
+                    android:paddingLeft="@dimen/w33"
+                    android:paddingRight="@dimen/w33" />
+
+
+                <cn.kuailaimei.client.common.widget.CirclePageIndicator
+                    android:id="@+id/banner_indicator"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginBottom="@dimen/h13" />
+
+            </FrameLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/h1"
+                android:background="@color/divider_color" />
+
+            <TextView
+                android:id="@+id/goodsName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/w30"
+                android:layout_marginRight="@dimen/w30"
+                android:layout_marginTop="@dimen/h30"
+                android:text="tangle teezer梳子 英国按摩梳美发梳子卷发梳王妃顺发梳 TT梳子"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="@dimen/w28" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/h9"
+                android:paddingLeft="@dimen/w30"
+                android:paddingRight="@dimen/w30">
+
+                <TextView
+                    android:id="@+id/price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="500美券"
+                    android:textColor="@color/textColorPink"
+                    android:textSize="@dimen/w30" />
+
+                <TextView
+                    android:id="@+id/freight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/w20"
+                    android:layout_weight="1"
+                    android:text="运费￥12.00 km"
+                    android:textColor="@color/textColorSecondary"
+                    android:textSize="@dimen/w24" />
+
+                <TextView
+                    android:id="@+id/availableNum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="可兑换 1000件"
+                    android:textColor="@color/textColorSecondary"
+                    android:textSize="@dimen/w24" />
+
+                <TextView
+                    android:id="@+id/exchangedNum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/w35"
+                    android:text="已兑换 100件"
+                    android:textColor="@color/textColorSecondary"
+                    android:textSize="@dimen/w24" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/bg_color"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/h30"
+                android:paddingLeft="@dimen/w30"
+                android:paddingRight="@dimen/w30"
+                android:paddingTop="@dimen/h10">
+
+                <TextView
+                    android:id="@+id/tips"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:minLines="2"
+                    android:text="1. 本商品只支持平台邮寄兑换（所需邮费￥12）"
+                    android:textColor="@color/textColorPrimaryGray"
+                    android:textSize="@dimen/w24" />
+
+            </LinearLayout>
+
+            <cn.kuailaimei.client.common.widget.RippleLinearLayout
+                android:id="@+id/chooseSpec"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/h80"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/w30"
+                android:paddingRight="@dimen/w30">
+
+                <TextView
+                    android:id="@+id/choose_spec_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="选择规格"
+                    android:textColor="@color/textColorPrimary"
+                    android:textSize="@dimen/w28" />
+
+                <ImageView
+                    android:layout_width="@dimen/w14"
+                    android:layout_height="@dimen/w25"
+                    android:src="@mipmap/ic_gray_arrow" />
+            </cn.kuailaimei.client.common.widget.RippleLinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/h1"
+                android:background="@color/divider_color" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/h80"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/w30"
+                android:paddingRight="@dimen/w30">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="商品描述"
+                    android:textColor="@color/textColorPrimary"
+                    android:textSize="@dimen/w28" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/description"
+                style="@style/CommonTextPrimary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/bg_color"
+                android:minLines="2"
+                android:paddingBottom="@dimen/h20"
+                android:paddingLeft="@dimen/w30"
+                android:paddingRight="@dimen/w30"
+                android:paddingTop="@dimen/h20"
+                android:textSize="@dimen/w24" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/h23"
+                android:background="@color/bg_color" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/h90"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/w30"
+                android:paddingRight="@dimen/w30">
+
+                <cn.kuailaimei.client.common.widget.RippleLinearLayout
+                    android:id="@+id/contactSercie"
+                    android:layout_width="@dimen/w173"
+                    android:layout_height="@dimen/w60"
+                    android:background="@drawable/bg_stroke_pink"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="@dimen/w40"
+                        android:layout_height="@dimen/w40"
+                        android:src="@mipmap/ic_phone_inner" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/w7"
+                        android:text="联系客服"
+                        android:textColor="@color/textColorPink"
+                        android:textSize="@dimen/w24" />
+                </cn.kuailaimei.client.common.widget.RippleLinearLayout>
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <cn.kuailaimei.client.common.widget.RippleButton
+                    android:id="@+id/exchangeNow"
+                    android:layout_width="@dimen/w173"
+                    android:layout_height="@dimen/w60"
+                    android:background="@drawable/btn_common_r5"
+                    android:text="立即兑换"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/w24" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <ImageView
+        android:id="@+id/back"
+        android:layout_width="@dimen/w56"
+        android:layout_height="@dimen/w56"
+        android:layout_marginLeft="@dimen/w30"
+        android:layout_marginTop="@dimen/h30"
+        android:src="@mipmap/ic_back_gray" />
+</FrameLayout>

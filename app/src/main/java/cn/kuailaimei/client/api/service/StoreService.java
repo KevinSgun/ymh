@@ -25,6 +25,7 @@ import cn.kuailaimei.client.api.request.UpdateAddress;
 import cn.kuailaimei.client.api.request.UpdateProfileRequest;
 import cn.kuailaimei.client.api.response.AssistantListResposne;
 import cn.kuailaimei.client.api.response.DesignerDetail;
+import cn.kuailaimei.client.api.response.ExchangeDetailResponse;
 import cn.kuailaimei.client.api.response.ExchangeListResponse;
 import cn.kuailaimei.client.api.response.FilePathResponse;
 import cn.kuailaimei.client.api.response.HomePageResponse;
@@ -335,9 +336,20 @@ public interface StoreService {
      * @return
      * @see cn.kuailaimei.client.api.request.OrderCommentRequest
      */
-    @POST(NetConstants.ORDER_EVALUATE)
+    @POST(NetConstants.GOODS_FREELIST)
     @Headers("Content-Type:" + RetrofitClient.JSON)
     Observable<ApiResponse<ExchangeListResponse>> getExchangList(@Body Request body);
+    /**
+     * 36.积分商品详情
+     *
+     * @param body
+     * @return
+     * @see cn.kuailaimei.client.api.request.IDRequest
+     */
+    @POST(NetConstants.GOODS_DETAIL)
+    @Headers("Content-Type:" + RetrofitClient.JSON)
+    Observable<ApiResponse<ExchangeDetailResponse>> getExchangeDetail(@Body Request body);
+
 
     /**
      * 44 获取助理列表

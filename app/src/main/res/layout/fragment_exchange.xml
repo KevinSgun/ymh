@@ -1,117 +1,157 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true">
+    android:orientation="vertical">
 
-
-    <android.support.design.widget.AppBarLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fitsSystemWindows="true"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        android:layout_height="@dimen/action_bar_height"
+        android:background="@color/bg_color">
 
-        <android.support.design.widget.CollapsingToolbarLayout
-            android:id="@+id/collapsing_toolbar"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/action_bar_title"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:fitsSystemWindows="true"
-            app:contentScrim="?attr/colorPrimary"
-            app:expandedTitleMarginEnd="64dp"
-            app:expandedTitleMarginStart="48dp"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+            android:layout_gravity="center"
+            android:drawablePadding="@dimen/w10"
+            android:gravity="center"
+            android:maxWidth="@dimen/w450"
+            android:text="附近的店"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="@dimen/w40" />
+    </FrameLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/bg_color"
-                android:orientation="vertical">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/h128"
-                    android:background="@color/white">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:id="@+id/exchange_history">
-
-                        <ImageView
-                            android:layout_width="@dimen/w40"
-                            android:layout_height="@dimen/w40"
-                            android:src="@mipmap/ic_exchange_history" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/h16"
-                            android:text="兑换记录"
-                            android:textColor="@color/textColorPink" />
-                    </LinearLayout>
-
-                    <View
-                        android:layout_width="@dimen/w1"
-                        android:layout_height="match_parent"
-                        android:layout_marginBottom="@dimen/h20"
-                        android:layout_marginTop="@dimen/h20"
-                        android:background="#ffc6de" />
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:id="@+id/user_account">
-
-                        <ImageView
-                            android:layout_width="@dimen/w44"
-                            android:layout_height="@dimen/w33"
-                            android:src="@mipmap/ic_coupon_account" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/h16"
-                            android:text="美券账户"
-                            android:textColor="@color/textColorPink" />
-                    </LinearLayout>
-                </LinearLayout>
-
-                <cn.kuailaimei.client.common.widget.LoopViewPager
-                    android:id="@+id/banner"
-                    android:layout_marginTop="@dimen/h12"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/h349"/>
-            </LinearLayout>
-
-
-        </android.support.design.widget.CollapsingToolbarLayout>
-
-
-    </android.support.design.widget.AppBarLayout>
-
-    <LinearLayout
+    <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        android:fitsSystemWindows="true">
 
-        <android.support.design.widget.TabLayout
-            android:id="@+id/sliding_tabs"
+
+        <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:tabGravity="fill"
-            app:tabMode="fixed"
-            android:fillViewport="false" />
+            android:fitsSystemWindows="true"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-        <android.support.v4.view.ViewPager
-            android:id="@+id/viewpager"
+            <android.support.design.widget.CollapsingToolbarLayout
+                android:id="@+id/collapsing_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fitsSystemWindows="true"
+                app:contentScrim="?attr/colorPrimary"
+                app:expandedTitleMarginEnd="64dp"
+                app:expandedTitleMarginStart="48dp"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/bg_color"
+                    android:orientation="vertical">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/h128"
+                        android:background="@color/white">
+
+                        <LinearLayout
+                            android:id="@+id/exchange_history"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="@dimen/w40"
+                                android:layout_height="@dimen/w40"
+                                android:src="@mipmap/ic_exchange_history" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/h16"
+                                android:text="兑换记录"
+                                android:textColor="@color/textColorPink" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="@dimen/w1"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="@dimen/h20"
+                            android:layout_marginTop="@dimen/h20"
+                            android:background="#ffc6de" />
+
+                        <LinearLayout
+                            android:id="@+id/user_account"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="@dimen/w44"
+                                android:layout_height="@dimen/w33"
+                                android:src="@mipmap/ic_coupon_account" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/h16"
+                                android:text="美券账户"
+                                android:textColor="@color/textColorPink" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/h300">
+
+                        <cn.kuailaimei.client.common.widget.LoopViewPager
+                            android:id="@+id/banner"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/h300" />
+
+                        <cn.kuailaimei.client.common.widget.CirclePageIndicator
+                            android:id="@+id/banner_indicator"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom"
+                            android:layout_marginBottom="@dimen/h13" />
+                    </FrameLayout>
+                </LinearLayout>
+
+
+            </android.support.design.widget.CollapsingToolbarLayout>
+
+
+        </android.support.design.widget.AppBarLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </LinearLayout>
-</android.support.design.widget.CoordinatorLayout>
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <com.zitech.framework.widget.SlidingTabs
+                android:id="@+id/sliding_tabs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="12dp"
+                android:paddingTop="12dp"
+                app:indicatorColor="#ff63a5"
+                app:selectedTagTextColor="#ff63a5"
+                app:slidingTabTextColor="#333333"
+                app:underlineColor="#ffffff" />
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+    </android.support.design.widget.CoordinatorLayout>
+</LinearLayout>

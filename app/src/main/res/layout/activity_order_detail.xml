@@ -146,6 +146,13 @@
                 android:textColor="@color/textColorPrimary"
                 android:textSize="@dimen/w24" />
         </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/h10"
+            style="@style/CommonTextSecondary"
+            android:textSize="@dimen/w22"
+            android:text="广东省深圳市龙华区黄河路123号小区名称12楼1234"/>
     </LinearLayout>
 
     <LinearLayout

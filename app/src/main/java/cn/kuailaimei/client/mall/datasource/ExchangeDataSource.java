@@ -1,4 +1,4 @@
-package cn.kuailaimei.client.mall.ui.datasource;
+package cn.kuailaimei.client.mall.datasource;
 
 import com.shizhefei.mvc.IAsyncDataSource;
 import com.shizhefei.mvc.RequestHandle;
@@ -26,11 +26,12 @@ public class ExchangeDataSource implements IAsyncDataSource<List<ExchangeItem>> 
     public ExchangeDataSource(ExchangeListRequest request) {
         super();
         this.request = new Request(request);
+        this.request.sign();
     }
 
     public void filterGoodsType(int goodsType) {
         ExchangeListRequest data = (ExchangeListRequest) request.getData();
-        data.setGoodsType(goodsType);
+        data.setGoodsType(String.valueOf(goodsType));
     }
 
     @Override

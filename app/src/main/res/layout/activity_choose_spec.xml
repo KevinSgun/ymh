@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:id="@+id/root_layout"
+    android:clickable="true"
+    android:orientation="vertical">
+    <ImageView
+        android:layout_width="@dimen/w80"
+        android:layout_height="@dimen/w80"
+        android:layout_gravity="right"
+        android:padding="@dimen/w20"
+        android:scaleType="fitXY"
+        android:src="@mipmap/ic_close"
+        android:id="@+id/close" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/w30"
+        android:layout_marginRight="@dimen/w30">
+
+        <com.zitech.framework.widget.RemoteImageView
+            android:id="@+id/icon"
+            android:scaleType="centerCrop"
+            android:layout_width="@dimen/w220"
+            android:layout_height="@dimen/w220"
+             />
+
+        <LinearLayout
+            android:layout_marginLeft="@dimen/w30"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/name"
+                style="@style/CommonTextPrimary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minLines="2"
+                android:textSize="@dimen/w28" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/h20"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="500美券"
+                    android:textColor="@color/textColorPink"
+                    android:textSize="@dimen/w30"
+                    android:id="@+id/price" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/CommonTextSecondary"
+                    android:textSize="@dimen/w24"
+                    android:text="可兑换 1000 件"
+                    android:id="@+id/avaliableExchange" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h1"
+        android:layout_marginBottom="@dimen/h20"
+        android:layout_marginLeft="@dimen/w30"
+        android:layout_marginRight="@dimen/w30"
+        android:layout_marginTop="@dimen/h30"
+        android:background="@color/divider_color" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/w30"
+        android:text="规格"
+        android:textColor="@color/textColorPrimary"
+        android:textSize="@dimen/w28" />
+
+    <cn.kuailaimei.client.common.widget.ChooseSpecLayout
+        android:id="@+id/choseSpecLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/stock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/CommonTextPrimary"
+        android:textSize="@dimen/w22"
+        android:layout_marginLeft="@dimen/w30"
+        android:layout_marginRight="@dimen/w30"
+        />
+    <cn.kuailaimei.client.common.widget.RippleButton
+        style="@style/CommentButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h88"
+        android:text="确认兑换"
+        android:id="@+id/confirm" />
+</LinearLayout>

@@ -96,13 +96,18 @@
         <activity android:name="cn.kuailaimei.client.mine.ui.MyOrderListActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
-        <activity android:name="cn.kuailaimei.client.mall.ui.ScoreOrderDetailActivity"
+        <activity android:name=".mall.ui.ScoreOrderDetailActivity"
             android:screenOrientation="portrait"/>
         <activity android:name="cn.kuailaimei.client.shop.ui.ConfirmOrderActivity"
             android:screenOrientation="portrait"/>
         <activity android:name="cn.kuailaimei.client.mine.ui.CommentActivity"
             android:screenOrientation="portrait"/>
         <activity android:name="cn.kuailaimei.client.mine.ui.PayWithExistOrderActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".mall.ui.GoodsDetailActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".mall.ui.ChooseSpecActivity"
+            android:theme="@style/ActiviyDialogStyleBottom"
             android:screenOrientation="portrait"/>
 
         <!-- 百度地图相关配置 start-->

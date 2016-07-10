@@ -13,7 +13,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
  */
-package cn.kuailaimei.client.mall.ui.adapter;
+package cn.kuailaimei.client.mall.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -31,6 +31,7 @@ import java.util.List;
 
 import cn.kuailaimei.client.R;
 import cn.kuailaimei.client.api.entity.ExchangeItem;
+import cn.kuailaimei.client.mall.ui.GoodsDetailActivity;
 
 public class ExchangeListAdapter extends RecyclerView.Adapter<ExchangeListAdapter.ExchangeViewHolder> implements IDataAdapter<List<ExchangeItem>> {
     private List<ExchangeItem> storeList = new ArrayList<ExchangeItem>();
@@ -55,6 +56,7 @@ public class ExchangeListAdapter extends RecyclerView.Adapter<ExchangeListAdapte
             @Override
             public void onClick(View v) {
 //                ShopHomeActivity.launch(mContext,store.getId());
+                GoodsDetailActivity.launch(mContext,String.valueOf(item.getId()));
             }
         });
         TextView name = holder.name;

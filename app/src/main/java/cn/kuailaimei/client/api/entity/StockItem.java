@@ -1,9 +1,12 @@
 package cn.kuailaimei.client.api.entity;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by lu on 2016/7/2.
  */
-public class StockItem {
+public class StockItem implements Parcelable {
 
     /**
      * code : 10045:10046;10049:10053
@@ -68,4 +71,43 @@ public class StockItem {
     public void setPrice(int price) {
         this.price = price;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.code);
+        dest.writeInt(this.gid);
+        dest.writeInt(this.id);
+        dest.writeInt(this.inventory);
+        dest.writeString(this.name);
+        dest.writeInt(this.price);
+    }
+
+    public StockItem() {
+    }
+
+    protected StockItem(Parcel in) {
+        this.code = in.readString();
+        this.gid = in.readInt();
+        this.id = in.readInt();
+        this.inventory = in.readInt();
+        this.name = in.readString();
+        this.price = in.readInt();
+    }
+
+    public static final Parcelable.Creator<StockItem> CREATOR = new Parcelable.Creator<StockItem>() {
+        @Override
+        public StockItem createFromParcel(Parcel source) {
+            return new StockItem(source);
+        }
+
+        @Override
+        public StockItem[] newArray(int size) {
+            return new StockItem[size];
+        }
+    };
 }
