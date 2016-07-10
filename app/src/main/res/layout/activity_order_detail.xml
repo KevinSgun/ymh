@@ -116,44 +116,80 @@
         </LinearLayout>
     </LinearLayout>
 
-    <LinearLayout
+    <cn.kuailaimei.client.common.widget.ViewAnimator
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/h11"
+        android:layout_marginTop="@dimen/h10"
         android:background="@color/white"
-        android:orientation="vertical"
-        android:paddingBottom="@dimen/w24"
-        android:paddingLeft="@dimen/w50"
-        android:paddingRight="@dimen/w50"
-        android:paddingTop="@dimen/w24">
+        android:padding="@dimen/w30">
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="收货人：汪汪汪"
-                android:textColor="@color/textColorPrimary"
-                android:textSize="@dimen/w24" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/w50"
-                android:text="联系电话：15302559900"
-                android:textColor="@color/textColorPrimary"
-                android:textSize="@dimen/w24" />
-        </LinearLayout>
-        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/h10"
-            style="@style/CommonTextSecondary"
-            android:textSize="@dimen/w22"
-            android:text="广东省深圳市龙华区黄河路123号小区名称12楼1234"/>
-    </LinearLayout>
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="收货人：汪汪汪"
+                        android:textColor="@color/textColorPrimary"
+                        android:textSize="@dimen/w24" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/w50"
+                        android:text="联系电话：15302559900"
+                        android:textColor="@color/textColorPrimary"
+                        android:textSize="@dimen/w24" />
+                </LinearLayout>
+
+                <TextView
+                    style="@style/CommonTextSecondary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/h10"
+                    android:text="广东省深圳市龙华区黄河路123号小区名称12楼1234"
+                    android:textSize="@dimen/w22" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@mipmap/ic_dark_arrow" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="请选择收货地址"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="@dimen/w28" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_dark_arrow" />
+        </LinearLayout>
+    </cn.kuailaimei.client.common.widget.ViewAnimator>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -377,14 +413,15 @@
             android:text="取消订单"
             android:textColor="@color/textColorPrimaryGray"
             android:textSize="@dimen/w26" />
+
         <Button
             android:layout_width="@dimen/w160"
             android:layout_height="@dimen/w60"
+            android:layout_marginLeft="@dimen/w30"
             android:background="@drawable/btn_common_r5"
             android:gravity="center"
             android:text="取消订单"
             android:textColor="@color/white"
-            android:textSize="@dimen/w26"
-            android:layout_marginLeft="@dimen/w30"/>
+            android:textSize="@dimen/w26" />
     </LinearLayout>
 </LinearLayout>
