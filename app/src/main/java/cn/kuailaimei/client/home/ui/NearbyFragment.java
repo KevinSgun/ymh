@@ -18,8 +18,16 @@ import com.baidu.mapapi.map.MapStatusUpdate;
 import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.Marker;
 import com.baidu.mapapi.map.MarkerOptions;
+import com.baidu.mapapi.map.MyLocationData;
 import com.baidu.mapapi.map.TextureMapView;
 import com.baidu.mapapi.model.LatLng;
+import com.zitech.framework.data.network.response.ApiResponse;
+import com.zitech.framework.data.network.subscribe.ProgressSubscriber;
+import com.zitech.framework.utils.ViewUtils;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import cn.kuailaimei.client.Constants;
 import cn.kuailaimei.client.R;
 import cn.kuailaimei.client.api.ApiFactory;
@@ -33,12 +41,6 @@ import cn.kuailaimei.client.common.widget.CommonDialog;
 import cn.kuailaimei.client.map.BaiduMapHelper;
 import cn.kuailaimei.client.map.LocationCallBack;
 import cn.kuailaimei.client.shop.ui.ShopHomeActivity;
-import com.zitech.framework.data.network.response.ApiResponse;
-import com.zitech.framework.data.network.subscribe.ProgressSubscriber;
-import com.zitech.framework.utils.ViewUtils;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by lu on 2016/6/17.
@@ -64,6 +66,7 @@ public class NearbyFragment extends BaseFragment implements BaiduMap.OnMarkerCli
     private List<ShopListBean> storeList;
     private BaiduMapHelper baiduMapHel;
     private FrameLayout searchLayout;
+    private static final float ZOOM = 14.0f;
     private Handler mHandler = new Handler(new Handler.Callback() {
         @Override
         public boolean handleMessage(Message message) {
@@ -71,6 +74,7 @@ public class NearbyFragment extends BaseFragment implements BaiduMap.OnMarkerCli
             return false;
         }
     });
+    private BitmapDescriptor bdA;
 
     @Override
     protected int getContentViewId() {
@@ -102,7 +106,7 @@ public class NearbyFragment extends BaseFragment implements BaiduMap.OnMarkerCli
             mLatLng = new LatLng(mLat, mLng);
 
         initMapView();
-        setMapZoom(14.0f);
+        setMapZoom(ZOOM);
 
         maplayout.addView(mMapView);
         mBaiduMap.setOnMarkerClickListener(this);
@@ -152,6 +156,12 @@ public class NearbyFragment extends BaseFragment implements BaiduMap.OnMarkerCli
                     mLatLng = new LatLng(location.getLatitude(), location.getLongitude());
                     SP sp = SP.getDefaultSP();
                     sp.putString(Constants.BAI_DU_MAP, location.getLatitude() + Constants.BAI_DU_SPLIT + location.getLongitude());
+
+                    MyLocationData locData = new MyLocationData.Builder().latitude(location.getLatitude())
+                            .longitude(location.getLongitude()).build();
+                    //设置图标在地图上的位置
+                    mBaiduMap.setMyLocationData(locData);
+
                     setLoaction();
                     getShopNet();
                     baiduMapHel.stopLoaction();
@@ -172,13 +182,14 @@ public class NearbyFragment extends BaseFragment implements BaiduMap.OnMarkerCli
         mMapView.showZoomControls(false);
         mBaiduMap = mMapView.getMap();
         mBaiduMap.clear();
+        mBaiduMap.setMyLocationEnabled(true);
     }
 
     /**
      * 定位到某个位置 传递经纬度值
      */
     public void setLoaction() {
-        MapStatusUpdate u = MapStatusUpdateFactory.newLatLng(mLatLng);
+        MapStatusUpdate u = MapStatusUpdateFactory.newLatLngZoom(mLatLng, ZOOM);
         mBaiduMap.animateMapStatus(u);
     }
 
@@ -199,14 +210,8 @@ public class NearbyFragment extends BaseFragment implements BaiduMap.OnMarkerCli
             mMarkers.clear();
             for (ShopListBean storeListBean : storeList)
                 setMarker(storeListBean);
-//            String content = response.getPointName() + " \r\n " + response.getPointAddress();
-//            addMarkCustomView(mMarkers.get(0), content, mLat, mLng, null);
             isLocationStart = true;
-//            mBaiduMap.add
         }
-//        else {
-//            ToastUtils.showToastInCenter(getApplicationContext(), "获取附近网点失败!");
-//        }
     }
 
     public void setMarker(ShopListBean store) {
@@ -230,20 +235,11 @@ public class NearbyFragment extends BaseFragment implements BaiduMap.OnMarkerCli
      * @param animationType 0无动画 1从天上掉下 2从地上生长
      */
     public Marker initOyerLay(double lat, double lng, int animationType, String title) {
-        Bitmap bm = null;
-        try {
-//            int index = Integer.parseInt(title);
-//            if (index >= 0 && index <= BaiduMapHelper.mMarkerResourceIds.length - 1) {
-//                bm = BitmapFactory.decodeResource(getResources(), BaiduMapHelper.mMarkerResourceIds[index]);
-//            } else {
-            bm = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_map_local);
-//            }
-        } catch (Exception e) {
-            e.printStackTrace();
-//            bm = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_map_local);
+        if(bdA == null){
+            Bitmap bm = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_map_local);
+            bdA = BitmapDescriptorFactory.fromBitmap(bm);
         }
-        // Bitmap bm1 = getNewBitMap(bm, "123");
-        BitmapDescriptor bdA = BitmapDescriptorFactory.fromBitmap(bm);
+
         // 初始化覆盖物位置 及配置信息
         LatLng llA = new LatLng(lat, lng);
         MarkerOptions ooA = new MarkerOptions().position(llA).icon(bdA)
@@ -304,15 +300,8 @@ public class NearbyFragment extends BaseFragment implements BaiduMap.OnMarkerCli
     public void onRefreshData() {
         maplayout.setVisibility(View.VISIBLE);
         super.onRefreshData();
-
         startLocation();
     }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-    }
-
 
 }
 
