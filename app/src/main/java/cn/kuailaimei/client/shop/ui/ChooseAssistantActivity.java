@@ -67,6 +67,7 @@ public class ChooseAssistantActivity extends AppBarActivity {
                     info.setcId(String.valueOf(designerService.getCid()));
                     info.setDesignName(designer.getAlias());
                     info.setName(designerService.getName());
+                    info.setId(designerService.getId());
 //                    info.setAmount(designerService.getPrice());
 //                    info.setmId(designerService.get);
                     ConfirmOrderActivity.launch((Activity) getContext(), info);

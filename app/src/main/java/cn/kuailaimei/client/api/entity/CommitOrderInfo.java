@@ -8,7 +8,7 @@ import cn.kuailaimei.client.api.request.RequestData;
 /**
  * Created by ymh on 2016/7/4 0004.
  */
-public class CommitOrderInfo implements Parcelable{
+public class CommitOrderInfo implements Parcelable {
 
     /**
      * "amount": "80",//订单金额
@@ -21,7 +21,7 @@ public class CommitOrderInfo implements Parcelable{
      * "sId": "10000"//店铺ID
      * "content"//消費指南，服務流程介紹
      */
-
+    private String id;
     private float amount;
     private String sId;
     private String cId;
@@ -33,50 +33,13 @@ public class CommitOrderInfo implements Parcelable{
     private String assistantName;
     private String content;
 
-    public CommitOrderInfo() {
+    public String getId() {
+        return id;
     }
 
-    protected CommitOrderInfo(Parcel in) {
-        amount = in.readFloat();
-        sId = in.readString();
-        cId = in.readString();
-        mId = in.readString();
-        mId1 = in.readString();
-        name = in.readString();
-        designName = in.readString();
-        assistantName = in.readString();
-        content = in.readString();
+    public void setId(String id) {
+        this.id = id;
     }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeFloat(amount);
-        dest.writeString(sId);
-        dest.writeString(cId);
-        dest.writeString(mId);
-        dest.writeString(mId1);
-        dest.writeString(name);
-        dest.writeString(designName);
-        dest.writeString(assistantName);
-        dest.writeString(content);
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    public static final Creator<CommitOrderInfo> CREATOR = new Creator<CommitOrderInfo>() {
-        @Override
-        public CommitOrderInfo createFromParcel(Parcel in) {
-            return new CommitOrderInfo(in);
-        }
-
-        @Override
-        public CommitOrderInfo[] newArray(int size) {
-            return new CommitOrderInfo[size];
-        }
-    };
 
     public float getAmount() {
         return amount;
@@ -149,4 +112,51 @@ public class CommitOrderInfo implements Parcelable{
     public void setContent(String content) {
         this.content = content;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.id);
+        dest.writeFloat(this.amount);
+        dest.writeString(this.sId);
+        dest.writeString(this.cId);
+        dest.writeString(this.mId);
+        dest.writeString(this.mId1);
+        dest.writeString(this.name);
+        dest.writeString(this.designName);
+        dest.writeString(this.assistantName);
+        dest.writeString(this.content);
+    }
+
+    public CommitOrderInfo() {
+    }
+
+    protected CommitOrderInfo(Parcel in) {
+        this.id = in.readString();
+        this.amount = in.readFloat();
+        this.sId = in.readString();
+        this.cId = in.readString();
+        this.mId = in.readString();
+        this.mId1 = in.readString();
+        this.name = in.readString();
+        this.designName = in.readString();
+        this.assistantName = in.readString();
+        this.content = in.readString();
+    }
+
+    public static final Parcelable.Creator<CommitOrderInfo> CREATOR = new Parcelable.Creator<CommitOrderInfo>() {
+        @Override
+        public CommitOrderInfo createFromParcel(Parcel source) {
+            return new CommitOrderInfo(source);
+        }
+
+        @Override
+        public CommitOrderInfo[] newArray(int size) {
+            return new CommitOrderInfo[size];
+        }
+    };
 }

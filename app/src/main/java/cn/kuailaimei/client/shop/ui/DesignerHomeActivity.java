@@ -113,6 +113,7 @@ public class DesignerHomeActivity extends AppBarActivity {
                     info.setcId(String.valueOf(choosedService.getCid()));
                     info.setDesignName(designer.getAlias());
                     info.setName(choosedService.getName());
+                    info.setId(choosedService.getId());
 //                    info.setAmount(designerService.getPrice());
 //                    info.setmId(designerService.get);
                     ConfirmOrderActivity.launch((Activity) getContext(), info);
