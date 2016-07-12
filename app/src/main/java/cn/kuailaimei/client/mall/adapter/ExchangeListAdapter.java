@@ -56,7 +56,7 @@ public class ExchangeListAdapter extends RecyclerView.Adapter<ExchangeListAdapte
             @Override
             public void onClick(View v) {
 //                ShopHomeActivity.launch(mContext,store.getId());
-                GoodsDetailActivity.launch(mContext,String.valueOf(item.getId()));
+                GoodsDetailActivity.launch(mContext, String.valueOf(item.getId()));
             }
         });
         TextView name = holder.name;
@@ -65,8 +65,13 @@ public class ExchangeListAdapter extends RecyclerView.Adapter<ExchangeListAdapte
         TextView desp = holder.desp;
         RemoteImageView icon = holder.icon;
         name.setText(item.getName());
-        price.setText("￥" + item.getPrice()+item.getScore() + "美劵");
-        oldPrice.setText("官方原价：￥"+item.getOldprice());
+        if (item.getPrice() > 0) {
+            price.setText("￥" + item.getPrice() + "+" + item.getScore() + "美劵");
+
+        } else {
+            price.setText(item.getScore() + "美劵");
+        }
+        oldPrice.setText("官方原价：￥" + item.getOldprice());
         desp.setText(item.getSubtitle());
         icon.setImageUri(R.mipmap.ic_shop_default, item.getPortrait());
     }

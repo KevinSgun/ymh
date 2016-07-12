@@ -22,6 +22,7 @@
             android:textSize="@dimen/w28" />
 
         <EditText
+            android:id="@+id/receiver_name"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@null"
@@ -64,7 +65,8 @@
             android:singleLine="true"
             android:textColor="@color/textColorPrimaryGray"
             android:textColorHint="@color/textColorSecondary"
-            android:textSize="@dimen/w28" />
+            android:textSize="@dimen/w28"
+            android:id="@+id/receiver_phone" />
     </LinearLayout>
 
     <View
@@ -100,7 +102,8 @@
             android:singleLine="true"
             android:textColor="@color/textColorPrimaryGray"
             android:textColorHint="@color/textColorSecondary"
-            android:textSize="@dimen/w28" />
+            android:textSize="@dimen/w28"
+            android:id="@+id/receiver_address" />
 
         <ImageView
             android:layout_width="@dimen/w16"
@@ -139,7 +142,8 @@
             android:singleLine="true"
             android:textColor="@color/textColorPrimaryGray"
             android:textColorHint="@color/textColorSecondary"
-            android:textSize="@dimen/w28" />
+            android:textSize="@dimen/w28"
+            android:id="@+id/receiver_address_detail" />
     </LinearLayout>
 
 
@@ -150,7 +154,8 @@
         android:background="@color/white"
         android:gravity="center_vertical"
         android:paddingLeft="@dimen/w30"
-        android:paddingRight="@dimen/w30">
+        android:paddingRight="@dimen/w30"
+        android:id="@+id/set_default_address">
 
         <TextView
             android:layout_width="@dimen/w180"
