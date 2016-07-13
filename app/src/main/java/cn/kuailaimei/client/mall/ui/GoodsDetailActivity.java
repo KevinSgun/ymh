@@ -22,6 +22,7 @@ import cn.kuailaimei.client.Constants;
 import cn.kuailaimei.client.R;
 import cn.kuailaimei.client.api.ApiFactory;
 import cn.kuailaimei.client.api.entity.GoodsDetail;
+import cn.kuailaimei.client.api.entity.GoodsItem;
 import cn.kuailaimei.client.api.entity.SkuItem;
 import cn.kuailaimei.client.api.entity.StockItem;
 import cn.kuailaimei.client.api.request.IDRequest;
@@ -58,6 +59,7 @@ public class GoodsDetailActivity extends BaseActivity {
     private SkuItem choosedSku;
     private TextView choosedSkuText;
     private StockItem choosedStock;
+    private GoodsDetail goodsDetail;
 
     @Override
     protected void setContentView() {
@@ -91,7 +93,8 @@ public class GoodsDetailActivity extends BaseActivity {
 
     private void render(final ExchangeDetailResponse data) {
         final GoodsDetail detail = data.getGoods();
-        data.getStock();
+        this.goodsDetail=detail;
+//        data.getStock();
         description.setText(Html.fromHtml(detail.getContent()));
         tips.setText(detail.getTooltip());
         availableNum.setText("可兑换 " + detail.getInventory() + "件");
@@ -116,7 +119,7 @@ public class GoodsDetailActivity extends BaseActivity {
                 if(choosedSku==null||choosedStock==null){
                     ChooseSpecActivity.launchForResult((GoodsDetailActivity.this), detail, data.getSku(),data.getStock(), Constants.ActivityExtra.REQUEST_FOR_CHOOSE_SPEC);
                 }else{
-
+                    OrderActivity.launchForOrder(getContext(), goodsDetail,choosedSku,choosedStock);
                 }
             }
         });
@@ -129,6 +132,7 @@ public class GoodsDetailActivity extends BaseActivity {
             choosedSku= data.getParcelableExtra(Constants.ActivityExtra.CHOOSE_SKU);
             choosedStock=data.getParcelableExtra(Constants.ActivityExtra.CHOOSE_STOCK);
             this.choosedSkuText.setText("已选规格："+choosedSku.getName());
+            OrderActivity.launchForOrder(this, goodsDetail,choosedSku,choosedStock);
         }
     }
 

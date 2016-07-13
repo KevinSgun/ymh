@@ -36,6 +36,7 @@
                     android:textSize="@dimen/w22" />
 
                 <TextView
+                    android:id="@+id/logisticsStatus"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/w10"
@@ -58,6 +59,7 @@
                     android:textSize="@dimen/w22" />
 
                 <TextView
+                    android:id="@+id/logisticsCompany"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/w9"
@@ -80,6 +82,7 @@
                     android:textSize="@dimen/w22" />
 
                 <TextView
+                    android:id="@+id/logisticsId"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/w9"
@@ -95,6 +98,7 @@
             android:background="@color/divider_color" />
 
         <LinearLayout
+            android:id="@+id/contactSeller"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/w19"
@@ -117,6 +121,7 @@
     </LinearLayout>
 
     <cn.kuailaimei.client.common.widget.ViewAnimator
+        android:id="@+id/addressViewAnimator"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/h10"
@@ -124,6 +129,7 @@
         android:padding="@dimen/w30">
 
         <LinearLayout
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -141,7 +147,15 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="收货人：汪汪汪"
+                        android:text="收货人："
+                        android:textColor="@color/textColorPrimary"
+                        android:textSize="@dimen/w24" />
+
+                    <TextView
+                        android:id="@+id/receiverName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="汪汪汪"
                         android:textColor="@color/textColorPrimary"
                         android:textSize="@dimen/w24" />
 
@@ -149,12 +163,21 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/w50"
-                        android:text="联系电话：15302559900"
+                        android:text="联系电话："
+                        android:textColor="@color/textColorPrimary"
+                        android:textSize="@dimen/w24" />
+
+                    <TextView
+                        android:id="@+id/receiverPhone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="15302559900"
                         android:textColor="@color/textColorPrimary"
                         android:textSize="@dimen/w24" />
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/receiverAddress"
                     style="@style/CommonTextSecondary"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -170,7 +193,9 @@
                 android:layout_gravity="center_vertical"
                 android:src="@mipmap/ic_dark_arrow" />
         </LinearLayout>
+
         <LinearLayout
+            android:id="@+id/chooseAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
@@ -203,20 +228,32 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="订单编号：2016010112001300ABCD"
+            android:text="订单编号："
             android:textColor="@color/textColorPrimaryGray"
             android:textSize="@dimen/w20" />
 
         <TextView
+            android:id="@+id/orderId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/w50"
+            android:layout_weight="1"
+            android:singleLine="true"
+            android:text="2016010112001300ABCD"
+            android:textColor="@color/textColorPrimaryGray"
+            android:textSize="@dimen/w20" />
+
+        <TextView
+            android:id="@+id/orderDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="right"
             android:text="2016-01-11"
             android:textColor="@color/textColorPrimaryGray"
             android:textSize="@dimen/w20" />
 
         <TextView
+            android:id="@+id/orderStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/w50"
@@ -251,7 +288,15 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="快递配送 12.00元"
+            android:text="快递配送 "
+            android:textColor="@color/textColorPrimary"
+            android:textSize="@dimen/w24" />
+
+        <TextView
+            android:id="@+id/expressFreight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="12.00元"
             android:textColor="@color/textColorPrimary"
             android:textSize="@dimen/w24" />
     </LinearLayout>
@@ -274,6 +319,7 @@
             android:textSize="@dimen/w24" />
 
         <TextView
+            android:id="@+id/paidCoupon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="500"
@@ -313,6 +359,7 @@
                 android:textSize="@dimen/w24" />
 
             <TextView
+                android:id="@+id/totalPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="￥1000.00"
@@ -335,6 +382,7 @@
                 android:textSize="@dimen/w24" />
 
             <TextView
+                android:id="@+id/freight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="￥1000.00"
@@ -357,6 +405,7 @@
                 android:textSize="@dimen/w24" />
 
             <TextView
+                android:id="@+id/couponDiscount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="￥1000.00"
@@ -383,6 +432,7 @@
                 android:textSize="@dimen/w20" />
 
             <TextView
+                android:id="@+id/paidPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/w10"
@@ -397,31 +447,69 @@
         android:layout_height="wrap_content"
         android:layout_weight="1" />
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/h100"
         android:background="@color/white"
         android:gravity="right|center_vertical"
+        android:orientation="horizontal"
         android:paddingLeft="@dimen/w30"
-        android:paddingRight="@dimen/w30">
+        android:paddingRight="@dimen/w30"
+        >
+
+        <cn.kuailaimei.client.common.widget.ViewAnimator
+            android:id="@+id/priceCancleViewAnimator"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="right|center_vertical"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="还需支付"
+                    android:textSize="@dimen/w24"
+                    android:textColor="@color/textColorPrimary"
+                    />
+                <TextView
+                    android:id="@+id/needPayAnother"
+                    android:layout_marginLeft="@dimen/w9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="￥200"
+                    android:textSize="@dimen/w32"
+                    android:textColor="@color/textColorPink"
+                    />
+            </LinearLayout>
+            <Button
+                android:id="@+id/cancleOrder"
+                android:layout_gravity="right|center_vertical"
+                android:layout_width="@dimen/w160"
+                android:layout_height="@dimen/w60"
+                android:background="@drawable/btn_white_gray_stroke"
+                android:gravity="center"
+                android:text="取消订单"
+                android:textColor="@color/textColorPrimaryGray"
+                android:textSize="@dimen/w26" />
+
+
+        </cn.kuailaimei.client.common.widget.ViewAnimator>
 
         <Button
-            android:layout_width="@dimen/w160"
-            android:layout_height="@dimen/w60"
-            android:background="@drawable/btn_white_gray_stroke"
-            android:gravity="center"
-            android:text="取消订单"
-            android:textColor="@color/textColorPrimaryGray"
-            android:textSize="@dimen/w26" />
-
-        <Button
+            android:id="@+id/payNow"
             android:layout_width="@dimen/w160"
             android:layout_height="@dimen/w60"
             android:layout_marginLeft="@dimen/w30"
             android:background="@drawable/btn_common_r5"
             android:gravity="center"
-            android:text="取消订单"
+            android:text="马上付款"
             android:textColor="@color/white"
             android:textSize="@dimen/w26" />
     </LinearLayout>
+
 </LinearLayout>
