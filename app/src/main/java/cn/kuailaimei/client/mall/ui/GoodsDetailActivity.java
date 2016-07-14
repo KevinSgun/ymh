@@ -30,6 +30,7 @@ import cn.kuailaimei.client.api.request.Request;
 import cn.kuailaimei.client.api.response.ExchangeDetailResponse;
 import cn.kuailaimei.client.common.ui.AppBarActivity;
 import cn.kuailaimei.client.common.ui.BaseActivity;
+import cn.kuailaimei.client.common.utils.Utils;
 import cn.kuailaimei.client.common.widget.ChooseSpecLayout;
 import cn.kuailaimei.client.common.widget.CirclePageIndicator;
 import cn.kuailaimei.client.common.widget.LoopViewPager;
@@ -99,7 +100,12 @@ public class GoodsDetailActivity extends BaseActivity {
         tips.setText(detail.getTooltip());
         availableNum.setText("可兑换 " + detail.getInventory() + "件");
         exchangedNum.setText("已兑换 " + detail.getInventory() + "件");
-        price.setText(detail.getScore() + "美券");
+        if (detail.getPrice() > 0) {
+            price.setText(Utils.formartPrice(detail.getPrice()) + "+" + detail.getScore() + "美劵");
+
+        } else {
+            price.setText(detail.getScore() + "美劵");
+        }
         goodsName.setText(detail.getName());
         freight.setText("运费￥" + detail.getFare());
 //        detail.getPhotos();

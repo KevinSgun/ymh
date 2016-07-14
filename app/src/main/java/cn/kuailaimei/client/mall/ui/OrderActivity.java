@@ -7,14 +7,21 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.util.Date;
+
 import cn.kuailaimei.client.Constants;
+import cn.kuailaimei.client.api.ApiFactory;
 import cn.kuailaimei.client.api.entity.GoodsDetail;
 import cn.kuailaimei.client.api.entity.SkuItem;
 import cn.kuailaimei.client.api.entity.StockItem;
+import cn.kuailaimei.client.api.request.Request;
+import cn.kuailaimei.client.common.utils.DateUtil;
+import cn.kuailaimei.client.common.utils.Utils;
 import cn.kuailaimei.client.common.widget.ViewAnimator;
 
 import cn.kuailaimei.client.R;
 import cn.kuailaimei.client.common.ui.AppBarActivity;
+import cn.kuailaimei.client.pay.PayTools;
 
 /**
  * Created by lu on 2016/7/12.
@@ -42,8 +49,11 @@ public class OrderActivity extends AppBarActivity {
     private Button cancleOrder;
     private ViewAnimator priceCancleViewAnimator;
     private Button payNow;
+    public static final int POSITION_PRICE=0;
+    public static final int POSITION_CANCLE=1;
 
-
+    //
+//    public
     @Override
     protected int getContentViewId() {
         return R.layout.activity_order_detail;
@@ -73,6 +83,7 @@ public class OrderActivity extends AppBarActivity {
         this.logisticsId = (TextView) findViewById(R.id.logisticsId);
         this.logisticsCompany = (TextView) findViewById(R.id.logisticsCompany);
         this.logisticsStatus = (TextView) findViewById(R.id.logisticsStatus);
+
     }
 
     @Override
@@ -80,7 +91,19 @@ public class OrderActivity extends AppBarActivity {
         GoodsDetail goodsDetail = getIntent().getParcelableExtra(Constants.ActivityExtra.GOODS_DETAIL);
         SkuItem choosedSku = getIntent().getParcelableExtra(Constants.ActivityExtra.CHOOSE_SKU);
         StockItem chooseStock = getIntent().getParcelableExtra(Constants.ActivityExtra.CHOOSE_STOCK);
+        priceCancleViewAnimator.setDisplayedChild(POSITION_PRICE);
+        needPayAnother.setText(Utils.formartPrice(goodsDetail.getPrice()));
+        paidPrice.setText(Utils.formartPrice(goodsDetail.getPrice()));
+        freight.setText(Utils.formartPrice(goodsDetail.getFare()));
+        expressFreight.setText(Utils.formartPrice(goodsDetail.getFare()));
+        totalPrice.setText(Utils.formartPrice(goodsDetail.getPrice()));
+        paidCoupon.setText(goodsDetail.getScore());
+        orderStatus.setVisibility(ViewAnimator.GONE);
+        orderDate.setText(DateUtil.formart(new Date(),DateUtil.FORMAT_DATE));
 
+//        Request  request=new Request();
+//
+//        ApiFactory.getAddressList()
 
     }
 

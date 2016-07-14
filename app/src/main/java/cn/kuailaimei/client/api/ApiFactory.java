@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import cn.kuailaimei.client.api.entity.Address;
 import cn.kuailaimei.client.api.entity.Employee;
 import cn.kuailaimei.client.api.request.ModifyPsdRequest;
 import cn.kuailaimei.client.api.request.OrderListRequest;
@@ -184,7 +185,16 @@ public class ApiFactory {
     public static Observable<ApiResponse<ShopListResponse>> getSeletedShops(Request request) {
         return getStoreService().getSeletedShops(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
     }
+    /**
+     * 获取收货地址
+     *
+     * @param request
+     * @return
+     */
 
+    public static Observable<ApiResponse<List<Address>>> getAddressList(Request request) {
+        return getStoreService().getAddressList(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
+    }
     /**
      * 文件上传
      *

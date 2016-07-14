@@ -31,6 +31,7 @@ import java.util.List;
 
 import cn.kuailaimei.client.R;
 import cn.kuailaimei.client.api.entity.ExchangeItem;
+import cn.kuailaimei.client.common.utils.Utils;
 import cn.kuailaimei.client.mall.ui.GoodsDetailActivity;
 
 public class ExchangeListAdapter extends RecyclerView.Adapter<ExchangeListAdapter.ExchangeViewHolder> implements IDataAdapter<List<ExchangeItem>> {
@@ -66,12 +67,12 @@ public class ExchangeListAdapter extends RecyclerView.Adapter<ExchangeListAdapte
         RemoteImageView icon = holder.icon;
         name.setText(item.getName());
         if (item.getPrice() > 0) {
-            price.setText("￥" + item.getPrice() + "+" + item.getScore() + "美劵");
+            price.setText(Utils.formartPrice(item.getPrice()) + "+" + item.getScore() + "美劵");
 
         } else {
             price.setText(item.getScore() + "美劵");
         }
-        oldPrice.setText("官方原价：￥" + item.getOldprice());
+        oldPrice.setText("官方原价："+Utils.formartPrice(item.getOldprice()));
         desp.setText(item.getSubtitle());
         icon.setImageUri(R.mipmap.ic_shop_default, item.getPortrait());
     }

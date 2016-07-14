@@ -26,4 +26,9 @@ public class Utils extends com.zitech.framework.utils.Utils {
         }
         return formarttDistance(distanceInt);
     }
+
+    public static String formartPrice(int price) {
+        return "￥" + price;
+
+    }
 }

@@ -33,8 +33,6 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     @Override
     protected void initView() {
         radioGroup = (RadioGroup) findViewById(R.id.main_radio_group);
-//        newMessageIconChat = findViewById(R.id.unread_message_count_chat);
-//        newMessageIconNotify = findViewById(R.id.unread_message_count_notify);
         radioGroup.setOnCheckedChangeListener(this);
     }
 

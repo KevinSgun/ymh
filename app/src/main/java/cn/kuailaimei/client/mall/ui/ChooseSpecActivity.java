@@ -22,6 +22,7 @@ import cn.kuailaimei.client.api.entity.GoodsDetail;
 import cn.kuailaimei.client.api.entity.SkuItem;
 import cn.kuailaimei.client.api.entity.StockItem;
 import cn.kuailaimei.client.common.utils.ToastMaster;
+import cn.kuailaimei.client.common.utils.Utils;
 import cn.kuailaimei.client.common.utils.ViewUtils;
 import cn.kuailaimei.client.common.widget.ChooseSpecLayout;
 import cn.kuailaimei.client.common.widget.OnRippleCompleteListener;
@@ -87,7 +88,7 @@ public class ChooseSpecActivity extends Activity {
         final ArrayList<SkuItem> skus = getIntent().getParcelableArrayListExtra(Constants.ActivityExtra.SKU_LIST);
         final ArrayList<StockItem> stockItems = getIntent().getParcelableArrayListExtra(Constants.ActivityExtra.STOCK_LIST);
         name.setText(detail.getName());
-        price.setText("￥" + detail.getPrice() + "+" + detail.getScore() + "美券");
+        price.setText(Utils.formartPrice( detail.getPrice()) + "+" + detail.getScore() + "美券");
         avaliableExchange.setText("可兑换" + detail.getInventory() + "件");
 //        GoodsItem
         icon.setImageUri(R.mipmap.ic_shop_default, detail.getPhotos().size() > 0 ? detail.getPhotos().get(0) : "");
