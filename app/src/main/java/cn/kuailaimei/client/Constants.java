@@ -36,6 +36,7 @@ public class Constants {
         String CHOOSE_SKU ="choose_sku" ;
         String STOCK_LIST ="stock_list" ;
         String CHOOSE_STOCK = "choose_stock";
+        String LAUNCH_ORDER_MODE = "launch_order_mode";
     }
 
     public interface FragmentExtra {

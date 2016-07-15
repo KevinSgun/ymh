@@ -49,8 +49,11 @@ public class OrderActivity extends AppBarActivity {
     private Button cancleOrder;
     private ViewAnimator priceCancleViewAnimator;
     private Button payNow;
-    public static final int POSITION_PRICE=0;
-    public static final int POSITION_CANCLE=1;
+    private LinearLayout orderStateLayout;
+
+    public static final int POSITION_PRICE = 0;
+    public static final int POSITION_CANCLE = 1;
+    private static final int LAUNCH_FOR_ORDER = 1;
 
     //
 //    public
@@ -83,28 +86,35 @@ public class OrderActivity extends AppBarActivity {
         this.logisticsId = (TextView) findViewById(R.id.logisticsId);
         this.logisticsCompany = (TextView) findViewById(R.id.logisticsCompany);
         this.logisticsStatus = (TextView) findViewById(R.id.logisticsStatus);
+        this.orderStateLayout= (LinearLayout) findViewById(R.id.order_state_layout);
 
     }
 
     @Override
     protected void initData() {
-        GoodsDetail goodsDetail = getIntent().getParcelableExtra(Constants.ActivityExtra.GOODS_DETAIL);
-        SkuItem choosedSku = getIntent().getParcelableExtra(Constants.ActivityExtra.CHOOSE_SKU);
-        StockItem chooseStock = getIntent().getParcelableExtra(Constants.ActivityExtra.CHOOSE_STOCK);
-        priceCancleViewAnimator.setDisplayedChild(POSITION_PRICE);
-        needPayAnother.setText(Utils.formartPrice(goodsDetail.getPrice()));
-        paidPrice.setText(Utils.formartPrice(goodsDetail.getPrice()));
-        freight.setText(Utils.formartPrice(goodsDetail.getFare()));
-        expressFreight.setText(Utils.formartPrice(goodsDetail.getFare()));
-        totalPrice.setText(Utils.formartPrice(goodsDetail.getPrice()));
-        paidCoupon.setText(goodsDetail.getScore());
-        orderStatus.setVisibility(ViewAnimator.GONE);
-        orderDate.setText(DateUtil.formart(new Date(),DateUtil.FORMAT_DATE));
-
+        if (isDisplayOrder()) {
+            GoodsDetail goodsDetail = getIntent().getParcelableExtra(Constants.ActivityExtra.GOODS_DETAIL);
+            SkuItem choosedSku = getIntent().getParcelableExtra(Constants.ActivityExtra.CHOOSE_SKU);
+            StockItem chooseStock = getIntent().getParcelableExtra(Constants.ActivityExtra.CHOOSE_STOCK);
+            priceCancleViewAnimator.setDisplayedChild(POSITION_PRICE);
+            orderStateLayout.setVisibility(ViewAnimator.GONE);
+            needPayAnother.setText(Utils.formartPrice(goodsDetail.getPrice()));
+            paidPrice.setText(Utils.formartPrice(goodsDetail.getPrice()));
+            freight.setText(Utils.formartPrice(goodsDetail.getFare()));
+            expressFreight.setText(Utils.formartPrice(goodsDetail.getFare()));
+            totalPrice.setText(Utils.formartPrice(goodsDetail.getPrice()));
+            paidCoupon.setText(goodsDetail.getScore());
+            orderStatus.setVisibility(ViewAnimator.GONE);
+            orderDate.setText(DateUtil.formart(new Date(), DateUtil.FORMAT_DATE));
+        }
 //        Request  request=new Request();
 //
 //        ApiFactory.getAddressList()
 
+    }
+
+    private boolean isDisplayOrder() {
+        return getIntent().getIntExtra(Constants.ActivityExtra.LAUNCH_ORDER_MODE, LAUNCH_FOR_ORDER) == LAUNCH_FOR_ORDER;
     }
 
     public static void launchForOrder(Context context, GoodsDetail goodsDetail, SkuItem choosedSku, StockItem choosedStock) {
@@ -112,6 +122,7 @@ public class OrderActivity extends AppBarActivity {
         intent.putExtra(Constants.ActivityExtra.GOODS_DETAIL, goodsDetail);
         intent.putExtra(Constants.ActivityExtra.CHOOSE_SKU, choosedSku);
         intent.putExtra(Constants.ActivityExtra.CHOOSE_STOCK, choosedStock);
+        intent.putExtra(Constants.ActivityExtra.LAUNCH_ORDER_MODE, LAUNCH_FOR_ORDER);
         context.startActivity(intent);
     }
 }

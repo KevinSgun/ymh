@@ -1,6 +1,10 @@
 [
     {
-        "merged": "E:\\AndroidStudioProjects\\BecomeBeautiful\\iCSDatePicker\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout-sw600dp-v13\\date_picker_dialog.xml",
-        "source": "E:\\AndroidStudioProjects\\BecomeBeautiful\\iCSDatePicker\\build\\intermediates\\bundles\\debug\\res\\layout-sw600dp-v13\\date_picker_dialog.xml"
+        "merged": "/Users/ludaiqian/AndroidStudioProjects/ymh/iCSDatePicker/build/intermediates/res/merged/androidTest/debug/layout-sw600dp-v13/date_picker_dialog.xml",
+        "source": "/Users/ludaiqian/AndroidStudioProjects/ymh/iCSDatePicker/build/intermediates/bundles/debug/res/layout-sw600dp-v13/date_picker_dialog.xml"
+    },
+    {
+        "merged": "/Users/ludaiqian/AndroidStudioProjects/ymh/E:\\AndroidStudioProjects\\BecomeBeautiful\\iCSDatePicker\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout-sw600dp-v13\\date_picker_dialog.xml",
+        "source": "/Users/ludaiqian/AndroidStudioProjects/ymh/E:\\AndroidStudioProjects\\BecomeBeautiful\\iCSDatePicker\\build\\intermediates\\bundles\\debug\\res\\layout-sw600dp-v13\\date_picker_dialog.xml"
     }
 ]

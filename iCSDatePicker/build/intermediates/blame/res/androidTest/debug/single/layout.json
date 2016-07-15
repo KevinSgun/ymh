@@ -1,26 +1,50 @@
 [
     {
-        "merged": "E:\\AndroidStudioProjects\\BecomeBeautiful\\iCSDatePicker\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\date_picker_holo.xml",
-        "source": "E:\\AndroidStudioProjects\\BecomeBeautiful\\iCSDatePicker\\build\\intermediates\\bundles\\debug\\res\\layout\\date_picker_holo.xml"
+        "merged": "/Users/ludaiqian/AndroidStudioProjects/ymh/E:\\AndroidStudioProjects\\BecomeBeautiful\\iCSDatePicker\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\date_picker_holo.xml",
+        "source": "/Users/ludaiqian/AndroidStudioProjects/ymh/E:\\AndroidStudioProjects\\BecomeBeautiful\\iCSDatePicker\\build\\intermediates\\bundles\\debug\\res\\layout\\date_picker_holo.xml"
     },
     {
-        "merged": "E:\\AndroidStudioProjects\\BecomeBeautiful\\iCSDatePicker\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\calendar_view.xml",
-        "source": "E:\\AndroidStudioProjects\\BecomeBeautiful\\iCSDatePicker\\build\\intermediates\\bundles\\debug\\res\\layout\\calendar_view.xml"
+        "merged": "/Users/ludaiqian/AndroidStudioProjects/ymh/iCSDatePicker/build/intermediates/res/merged/androidTest/debug/layout/activity_samples.xml",
+        "source": "/Users/ludaiqian/AndroidStudioProjects/ymh/iCSDatePicker/build/intermediates/bundles/debug/res/layout/activity_samples.xml"
     },
     {
-        "merged": "E:\\AndroidStudioProjects\\BecomeBeautiful\\iCSDatePicker\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\activity_samples.xml",
-        "source": "E:\\AndroidStudioProjects\\BecomeBeautiful\\iCSDatePicker\\build\\intermediates\\bundles\\debug\\res\\layout\\activity_samples.xml"
+        "merged": "/Users/ludaiqian/AndroidStudioProjects/ymh/iCSDatePicker/build/intermediates/res/merged/androidTest/debug/layout/number_picker_with_selector_wheel.xml",
+        "source": "/Users/ludaiqian/AndroidStudioProjects/ymh/iCSDatePicker/build/intermediates/bundles/debug/res/layout/number_picker_with_selector_wheel.xml"
     },
     {
-        "merged": "E:\\AndroidStudioProjects\\BecomeBeautiful\\iCSDatePicker\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\ics_date_picker_dialog.xml",
-        "source": "E:\\AndroidStudioProjects\\BecomeBeautiful\\iCSDatePicker\\build\\intermediates\\bundles\\debug\\res\\layout\\ics_date_picker_dialog.xml"
+        "merged": "/Users/ludaiqian/AndroidStudioProjects/ymh/E:\\AndroidStudioProjects\\BecomeBeautiful\\iCSDatePicker\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\calendar_view.xml",
+        "source": "/Users/ludaiqian/AndroidStudioProjects/ymh/E:\\AndroidStudioProjects\\BecomeBeautiful\\iCSDatePicker\\build\\intermediates\\bundles\\debug\\res\\layout\\calendar_view.xml"
     },
     {
-        "merged": "E:\\AndroidStudioProjects\\BecomeBeautiful\\iCSDatePicker\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\number_picker_with_selector_wheel.xml",
-        "source": "E:\\AndroidStudioProjects\\BecomeBeautiful\\iCSDatePicker\\build\\intermediates\\bundles\\debug\\res\\layout\\number_picker_with_selector_wheel.xml"
+        "merged": "/Users/ludaiqian/AndroidStudioProjects/ymh/iCSDatePicker/build/intermediates/res/merged/androidTest/debug/layout/date_picker_dialog.xml",
+        "source": "/Users/ludaiqian/AndroidStudioProjects/ymh/iCSDatePicker/build/intermediates/bundles/debug/res/layout/date_picker_dialog.xml"
     },
     {
-        "merged": "E:\\AndroidStudioProjects\\BecomeBeautiful\\iCSDatePicker\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\date_picker_dialog.xml",
-        "source": "E:\\AndroidStudioProjects\\BecomeBeautiful\\iCSDatePicker\\build\\intermediates\\bundles\\debug\\res\\layout\\date_picker_dialog.xml"
+        "merged": "/Users/ludaiqian/AndroidStudioProjects/ymh/E:\\AndroidStudioProjects\\BecomeBeautiful\\iCSDatePicker\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\activity_samples.xml",
+        "source": "/Users/ludaiqian/AndroidStudioProjects/ymh/E:\\AndroidStudioProjects\\BecomeBeautiful\\iCSDatePicker\\build\\intermediates\\bundles\\debug\\res\\layout\\activity_samples.xml"
+    },
+    {
+        "merged": "/Users/ludaiqian/AndroidStudioProjects/ymh/E:\\AndroidStudioProjects\\BecomeBeautiful\\iCSDatePicker\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\ics_date_picker_dialog.xml",
+        "source": "/Users/ludaiqian/AndroidStudioProjects/ymh/E:\\AndroidStudioProjects\\BecomeBeautiful\\iCSDatePicker\\build\\intermediates\\bundles\\debug\\res\\layout\\ics_date_picker_dialog.xml"
+    },
+    {
+        "merged": "/Users/ludaiqian/AndroidStudioProjects/ymh/E:\\AndroidStudioProjects\\BecomeBeautiful\\iCSDatePicker\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\number_picker_with_selector_wheel.xml",
+        "source": "/Users/ludaiqian/AndroidStudioProjects/ymh/E:\\AndroidStudioProjects\\BecomeBeautiful\\iCSDatePicker\\build\\intermediates\\bundles\\debug\\res\\layout\\number_picker_with_selector_wheel.xml"
+    },
+    {
+        "merged": "/Users/ludaiqian/AndroidStudioProjects/ymh/iCSDatePicker/build/intermediates/res/merged/androidTest/debug/layout/ics_date_picker_dialog.xml",
+        "source": "/Users/ludaiqian/AndroidStudioProjects/ymh/iCSDatePicker/build/intermediates/bundles/debug/res/layout/ics_date_picker_dialog.xml"
+    },
+    {
+        "merged": "/Users/ludaiqian/AndroidStudioProjects/ymh/E:\\AndroidStudioProjects\\BecomeBeautiful\\iCSDatePicker\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\date_picker_dialog.xml",
+        "source": "/Users/ludaiqian/AndroidStudioProjects/ymh/E:\\AndroidStudioProjects\\BecomeBeautiful\\iCSDatePicker\\build\\intermediates\\bundles\\debug\\res\\layout\\date_picker_dialog.xml"
+    },
+    {
+        "merged": "/Users/ludaiqian/AndroidStudioProjects/ymh/iCSDatePicker/build/intermediates/res/merged/androidTest/debug/layout/calendar_view.xml",
+        "source": "/Users/ludaiqian/AndroidStudioProjects/ymh/iCSDatePicker/build/intermediates/bundles/debug/res/layout/calendar_view.xml"
+    },
+    {
+        "merged": "/Users/ludaiqian/AndroidStudioProjects/ymh/iCSDatePicker/build/intermediates/res/merged/androidTest/debug/layout/date_picker_holo.xml",
+        "source": "/Users/ludaiqian/AndroidStudioProjects/ymh/iCSDatePicker/build/intermediates/bundles/debug/res/layout/date_picker_holo.xml"
     }
 ]

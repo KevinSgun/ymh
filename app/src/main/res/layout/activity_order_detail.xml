@@ -217,6 +217,7 @@
     </cn.kuailaimei.client.common.widget.ViewAnimator>
 
     <LinearLayout
+        android:id="@+id/order_state_layout"
         android:layout_width="match_parent"
         android:layout_height="@dimen/h60"
         android:layout_marginTop="@dimen/h10"
