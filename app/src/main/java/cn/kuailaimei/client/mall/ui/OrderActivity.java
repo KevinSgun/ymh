@@ -2,31 +2,42 @@ package cn.kuailaimei.client.mall.ui;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.zitech.framework.data.network.response.ApiResponse;
+import com.zitech.framework.data.network.subscribe.ProgressSubscriber;
+import com.zitech.framework.widget.RemoteImageView;
+
 import java.util.Date;
+import java.util.List;
 
 import cn.kuailaimei.client.Constants;
+import cn.kuailaimei.client.R;
 import cn.kuailaimei.client.api.ApiFactory;
+import cn.kuailaimei.client.api.entity.Address;
 import cn.kuailaimei.client.api.entity.GoodsDetail;
 import cn.kuailaimei.client.api.entity.SkuItem;
 import cn.kuailaimei.client.api.entity.StockItem;
 import cn.kuailaimei.client.api.request.Request;
+import cn.kuailaimei.client.api.request.SubmitExchangeOrderRequest;
+import cn.kuailaimei.client.api.response.OrderIdResposne;
+import cn.kuailaimei.client.common.ui.AppBarActivity;
 import cn.kuailaimei.client.common.utils.DateUtil;
 import cn.kuailaimei.client.common.utils.Utils;
+import cn.kuailaimei.client.common.widget.OnRippleCompleteListener;
+import cn.kuailaimei.client.common.widget.RippleButton;
+import cn.kuailaimei.client.common.widget.RippleLinearLayout;
 import cn.kuailaimei.client.common.widget.ViewAnimator;
-
-import cn.kuailaimei.client.R;
-import cn.kuailaimei.client.common.ui.AppBarActivity;
-import cn.kuailaimei.client.pay.PayTools;
+import cn.kuailaimei.client.mine.ui.PayWithExistOrderActivity;
 
 /**
  * Created by lu on 2016/7/12.
  */
-public class OrderActivity extends AppBarActivity {
+public class OrderActivity extends AppBarActivity implements OnRippleCompleteListener {
+    private static final int CHOOSE_ADDRESS = 0x600;
     private TextView logisticsStatus;
     private TextView logisticsCompany;
     private TextView logisticsId;
@@ -45,15 +56,25 @@ public class OrderActivity extends AppBarActivity {
     private TextView freight;
     private TextView couponDiscount;
     private TextView paidPrice;
+    private TextView price;
+    private RemoteImageView icon;
+    private TextView name;
+    private TextView oldPrice;
+    private TextView needPayDesp;
     private TextView needPayAnother;
     private Button cancleOrder;
     private ViewAnimator priceCancleViewAnimator;
-    private Button payNow;
+    private RippleButton payNow;
     private LinearLayout orderStateLayout;
-
+    private RippleLinearLayout chooseAddressLayout;
+    private RippleLinearLayout addressLayout;
     public static final int POSITION_PRICE = 0;
     public static final int POSITION_CANCLE = 1;
     private static final int LAUNCH_FOR_ORDER = 1;
+    private View logisticsStatusLayout;
+    private Address choosedAddress;
+    private GoodsDetail goodsDetail;
+    private SkuItem choosedSku;
 
     //
 //    public
@@ -64,9 +85,11 @@ public class OrderActivity extends AppBarActivity {
 
     @Override
     protected void initView() {
-        this.payNow = (Button) findViewById(R.id.payNow);
+        this.logisticsStatusLayout = findViewById(R.id.logisticsStatusLayout);
+        this.payNow = (RippleButton) findViewById(R.id.payNow);
         this.priceCancleViewAnimator = (ViewAnimator) findViewById(R.id.priceCancleViewAnimator);
         this.cancleOrder = (Button) findViewById(R.id.cancleOrder);
+        this.needPayDesp = (TextView) findViewById(R.id.needPay_desp);
         this.needPayAnother = (TextView) findViewById(R.id.needPayAnother);
         this.paidPrice = (TextView) findViewById(R.id.paidPrice);
         this.couponDiscount = (TextView) findViewById(R.id.couponDiscount);
@@ -86,31 +109,117 @@ public class OrderActivity extends AppBarActivity {
         this.logisticsId = (TextView) findViewById(R.id.logisticsId);
         this.logisticsCompany = (TextView) findViewById(R.id.logisticsCompany);
         this.logisticsStatus = (TextView) findViewById(R.id.logisticsStatus);
-        this.orderStateLayout= (LinearLayout) findViewById(R.id.order_state_layout);
+        this.orderStateLayout = (LinearLayout) findViewById(R.id.order_state_layout);
+        chooseAddressLayout = (RippleLinearLayout) findViewById(R.id.chooseAddress);
+        addressLayout = (RippleLinearLayout) findViewById(R.id.address_layout);
 
+        chooseAddressLayout.setOnRippleCompleteListener(this);
+        addressLayout.setOnRippleCompleteListener(this);
+        price = (TextView) findViewById(R.id.price);
+        icon = (RemoteImageView) findViewById(R.id.icon);
+        name = (TextView) findViewById(R.id.name);
+        oldPrice = (TextView) findViewById(R.id.old_price);
+        addressLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ChooseAddressActivity.launchForResult(OrderActivity.this, CHOOSE_ADDRESS);
+            }
+        });
+        payNow.setOnRippleCompleteListener(new OnRippleCompleteListener() {
+            @Override
+            public void onComplete(View v) {
+                SubmitExchangeOrderRequest request = new SubmitExchangeOrderRequest();
+                request.setAddressId(String.valueOf(choosedAddress.getId()));
+                request.setAmount(goodsDetail.getFare() + goodsDetail.getPrice());
+                request.setGId(String.valueOf(goodsDetail.getId()));
+                request.setGoodPrice(goodsDetail.getPrice());
+                request.setName(goodsDetail.getName());
+                request.setScore(goodsDetail.getScore());
+                request.setStockId(String.valueOf(choosedSku.getId()));
+                ApiFactory.submitExchangeOrder(new Request(request)).subscribe(new ProgressSubscriber<ApiResponse<OrderIdResposne>>(OrderActivity.this) {
+                    @Override
+                    protected void onNextInActive(ApiResponse<OrderIdResposne> response) {
+                        String orderId = response.getData().getOrderId();
+//                        PayWithExistOrderActivity
+                        PayActivity.launch(getContext(),orderId,goodsDetail.getPrice()+goodsDetail.getFare());
+                    }
+                });
+            }
+        });
     }
 
     @Override
     protected void initData() {
         if (isDisplayOrder()) {
-            GoodsDetail goodsDetail = getIntent().getParcelableExtra(Constants.ActivityExtra.GOODS_DETAIL);
-            SkuItem choosedSku = getIntent().getParcelableExtra(Constants.ActivityExtra.CHOOSE_SKU);
+            setTitle("订单确认");
+            logisticsStatusLayout.setVisibility(View.GONE);
+            goodsDetail = getIntent().getParcelableExtra(Constants.ActivityExtra.GOODS_DETAIL);
+            choosedSku = getIntent().getParcelableExtra(Constants.ActivityExtra.CHOOSE_SKU);
             StockItem chooseStock = getIntent().getParcelableExtra(Constants.ActivityExtra.CHOOSE_STOCK);
             priceCancleViewAnimator.setDisplayedChild(POSITION_PRICE);
             orderStateLayout.setVisibility(ViewAnimator.GONE);
-            needPayAnother.setText(Utils.formartPrice(goodsDetail.getPrice()));
-            paidPrice.setText(Utils.formartPrice(goodsDetail.getPrice()));
+            if (goodsDetail.getPrice() == 0 && goodsDetail.getFare() == 0) {
+                needPayDesp.setVisibility(View.INVISIBLE);
+                needPayAnother.setVisibility(View.INVISIBLE);
+            } else {
+                needPayAnother.setText(Utils.formartPrice(goodsDetail.getPrice() + goodsDetail.getFare()));
+            }
+            if (goodsDetail.getPrice() > 0) {
+                paidPrice.setText(goodsDetail.getScore() + "美券" + "+" + Utils.formartPrice(goodsDetail.getPrice()));
+            } else {
+                paidPrice.setText(goodsDetail.getScore() + "美券");
+            }
             freight.setText(Utils.formartPrice(goodsDetail.getFare()));
             expressFreight.setText(Utils.formartPrice(goodsDetail.getFare()));
             totalPrice.setText(Utils.formartPrice(goodsDetail.getPrice()));
-            paidCoupon.setText(goodsDetail.getScore());
+            paidCoupon.setText(String.valueOf(goodsDetail.getScore()));
             orderStatus.setVisibility(ViewAnimator.GONE);
             orderDate.setText(DateUtil.formart(new Date(), DateUtil.FORMAT_DATE));
-        }
-//        Request  request=new Request();
-//
-//        ApiFactory.getAddressList()
+            if (goodsDetail.getPrice() > 0) {
+                price.setText(goodsDetail.getScore() + "美券" + "+" + Utils.formartPrice(goodsDetail.getPrice()));
+            } else {
+                price.setText(goodsDetail.getScore() + "美券");
+            }
+            if (goodsDetail.getPhotos().size() > 0) {
+                icon.setImageUri(goodsDetail.getPhotos().get(0));
+            }
+            name.setText(goodsDetail.getName());
 
+        }
+
+//
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Request request = new Request(null);
+        ApiFactory.getAddressList(request).subscribe(new ProgressSubscriber<ApiResponse<List<Address>>>(this) {
+            @Override
+            protected void onNextInActive(ApiResponse<List<Address>> listApiResponse) {
+                List<Address> addressList = listApiResponse.getData();
+//                for()
+                if (addressList != null && addressList.size() > 0) {
+                    addressViewAnimator.setDisplayedChild(1);
+                    Address address = addressList.get(0);
+                    for (int i = 0; i < addressList.size(); i++) {
+                        if (addressList.get(i).getStatus() == 1) {
+                            address = addressList.get(i);
+                            break;
+                        }
+                    }
+                    choosedAddress = address;
+                    receiverName.setText(choosedAddress.getContact());
+                    receiverPhone.setText(choosedAddress.getPhone());
+                    receiverAddress.setText(choosedAddress.getCityname() + choosedAddress.getAddress());
+                } else {
+                    addressViewAnimator.setDisplayedChild(0);
+                }
+
+//                addressViewAnimator
+            }
+        });
     }
 
     private boolean isDisplayOrder() {
@@ -124,5 +233,17 @@ public class OrderActivity extends AppBarActivity {
         intent.putExtra(Constants.ActivityExtra.CHOOSE_STOCK, choosedStock);
         intent.putExtra(Constants.ActivityExtra.LAUNCH_ORDER_MODE, LAUNCH_FOR_ORDER);
         context.startActivity(intent);
+    }
+
+    @Override
+    public void onComplete(View v) {
+        if (v.getId() == chooseAddressLayout.getId()) {
+//            AddressActivity.launcForAdd(this);
+            ChooseAddressActivity.launchForResult(this, CHOOSE_ADDRESS);
+
+        } else if (v.getId() == addressLayout.getId()) {
+
+            //EditAddressActivity.launcForAdd(this);
+        }
     }
 }

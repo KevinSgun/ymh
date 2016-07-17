@@ -13,6 +13,7 @@ import java.util.Map;
 
 import cn.kuailaimei.client.api.entity.Address;
 import cn.kuailaimei.client.api.entity.Employee;
+import cn.kuailaimei.client.api.request.IDRequest;
 import cn.kuailaimei.client.api.request.ModifyPsdRequest;
 import cn.kuailaimei.client.api.request.OrderListRequest;
 import cn.kuailaimei.client.api.request.PageRequest;
@@ -21,12 +22,14 @@ import cn.kuailaimei.client.api.request.SIDRequest;
 import cn.kuailaimei.client.api.response.AssistantListResposne;
 import cn.kuailaimei.client.api.response.DesignerDetail;
 import cn.kuailaimei.client.api.response.ExchangeDetailResponse;
+import cn.kuailaimei.client.api.response.ExchangeHistoryRespnse;
 import cn.kuailaimei.client.api.response.ExchangeListResponse;
 import cn.kuailaimei.client.api.response.FilePathResponse;
 import cn.kuailaimei.client.api.response.GetwayResponse;
 import cn.kuailaimei.client.api.response.HomePageResponse;
 import cn.kuailaimei.client.api.response.MyFavoriteResponse;
 import cn.kuailaimei.client.api.response.NearStoreListResposne;
+import cn.kuailaimei.client.api.response.OrderIdResposne;
 import cn.kuailaimei.client.api.response.OrderListResponse;
 import cn.kuailaimei.client.api.response.OrderPayListResponse;
 import cn.kuailaimei.client.api.response.OrderPayResult;
@@ -185,6 +188,7 @@ public class ApiFactory {
     public static Observable<ApiResponse<ShopListResponse>> getSeletedShops(Request request) {
         return getStoreService().getSeletedShops(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
     }
+
     /**
      * 获取收货地址
      *
@@ -195,6 +199,54 @@ public class ApiFactory {
     public static Observable<ApiResponse<List<Address>>> getAddressList(Request request) {
         return getStoreService().getAddressList(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
     }
+
+    /**
+     * 获取收货地址详细信息
+     *
+     * @param request
+     * @return
+     * @see IDRequest
+     */
+
+    public static Observable<ApiResponse<Address>> getAddressDetail(Request request) {
+        return getStoreService().getAddressDetail(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
+    }
+
+    /**
+     * 删除收货地址
+     *
+     * @param request
+     * @return
+     * @see IDRequest
+     */
+    public static Observable<ApiResponse> deleteAddress(@Body Request request) {
+        return getStoreService().deleteAddress(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
+    }
+
+    /**
+     * 设置默认收货地址
+     *
+     * @param request
+     * @return
+     * @see IDRequest
+     */
+    @POST(NetConstants.USERS_ADDRESSSTATUS)
+    @Headers("Content-Type:" + RetrofitClient.JSON)
+    public static Observable<ApiResponse> setDefaultAddress(@Body Request request) {
+        return getStoreService().setDefaultAddress(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
+    }
+
+    /**
+     * 收货地址
+     *
+     * @param request
+     * @return
+     */
+
+    public static Observable<ApiResponse> updateAddress(Request request) {
+        return getStoreService().updateAddress(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
+    }
+
     /**
      * 文件上传
      *
@@ -352,6 +404,17 @@ public class ApiFactory {
     }
 
     /**
+     * 积分订单待付款支付
+     *
+     * @param request
+     * @return
+     * @see cn.kuailaimei.client.api.request.CreditPayRequest
+     */
+    public static Observable<ApiResponse<OrderPayResult>> doCreditPay(Request request) {
+        return getStoreService().doCreditPay(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
+    }
+
+    /**
      * 发表评论
      *
      * @param request
@@ -373,7 +436,7 @@ public class ApiFactory {
     }
 
     /**
-     *  35 积分商品列表
+     * 35 积分商品列表
      *
      * @param request
      * @return
@@ -391,14 +454,37 @@ public class ApiFactory {
     public static Observable<ApiResponse<ExchangeDetailResponse>> getExchangeDetail(Request request) {
         return getStoreService().getExchangeDetail(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
     }
+
     /**
-     *44 获取助理列表
+     * 39.提交积分商城订单
+     *
+     * @param request
+     * @return
+     * @see cn.kuailaimei.client.api.request.IDRequest
+     */
+    public static Observable<ApiResponse<OrderIdResposne>> submitExchangeOrder(Request request) {
+        return getStoreService().submitExchangeOrder(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
+    }
+
+    /**
+     * 42.积分商城订单列表我的兑换记录
+     *
+     * @param request
+     * @return
+     * @see cn.kuailaimei.client.api.request.ExchangeHistoryRequest
+     */
+    public static Observable<ApiResponse<ExchangeHistoryRespnse>> getExchanegHostory(Request request) {
+        return getStoreService().getExchangeHistory(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
+    }
+
+    /**
+     * 44 获取助理列表
      *
      * @param request
      * @return
      * @see cn.kuailaimei.client.api.request.SIDRequest
      */
-    public static  Observable<ApiResponse<AssistantListResposne>> getAssistantList(@Body Request request){
+    public static Observable<ApiResponse<AssistantListResposne>> getAssistantList(@Body Request request) {
         return getStoreService().getAssistantList(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
     }
 

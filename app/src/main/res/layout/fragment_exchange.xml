@@ -57,7 +57,7 @@
                         android:layout_height="@dimen/h128"
                         android:background="@color/white">
 
-                        <LinearLayout
+                        <cn.kuailaimei.client.common.widget.RippleLinearLayout
                             android:id="@+id/exchange_history"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
@@ -76,7 +76,7 @@
                                 android:layout_marginTop="@dimen/h16"
                                 android:text="兑换记录"
                                 android:textColor="@color/textColorPink" />
-                        </LinearLayout>
+                        </cn.kuailaimei.client.common.widget.RippleLinearLayout>
 
                         <View
                             android:layout_width="@dimen/w1"
@@ -85,7 +85,7 @@
                             android:layout_marginTop="@dimen/h20"
                             android:background="#ffc6de" />
 
-                        <LinearLayout
+                        <cn.kuailaimei.client.common.widget.RippleLinearLayout
                             android:id="@+id/user_account"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
@@ -104,7 +104,7 @@
                                 android:layout_marginTop="@dimen/h16"
                                 android:text="美券账户"
                                 android:textColor="@color/textColorPink" />
-                        </LinearLayout>
+                        </cn.kuailaimei.client.common.widget.RippleLinearLayout>
                     </LinearLayout>
 
                     <FrameLayout

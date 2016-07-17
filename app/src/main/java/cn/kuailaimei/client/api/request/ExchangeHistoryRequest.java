@@ -11,23 +11,23 @@ public class ExchangeHistoryRequest implements RequestData {
      * status : 0
      */
 
-    private String index;
-    private String size;
-    private String status;
+    private int index=1;
+    private int size=10;
+    private String status="0";
 
-    public String getIndex() {
+    public int getIndex() {
         return index;
     }
 
-    public void setIndex(String index) {
+    public void setIndex(int index) {
         this.index = index;
     }
 
-    public String getSize() {
+    public int getSize() {
         return size;
     }
 
-    public void setSize(String size) {
+    public void setSize(int size) {
         this.size = size;
     }
 

@@ -78,7 +78,8 @@
                 android:layout_marginLeft="@dimen/w12"
                 android:textColor="@color/textColorPrimary"
                 android:textSize="@dimen/w24"
-                android:text="微信"/>
+                android:text="微信"
+                android:id="@+id/wx_tv"/>
         </LinearLayout>
 
         <View
@@ -112,11 +113,12 @@
                 android:layout_marginLeft="@dimen/w12"
                 android:textColor="@color/textColorPrimary"
                 android:textSize="@dimen/w24"
-                android:text="支付宝支付"/>
+                android:text="支付宝支付"
+                android:id="@+id/_tv"/>
         </LinearLayout>
     </cn.kuailaimei.client.common.widget.MutilRadioGroup>
     <View style="@style/SpaceAutoFit"/>
-    <Button
+    <cn.kuailaimei.client.common.widget.RippleButton
         android:id="@+id/commit_btn"
         android:layout_width="match_parent"
         android:layout_height="@dimen/h100"

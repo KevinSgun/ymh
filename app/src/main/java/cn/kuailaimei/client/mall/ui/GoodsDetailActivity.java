@@ -185,7 +185,7 @@ public class GoodsDetailActivity extends BaseActivity {
         public Object instantiateItem(View container, final int position) {
             RippleView item = new RippleView(GoodsDetailActivity.this);
             RemoteImageView iv = new RemoteImageView(GoodsDetailActivity.this);
-            iv.setScaleType(ImageView.ScaleType.FIT_XY);
+            iv.setScaleType(ImageView.ScaleType.CENTER_CROP);
 //            iv.setImageUri(Constants.ImageDefault.RECTANGLE_LANDSCAPE,bannerList.get(position).getImg());
             iv.setImageUri(bannerList.get(position));
             item.setOnRippleCompleteListener(new OnRippleCompleteListener() {

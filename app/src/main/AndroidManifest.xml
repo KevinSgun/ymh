@@ -109,6 +109,27 @@
         <activity android:name=".mall.ui.ChooseSpecActivity"
             android:theme="@style/ActiviyDialogStyleBottom"
             android:screenOrientation="portrait"/>
+        <activity
+            android:name=".mall.ui.SetAreaAdressActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mall.ui.SetCityAdressActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mall.ui.SetProvinceAdressActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mall.ui.AddressActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mall.ui.OrderActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".mall.ui.ChooseAddressActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".mall.ui.ExchangeHistoryActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".mall.ui.PayActivity"
+            android:screenOrientation="portrait"/>
 
         <!-- 百度地图相关配置 start-->
         <meta-data

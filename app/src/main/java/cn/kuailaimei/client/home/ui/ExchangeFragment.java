@@ -28,17 +28,21 @@ import cn.kuailaimei.client.common.ui.BaseFragment;
 import cn.kuailaimei.client.common.widget.CirclePageIndicator;
 import cn.kuailaimei.client.common.widget.LoopViewPager;
 import cn.kuailaimei.client.common.widget.OnRippleCompleteListener;
+import cn.kuailaimei.client.common.widget.RippleLinearLayout;
 import cn.kuailaimei.client.common.widget.RippleView;
+import cn.kuailaimei.client.mall.ui.ExchangeHistoryActivity;
 import cn.kuailaimei.client.mall.ui.ExchangeListFragment;
 import cn.kuailaimei.client.mall.adapter.ExchangeListAdapter;
+import cn.kuailaimei.client.mall.ui.ScoreOrderDetailActivity;
+import cn.kuailaimei.client.mine.ui.MyScoreActivity;
 
 /**
  * Created by ymh on 2016/7/1 0001.
  */
 public class ExchangeFragment extends BaseFragment {
 
-    private LinearLayout exchangeHistory;
-    private LinearLayout userAccount;
+    private RippleLinearLayout exchangeHistory;
+    private RippleLinearLayout userAccount;
     private LoopViewPager bannerPager;
     private CollapsingToolbarLayout collapsingToolbar;
     private SlidingTabs slidingTabs;
@@ -53,10 +57,21 @@ public class ExchangeFragment extends BaseFragment {
         this.slidingTabs = (SlidingTabs) contentView.findViewById(R.id.sliding_tabs);
         this.collapsingToolbar = (CollapsingToolbarLayout) contentView.findViewById(R.id.collapsing_toolbar);
         this.bannerPager = (LoopViewPager) contentView.findViewById(R.id.banner);
-        this.userAccount = (LinearLayout) contentView.findViewById(R.id.user_account);
-        this.exchangeHistory = (LinearLayout) contentView.findViewById(R.id.exchange_history);
-        this. bannerIndicator = (CirclePageIndicator) contentView.findViewById(R.id.banner_indicator);
-
+        this.userAccount = (RippleLinearLayout) contentView.findViewById(R.id.user_account);
+        this.exchangeHistory = (RippleLinearLayout) contentView.findViewById(R.id.exchange_history);
+        this.bannerIndicator = (CirclePageIndicator) contentView.findViewById(R.id.banner_indicator);
+        userAccount.setOnRippleCompleteListener(new OnRippleCompleteListener() {
+            @Override
+            public void onComplete(View v) {
+                MyScoreActivity.launch(getActivity(), 0);
+            }
+        });
+        exchangeHistory.setOnRippleCompleteListener(new OnRippleCompleteListener() {
+            @Override
+            public void onComplete(View v) {
+                ExchangeHistoryActivity.launch(getContext());
+            }
+        });
 //        ApiFactory.get
 
     }

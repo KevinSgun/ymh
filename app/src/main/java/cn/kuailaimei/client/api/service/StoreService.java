@@ -8,7 +8,6 @@ import java.util.List;
 
 import cn.kuailaimei.client.api.NetConstants;
 import cn.kuailaimei.client.api.entity.Address;
-import cn.kuailaimei.client.api.entity.Employee;
 import cn.kuailaimei.client.api.entity.Message;
 import cn.kuailaimei.client.api.request.Feedback;
 import cn.kuailaimei.client.api.request.HomeDataRequest;
@@ -26,6 +25,7 @@ import cn.kuailaimei.client.api.request.UpdateProfileRequest;
 import cn.kuailaimei.client.api.response.AssistantListResposne;
 import cn.kuailaimei.client.api.response.DesignerDetail;
 import cn.kuailaimei.client.api.response.ExchangeDetailResponse;
+import cn.kuailaimei.client.api.response.ExchangeHistoryRespnse;
 import cn.kuailaimei.client.api.response.ExchangeListResponse;
 import cn.kuailaimei.client.api.response.FilePathResponse;
 import cn.kuailaimei.client.api.response.HomePageResponse;
@@ -357,12 +357,32 @@ public interface StoreService {
      *
      * @param body
      * @return
-     * @see cn.kuailaimei.client.api.request.IDRequest
+     * @see cn.kuailaimei.client.api.request.SubmitExchangeOrderRequest
      */
     @POST(NetConstants.SCORE_ORDER_SUBMIT)
     @Headers("Content-Type:" + RetrofitClient.JSON)
-    Observable<ApiResponse<OrderIdResposne>> submitOrder(@Body Request body);
+    Observable<ApiResponse<OrderIdResposne>> submitExchangeOrder(@Body Request body);
 
+    /**
+     * 42.积分商城订单列表我的兑换记录
+     *
+     * @param body
+     * @return
+     * @see cn.kuailaimei.client.api.request.ExchangeHistoryRequest
+     */
+    @POST(NetConstants.SCORE_ORDER_LIST)
+    @Headers("Content-Type:" + RetrofitClient.JSON)
+    Observable<ApiResponse<ExchangeHistoryRespnse>> getExchangeHistory(@Body Request body);
+    /**
+     * 积分订单待付款支付
+     *
+     * @param body
+     * @return
+     * @see cn.kuailaimei.client.api.request.CreditPayRequest
+     */
+    @POST(NetConstants.SCORE_ORDER_ORDERPAY)
+    @Headers("Content-Type:" + RetrofitClient.JSON)
+    Observable<ApiResponse<OrderPayResult>> doCreditPay(@Body Request body);
     /**
      * 44 获取助理列表
      *

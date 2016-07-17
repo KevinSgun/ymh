@@ -16,13 +16,13 @@
             android:src="@mipmap/ic_address_avatar" />
 
         <TextView
+            android:id="@+id/receiver_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/w20"
             android:text="汪汪汪"
             android:textColor="@color/textColorPrimary"
             android:textSize="@dimen/w28" />
-
         <ImageView
             android:layout_width="@dimen/w24"
             android:layout_height="@dimen/w28"
@@ -31,6 +31,7 @@
             android:src="@mipmap/ic_address_phone" />
 
         <TextView
+            android:id="@+id/receiver_phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/w20"
@@ -56,6 +57,7 @@
             android:src="@mipmap/ic_address" />
 
         <TextView
+            android:id="@+id/receiver_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/w20"
@@ -77,12 +79,20 @@
         android:orientation="horizontal"
         android:paddingLeft="@dimen/w30"
         android:paddingRight="@dimen/w30">
-
+        <LinearLayout
+            android:id="@+id/choose_address_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
         <RadioButton
             android:layout_width="@dimen/w32"
             android:layout_height="@dimen/w32"
             android:background="@drawable/sl_address"
-            android:button="@null" />
+            android:button="@null"
+            android:checked="false"
+            android:id="@+id/choosed" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -92,10 +102,13 @@
             android:text="选择地址"
             android:textColor="@color/textColorPrimary"
             android:textSize="@dimen/w24" />
-
-        <LinearLayout
+        </LinearLayout>
+        <cn.kuailaimei.client.common.widget.RippleLinearLayout
+            android:id="@+id/edit"
+            android:gravity="center_vertical"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
             <ImageView
                 android:layout_width="@dimen/w31"
@@ -109,11 +122,13 @@
                 android:text="编辑"
                 android:textColor="@color/textColorPrimaryGray"
                 android:textSize="@dimen/w26" />
-        </LinearLayout>
+        </cn.kuailaimei.client.common.widget.RippleLinearLayout>
 
-        <LinearLayout
+        <cn.kuailaimei.client.common.widget.RippleLinearLayout
+            android:id="@+id/delete"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
             android:layout_marginLeft="@dimen/w30">
 
             <ImageView
@@ -128,6 +143,6 @@
                 android:text="删除"
                 android:textColor="@color/textColorPrimaryGray"
                 android:textSize="@dimen/w26" />
-        </LinearLayout>
+        </cn.kuailaimei.client.common.widget.RippleLinearLayout>
     </LinearLayout>
 </LinearLayout>

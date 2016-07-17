@@ -6,6 +6,7 @@
     android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/logisticsStatusLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/h10"
@@ -126,10 +127,31 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/h10"
         android:background="@color/white"
-        android:padding="@dimen/w30">
+        >
+        <cn.kuailaimei.client.common.widget.RippleLinearLayout
+            android:id="@+id/chooseAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/w30"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
-        <LinearLayout
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="请选择收货地址"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="@dimen/w28" />
 
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_dark_arrow" />
+        </cn.kuailaimei.client.common.widget.RippleLinearLayout>
+        <cn.kuailaimei.client.common.widget.RippleLinearLayout
+            android:id="@+id/address_layout"
+            android:padding="@dimen/w30"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -192,28 +214,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:src="@mipmap/ic_dark_arrow" />
-        </LinearLayout>
+        </cn.kuailaimei.client.common.widget.RippleLinearLayout>
 
-        <LinearLayout
-            android:id="@+id/chooseAddress"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="请选择收货地址"
-                android:textColor="@color/textColorPrimary"
-                android:textSize="@dimen/w28" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/ic_dark_arrow" />
-        </LinearLayout>
     </cn.kuailaimei.client.common.widget.ViewAnimator>
 
     <LinearLayout
@@ -471,6 +474,7 @@
                 android:gravity="right|center_vertical"
                 >
                 <TextView
+                    android:id="@+id/needPay_desp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="还需支付"
@@ -501,7 +505,7 @@
 
         </cn.kuailaimei.client.common.widget.ViewAnimator>
 
-        <Button
+        <cn.kuailaimei.client.common.widget.RippleButton
             android:id="@+id/payNow"
             android:layout_width="@dimen/w160"
             android:layout_height="@dimen/w60"

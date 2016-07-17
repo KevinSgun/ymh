@@ -1,0 +1,82 @@
+package cn.kuailaimei.client.api.request;
+
+/**
+ * Created by lu on 2016/7/17.
+ */
+public class SubmitExchangeOrderRequest implements RequestData {
+
+
+    /**
+     * addressId : 1
+     * amount : 12
+     * gId : 1
+     * name : 商品名字
+     * goodPrice : 0
+     * score : 100
+     * stockId : 11195
+     */
+
+    private String addressId;
+    private int amount;
+    private String gId;
+    private String name;
+    private int goodPrice;
+    private int score;
+    private String stockId;
+
+    public String getAddressId() {
+        return addressId;
+    }
+
+    public void setAddressId(String addressId) {
+        this.addressId = addressId;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
+    public String getGId() {
+        return gId;
+    }
+
+    public void setGId(String gId) {
+        this.gId = gId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getGoodPrice() {
+        return goodPrice;
+    }
+
+    public void setGoodPrice(int goodPrice) {
+        this.goodPrice = goodPrice;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public String getStockId() {
+        return stockId;
+    }
+
+    public void setStockId(String stockId) {
+        this.stockId = stockId;
+    }
+}

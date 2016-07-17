@@ -52,15 +52,26 @@
                 android:textColor="@color/textColorPink"
                 android:textSize="@dimen/w24"
                 android:id="@+id/price" />
+            <LinearLayout
+                android:id="@+id/old_price_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/w18"
                 android:textColor="@color/textColorSecondary"
                 android:layout_marginLeft="@dimen/w30"
-                android:text="官方原价：￥100+500美券"
+                android:text="官方原价："
+                 />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/w18"
+                android:textColor="@color/textColorSecondary"
+                android:text="￥100+500美券"
                 android:id="@+id/old_price" />
-
+            </LinearLayout>
         </LinearLayout>
         <Button
             android:layout_width="@dimen/w200"

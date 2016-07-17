@@ -24,7 +24,9 @@ import cn.kuailaimei.client.api.response.OrderPayResult;
 import cn.kuailaimei.client.common.event.EventFactory;
 import cn.kuailaimei.client.common.ui.AppBarActivity;
 import cn.kuailaimei.client.common.widget.MutilRadioGroup;
+import cn.kuailaimei.client.common.widget.OnRippleCompleteListener;
 import cn.kuailaimei.client.common.widget.PayResultDialog;
+import cn.kuailaimei.client.common.widget.RippleButton;
 import cn.kuailaimei.client.home.ui.MainActivity;
 import cn.kuailaimei.client.pay.PayTools;
 import cn.kuailaimei.client.common.utils.ToastMaster;
@@ -44,7 +46,7 @@ public class PayWithExistOrderActivity extends AppBarActivity implements MutilRa
     private OrderItem orderItem;
     private String payType = "1";
     private PayTools payTools;
-    private Button commitbtn;
+    private RippleButton commitbtn;
     private Order orderBean;
 
     @Override
@@ -62,12 +64,38 @@ public class PayWithExistOrderActivity extends AppBarActivity implements MutilRa
         zfbrb = (RadioButton) findViewById(R.id.zfb_rb);
         zfbpaylayout = (LinearLayout) findViewById(R.id.zfb_pay_layout);
         paytyperg = (MutilRadioGroup) findViewById(R.id.pay_type_rg);
-        commitbtn = (Button) findViewById(R.id.commit_btn);
+        commitbtn = (RippleButton) findViewById(R.id.commit_btn);
+        commitbtn.setOnRippleCompleteListener(new OnRippleCompleteListener() {
+            @Override
+            public void onComplete(View v) {
+                PayRequest payRequest = new PayRequest();
+                payRequest.setPayType(payType);
+                payRequest.setPo(orderItem.getOrderId());
+                Request request = new Request(payRequest);
+                request.sign();
+                ApiFactory.doOrderRePay(request).subscribe(new ProgressSubscriber<ApiResponse<OrderPayResult>>(PayWithExistOrderActivity.this) {
+                    @Override
+                    protected void onNextInActive(ApiResponse<OrderPayResult> response) {
+                        String payInfo = "";
+                        try {
+                            payInfo = response.getData().getPayInfo().getPayInfo();
+                            orderBean = response.getData().getOrder();
+                        } catch (NullPointerException ignored) {
 
+                        }
+
+                        if (PayTools.WX_WAY.equals(payType)) {
+//                            payTools.payByWX();
+                        } else if (PayTools.ZFB_WAY.equals(payType)) {
+                            payTools.payByZFB(payInfo);
+                        }
+                    }
+                });
+            }
+        });
         paytyperg.setOnCheckedChangeListener(this);
         wxpaylayout.setOnClickListener(this);
         zfbpaylayout.setOnClickListener(this);
-        commitbtn.setOnClickListener(this);
 
         payTools = PayTools.getInstance(this);
         payTools.setOnPayResultListener(this);
@@ -141,31 +169,7 @@ public class PayWithExistOrderActivity extends AppBarActivity implements MutilRa
             case R.id.zfb_pay_layout:
                 paytyperg.check(R.id.zfb_rb);
                 break;
-            case R.id.commit_btn:
-                PayRequest payRequest = new PayRequest();
-                payRequest.setPayType(payType);
-                payRequest.setPo(orderItem.getOrderId());
-                Request request = new Request(payRequest);
-                request.sign();
-                ApiFactory.doOrderRePay(request).subscribe(new ProgressSubscriber<ApiResponse<OrderPayResult>>(this) {
-                    @Override
-                    protected void onNextInActive(ApiResponse<OrderPayResult> response) {
-                        String payInfo = "";
-                        try {
-                            payInfo = response.getData().getPayInfo().getPayInfo();
-                            orderBean = response.getData().getOrder();
-                        } catch (NullPointerException ignored) {
 
-                        }
-
-                        if (PayTools.WX_WAY.equals(payType)) {
-//                            payTools.payByWX();
-                        } else if (PayTools.ZFB_WAY.equals(payType)) {
-                            payTools.payByZFB(payInfo);
-                        }
-                    }
-                });
-                break;
         }
     }
 }

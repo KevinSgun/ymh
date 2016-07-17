@@ -37,6 +37,14 @@ public class Constants {
         String STOCK_LIST ="stock_list" ;
         String CHOOSE_STOCK = "choose_stock";
         String LAUNCH_ORDER_MODE = "launch_order_mode";
+        String ADDRESS_MODE = "address_mode";
+        String IS_NEED_AREA = "is_need_area";
+
+        int SELECT_PROVINCE_NAME =0x10 ;
+        int SELECT_CITY_NAME =0x11;
+        int SELECT_AREA_NAME = 0x12;
+        String ADDRESS ="address" ;
+        String PRICE ="price" ;
     }
 
     public interface FragmentExtra {

@@ -31,7 +31,8 @@
             android:singleLine="true"
             android:textColor="@color/textColorPrimaryGray"
             android:textColorHint="@color/textColorSecondary"
-            android:textSize="@dimen/w28" />
+            android:textSize="@dimen/w28"
+            />
     </LinearLayout>
 
     <View
@@ -53,7 +54,8 @@
             android:gravity="left"
             android:text="收货人电话"
             android:textColor="@color/textColorPrimary"
-            android:textSize="@dimen/w28" />
+            android:textSize="@dimen/w28"
+            />
 
         <EditText
             android:layout_width="match_parent"
@@ -66,7 +68,8 @@
             android:textColor="@color/textColorPrimaryGray"
             android:textColorHint="@color/textColorSecondary"
             android:textSize="@dimen/w28"
-            android:id="@+id/receiver_phone" />
+            android:id="@+id/receiver_phone"
+            />
     </LinearLayout>
 
     <View
@@ -75,6 +78,7 @@
         android:background="@color/divider_color" />
 
     <LinearLayout
+        android:id="@+id/receive_add_layout"
         android:layout_width="match_parent"
         android:layout_height="@dimen/h100"
         android:background="@color/white"
@@ -90,12 +94,11 @@
             android:textColor="@color/textColorPrimary"
             android:textSize="@dimen/w28" />
 
-        <EditText
+        <cn.kuailaimei.client.common.widget.RippleButton
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@null"
-            android:enabled="false"
             android:gravity="left|center_vertical"
             android:hint="请选择所在区域"
             android:inputType="phone"
@@ -103,7 +106,8 @@
             android:textColor="@color/textColorPrimaryGray"
             android:textColorHint="@color/textColorSecondary"
             android:textSize="@dimen/w28"
-            android:id="@+id/receiver_address" />
+            android:id="@+id/receiver_address"
+            />
 
         <ImageView
             android:layout_width="@dimen/w16"
@@ -138,7 +142,6 @@
             android:background="@null"
             android:gravity="left|center_vertical"
             android:hint="请输入详细地址"
-            android:inputType="phone"
             android:singleLine="true"
             android:textColor="@color/textColorPrimaryGray"
             android:textColorHint="@color/textColorSecondary"
@@ -147,7 +150,7 @@
     </LinearLayout>
 
 
-    <LinearLayout
+    <cn.kuailaimei.client.common.widget.RippleLinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/h100"
         android:layout_marginTop="@dimen/h10"
@@ -167,12 +170,15 @@
             android:textSize="@dimen/w28" />
 
         <RadioButton
+            android:id="@+id/set_default_radio"
             android:layout_width="@dimen/w34"
             android:layout_height="@dimen/w34"
             android:background="@drawable/sl_payment"
-            android:button="@null" />
+            android:button="@null"
+            android:checked="false"
+            android:enabled="false"/>
 
-    </LinearLayout>
+    </cn.kuailaimei.client.common.widget.RippleLinearLayout>
 
 
 </LinearLayout>

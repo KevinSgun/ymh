@@ -25,9 +25,10 @@
                 <cn.kuailaimei.client.common.widget.LoopViewPager
                     android:id="@+id/banner"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/h608"
+                    android:layout_height="@dimen/h560"
                     android:paddingLeft="@dimen/w33"
-                    android:paddingRight="@dimen/w33" />
+                    android:paddingRight="@dimen/w33"
+                    />
 
 
                 <cn.kuailaimei.client.common.widget.CirclePageIndicator
