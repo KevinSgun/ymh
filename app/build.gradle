@@ -30,4 +30,5 @@ dependencies {
     compile project(':iCSDatePicker')
     compile files('libs/alipaySdk-20160516.jar')
     compile files('libs/libammsdk.jar')
+    compile files('libs/jpush-android-2.1.7.jar')
 }

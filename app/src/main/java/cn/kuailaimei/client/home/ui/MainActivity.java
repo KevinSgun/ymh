@@ -1,7 +1,9 @@
 package cn.kuailaimei.client.home.ui;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -9,8 +11,18 @@ import android.support.v4.app.Fragment;
 import android.view.KeyEvent;
 import android.widget.RadioGroup;
 
+import com.ta.utdid2.android.utils.StringUtils;
+import com.zitech.framework.Session;
+import com.zitech.framework.utils.LogUtils;
+
+import java.util.Set;
+
+import cn.jpush.android.api.JPushInterface;
+import cn.jpush.android.api.TagAliasCallback;
+import cn.kuailaimei.client.BeautApplication;
 import cn.kuailaimei.client.Constants;
 import cn.kuailaimei.client.R;
+import cn.kuailaimei.client.common.SP;
 import cn.kuailaimei.client.common.ui.BaseActivity;
 import cn.kuailaimei.client.common.ui.BaseFragment;
 import cn.kuailaimei.client.common.utils.ToastMaster;
@@ -19,6 +31,12 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
 
     private RadioGroup radioGroup;
     private long exitTime;
+    private MessageReceiver mMessageReceiver;
+    public static final String MESSAGE_RECEIVED_ACTION = "cn.kuailaimei.store.MESSAGE_RECEIVED_ACTION";
+    public static final String KEY_TITLE = "title";
+    public static final String KEY_MESSAGE = "message";
+    public static final String KEY_EXTRAS = "extras";
+    public static boolean isForeground;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +56,8 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
 
     @Override
     protected void initData() {
+        jPushInit();
+        registerMessageReceiver();
         int position = getIntent().getIntExtra(Constants.ActivityExtra.CHECK_POSITION, 0);
         if (position == 0) {
             showFragment(HomeFragment.class);
@@ -48,6 +68,59 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
 //            showFragment(MyHomeFragment.class);
         }
 
+    }
+
+    // 初始化 JPush。如果已经初始化，但没有登录成功，则执行重新登录。
+    private void jPushInit(){
+        JPushInterface.init(getApplicationContext());
+        if(!SP.getDefaultSP().getBoolean(Constants.IS_BINDING_JPUSH_ALIAS,false))
+            bindJGPushAliasToBackground();
+    }
+
+    public void registerMessageReceiver() {
+        mMessageReceiver = new MessageReceiver();
+        IntentFilter filter = new IntentFilter();
+        filter.setPriority(IntentFilter.SYSTEM_HIGH_PRIORITY);
+        filter.addAction(MESSAGE_RECEIVED_ACTION);
+        registerReceiver(mMessageReceiver, filter);
+    }
+
+    public class MessageReceiver extends BroadcastReceiver {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (MESSAGE_RECEIVED_ACTION.equals(intent.getAction())) {
+                String messge = intent.getStringExtra(KEY_MESSAGE);
+                String extras = intent.getStringExtra(KEY_EXTRAS);
+                StringBuilder showMsg = new StringBuilder();
+                showMsg.append(KEY_MESSAGE + " : " + messge + "\n");
+                if (!StringUtils.isEmpty(extras)) {
+                    showMsg.append(KEY_EXTRAS + " : " + extras + "\n");
+                }
+                LogUtils.i("-----JPush------"+showMsg.toString());
+                ToastMaster.longToast(showMsg.toString());
+            }
+        }
+    }
+
+
+    /**
+     * 绑定别名到激光推送后台
+     */
+    public void bindJGPushAliasToBackground() {
+        String alias = Session.getInstance().getAndroidId();
+        //使用registerid的话看MyJPushReceiver这个类，这个可以不绑定
+        JPushInterface.setAliasAndTags(BeautApplication.getInstance().getApplicationContext(), alias, null, new TagAliasCallback() {
+            @Override
+            public void gotResult(int responseCode, String s, Set<String> set) {
+                if(responseCode == 0){
+                    LogUtils.d("bindJGPushSericeToBackgroud,绑定别名至激光推送后台成功！");
+                    SP.getDefaultSP().putBoolean(Constants.IS_BINDING_JPUSH_ALIAS,true);
+                }else {
+                    LogUtils.d("bindJGPushSericeToBackgroud,绑定别名至激光推送后台失败！responseCode : " + responseCode + "");
+                }
+            }
+        });
     }
 
 //    private View newMessageIconChat;
@@ -96,6 +169,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
 
     @Override
     protected void onDestroy() {
+        unregisterReceiver(mMessageReceiver);
         super.onDestroy();
     }
 
@@ -118,6 +192,20 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
                 break;
         }
     }
+
+    @Override
+    protected void onResume() {
+        isForeground = true;
+        super.onResume();
+    }
+
+
+    @Override
+    protected void onPause() {
+        isForeground = false;
+        super.onPause();
+    }
+
 
 }
 
