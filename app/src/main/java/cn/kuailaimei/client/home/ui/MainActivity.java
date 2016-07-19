@@ -196,6 +196,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     @Override
     protected void onResume() {
         isForeground = true;
+        JPushInterface.onResume(this);
         super.onResume();
     }
 
@@ -203,6 +204,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     @Override
     protected void onPause() {
         isForeground = false;
+        JPushInterface.onPause(this);
         super.onPause();
     }
 
