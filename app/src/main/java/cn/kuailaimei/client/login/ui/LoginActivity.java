@@ -8,6 +8,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.zitech.framework.data.network.entity.Basic;
+import com.zitech.framework.data.network.response.ApiResponse;
+import com.zitech.framework.data.network.subscribe.ProgressSubscriber;
+
+import cn.jpush.android.api.JPushInterface;
 import cn.kuailaimei.client.Constants;
 import cn.kuailaimei.client.R;
 import cn.kuailaimei.client.api.ApiFactory;
@@ -16,12 +21,10 @@ import cn.kuailaimei.client.api.request.Request;
 import cn.kuailaimei.client.api.response.UserInfoResponse;
 import cn.kuailaimei.client.common.User;
 import cn.kuailaimei.client.common.ui.AppBarActivity;
-import cn.kuailaimei.client.home.ui.MainActivity;
 import cn.kuailaimei.client.common.utils.StringUtils;
 import cn.kuailaimei.client.common.utils.ToastMaster;
-import com.zitech.framework.data.network.entity.Basic;
-import com.zitech.framework.data.network.response.ApiResponse;
-import com.zitech.framework.data.network.subscribe.ProgressSubscriber;
+import cn.kuailaimei.client.common.utils.Utils;
+import cn.kuailaimei.client.home.ui.MainActivity;
 
 /**
  * Created by ymh on 2016/6/30 0030.
@@ -87,6 +90,7 @@ public class LoginActivity extends AppBarActivity implements View.OnClickListene
                     protected void onNextInActive(ApiResponse<UserInfoResponse> userInfoResponseApiResponse) {
                         Basic basic = userInfoResponseApiResponse.getBasic();
                         if(basic.getStatus() == 1){
+                            Utils.bindJGPushIdToService(JPushInterface.getRegistrationID(getApplicationContext()));
                             User.get().storeFromUserInfo(userInfoResponseApiResponse.getData());
                             if(isFirstLaunchMain)
                                 skipActivity(MainActivity.class);
