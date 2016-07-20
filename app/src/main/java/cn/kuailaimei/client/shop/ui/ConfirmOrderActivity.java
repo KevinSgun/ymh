@@ -21,6 +21,7 @@ import cn.kuailaimei.client.R;
 import cn.kuailaimei.client.api.ApiFactory;
 import cn.kuailaimei.client.api.entity.CommitOrderInfo;
 import cn.kuailaimei.client.api.entity.Order;
+import cn.kuailaimei.client.api.entity.PayInfo;
 import cn.kuailaimei.client.api.entity.PayListBean;
 import cn.kuailaimei.client.api.request.CommitOrderRequest;
 import cn.kuailaimei.client.api.request.Request;
@@ -143,20 +144,23 @@ public class ConfirmOrderActivity extends AppBarActivity implements MutilRadioGr
                 Request request = new Request(commitOrderRequest);
                 request.sign();
                 ApiFactory.commitShopOrder(request).subscribe(new ProgressSubscriber<ApiResponse<OrderPayResult>>(this) {
+
                     @Override
                     protected void onNextInActive(ApiResponse<OrderPayResult> response) {
-                        String payInfo = "";
+                        PayInfo payInfo = null;
+                        String payInfoStr = "";
                         try {
-                            payInfo = response.getData().getPayInfo().getPayInfo();
+                            payInfo = response.getData().getPayInfo();
+                            payInfoStr = payInfo.getPayInfo();
                             orderBean = response.getData().getOrder();
                         } catch (NullPointerException ignored) {
 
                         }
 
                         if (PayTools.WX_WAY.equals(payType)) {
-//                            payTools.payByWX();
+                            payTools.payByWX(payInfo);
                         } else if (PayTools.ZFB_WAY.equals(payType)) {
-                            payTools.payByZFB(payInfo);
+                            payTools.payByZFB(payInfoStr);
                         } else if (VIP_WAY.equals(payType)) {
                             ToastMaster.shortToast(response.getBasic().getMsg());
                             showResultDialog();

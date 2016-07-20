@@ -6,6 +6,8 @@ import android.os.Looper;
 import android.os.Message;
 import android.text.TextUtils;
 
+import cn.kuailaimei.client.api.entity.PayInfo;
+
 /**
  * */
 public class PayTools {
@@ -191,20 +193,20 @@ public class PayTools {
 		wx.sendPayReq(APP_ID, MCH_ID, prepayId, packageValue, nonceStr, timeStamp, sign);
 	}
 
-//	/**
-//	 * <pre>
-//	 * 使用微信支付
-//	 * @param resp  支付所需的必要信息
-//	 */
-//	public void payByWx(PayResult resp){
-//		if(resp!=null&&resp.getPrepay_id()!=null){
-//			payByWX(resp.getWx_app_id(),resp.getWx_seller(), resp.getPrepay_id(),
-//					resp.getPackageValue(), resp.getNoncestr(), resp.getTimestamp(),resp.getSign());
-//		}else{
-//			if(onPayResultListener !=null)
-//				onPayResultListener.failedPayResult(PayTools.WX_WAY,"支付失败!");
-//		}
-//	}
+	/**
+	 * <pre>
+	 * 使用微信支付
+	 * @param resp  支付所需的必要信息
+	 */
+	public void payByWX(PayInfo resp){
+		if(resp!=null&&resp.getPrepayId()!=null){
+			payByWX(resp.getWxAppId(),resp.getWxSeller(), resp.getPrepayId(),
+					resp.getPackageValue(), resp.getNoncestr(), resp.getTimestamp(),resp.getSign());
+		}else{
+			if(onPayResultListener !=null)
+				onPayResultListener.failedPayResult(PayTools.WX_WAY,"支付失败!");
+		}
+	}
 
 	/**
 	 * 获取支付宝sdk版本号
