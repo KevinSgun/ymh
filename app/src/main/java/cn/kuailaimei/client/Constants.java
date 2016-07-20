@@ -10,7 +10,7 @@ public class Constants {
     public static final String BAI_DU_MAP = "baidumap";
     public static final String BAI_DU_SPLIT = "@";
     public static final String APP_ID = "wx7d71a97d624c4e02";
-    public static String IS_BINDING_JPUSH_ALIAS = "binding_jpush_alias";
+    public static String IS_BINDING_JPUSH_ID = "is_binding_jpush";
 
     public interface ActivityExtra {
 

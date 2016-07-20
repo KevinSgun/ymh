@@ -12,17 +12,11 @@ import android.view.KeyEvent;
 import android.widget.RadioGroup;
 
 import com.ta.utdid2.android.utils.StringUtils;
-import com.zitech.framework.Session;
 import com.zitech.framework.utils.LogUtils;
 
-import java.util.Set;
-
 import cn.jpush.android.api.JPushInterface;
-import cn.jpush.android.api.TagAliasCallback;
-import cn.kuailaimei.client.BeautApplication;
 import cn.kuailaimei.client.Constants;
 import cn.kuailaimei.client.R;
-import cn.kuailaimei.client.common.SP;
 import cn.kuailaimei.client.common.ui.BaseActivity;
 import cn.kuailaimei.client.common.ui.BaseFragment;
 import cn.kuailaimei.client.common.utils.ToastMaster;
@@ -73,8 +67,6 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     // 初始化 JPush。如果已经初始化，但没有登录成功，则执行重新登录。
     private void jPushInit(){
         JPushInterface.init(getApplicationContext());
-        if(!SP.getDefaultSP().getBoolean(Constants.IS_BINDING_JPUSH_ALIAS,false))
-            bindJGPushAliasToBackground();
     }
 
     public void registerMessageReceiver() {
@@ -101,26 +93,6 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
                 ToastMaster.longToast(showMsg.toString());
             }
         }
-    }
-
-
-    /**
-     * 绑定别名到激光推送后台
-     */
-    public void bindJGPushAliasToBackground() {
-        String alias = Session.getInstance().getAndroidId();
-        //使用registerid的话看MyJPushReceiver这个类，这个可以不绑定
-        JPushInterface.setAliasAndTags(BeautApplication.getInstance().getApplicationContext(), alias, null, new TagAliasCallback() {
-            @Override
-            public void gotResult(int responseCode, String s, Set<String> set) {
-                if(responseCode == 0){
-                    LogUtils.d("bindJGPushSericeToBackgroud,绑定别名至激光推送后台成功！");
-                    SP.getDefaultSP().putBoolean(Constants.IS_BINDING_JPUSH_ALIAS,true);
-                }else {
-                    LogUtils.d("bindJGPushSericeToBackgroud,绑定别名至激光推送后台失败！responseCode : " + responseCode + "");
-                }
-            }
-        });
     }
 
 //    private View newMessageIconChat;

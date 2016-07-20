@@ -5,14 +5,15 @@ import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 
-import cn.kuailaimei.client.Constants;
-import cn.kuailaimei.client.R;
-import cn.kuailaimei.client.common.ui.AppBarActivity;
 import com.zitech.framework.widget.SlidingTabs;
 import com.zitech.framework.widget.TabsFragmentAdapter;
 
 import java.util.LinkedList;
 import java.util.List;
+
+import cn.kuailaimei.client.Constants;
+import cn.kuailaimei.client.R;
+import cn.kuailaimei.client.common.ui.AppBarActivity;
 
 /**
  * Created by ymh on 2016/7/3 0003.
@@ -36,17 +37,19 @@ public class MyOrderListActivity extends AppBarActivity{
         slidingtabs = (SlidingTabs) findViewById(R.id.sliding_tabs);
         pager = (ViewPager) findViewById(R.id.pager);
         //0全部 1待付款 2待评价 3 已完成
-        String[] titles = { "全部", "待付款", "待评价","已完成"};
+        String[] titles = { "全部", "待付款", "待确认","待评价","已完成"};
 
         this.fragments = new LinkedList<>();
         OrderListFragment fragment0 = OrderListFragment.getInstance("0");
         OrderListFragment fragment1 = OrderListFragment.getInstance("1");
         OrderListFragment fragment2 = OrderListFragment.getInstance("2");
         OrderListFragment fragment3 = OrderListFragment.getInstance("3");
+        OrderListFragment fragment4 = OrderListFragment.getInstance("4");
         this.fragments.add(fragment0);
         this.fragments.add(fragment1);
         this.fragments.add(fragment2);
         this.fragments.add(fragment3);
+        this.fragments.add(fragment4);
 
         this.adapter = new TabsFragmentAdapter(this.getSupportFragmentManager(), titles,
                 this.fragments);

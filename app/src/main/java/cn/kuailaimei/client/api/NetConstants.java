@@ -147,4 +147,10 @@ public class NetConstants extends Constants{
     //45 我的首页(会员)
     public static final String VIP_USER_HOME= COMMON_SUFFIX+"users/me";
 //    http://192.168.0.240:88/mall/api/users/me
+
+    /**
+     * 上传极光推送ID
+     */
+    public static final String HOME_UPLOADPUSHID = COMMON_SUFFIX + "home/uploadPushId";
+
 }

@@ -6,14 +6,23 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.zitech.framework.data.network.response.ApiResponse;
+import com.zitech.framework.utils.LogUtils;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Iterator;
 
 import cn.jpush.android.api.JPushInterface;
+import cn.kuailaimei.client.Constants;
+import cn.kuailaimei.client.api.ApiFactory;
+import cn.kuailaimei.client.api.request.PushIdRequest;
+import cn.kuailaimei.client.api.request.Request;
+import cn.kuailaimei.client.common.SP;
 import cn.kuailaimei.client.common.utils.StringUtils;
 import cn.kuailaimei.client.home.ui.MainActivity;
+import rx.functions.Action1;
 
 /**
  * Created by ymh on 2016/7/11 0011.
@@ -28,9 +37,9 @@ public class MyJPushReceiver extends BroadcastReceiver {
 
         if (JPushInterface.ACTION_REGISTRATION_ID.equals(intent.getAction())) {
             String regId = bundle.getString(JPushInterface.EXTRA_REGISTRATION_ID);
-            Log.d(TAG, "[MyJPushReceiver] 接收Registration Id : " + regId);
             //send the Registration Id to your server...
-
+            if(!SP.getDefaultSP().getBoolean(Constants.IS_BINDING_JPUSH_ID,false))
+                bindJGPushIdToService(regId);
         } else if (JPushInterface.ACTION_MESSAGE_RECEIVED.equals(intent.getAction())) {
             Log.d(TAG, "[MyJPushReceiver] 接收到推送下来的自定义消息: " + bundle.getString(JPushInterface.EXTRA_MESSAGE));
             processCustomMessage(context, bundle);
@@ -116,6 +125,20 @@ public class MyJPushReceiver extends BroadcastReceiver {
             }
             context.sendBroadcast(msgIntent);
         }
+    }
+
+    public void bindJGPushIdToService(final String registerId) {
+        PushIdRequest pushRequest = new PushIdRequest();
+        pushRequest.setPushId(registerId);
+        Request request = new Request(pushRequest);
+        request.sign();
+        ApiFactory.uploadJPushId(request).subscribe(new Action1<ApiResponse>() {
+            @Override
+            public void call(ApiResponse apiResponse) {
+                SP.getDefaultSP().putBoolean(Constants.IS_BINDING_JPUSH_ID,true);
+                LogUtils.i("成功绑定JPushId = "+registerId+"到服务器");
+            }
+        });
     }
 
 }

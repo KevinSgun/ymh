@@ -75,14 +75,20 @@ public class OrderAdapter extends ListAdapter<OrderItem> implements IDataAdapter
             final int status = item.getStatus();
             if(status == OrderItem.WAIT_PAY){
                 leftbtn.setVisibility(View.VISIBLE);
+                rightbtn.setVisibility(View.VISIBLE);
                 leftbtn.setText("取消订单");
                 rightbtn.setText("马上付款");
             }else if(status == OrderItem.WAIT_COMMENT){
                 leftbtn.setVisibility(View.GONE);
+                rightbtn.setVisibility(View.VISIBLE);
                 rightbtn.setText("发表评价");
             }else if(status == OrderItem.COMPLETE){
                 leftbtn.setVisibility(View.GONE);
+                rightbtn.setVisibility(View.VISIBLE);
                 rightbtn.setText("再次购买");
+            }else{
+                leftbtn.setVisibility(View.GONE);
+                rightbtn.setVisibility(View.GONE);
             }
             leftbtn.setOnClickListener(new View.OnClickListener() {
                 @Override

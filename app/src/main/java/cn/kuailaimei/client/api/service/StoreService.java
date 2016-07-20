@@ -415,4 +415,15 @@ public interface StoreService {
      */
     @POST(NetConstants.UPLOAD)
     Observable<FileUploadResponse<FilePathResponse>> upload(@Query("type") String type, @Body MultipartBody multipartBody);
+
+    /**
+     * 上传极光推送ID
+     *
+     * @param body
+     * @return
+     * @see PushRequest
+     */
+    @POST(NetConstants.HOME_UPLOADPUSHID)
+    @Headers("Content-Type:" + RetrofitClient.JSON)
+    Observable<ApiResponse> uploadJPushId(@Body Request body);
 }

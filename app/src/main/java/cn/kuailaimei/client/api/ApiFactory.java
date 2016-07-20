@@ -12,7 +12,6 @@ import java.util.List;
 import java.util.Map;
 
 import cn.kuailaimei.client.api.entity.Address;
-import cn.kuailaimei.client.api.entity.Employee;
 import cn.kuailaimei.client.api.request.IDRequest;
 import cn.kuailaimei.client.api.request.ModifyPsdRequest;
 import cn.kuailaimei.client.api.request.OrderListRequest;
@@ -486,6 +485,17 @@ public class ApiFactory {
      */
     public static Observable<ApiResponse<AssistantListResposne>> getAssistantList(@Body Request request) {
         return getStoreService().getAssistantList(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
+    }
+
+    /**
+     * 上传极光推送ID
+     *
+     * @param request
+     * @return
+     * @see cn.kuailaimei.client.api.request.PushIdRequest
+     */
+    public static Observable<ApiResponse> uploadJPushId(Request request) {
+        return getStoreService().uploadJPushId(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
     }
 
 }
