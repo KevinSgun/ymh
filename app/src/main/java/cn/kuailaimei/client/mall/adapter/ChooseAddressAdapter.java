@@ -115,9 +115,10 @@ public class ChooseAddressAdapter extends ListAdapter<Address> {
                                 notifyDataSetChanged();
                             }
                         });
-                        dialog.show();
+
                     }
                 });
+                dialog.show();
             }
         });
         return convertView;
