@@ -9,3 +9,9 @@
 /iCSDatePicker/build/
 app/kuailaimei-release.apk
 app/app-release.apk
+/build/
+/.idea/
+/framework/.idea/
+/framework/build/
+/framework/gradle/
+/framework/local.properties
