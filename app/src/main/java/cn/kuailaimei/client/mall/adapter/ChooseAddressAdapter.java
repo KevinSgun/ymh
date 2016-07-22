@@ -34,15 +34,16 @@ import cn.kuailaimei.client.mall.ui.AddressActivity;
 public class ChooseAddressAdapter extends ListAdapter<Address> {
     private Address currentChoosed;
 
-    public interface OnAddressCheckChangedListener{
-        public void onAddressChecjChanged(Address address);
+    public interface OnAddressStateChangedListner{
+        public void onAddressCheckChanged(Address address);
+        public void onAddressDeleted(Address address);
     }
-    private  OnAddressCheckChangedListener onAddressCheckChangedListener;
+    private  OnAddressStateChangedListner onAddressCheckChangedListener;
     public ChooseAddressAdapter(Context context) {
         super(context);
     }
 
-    public void setOnDefaultAddressChangedListener(OnAddressCheckChangedListener onAddressCheckChangedListener) {
+    public void setOnDefaultAddressChangedListener(OnAddressStateChangedListner onAddressCheckChangedListener) {
         this.onAddressCheckChangedListener = onAddressCheckChangedListener;
     }
 
@@ -88,7 +89,7 @@ public class ChooseAddressAdapter extends ListAdapter<Address> {
                     currentChoosed.setStatus(1);
                     notifyDataSetChanged();
                     if(onAddressCheckChangedListener!=null){
-                        onAddressCheckChangedListener.onAddressChecjChanged(currentChoosed);
+                        onAddressCheckChangedListener.onAddressCheckChanged(currentChoosed);
                     }
                 }
             }
@@ -113,6 +114,9 @@ public class ChooseAddressAdapter extends ListAdapter<Address> {
                             protected void onNextInActive(ApiResponse apiResponse) {
                                 mList.remove(item);
                                 notifyDataSetChanged();
+                                if(onAddressCheckChangedListener!=null){
+                                    onAddressCheckChangedListener.onAddressDeleted(currentChoosed);
+                                }
                             }
                         });
 

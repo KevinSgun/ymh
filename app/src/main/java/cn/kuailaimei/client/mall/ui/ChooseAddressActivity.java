@@ -29,6 +29,8 @@ import cn.kuailaimei.client.mall.adapter.ChooseAddressAdapter;
  */
 public class ChooseAddressActivity extends AppBarActivity {
 
+    private static final int NO_DATA = 1;
+    private static final int CONTENTE = 0;
     private ListView userAddress;
     private ViewAnimator addressViewAnimator;
     private RippleButton addAddress;
@@ -100,12 +102,12 @@ public class ChooseAddressActivity extends AppBarActivity {
             protected void onNextInActive(ApiResponse<List<Address>> listApiResponse) {
                 List<Address> addressList = listApiResponse.getData();
                 if (addressList != null && addressList.size() > 0) {
-                    addressViewAnimator.setDisplayedChild(1);
+                    addressViewAnimator.setDisplayedChild(CONTENTE);
                     addressAdapter = new ChooseAddressAdapter(getContext());
                     addressAdapter.setList(addressList);
-                    addressAdapter.setOnDefaultAddressChangedListener(new ChooseAddressAdapter.OnAddressCheckChangedListener() {
+                    addressAdapter.setOnDefaultAddressChangedListener(new ChooseAddressAdapter.OnAddressStateChangedListner() {
                         @Override
-                        public void onAddressChecjChanged(Address address) {
+                        public void onAddressCheckChanged(Address address) {
                             //choosedAddress=address;
 //                            IDRequest id = new IDRequest();
 //                            id.setId(String.valueOf(address.getId()));
@@ -117,14 +119,31 @@ public class ChooseAddressActivity extends AppBarActivity {
 //                            });
                         }
 
+                        @Override
+                        public void onAddressDeleted(Address address) {
+                            if(addressAdapter.getList()==null||addressAdapter.getList().size()==0){
+                                addressViewAnimator.setDisplayedChild(NO_DATA);
+                            }
+
+
+                        }
+
 
                     });
                     userAddress.setAdapter(addressAdapter);
 
 
                 } else {
-                    addressViewAnimator.setDisplayedChild(0);
+                    addressViewAnimator.setDisplayedChild(NO_DATA);
                 }
+
+
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                super.onError(e);
 
             }
         });
