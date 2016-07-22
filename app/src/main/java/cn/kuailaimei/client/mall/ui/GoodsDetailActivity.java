@@ -99,7 +99,7 @@ public class GoodsDetailActivity extends BaseActivity {
         description.setText(Html.fromHtml(detail.getContent()));
         tips.setText(detail.getTooltip());
         availableNum.setText("可兑换 " + detail.getInventory() + "件");
-        exchangedNum.setText("已兑换 " + detail.getInventory() + "件");
+        exchangedNum.setText("已兑换 " + detail.getSales() + "件");
         if (detail.getPrice() > 0) {
             price.setText(Utils.formartPrice(detail.getPrice()) + "+" + detail.getScore() + "美劵");
 

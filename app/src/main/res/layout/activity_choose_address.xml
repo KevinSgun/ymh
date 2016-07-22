@@ -37,13 +37,12 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/bg_color">
+            >
         <ListView
             android:id="@+id/userAddress"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="@dimen/h89"
-            android:background="@drawable/white_color"
             android:divider="@color/divider_color"
             android:dividerHeight="@dimen/h1"
             android:listSelector="@drawable/selector_comment_item"

@@ -15,6 +15,7 @@ import cn.kuailaimei.client.Constants;
 import cn.kuailaimei.client.R;
 import cn.kuailaimei.client.api.ApiFactory;
 import cn.kuailaimei.client.api.entity.Address;
+import cn.kuailaimei.client.api.request.IDRequest;
 import cn.kuailaimei.client.api.request.Request;
 import cn.kuailaimei.client.common.ui.AppBarActivity;
 import cn.kuailaimei.client.common.utils.ToastMaster;
@@ -38,7 +39,6 @@ public class ChooseAddressActivity extends AppBarActivity {
     protected int getContentViewId() {
         return R.layout.activity_choose_address;
     }
-
     @Override
     protected void initView() {
         setTitle("选择地址");
@@ -46,6 +46,20 @@ public class ChooseAddressActivity extends AppBarActivity {
         addressViewAnimator = (ViewAnimator) findViewById(R.id.addressViewAnimator);
         addAddress = (RippleButton) findViewById(R.id.addAddress);
         confirm = (RippleButton) findViewById(R.id.confirm);
+        confirm.setOnRippleCompleteListener(new OnRippleCompleteListener() {
+            @Override
+            public void onComplete(View v) {
+                if(addressAdapter.getChoosedAddress()!=null){
+                    Intent data=new Intent();
+                    data.putExtra(Constants.ActivityExtra.ADDRESS,addressAdapter.getChoosedAddress());
+                    setResult(RESULT_OK,data);
+                    finish();
+                }else{
+                    ToastMaster.shortToast("请选择收获地址");
+                }
+
+            }
+        });
         addAddress.setOnRippleCompleteListener(new OnRippleCompleteListener() {
             @Override
             public void onComplete(View v) {
@@ -88,7 +102,26 @@ public class ChooseAddressActivity extends AppBarActivity {
                 if (addressList != null && addressList.size() > 0) {
                     addressViewAnimator.setDisplayedChild(1);
                     addressAdapter = new ChooseAddressAdapter(getContext());
+                    addressAdapter.setList(addressList);
+                    addressAdapter.setOnDefaultAddressChangedListener(new ChooseAddressAdapter.OnAddressCheckChangedListener() {
+                        @Override
+                        public void onAddressChecjChanged(Address address) {
+                            //choosedAddress=address;
+//                            IDRequest id = new IDRequest();
+//                            id.setId(String.valueOf(address.getId()));
+//                            ApiFactory.setDefaultAddress(new Request(id)).subscribe(new ProgressSubscriber<ApiResponse>() {
+//                                @Override
+//                                protected void onNextInActive(ApiResponse apiResponse) {
+//
+//                                }
+//                            });
+                        }
+
+
+                    });
                     userAddress.setAdapter(addressAdapter);
+
+
                 } else {
                     addressViewAnimator.setDisplayedChild(0);
                 }

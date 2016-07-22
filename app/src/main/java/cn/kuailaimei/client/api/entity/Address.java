@@ -122,4 +122,8 @@ public class Address implements Parcelable {
             return new Address[size];
         }
     };
+
+    public boolean isDefault() {
+        return status==1;
+    }
 }

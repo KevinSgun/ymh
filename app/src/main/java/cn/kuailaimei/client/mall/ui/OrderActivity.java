@@ -75,7 +75,7 @@ public class OrderActivity extends AppBarActivity implements OnRippleCompleteLis
     private Address choosedAddress;
     private GoodsDetail goodsDetail;
     private SkuItem choosedSku;
-
+    private StockItem chooseStock;
     //
 //    public
     @Override
@@ -125,27 +125,7 @@ public class OrderActivity extends AppBarActivity implements OnRippleCompleteLis
                 ChooseAddressActivity.launchForResult(OrderActivity.this, CHOOSE_ADDRESS);
             }
         });
-        payNow.setOnRippleCompleteListener(new OnRippleCompleteListener() {
-            @Override
-            public void onComplete(View v) {
-                SubmitExchangeOrderRequest request = new SubmitExchangeOrderRequest();
-                request.setAddressId(String.valueOf(choosedAddress.getId()));
-                request.setAmount(goodsDetail.getFare() + goodsDetail.getPrice());
-                request.setGId(String.valueOf(goodsDetail.getId()));
-                request.setGoodPrice(goodsDetail.getPrice());
-                request.setName(goodsDetail.getName());
-                request.setScore(goodsDetail.getScore());
-                request.setStockId(String.valueOf(choosedSku.getId()));
-                ApiFactory.submitExchangeOrder(new Request(request)).subscribe(new ProgressSubscriber<ApiResponse<OrderIdResposne>>(OrderActivity.this) {
-                    @Override
-                    protected void onNextInActive(ApiResponse<OrderIdResposne> response) {
-                        String orderId = response.getData().getOrderId();
-//                        PayWithExistOrderActivity
-                        PayActivity.launch(getContext(),orderId,goodsDetail.getPrice()+goodsDetail.getFare());
-                    }
-                });
-            }
-        });
+
     }
 
     @Override
@@ -155,7 +135,7 @@ public class OrderActivity extends AppBarActivity implements OnRippleCompleteLis
             logisticsStatusLayout.setVisibility(View.GONE);
             goodsDetail = getIntent().getParcelableExtra(Constants.ActivityExtra.GOODS_DETAIL);
             choosedSku = getIntent().getParcelableExtra(Constants.ActivityExtra.CHOOSE_SKU);
-            StockItem chooseStock = getIntent().getParcelableExtra(Constants.ActivityExtra.CHOOSE_STOCK);
+            chooseStock = getIntent().getParcelableExtra(Constants.ActivityExtra.CHOOSE_STOCK);
             priceCancleViewAnimator.setDisplayedChild(POSITION_PRICE);
             orderStateLayout.setVisibility(ViewAnimator.GONE);
             if (goodsDetail.getPrice() == 0 && goodsDetail.getFare() == 0) {
@@ -184,7 +164,27 @@ public class OrderActivity extends AppBarActivity implements OnRippleCompleteLis
                 icon.setImageUri(goodsDetail.getPhotos().get(0));
             }
             name.setText(goodsDetail.getName());
-
+            payNow.setOnRippleCompleteListener(new OnRippleCompleteListener() {
+                @Override
+                public void onComplete(View v) {
+                    SubmitExchangeOrderRequest request = new SubmitExchangeOrderRequest();
+                    request.setAddressId(String.valueOf(choosedAddress.getId()));
+                    request.setAmount(goodsDetail.getFare() + goodsDetail.getPrice());
+                    request.setGId(String.valueOf(goodsDetail.getId()));
+                    request.setGoodPrice(goodsDetail.getPrice());
+                    request.setName(goodsDetail.getName());
+                    request.setScore(goodsDetail.getScore());
+                    request.setStockId(String.valueOf(chooseStock.getId()));
+                    ApiFactory.submitExchangeOrder(new Request(request)).subscribe(new ProgressSubscriber<ApiResponse<OrderIdResposne>>(OrderActivity.this) {
+                        @Override
+                        protected void onNextInActive(ApiResponse<OrderIdResposne> response) {
+                            String orderId = response.getData().getOrderId();
+//                        PayWithExistOrderActivity
+                            PayActivity.launch(getContext(),orderId,goodsDetail.getPrice()+goodsDetail.getFare());
+                        }
+                    });
+                }
+            });
         }
 
 //
@@ -209,10 +209,7 @@ public class OrderActivity extends AppBarActivity implements OnRippleCompleteLis
                             break;
                         }
                     }
-                    choosedAddress = address;
-                    receiverName.setText(choosedAddress.getContact());
-                    receiverPhone.setText(choosedAddress.getPhone());
-                    receiverAddress.setText(choosedAddress.getCityname() + choosedAddress.getAddress());
+                    setChoosedAddress(address);
                 } else {
                     addressViewAnimator.setDisplayedChild(0);
                 }
@@ -220,6 +217,13 @@ public class OrderActivity extends AppBarActivity implements OnRippleCompleteLis
 //                addressViewAnimator
             }
         });
+    }
+
+    private void setChoosedAddress(Address address) {
+        choosedAddress = address;
+        receiverName.setText(choosedAddress.getContact());
+        receiverPhone.setText(choosedAddress.getPhone());
+        receiverAddress.setText(choosedAddress.getCityname() + choosedAddress.getAddress());
     }
 
     private boolean isDisplayOrder() {
@@ -244,6 +248,18 @@ public class OrderActivity extends AppBarActivity implements OnRippleCompleteLis
         } else if (v.getId() == addressLayout.getId()) {
 
             //EditAddressActivity.launcForAdd(this);
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==CHOOSE_ADDRESS&&resultCode==RESULT_OK){
+            Address address= (Address) data.getSerializableExtra(Constants.ActivityExtra.ADDRESS);
+            if(address!=null){
+                setChoosedAddress(address);
+            }
+
         }
     }
 }

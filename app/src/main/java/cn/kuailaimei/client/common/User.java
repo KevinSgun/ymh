@@ -27,7 +27,6 @@ public class User {
     private String birthday;
 
     public static User get() {
-
         return BeautApplication.getInstance().getUser();
     }
     public User() {
