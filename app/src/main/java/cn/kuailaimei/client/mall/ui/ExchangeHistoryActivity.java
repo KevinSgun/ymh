@@ -23,6 +23,7 @@ public class ExchangeHistoryActivity extends AppBarActivity {
     private SwipeRefreshLayout swipeRefreshLayout;
     private RecyclerView exchangeHistoryList;
     private MVCSwipeRefreshHelper<List<ExchangeHistoryItem>> mvcHelper;
+    private boolean isFirst;
 
     @Override
     protected int getContentViewId() {
@@ -50,9 +51,20 @@ public class ExchangeHistoryActivity extends AppBarActivity {
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        if (isFirst) {
+            isFirst = false;
+        } else {
+            mvcHelper.refresh();
+        }
+    }
+
+    @Override
     protected void initData() {
         requestData();
     }
+
 
     public static void launch(Context context) {
         Intent intent = new Intent(context, ExchangeHistoryActivity.class);

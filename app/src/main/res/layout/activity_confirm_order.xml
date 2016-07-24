@@ -1,210 +1,233 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fillViewport="true"
-    android:scrollbars="none">
-<LinearLayout
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="@dimen/h63"
+        android:background="@color/bg_color"
         android:gravity="center_vertical|left"
         android:paddingLeft="@dimen/w30"
-        android:textColor="@color/textColorPrimaryGray"
-        android:textSize="@dimen/w24"
         android:text="请对所选服务进行确认"
-        android:background="@color/bg_color"/>
+        android:textColor="@color/textColorPrimaryGray"
+        android:textSize="@dimen/w24" />
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/h100"
+        android:layout_height="@dimen/h80"
         android:layout_marginTop="@dimen/h10"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:paddingLeft="@dimen/w30"
-        android:paddingRight="@dimen/w30"
-        >
+        android:paddingRight="@dimen/w30">
 
         <TextView
             style="@style/CommonTextPrimary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/textColorSecondary"
             android:text="服务內容"
+            android:textColor="@color/textColorSecondary"
             android:textSize="@dimen/w28" />
+
         <TextView
             android:id="@+id/service_items_tv"
             style="@style/TextBlank.Medium"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:paddingLeft="@dimen/w40"
             android:gravity="left|center_vertical"
-            android:text=""
-            />
+            android:paddingLeft="@dimen/w40"
+            android:text="" />
     </LinearLayout>
 
     <View
         style="@style/DividerHorizontalLine"
         android:layout_marginLeft="@dimen/w30" />
+
     <LinearLayout
         android:id="@+id/assistant_layout"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/h100"
+        android:layout_height="@dimen/h80"
         android:layout_marginTop="@dimen/h10"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:paddingLeft="@dimen/w30"
-        android:paddingRight="@dimen/w30"
-        >
+        android:paddingRight="@dimen/w30">
 
         <TextView
             style="@style/CommonTextPrimary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/textColorSecondary"
             android:text="选择助理"
+            android:textColor="@color/textColorSecondary"
             android:textSize="@dimen/w28" />
+
         <TextView
             android:id="@+id/assistant_name_tv"
             style="@style/TextBlank.Medium"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:paddingLeft="@dimen/w40"
             android:gravity="left|center_vertical"
-            android:text=""
-            />
+            android:paddingLeft="@dimen/w40"
+            android:text="" />
     </LinearLayout>
 
     <View
         android:id="@+id/assistant_line"
         style="@style/DividerHorizontalLine"
         android:layout_marginLeft="@dimen/w30" />
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/h100"
+        android:layout_height="@dimen/h80"
         android:layout_marginTop="@dimen/h10"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:paddingLeft="@dimen/w30"
-        android:paddingRight="@dimen/w30"
-        >
+        android:paddingRight="@dimen/w30">
 
         <TextView
             style="@style/CommonTextPrimary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/textColorSecondary"
             android:text="发&#160;&#160;型&#160;&#160;师"
+            android:textColor="@color/textColorSecondary"
             android:textSize="@dimen/w28" />
+
         <TextView
             android:id="@+id/designer_name_tv"
             style="@style/TextBlank.Medium"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:paddingLeft="@dimen/w40"
             android:gravity="left|center_vertical"
-            android:text=""
-            />
+            android:paddingLeft="@dimen/w40"
+            android:text="" />
     </LinearLayout>
 
     <View
         style="@style/DividerHorizontalLine"
         android:layout_marginLeft="@dimen/w30" />
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/h100"
+        android:layout_height="@dimen/h80"
         android:layout_marginTop="@dimen/h10"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:paddingLeft="@dimen/w30"
-        android:paddingRight="@dimen/w30"
-        >
+        android:paddingRight="@dimen/w30">
 
         <TextView
             style="@style/CommonTextPrimary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/textColorSecondary"
             android:text="消费指南"
+            android:textColor="@color/textColorSecondary"
             android:textSize="@dimen/w28" />
+
         <TextView
             android:id="@+id/consumer_tips_tv"
             style="@style/TextBlank.Medium"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:singleLine="true"
-            android:paddingLeft="@dimen/w40"
             android:gravity="left|center_vertical"
-            android:text=""
-            />
+            android:paddingLeft="@dimen/w40"
+            android:singleLine="true"
+            android:text="" />
     </LinearLayout>
 
     <View
         style="@style/DividerHorizontalLine"
         android:layout_marginLeft="@dimen/w30" />
+
     <LinearLayout
         android:id="@+id/profile_nickname_layout"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/h100"
+        android:layout_height="@dimen/h80"
         android:layout_marginTop="@dimen/h10"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:paddingLeft="@dimen/w30"
-        android:paddingRight="@dimen/w30"
-        >
+        android:paddingRight="@dimen/w30">
 
         <TextView
             style="@style/CommonTextPrimary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/textColorSecondary"
             android:text="消费金额"
+            android:textColor="@color/textColorSecondary"
             android:textSize="@dimen/w28" />
+
         <TextView
             android:id="@+id/consumer_money_tv"
             style="@style/TextBlank.Medium"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:paddingLeft="@dimen/w40"
             android:gravity="left|center_vertical"
-            android:text="@string/rmb"
-            />
+            android:paddingLeft="@dimen/w40"
+            android:text="@string/rmb" />
     </LinearLayout>
 
     <View
         style="@style/DividerHorizontalLine"
-        />
+        android:layout_height="@dimen/h20"
+        android:background="@color/bg_color" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/w76"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/w30"
+        android:paddingRight="@dimen/w30">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="支付金额"
+            android:textColor="@color/textColorPrimary" />
+
+        <TextView
+            android:id="@+id/paid_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="98"
+            android:textColor="@color/textColorPink"
+            android:textSize="@dimen/w36" />
+    </LinearLayout>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="@dimen/h63"
+        android:background="@color/bg_color"
         android:gravity="center_vertical|left"
         android:paddingLeft="@dimen/w30"
-        android:textColor="@color/textColorPrimaryGray"
-        android:textSize="@dimen/w24"
         android:text="请选择支付方式"
-        android:background="@color/bg_color"/>
+        android:textColor="@color/textColorPrimaryGray"
+        android:textSize="@dimen/w24" />
+
     <cn.kuailaimei.client.common.widget.MutilRadioGroup
         android:id="@+id/pay_type_rg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@color/white">
+        android:background="@color/white"
+        android:orientation="vertical">
 
         <LinearLayout
             android:id="@+id/wx_pay_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/h75"
             android:layout_weight="1"
             android:gravity="center_vertical"
-            android:padding="@dimen/w30"
-            >
+            android:paddingLeft="@dimen/w30"
+            android:paddingRight="@dimen/w30">
 
             <RadioButton
                 android:id="@+id/wx_rb"
@@ -212,29 +235,32 @@
                 android:layout_height="@dimen/w34"
                 android:background="@drawable/sl_payment"
                 android:button="@null" />
+
             <ImageView
                 android:layout_width="@dimen/w40"
                 android:layout_height="@dimen/w40"
-                android:src="@mipmap/ic_pay_wechat"
-                android:layout_marginLeft="@dimen/w30"/>
+                android:layout_marginLeft="@dimen/w30"
+                android:src="@mipmap/ic_pay_wechat" />
+
             <TextView
                 android:id="@+id/wx_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/w12"
+                android:text="微信"
                 android:textColor="@color/textColorPrimary"
-                android:textSize="@dimen/w24"
-                android:text="微信"/>
+                android:textSize="@dimen/w24" />
+
             <TextView
                 android:id="@+id/wx_pay_tips_tv"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginLeft="@dimen/w12"
+                android:layout_weight="1"
                 android:gravity="right"
+                android:text="%100积分返还（商品兌換）"
                 android:textColor="@color/textColorPink"
-                android:textSize="@dimen/w24"
-                android:text="%100积分返还（商品兌換）"/>
+                android:textSize="@dimen/w24" />
         </LinearLayout>
 
         <View
@@ -246,11 +272,12 @@
         <LinearLayout
             android:id="@+id/zfb_pay_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/h75"
             android:layout_weight="1"
+            android:background="@color/transparent_pink"
             android:gravity="center_vertical"
-            android:padding="@dimen/w30"
-            android:background="@color/transparent_pink">
+            android:paddingLeft="@dimen/w30"
+            android:paddingRight="@dimen/w30">
 
             <RadioButton
                 android:id="@+id/zfb_rb"
@@ -258,31 +285,35 @@
                 android:layout_height="@dimen/w34"
                 android:background="@drawable/sl_payment"
                 android:button="@null"
-                android:checked="true"/>
+                android:checked="true" />
+
             <ImageView
                 android:layout_width="@dimen/w40"
                 android:layout_height="@dimen/w40"
-                android:src="@mipmap/ic_pay_alipay"
-                android:layout_marginLeft="@dimen/w30"/>
+                android:layout_marginLeft="@dimen/w30"
+                android:src="@mipmap/ic_pay_alipay" />
+
             <TextView
                 android:id="@+id/zfb_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/w12"
+                android:text="支付宝"
                 android:textColor="@color/textColorPink"
-                android:textSize="@dimen/w24"
-                android:text="支付宝"/>
+                android:textSize="@dimen/w24" />
+
             <TextView
                 android:id="@+id/zfb_pay_tips_tv"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginLeft="@dimen/w12"
+                android:layout_weight="1"
                 android:gravity="right"
+                android:text="%100积分返还（商品兌換）"
                 android:textColor="@color/textColorPink"
-                android:textSize="@dimen/w24"
-                android:text="%100积分返还（商品兌換）"/>
+                android:textSize="@dimen/w24" />
         </LinearLayout>
+
         <View
             android:id="@+id/vip_top_line"
             android:layout_width="match_parent"
@@ -292,11 +323,11 @@
         <LinearLayout
             android:id="@+id/vip_pay_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/h75"
             android:layout_weight="1"
             android:gravity="center_vertical"
-            android:padding="@dimen/w30"
-            >
+            android:paddingLeft="@dimen/w30"
+            android:paddingRight="@dimen/w30">
 
             <RadioButton
                 android:id="@+id/vip_rb"
@@ -304,43 +335,50 @@
                 android:layout_height="@dimen/w34"
                 android:background="@drawable/sl_payment"
                 android:button="@null" />
+
             <ImageView
                 android:layout_width="@dimen/w40"
                 android:layout_height="@dimen/w40"
-                android:src="@mipmap/ic_pay_vip"
-                android:layout_marginLeft="@dimen/w30"/>
+                android:layout_marginLeft="@dimen/w30"
+                android:src="@mipmap/ic_pay_vip" />
+
             <TextView
                 android:id="@+id/vip_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/w12"
+                android:text="储值会员卡"
                 android:textColor="@color/textColorPrimary"
-                android:textSize="@dimen/w24"
-                android:text="储值会员卡"/>
+                android:textSize="@dimen/w24" />
+
             <TextView
                 android:id="@+id/vip_pay_tips_tv"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginLeft="@dimen/w12"
+                android:layout_weight="1"
                 android:gravity="right"
+                android:text="%50积分返还（商品兌換）"
                 android:textColor="@color/textColorPink"
-                android:textSize="@dimen/w24"
-                android:text="%50积分返还（商品兌換）"/>
+                android:textSize="@dimen/w24" />
         </LinearLayout>
     </cn.kuailaimei.client.common.widget.MutilRadioGroup>
-    <View style="@style/DividerHorizontalLine"/>
-    <View android:layout_width="match_parent"
+
+    <View style="@style/DividerHorizontalLine" />
+
+    <View
+        android:layout_width="match_parent"
         android:layout_height="@dimen/h60"
-        android:background="@color/bg_color"
-        />
+        android:background="@color/bg_color" />
+
+    <View style="@style/SpaceAutoFit" />
+
     <Button
         android:id="@+id/commit_btn"
         android:layout_width="match_parent"
         android:layout_height="@dimen/h100"
-        android:textSize="@dimen/w32"
-        android:textColor="@color/white"
         android:background="@color/textColorPink"
-        android:text="提交订单"/>
+        android:text="提交订单"
+        android:textColor="@color/white"
+        android:textSize="@dimen/w32" />
 </LinearLayout>
-</ScrollView>

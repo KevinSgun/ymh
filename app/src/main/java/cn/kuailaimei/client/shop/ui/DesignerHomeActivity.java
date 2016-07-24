@@ -12,16 +12,21 @@ import com.zitech.framework.transform.RoundedCornersTransformation;
 import com.zitech.framework.utils.ViewUtils;
 import com.zitech.framework.widget.RemoteImageView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import cn.kuailaimei.client.Constants;
 import cn.kuailaimei.client.R;
 import cn.kuailaimei.client.api.ApiFactory;
 import cn.kuailaimei.client.api.entity.CommitOrderInfo;
 import cn.kuailaimei.client.api.entity.Designer;
 import cn.kuailaimei.client.api.entity.DesignerService;
+import cn.kuailaimei.client.api.entity.Image;
 import cn.kuailaimei.client.api.request.IDRequest;
 import cn.kuailaimei.client.api.request.Request;
 import cn.kuailaimei.client.api.response.DesignerDetail;
 import cn.kuailaimei.client.common.ui.AppBarActivity;
+import cn.kuailaimei.client.common.ui.PhotoPagerActivity;
 import cn.kuailaimei.client.common.widget.OnRippleCompleteListener;
 import cn.kuailaimei.client.common.widget.RippleButton;
 import cn.kuailaimei.client.common.widget.RippleLinearLayout;
@@ -47,7 +52,7 @@ public class DesignerHomeActivity extends AppBarActivity {
     private RippleButton orderNow;
     private String desiginerId;
     private DesignerService choosedService;
-
+    private RippleLinearLayout personalDesignLayout;
     @Override
     protected int getContentViewId() {
         return R.layout.activity_designer_detail;
@@ -67,6 +72,7 @@ public class DesignerHomeActivity extends AppBarActivity {
         this.designerLevel = (TextView) findViewById(R.id.designer_level);
         this.designerName = (TextView) findViewById(R.id.designer_name);
         this.designerAvatar = (RemoteImageView) findViewById(R.id.designer_avatar);
+        this.personalDesignLayout= (RippleLinearLayout) findViewById(R.id.personal_design_layout);
     }
 
     private void render(final DesignerDetail detail) {
@@ -95,6 +101,18 @@ public class DesignerHomeActivity extends AppBarActivity {
                 ShopHomeActivity.launch(DesignerHomeActivity.this, String.valueOf(designer.getAgent()));
             }
         });
+        personalDesignLayout.setOnRippleCompleteListener(new OnRippleCompleteListener() {
+            @Override
+            public void onComplete(View v) {
+//                ApiFactor
+                List<Image> images=detail.getImages();
+                ArrayList<String> imageUrls=new ArrayList<String>();
+                for(int i=0;i<images.size();i++){
+                    imageUrls.add(images.get(i).getUrl());
+                }
+                PhotoPagerActivity.launch(DesignerHomeActivity.this,imageUrls,null,0);
+            }
+        });
         orderNow.setOnRippleCompleteListener(new OnRippleCompleteListener() {
             @Override
             public void onComplete(View v) {
@@ -107,7 +125,7 @@ public class DesignerHomeActivity extends AppBarActivity {
                 } else {
                     CommitOrderInfo info = new CommitOrderInfo();
                     info.setsId(String.valueOf(choosedService.getSid()));
-                    info.setAmount(Float.parseFloat(choosedService.getPrice()));
+                    info.setAmount(Integer.parseInt(choosedService.getPrice()));
                     info.setContent(choosedService.getContent());
                     info.setmId(String.valueOf(designer.getId()));
                     info.setcId(String.valueOf(choosedService.getCid()));

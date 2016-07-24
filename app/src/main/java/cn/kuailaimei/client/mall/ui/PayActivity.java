@@ -12,18 +12,25 @@ import com.zitech.framework.data.network.response.ApiResponse;
 import com.zitech.framework.data.network.subscribe.ProgressSubscriber;
 import com.zitech.framework.widget.SlidingTabs;
 
+import org.greenrobot.eventbus.EventBus;
+
 import cn.kuailaimei.client.Constants;
 import cn.kuailaimei.client.R;
 import cn.kuailaimei.client.api.ApiFactory;
+import cn.kuailaimei.client.api.entity.Order;
 import cn.kuailaimei.client.api.request.CreditPayRequest;
 import cn.kuailaimei.client.api.request.Request;
 import cn.kuailaimei.client.api.response.OrderPayResult;
+import cn.kuailaimei.client.common.event.EventFactory;
 import cn.kuailaimei.client.common.ui.AppBarActivity;
 import cn.kuailaimei.client.common.utils.ToastMaster;
 import cn.kuailaimei.client.common.utils.Utils;
 import cn.kuailaimei.client.common.widget.MutilRadioGroup;
 import cn.kuailaimei.client.common.widget.OnRippleCompleteListener;
+import cn.kuailaimei.client.common.widget.PayResultDialog;
 import cn.kuailaimei.client.common.widget.RippleButton;
+import cn.kuailaimei.client.home.ui.MainActivity;
+import cn.kuailaimei.client.mine.ui.MyOrderListActivity;
 import cn.kuailaimei.client.pay.PayTools;
 
 /**
@@ -42,6 +49,8 @@ public class PayActivity extends AppBarActivity implements MutilRadioGroup.OnChe
     private LinearLayout zfbpaylayout;
     private TextView wxTv;
     private TextView zfbTv;
+    private int price;
+    private Order orderBean;
 
     @Override
     protected int getContentViewId() {
@@ -50,8 +59,9 @@ public class PayActivity extends AppBarActivity implements MutilRadioGroup.OnChe
 
     @Override
     protected void initView() {
+        setTitle("订单支付");
         orderId = getIntent().getStringExtra(Constants.ActivityExtra.ORDER_ID);
-
+         price = getIntent().getIntExtra(Constants.ActivityExtra.PRICE, 0);
         payAmount = (TextView) findViewById(R.id.pay_amount_tv);
         zfbrb = (RadioButton) findViewById(R.id.zfb_rb);
         wxrb = (RadioButton) findViewById(R.id.wx_rb);
@@ -61,7 +71,7 @@ public class PayActivity extends AppBarActivity implements MutilRadioGroup.OnChe
         zfbpaylayout = (LinearLayout) findViewById(R.id.zfb_pay_layout);
         wxTv = (TextView) findViewById(R.id.wx_tv);
         zfbTv = (TextView) findViewById(R.id.zfb_tv);
-
+        paytyperg.check(R.id.zfb_rb);
         paytyperg.setOnCheckedChangeListener(this);
         wxpaylayout.setOnClickListener(this);
         zfbpaylayout.setOnClickListener(this);
@@ -77,8 +87,21 @@ public class PayActivity extends AppBarActivity implements MutilRadioGroup.OnChe
                 req.setPayId(payType);
                 ApiFactory.doCreditPay(new Request(req)).subscribe(new ProgressSubscriber<ApiResponse<OrderPayResult>>(PayActivity.this) {
                     @Override
-                    protected void onNextInActive(ApiResponse<OrderPayResult> orderPayResultApiResponse) {
-                        ToastMaster.popToast(getContext(), "支付成功");
+                    protected void onNextInActive(ApiResponse<OrderPayResult> response) {
+//                        ToastMaster.popToast(getContext(), "支付成功");
+//                        orderPayResultApiResponse.getData().getPayInfo();
+                        String payInfo = "";
+                        try {
+                            payInfo = response.getData().getPayInfo().getPayInfo();
+                            orderBean = response.getData().getOrder();
+                        } catch (NullPointerException ignored) {
+
+                        }
+                        if (PayTools.WX_WAY.equals(payType)) {
+//                            payTools.payByWX();
+                        } else if (PayTools.ZFB_WAY.equals(payType)) {
+                            payTools.payByZFB(payInfo);
+                        }
                     }
                 });
             }
@@ -87,7 +110,6 @@ public class PayActivity extends AppBarActivity implements MutilRadioGroup.OnChe
 
     @Override
     protected void initData() {
-        int price = getIntent().getIntExtra(Constants.ActivityExtra.PRICE, 0);
         payAmount.setText(Utils.formartPrice(price));
     }
 
@@ -135,9 +157,23 @@ public class PayActivity extends AppBarActivity implements MutilRadioGroup.OnChe
     @Override
     public void paySuccessfulResult(String payType, String message) {
         ToastMaster.shortToast(message);
-//        showResultDialog();
+        showResultDialog();
     }
-
+    private void showResultDialog() {
+        EventBus.getDefault().post(new EventFactory.OrderListDataChange());
+        PayResultDialog payResultDialog = new PayResultDialog(PayActivity.this, orderBean);
+        payResultDialog.setOnButtonClickListener(new PayResultDialog.OnButtonClickListener() {
+            @Override
+            public void onButtonClick(PayResultDialog.StuffType stuffType) {
+                if (stuffType == PayResultDialog.StuffType.GO_MAIN_ACT) {
+                    MainActivity.launch(PayActivity.this);
+                } else {
+                    MyOrderListActivity.launch(PayActivity.this, 2);
+                }
+            }
+        });
+        payResultDialog.show();
+    }
     @Override
     public void failedPayResult(String payType, String message) {
 //        EventFactory.OrderListDataChange orerdata = new EventFactory.OrderListDataChange();

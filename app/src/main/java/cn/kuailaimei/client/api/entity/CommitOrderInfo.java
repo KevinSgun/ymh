@@ -22,7 +22,8 @@ public class CommitOrderInfo implements Parcelable {
      * "content"//消費指南，服務流程介紹
      */
     private String id;
-    private float amount;
+    private int amount;
+    private int oldAmount;
     private String sId;
     private String cId;
     private String mId;
@@ -45,9 +46,6 @@ public class CommitOrderInfo implements Parcelable {
         return amount;
     }
 
-    public void setAmount(float amount) {
-        this.amount = amount;
-    }
 
     public String getsId() {
         return sId;
@@ -113,6 +111,18 @@ public class CommitOrderInfo implements Parcelable {
         this.content = content;
     }
 
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
+    public int getOldAmount() {
+        return oldAmount;
+    }
+
+    public void setOldAmount(int oldAmount) {
+        this.oldAmount = oldAmount;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -121,7 +131,8 @@ public class CommitOrderInfo implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(this.id);
-        dest.writeFloat(this.amount);
+        dest.writeInt(this.amount);
+        dest.writeInt(this.oldAmount);
         dest.writeString(this.sId);
         dest.writeString(this.cId);
         dest.writeString(this.mId);
@@ -137,7 +148,8 @@ public class CommitOrderInfo implements Parcelable {
 
     protected CommitOrderInfo(Parcel in) {
         this.id = in.readString();
-        this.amount = in.readFloat();
+        this.amount = in.readInt();
+        this.oldAmount = in.readInt();
         this.sId = in.readString();
         this.cId = in.readString();
         this.mId = in.readString();

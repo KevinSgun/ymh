@@ -201,7 +201,30 @@
                 android:layout_marginLeft="@dimen/w19"
                 android:src="@mipmap/ic_gray_arrow" />
         </cn.kuailaimei.client.common.widget.RippleLinearLayout>
+        <View style="@style/DividerHorizontalLine" />
 
+        <cn.kuailaimei.client.common.widget.RippleLinearLayout
+            android:id="@+id/personal_design_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/h86"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/w30"
+            android:paddingRight="@dimen/w30">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="个人作品"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="@dimen/w24" />
+
+            <ImageView
+                android:layout_width="@dimen/w15"
+                android:layout_height="@dimen/h24"
+                android:layout_marginLeft="@dimen/w19"
+                android:src="@mipmap/ic_gray_arrow" />
+        </cn.kuailaimei.client.common.widget.RippleLinearLayout>
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/h10"

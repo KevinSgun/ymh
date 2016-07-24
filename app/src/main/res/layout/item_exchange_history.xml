@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/selector_comment_item">
+
+    <LinearLayout
+        android:id="@+id/order_state_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h60"
+        android:layout_marginTop="@dimen/h10"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/w30"
+        android:paddingRight="@dimen/w30">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="订单编号："
+            android:textColor="@color/textColorPrimaryGray"
+            android:textSize="@dimen/w20" />
+
+        <TextView
+            android:id="@+id/orderId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:singleLine="true"
+            android:textColor="@color/textColorPrimaryGray"
+            android:textSize="@dimen/w20" />
+
+        <TextView
+            android:id="@+id/orderDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text="2016-01-11"
+            android:textColor="@color/textColorPrimaryGray"
+            android:textSize="@dimen/w20" />
+
+        <TextView
+            android:id="@+id/orderStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/w50"
+            android:text="已付款"
+            android:textColor="@color/textColorPink"
+            android:textSize="@dimen/w20" />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h1"
+        android:background="@color/divider_color" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/w30">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_stroke_gray"
+            android:paddingBottom="@dimen/h11"
+            android:paddingLeft="@dimen/w7"
+            android:paddingRight="@dimen/w7"
+            android:paddingTop="@dimen/h11">
+
+            <com.zitech.framework.widget.RemoteImageView
+                android:id="@+id/icon"
+                android:layout_width="@dimen/w127"
+                android:layout_height="@dimen/w117"
+                android:layout_gravity="center"
+                android:scaleType="fitCenter" />
+        </FrameLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/w32"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tangle teezer梳子 英国按摩梳美发梳子卷发梳王妃顺发梳 TT梳子"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="@dimen/w20" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/h10"
+                android:gravity="center_vertical">
+
+                <TextView
+
+                    android:id="@+id/price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="￥100+500美劵"
+                    android:textColor="@color/textColorPink"
+                    android:textSize="@dimen/w24" />
+
+                <LinearLayout
+                    android:id="@+id/old_price_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/w30"
+                        android:text="官方原价："
+                        android:textColor="@color/textColorSecondary"
+                        android:textSize="@dimen/w18" />
+
+                    <TextView
+                        android:id="@+id/old_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="￥100+500美券"
+                        android:textColor="@color/textColorSecondary"
+                        android:textSize="@dimen/w18" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/desp"
+                android:layout_width="@dimen/w200"
+                android:layout_height="@dimen/w36"
+                android:layout_gravity="right"
+                android:layout_marginTop="@dimen/h6"
+                android:background="@drawable/btn_exchange"
+                android:gravity="center"
+                android:text="仅支持平台邮寄兑换"
+                android:textColor="#f60068"
+                android:textSize="@dimen/w18" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h10"
+        android:background="@color/divider_color" />
+</LinearLayout>

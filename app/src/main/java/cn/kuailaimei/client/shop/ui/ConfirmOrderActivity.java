@@ -30,6 +30,7 @@ import cn.kuailaimei.client.api.response.OrderPayListResponse;
 import cn.kuailaimei.client.api.response.OrderPayResult;
 import cn.kuailaimei.client.common.event.EventFactory;
 import cn.kuailaimei.client.common.ui.AppBarActivity;
+import cn.kuailaimei.client.common.utils.Utils;
 import cn.kuailaimei.client.common.widget.MutilRadioGroup;
 import cn.kuailaimei.client.common.widget.PayResultDialog;
 import cn.kuailaimei.client.home.ui.MainActivity;
@@ -71,6 +72,7 @@ public class ConfirmOrderActivity extends AppBarActivity implements MutilRadioGr
     private Order orderBean;
     private View vipTopLine;
     private View zfbTopLine;
+    private TextView paidAmount;
 
     @Override
     protected int getContentViewId() {
@@ -88,6 +90,7 @@ public class ConfirmOrderActivity extends AppBarActivity implements MutilRadioGr
         consumertipstv = (TextView) findViewById(R.id.consumer_tips_tv);
         consumermoneytv = (TextView) findViewById(R.id.consumer_money_tv);
         profilenicknamelayout = (LinearLayout) findViewById(R.id.profile_nickname_layout);
+        paidAmount = (TextView) findViewById(R.id.paid_amount);
         wxrb = (RadioButton) findViewById(R.id.wx_rb);
         wxpaytipstv = (TextView) findViewById(R.id.wx_pay_tips_tv);
         wxpaylayout = (LinearLayout) findViewById(R.id.wx_pay_layout);
@@ -251,7 +254,8 @@ public class ConfirmOrderActivity extends AppBarActivity implements MutilRadioGr
             }
             designernametv.setText(commitOrderInfo.getmId() + "号  " + commitOrderInfo.getDesignName());
             consumertipstv.setText(commitOrderInfo.getContent());
-            consumermoneytv.setText(String.format(getString(R.string.rmb), commitOrderInfo.getAmount()));
+            consumermoneytv.setText(Utils.formartPrice(commitOrderInfo.getOldAmount()));
+            paidAmount.setText(Utils.formartPrice(commitOrderInfo.getAmount()));
         } else {
             ToastMaster.shortToast("订单信息错误");
             finish();
@@ -289,9 +293,9 @@ public class ConfirmOrderActivity extends AppBarActivity implements MutilRadioGr
 
         }
         if (PayTools.WX_WAY.equals(wxType)) {
-           wxpaylayout.setVisibility(View.VISIBLE);
+            wxpaylayout.setVisibility(View.VISIBLE);
             zfbTopLine.setVisibility(View.VISIBLE);
-        }else{
+        } else {
             wxpaylayout.setVisibility(View.GONE);
             zfbTopLine.setVisibility(View.GONE);
         }
@@ -299,14 +303,14 @@ public class ConfirmOrderActivity extends AppBarActivity implements MutilRadioGr
         if (PayTools.ZFB_WAY.equals(zfbType)) {
             zfbpaylayout.setVisibility(View.VISIBLE);
             vipTopLine.setVisibility(View.VISIBLE);
-        }else{
+        } else {
             zfbpaylayout.setVisibility(View.GONE);
             vipTopLine.setVisibility(View.GONE);
         }
 
         if (VIP_WAY.equals(vipType)) {
             vippaylayout.setVisibility(View.VISIBLE);
-        }else{
+        } else {
             vippaylayout.setVisibility(View.GONE);
             vipTopLine.setVisibility(View.GONE);
         }

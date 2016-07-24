@@ -19,6 +19,7 @@ import cn.kuailaimei.client.api.request.PageRequest;
 import cn.kuailaimei.client.api.request.Request;
 import cn.kuailaimei.client.api.request.SIDRequest;
 import cn.kuailaimei.client.api.response.AssistantListResposne;
+import cn.kuailaimei.client.api.response.CreditOrderDetailResponse;
 import cn.kuailaimei.client.api.response.DesignerDetail;
 import cn.kuailaimei.client.api.response.ExchangeDetailResponse;
 import cn.kuailaimei.client.api.response.ExchangeHistoryRespnse;
@@ -28,7 +29,6 @@ import cn.kuailaimei.client.api.response.GetwayResponse;
 import cn.kuailaimei.client.api.response.HomePageResponse;
 import cn.kuailaimei.client.api.response.MyFavoriteResponse;
 import cn.kuailaimei.client.api.response.NearStoreListResposne;
-import cn.kuailaimei.client.api.response.OrderIdResposne;
 import cn.kuailaimei.client.api.response.OrderListResponse;
 import cn.kuailaimei.client.api.response.OrderPayListResponse;
 import cn.kuailaimei.client.api.response.OrderPayResult;
@@ -335,6 +335,16 @@ public class ApiFactory {
     public static Observable<ApiResponse<OrderListResponse>> getOrderList(PageRequest request) {
         return getStoreService().getOrderList(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
     }
+    /**
+     * 我的订单列表
+     *
+     * @param request
+     * @return
+     * @see cn.kuailaimei.client.api.request.OrderIDRequest
+     */
+    public static Observable<ApiResponse<CreditOrderDetailResponse>> getOrderDetail(Request request) {
+        return getStoreService().getOrderDetail(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
+    }
 
     /**
      * 修改密码
@@ -461,7 +471,7 @@ public class ApiFactory {
      * @return
      * @see cn.kuailaimei.client.api.request.IDRequest
      */
-    public static Observable<ApiResponse<OrderIdResposne>> submitExchangeOrder(Request request) {
+    public static Observable<ApiResponse<OrderPayResult>> submitExchangeOrder(Request request) {
         return getStoreService().submitExchangeOrder(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
     }
 

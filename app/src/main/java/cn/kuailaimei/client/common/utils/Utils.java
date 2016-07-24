@@ -37,10 +37,12 @@ public class Utils extends com.zitech.framework.utils.Utils {
         return formarttDistance(distanceInt);
     }
 
-    public static String formartPrice(int price) {
+    public static String formartPrice(Number price) {
         return "￥" + price;
     }
-
+    public static String formartPrice(String price) {
+        return "￥" + price;
+    }
     public static void bindJGPushIdToService(final String registerId) {
         if(!SP.getDefaultSP().getBoolean(Constants.IS_BINDING_JPUSH_ID,false)) return;
         PushIdRequest pushRequest = new PushIdRequest();

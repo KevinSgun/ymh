@@ -24,6 +24,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.baidu.mapapi.map.Text;
 import com.shizhefei.mvc.IDataAdapter;
 import com.zitech.framework.widget.RemoteImageView;
 
@@ -31,10 +32,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cn.kuailaimei.client.R;
+import cn.kuailaimei.client.api.ApiFactory;
 import cn.kuailaimei.client.api.entity.ExchangeHistoryItem;
 import cn.kuailaimei.client.api.entity.ExchangeItem;
 import cn.kuailaimei.client.common.utils.Utils;
 import cn.kuailaimei.client.mall.ui.GoodsDetailActivity;
+import cn.kuailaimei.client.mall.ui.OrderActivity;
 
 public class ExchangeHistoryListAdapter extends RecyclerView.Adapter<ExchangeHistoryListAdapter.ExchangeHistoryViewHolder> implements IDataAdapter<List<ExchangeHistoryItem>> {
     private List<ExchangeHistoryItem> storeList = new ArrayList<ExchangeHistoryItem>();
@@ -49,7 +52,7 @@ public class ExchangeHistoryListAdapter extends RecyclerView.Adapter<ExchangeHis
 
     @Override
     public ExchangeHistoryViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new ExchangeHistoryViewHolder(inflater.inflate(R.layout.item_exchange, parent, false));
+        return new ExchangeHistoryViewHolder(inflater.inflate(R.layout.item_exchange_history, parent, false));
     }
 
     @Override
@@ -60,10 +63,17 @@ public class ExchangeHistoryListAdapter extends RecyclerView.Adapter<ExchangeHis
             public void onClick(View v) {
 //                ShopHomeActivity.launch(mContext,store.getId());
 //                GoodsDetailActivity.launch(mContext, String.valueOf(item.getId()));
+//                OrderActivity.la
+//                ApiFactory.getOrderList()
+                OrderActivity.launchForComplatePayment(mContext,item.getPo());
             }
         });
         TextView name = holder.name;
         TextView price = holder.price;
+
+        TextView orderDate=holder.orderDate;
+        TextView orderId=holder.orderid;
+        TextView orderStatus=holder.orderStatus;
         holder.oldPriceLayout.setVisibility(View.GONE);
         holder.desp.setVisibility(View.GONE);
 
@@ -75,6 +85,9 @@ public class ExchangeHistoryListAdapter extends RecyclerView.Adapter<ExchangeHis
         } else {
             price.setText(item.getScore() + "美劵");
         }
+        orderDate.setText(item.getDate());
+        orderId.setText(item.getPo());
+        orderStatus.setText("1".equals(item.getStatus())?"已付款":"待支付");
         icon.setImageUri(R.mipmap.ic_shop_default, item.getCover());
     }
 
@@ -103,7 +116,9 @@ public class ExchangeHistoryListAdapter extends RecyclerView.Adapter<ExchangeHis
     }
 
     class ExchangeHistoryViewHolder extends ViewHolder {
-
+        TextView orderid;
+        TextView orderDate;
+        TextView orderStatus;
         TextView name;
         TextView price;
         LinearLayout oldPriceLayout;
@@ -112,6 +127,9 @@ public class ExchangeHistoryListAdapter extends RecyclerView.Adapter<ExchangeHis
 
         public ExchangeHistoryViewHolder(View view) {
             super(view);
+            orderid= (TextView) view.findViewById(R.id.orderId);
+            orderDate= (TextView) view.findViewById(R.id.orderDate);
+            orderStatus= (TextView) view.findViewById(R.id.orderStatus);
             name = (TextView) view.findViewById(R.id.name);
             price = (TextView) view.findViewById(R.id.price);
             oldPriceLayout = (LinearLayout) view.findViewById(R.id.old_price_layout);

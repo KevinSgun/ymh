@@ -41,7 +41,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/w10"
-                    android:text="已发货"
                     android:textColor="@color/textColorPink"
                     android:textSize="@dimen/w24" />
             </LinearLayout>
@@ -64,7 +63,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/w9"
-                    android:text="顺风"
                     android:textColor="@color/textColorPrimaryGray"
                     android:textSize="@dimen/w22" />
             </LinearLayout>
@@ -87,7 +85,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/w9"
-                    android:text="11111111"
                     android:textColor="@color/textColorPrimaryGray"
                     android:textSize="@dimen/w22" />
             </LinearLayout>
@@ -98,7 +95,7 @@
             android:layout_height="@dimen/h85"
             android:background="@color/divider_color" />
 
-        <LinearLayout
+        <cn.kuailaimei.client.common.widget.RippleLinearLayout
             android:id="@+id/contactSeller"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -118,7 +115,7 @@
                 android:text="联系卖家"
                 android:textColor="@color/textColorPink"
                 android:textSize="@dimen/w20" />
-        </LinearLayout>
+        </cn.kuailaimei.client.common.widget.RippleLinearLayout>
     </LinearLayout>
 
     <cn.kuailaimei.client.common.widget.ViewAnimator
@@ -242,7 +239,6 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:singleLine="true"
-            android:text="2016010112001300ABCD"
             android:textColor="@color/textColorPrimaryGray"
             android:textSize="@dimen/w20" />
 
@@ -491,7 +487,7 @@
                     android:textColor="@color/textColorPink"
                     />
             </LinearLayout>
-            <Button
+            <cn.kuailaimei.client.common.widget.RippleButton
                 android:id="@+id/cancleOrder"
                 android:layout_gravity="right|center_vertical"
                 android:layout_width="@dimen/w160"

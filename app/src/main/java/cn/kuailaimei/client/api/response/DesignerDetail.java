@@ -3,6 +3,7 @@ package cn.kuailaimei.client.api.response;
 
 import cn.kuailaimei.client.api.entity.Designer;
 import cn.kuailaimei.client.api.entity.DesignerService;
+import cn.kuailaimei.client.api.entity.Image;
 
 import java.util.List;
 
@@ -39,6 +40,7 @@ public class DesignerDetail {
 
     private List<DesignerService> serviceList;
 
+    private List<Image> images;
     public Designer getDesigner() {
         return designer;
     }
@@ -55,7 +57,11 @@ public class DesignerDetail {
         this.serviceList = serviceList;
     }
 
+    public List<Image> getImages() {
+        return images;
+    }
 
-
-
+    public void setImages(List<Image> images) {
+        this.images = images;
+    }
 }

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/black"
+    android:orientation="vertical" >
+    
+    <cn.kuailaimei.client.common.widget.HackyViewPager
+        android:id="@+id/hackpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+   <TextView 
+       android:id="@+id/photo_counts"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:textSize="@dimen/w28"
+       android:textColor="@color/white"
+       android:layout_gravity="bottom|center"
+       android:layout_marginBottom="@dimen/h20"
+       android:padding="@dimen/h10"
+       android:gravity="center"
+       android:text="0/0"/>
+</FrameLayout>

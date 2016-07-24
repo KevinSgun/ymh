@@ -59,7 +59,7 @@ public class ChooseAssistantActivity extends AppBarActivity {
                 if (choosedEmployee != null) {
                     CommitOrderInfo info = new CommitOrderInfo();
                     info.setsId(String.valueOf(designerService.getSid()));
-                    info.setAmount(Float.parseFloat(designerService.getPrice()));
+                    info.setAmount(Integer.parseInt(designerService.getPrice()));
                     info.setAssistantName(choosedEmployee.getAlias());
                     info.setContent(designerService.getContent());
                     info.setmId(String.valueOf(designer.getId()));

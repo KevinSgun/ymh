@@ -17,11 +17,11 @@ public class SubmitExchangeOrderRequest implements RequestData {
      */
 
     private String addressId;
-    private int amount;
+    private String amount;
     private String gId;
     private String name;
-    private int goodPrice;
-    private int score;
+    private String goodPrice;
+    private String score;
     private String stockId;
 
     public String getAddressId() {
@@ -33,11 +33,11 @@ public class SubmitExchangeOrderRequest implements RequestData {
     }
 
     public int getAmount() {
-        return amount;
+        return Integer.parseInt(amount);
     }
 
     public void setAmount(int amount) {
-        this.amount = amount;
+        this.amount = String.valueOf(amount);
     }
 
     public String getGId() {
@@ -57,19 +57,19 @@ public class SubmitExchangeOrderRequest implements RequestData {
     }
 
     public int getGoodPrice() {
-        return goodPrice;
+        return Integer.parseInt(goodPrice);
     }
 
     public void setGoodPrice(int goodPrice) {
-        this.goodPrice = goodPrice;
+        this.goodPrice = String.valueOf(goodPrice);
     }
 
     public int getScore() {
-        return score;
+        return Integer.parseInt(score);
     }
 
     public void setScore(int score) {
-        this.score = score;
+        this.score = String.valueOf(score);
     }
 
     public String getStockId() {

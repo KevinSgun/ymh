@@ -20,10 +20,10 @@ android {
     sourceSets {
         main {
             manifest.srcFile 'src/main/AndroidManifest.xml'
-            java.srcDirs = ['lib-mvchelper','src/main/java']
-            resources.srcDirs = ['lib-mvchelper', 'src/main/java']
-            aidl.srcDirs = ['lib-mvchelper', 'src/main/java']
-            renderscript.srcDirs = ['lib-mvchelper', 'src/main/java']
+            java.srcDirs = ['lib-photoview','lib-mvchelper','src/main/java']
+            resources.srcDirs = ['lib-photoview','lib-mvchelper', 'src/main/java']
+            aidl.srcDirs = ['lib-photoview','lib-mvchelper', 'src/main/java']
+            renderscript.srcDirs = ['lib-photoview','lib-mvchelper', 'src/main/java']
             res.srcDirs = ['src/main/res']
             assets.srcDirs = ['assets']
             jniLibs.srcDirs = ['libs']

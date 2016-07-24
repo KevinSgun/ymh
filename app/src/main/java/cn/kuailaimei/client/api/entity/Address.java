@@ -82,6 +82,11 @@ public class Address implements Parcelable {
         this.status = status;
     }
 
+
+    public boolean isDefault() {
+        return status == 1;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -122,8 +127,4 @@ public class Address implements Parcelable {
             return new Address[size];
         }
     };
-
-    public boolean isDefault() {
-        return status==1;
-    }
 }

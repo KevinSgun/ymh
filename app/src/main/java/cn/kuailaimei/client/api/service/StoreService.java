@@ -23,6 +23,7 @@ import cn.kuailaimei.client.api.request.ShopSelectionRequest;
 import cn.kuailaimei.client.api.request.UpdateAddress;
 import cn.kuailaimei.client.api.request.UpdateProfileRequest;
 import cn.kuailaimei.client.api.response.AssistantListResposne;
+import cn.kuailaimei.client.api.response.CreditOrderDetailResponse;
 import cn.kuailaimei.client.api.response.DesignerDetail;
 import cn.kuailaimei.client.api.response.ExchangeDetailResponse;
 import cn.kuailaimei.client.api.response.ExchangeHistoryRespnse;
@@ -31,7 +32,6 @@ import cn.kuailaimei.client.api.response.FilePathResponse;
 import cn.kuailaimei.client.api.response.HomePageResponse;
 import cn.kuailaimei.client.api.response.MyFavoriteResponse;
 import cn.kuailaimei.client.api.response.NearStoreListResposne;
-import cn.kuailaimei.client.api.response.OrderIdResposne;
 import cn.kuailaimei.client.api.response.OrderListResponse;
 import cn.kuailaimei.client.api.response.OrderPayListResponse;
 import cn.kuailaimei.client.api.response.OrderPayResult;
@@ -266,6 +266,16 @@ public interface StoreService {
     Observable<ApiResponse<OrderListResponse>> getOrderList(@Body Request body);
 
     /**
+     * 43 积分商城订单详情
+     *@see  cn.kuailaimei.client.api.request.OrderIDRequest
+     * @param body
+     * @return
+     */
+    @POST(NetConstants.SCORE_ORDER_ORDERDETAIL)
+    @Headers("Content-Type:" + RetrofitClient.JSON)
+    Observable<ApiResponse<CreditOrderDetailResponse>> getOrderDetail(@Body Request body);
+
+    /**
      * 删除收藏店铺
      *
      * @param body
@@ -361,7 +371,7 @@ public interface StoreService {
      */
     @POST(NetConstants.SCORE_ORDER_SUBMIT)
     @Headers("Content-Type:" + RetrofitClient.JSON)
-    Observable<ApiResponse<OrderIdResposne>> submitExchangeOrder(@Body Request body);
+    Observable<ApiResponse<OrderPayResult>> submitExchangeOrder(@Body Request body);
 
     /**
      * 42.积分商城订单列表我的兑换记录
@@ -373,6 +383,7 @@ public interface StoreService {
     @POST(NetConstants.SCORE_ORDER_LIST)
     @Headers("Content-Type:" + RetrofitClient.JSON)
     Observable<ApiResponse<ExchangeHistoryRespnse>> getExchangeHistory(@Body Request body);
+
     /**
      * 积分订单待付款支付
      *
@@ -383,6 +394,7 @@ public interface StoreService {
     @POST(NetConstants.SCORE_ORDER_ORDERPAY)
     @Headers("Content-Type:" + RetrofitClient.JSON)
     Observable<ApiResponse<OrderPayResult>> doCreditPay(@Body Request body);
+
     /**
      * 44 获取助理列表
      *
