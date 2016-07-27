@@ -1,5 +1,6 @@
 package cn.kuailaimei.client.mall.ui;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -34,6 +35,7 @@ import cn.kuailaimei.client.common.ui.AppBarActivity;
 import cn.kuailaimei.client.common.utils.DateUtil;
 import cn.kuailaimei.client.common.utils.ToastMaster;
 import cn.kuailaimei.client.common.utils.Utils;
+import cn.kuailaimei.client.common.widget.CommonDialog;
 import cn.kuailaimei.client.common.widget.OnRippleCompleteListener;
 import cn.kuailaimei.client.common.widget.RippleButton;
 import cn.kuailaimei.client.common.widget.RippleLinearLayout;
@@ -230,7 +232,7 @@ public class OrderActivity extends AppBarActivity implements OnRippleCompleteLis
                     } else {
                         needPayAnother.setText(Utils.formartPrice(item.getPrice() + order.getFare()));
                     }
-                    if (goodsDetail.getPrice() > 0) {
+                    if (item.getPrice() > 0) {
                         paidPrice.setText(item.getScore() + "美券" + "+" + Utils.formartPrice(item.getPrice()));
                     } else {
                         paidPrice.setText(item.getScore() + "美券");
@@ -253,15 +255,22 @@ public class OrderActivity extends AppBarActivity implements OnRippleCompleteLis
                     cancleOrder.setOnRippleCompleteListener(new OnRippleCompleteListener() {
                         @Override
                         public void onComplete(View v) {
-                            OrderIDRequest orderIDRequest=new OrderIDRequest();
-                            orderIDRequest.setOrderId(orderId);
-                            ApiFactory.cancelOrder(new Request(orderIDRequest)).subscribe(new ProgressSubscriber<ApiResponse>(OrderActivity.this) {
+                            CommonDialog dialog=new CommonDialog(OrderActivity.this,"确认取消订单？");
+                            dialog.setOnPositiveButtonClickListener(new CommonDialog.OnPositiveButtonClickListener() {
                                 @Override
-                                protected void onNextInActive(ApiResponse apiResponse) {
-                                    ToastMaster.popToast(getContext(),"取消订单成功");
-                                    finish();
+                                public void onClick(Dialog dialog) {
+                                    OrderIDRequest orderIDRequest=new OrderIDRequest();
+                                    orderIDRequest.setOrderId(orderId);
+                                    ApiFactory.cancelOrder(new Request(orderIDRequest)).subscribe(new ProgressSubscriber<ApiResponse>(OrderActivity.this) {
+                                        @Override
+                                        protected void onNextInActive(ApiResponse apiResponse) {
+                                            ToastMaster.popToast(getContext(),"取消订单成功");
+                                            finish();
+                                        }
+                                    });
                                 }
                             });
+
                         }
                     });
                     payNow.setOnRippleCompleteListener(new OnRippleCompleteListener() {

@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 import cn.kuailaimei.client.api.entity.Address;
+import cn.kuailaimei.client.api.entity.Message;
 import cn.kuailaimei.client.api.request.IDRequest;
 import cn.kuailaimei.client.api.request.ModifyPsdRequest;
 import cn.kuailaimei.client.api.request.OrderListRequest;
@@ -146,6 +147,10 @@ public class ApiFactory {
      */
     public static Observable<ApiResponse<HomePageResponse>> getHomeData(Request request) {
         return getStoreService().getHomeData(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
+    }
+
+    public static Observable<ApiResponse<List<Message>>> getMessages(Request request) {
+        return getStoreService().getMessages(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
     }
 
     /**
@@ -335,6 +340,7 @@ public class ApiFactory {
     public static Observable<ApiResponse<OrderListResponse>> getOrderList(PageRequest request) {
         return getStoreService().getOrderList(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
     }
+
     /**
      * 我的订单列表
      *
@@ -355,6 +361,16 @@ public class ApiFactory {
      */
     public static Observable<ApiResponse> requestModifyPsd(Request request) {
         return getAccountService().requestModifyPsd(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
+    }
+    /**
+     * 收藏店铺
+     *
+     * @param request
+     * @return
+     * @see SIDRequest
+     */
+    public static Observable<ApiResponse> favorite(Request request) {
+        return getStoreService().favorite(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
     }
 
     /**

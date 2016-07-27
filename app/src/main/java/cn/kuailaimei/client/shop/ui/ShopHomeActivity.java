@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.design.widget.AppBarLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -16,14 +17,19 @@ import cn.kuailaimei.client.R;
 import cn.kuailaimei.client.api.ApiFactory;
 import cn.kuailaimei.client.api.entity.ShopInfo;
 import cn.kuailaimei.client.api.request.Request;
+import cn.kuailaimei.client.api.request.SIDRequest;
 import cn.kuailaimei.client.api.response.ShopDetailRequest;
 import cn.kuailaimei.client.api.response.ShopDetailResponse;
 import cn.kuailaimei.client.common.ui.AppBarActivity;
+import cn.kuailaimei.client.common.utils.ToastMaster;
+import cn.kuailaimei.client.common.widget.ToolBarHelper;
 import cn.kuailaimei.client.home.adapter.DesignerRecycleViewAdapter;
 
 import com.zitech.framework.data.network.response.ApiResponse;
 import com.zitech.framework.data.network.subscribe.ProgressSubscriber;
 import com.zitech.framework.widget.RemoteImageView;
+
+import org.w3c.dom.Text;
 
 /**
  * Created by lu on 2016/6/21.
@@ -83,8 +89,44 @@ public class ShopHomeActivity extends AppBarActivity {
 
     }
 
+    private boolean isFavorite = false;
+    private String sid;
+
+    @Override
+    protected void onActionBarItemClick(int position) {
+        super.onActionBarItemClick(position);
+        if (position == ToolBarHelper.ITEM_RIGHT) {
+            if (!TextUtils.isEmpty(sid)) {
+                if (isFavorite) {
+                    SIDRequest req = new SIDRequest();
+                    req.setsId(sid);
+                    ApiFactory.deleteFavorite(new Request(req)).subscribe(new ProgressSubscriber<ApiResponse>(this) {
+                        @Override
+                        protected void onNextInActive(ApiResponse apiResponse) {
+                            ToastMaster.shortToast("取消收藏成功");
+                            isFavorite = false;
+                            setRightImg(R.mipmap.mark);
+                        }
+                    });
+                } else {
+                    SIDRequest req = new SIDRequest();
+                    req.setsId(sid);
+                    ApiFactory.favorite(new Request(req)).subscribe(new ProgressSubscriber<ApiResponse>(this) {
+                        @Override
+                        protected void onNextInActive(ApiResponse apiResponse) {
+                            ToastMaster.shortToast("添加收藏成功");
+                            isFavorite = true;
+                            setRightImg(R.mipmap.marked);
+                        }
+                    });
+                }
+            }
+        }
+    }
+
     private void render(final ShopDetailResponse response) {
         final ShopInfo shopInfo = response.getStoreInfo();//.getPerfectCount();
+        sid = String.valueOf(shopInfo.getId());
         allReviews.setText("全部(" + shopInfo.getAllComment() + ")");
         highPositiveReviews.setText("很满意(" + shopInfo.getPerfectCount() + ")");
         positiveReviews.setText("满意(" + shopInfo.getGoodCount() + ")");
@@ -96,9 +138,17 @@ public class ShopHomeActivity extends AppBarActivity {
         this.shopImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ShopDetailActivity.launch(ShopHomeActivity.this,shopInfo);
+                ShopDetailActivity.launch(ShopHomeActivity.this, shopInfo);
             }
         });
+        if (shopInfo.getIsStoreUp() == 1) {
+            isFavorite = true;
+            setRightImg(R.mipmap.marked);
+        } else {
+            isFavorite = false;
+            setRightImg(R.mipmap.mark);
+        }
+
 //        reviewChooser
 //        salonList.setAdapter();
 //        allOrSalonList=new

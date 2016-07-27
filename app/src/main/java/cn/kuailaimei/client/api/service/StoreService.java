@@ -274,7 +274,16 @@ public interface StoreService {
     @POST(NetConstants.SCORE_ORDER_ORDERDETAIL)
     @Headers("Content-Type:" + RetrofitClient.JSON)
     Observable<ApiResponse<CreditOrderDetailResponse>> getOrderDetail(@Body Request body);
-
+    /**
+     * 删除收藏店铺
+     *
+     * @param body
+     * @return
+     * @see SIDRequest
+     */
+    @POST(NetConstants.STORE_STOREUP)
+    @Headers("Content-Type:" + RetrofitClient.JSON)
+    Observable<ApiResponse> favorite(@Body Request body);
     /**
      * 删除收藏店铺
      *

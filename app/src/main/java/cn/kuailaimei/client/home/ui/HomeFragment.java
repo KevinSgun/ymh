@@ -269,8 +269,10 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
         if (ViewUtils.isFastDoubleClick()) return;
         switch (v.getId()) {
             case R.id.msg_layout:
-                ToastMaster.shortToast("消息");
+//                ToastMaster.shortToast("消息");
+                MessageListActivity.launch(getContext());
                 break;
+
             case R.id.want_beauty_layout:
                 String sid = getServiceId("美容");
                 BeautyActivity.launch(getActivity(), sid, "我要美容");
