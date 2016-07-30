@@ -6,7 +6,7 @@ import android.os.Parcelable;
 /**
  * Created by lu on 2016/7/2.
  */
-public class StockItem implements Parcelable {
+public class Stock implements Parcelable {
 
     /**
      * code : 10045:10046;10049:10053
@@ -87,10 +87,10 @@ public class StockItem implements Parcelable {
         dest.writeInt(this.price);
     }
 
-    public StockItem() {
+    public Stock() {
     }
 
-    protected StockItem(Parcel in) {
+    protected Stock(Parcel in) {
         this.code = in.readString();
         this.gid = in.readInt();
         this.id = in.readInt();
@@ -99,15 +99,15 @@ public class StockItem implements Parcelable {
         this.price = in.readInt();
     }
 
-    public static final Creator<StockItem> CREATOR = new Creator<StockItem>() {
+    public static final Parcelable.Creator<Stock> CREATOR = new Parcelable.Creator<Stock>() {
         @Override
-        public StockItem createFromParcel(Parcel source) {
-            return new StockItem(source);
+        public Stock createFromParcel(Parcel source) {
+            return new Stock(source);
         }
 
         @Override
-        public StockItem[] newArray(int size) {
-            return new StockItem[size];
+        public Stock[] newArray(int size) {
+            return new Stock[size];
         }
     };
 }

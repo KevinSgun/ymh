@@ -5,9 +5,7 @@ import android.content.Intent;
 import android.support.v4.view.PagerAdapter;
 import android.text.Html;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -15,23 +13,19 @@ import com.zitech.framework.data.network.response.ApiResponse;
 import com.zitech.framework.data.network.subscribe.ProgressSubscriber;
 import com.zitech.framework.widget.RemoteImageView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import cn.kuailaimei.client.Constants;
 import cn.kuailaimei.client.R;
 import cn.kuailaimei.client.api.ApiFactory;
 import cn.kuailaimei.client.api.entity.GoodsDetail;
-import cn.kuailaimei.client.api.entity.GoodsItem;
-import cn.kuailaimei.client.api.entity.SkuItem;
-import cn.kuailaimei.client.api.entity.StockItem;
+import cn.kuailaimei.client.api.entity.Sku;
+import cn.kuailaimei.client.api.entity.Stock;
 import cn.kuailaimei.client.api.request.IDRequest;
 import cn.kuailaimei.client.api.request.Request;
 import cn.kuailaimei.client.api.response.ExchangeDetailResponse;
-import cn.kuailaimei.client.common.ui.AppBarActivity;
 import cn.kuailaimei.client.common.ui.BaseActivity;
 import cn.kuailaimei.client.common.utils.Utils;
-import cn.kuailaimei.client.common.widget.ChooseSpecLayout;
 import cn.kuailaimei.client.common.widget.CirclePageIndicator;
 import cn.kuailaimei.client.common.widget.LoopViewPager;
 import cn.kuailaimei.client.common.widget.OnRippleCompleteListener;
@@ -57,9 +51,9 @@ public class GoodsDetailActivity extends BaseActivity {
     private RippleLinearLayout contactSercie;
     private RippleButton exchangeNow;
 
-    private SkuItem choosedSku;
+    private Sku choosedSku;
     private TextView choosedSkuText;
-    private StockItem choosedStock;
+    private Stock choosedStock;
     private GoodsDetail goodsDetail;
 
     @Override

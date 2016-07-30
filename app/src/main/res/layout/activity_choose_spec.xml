@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white"
-    android:id="@+id/root_layout"
     android:clickable="true"
     android:orientation="vertical">
+
     <ImageView
+        android:id="@+id/close"
         android:layout_width="@dimen/w80"
         android:layout_height="@dimen/w80"
         android:layout_gravity="right"
         android:padding="@dimen/w20"
         android:scaleType="fitXY"
-        android:src="@mipmap/ic_close"
-        android:id="@+id/close" />
+        android:src="@mipmap/ic_close" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,15 +24,14 @@
 
         <com.zitech.framework.widget.RemoteImageView
             android:id="@+id/icon"
-            android:scaleType="centerCrop"
             android:layout_width="@dimen/w220"
             android:layout_height="@dimen/w220"
-             />
+            android:scaleType="centerCrop" />
 
         <LinearLayout
-            android:layout_marginLeft="@dimen/w30"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/w30"
             android:orientation="vertical">
 
             <TextView
@@ -49,20 +49,21 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:id="@+id/price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="500美券"
                     android:textColor="@color/textColorPink"
-                    android:textSize="@dimen/w30"
-                    android:id="@+id/price" />
+                    android:textSize="@dimen/w30" />
+
                 <TextView
+                    android:id="@+id/avaliableExchange"
+                    style="@style/CommonTextSecondary"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/CommonTextSecondary"
-                    android:textSize="@dimen/w24"
                     android:text="可兑换 1000 件"
-                    android:id="@+id/avaliableExchange" />
+                    android:textSize="@dimen/w24" />
             </LinearLayout>
         </LinearLayout>
 
@@ -77,31 +78,25 @@
         android:layout_marginTop="@dimen/h30"
         android:background="@color/divider_color" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/w30"
-        android:text="规格"
-        android:textColor="@color/textColorPrimary"
-        android:textSize="@dimen/w28" />
 
     <cn.kuailaimei.client.common.widget.ChooseSpecLayout
         android:id="@+id/choseSpecLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
+
     <TextView
         android:id="@+id/stock"
+        style="@style/CommonTextPrimary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/CommonTextPrimary"
-        android:textSize="@dimen/w22"
         android:layout_marginLeft="@dimen/w30"
         android:layout_marginRight="@dimen/w30"
-        />
+        android:textSize="@dimen/w22" />
+
     <cn.kuailaimei.client.common.widget.RippleButton
+        android:id="@+id/confirm"
         style="@style/CommentButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="@dimen/h88"
-        android:text="确认兑换"
-        android:id="@+id/confirm" />
+        android:text="确认兑换" />
 </LinearLayout>

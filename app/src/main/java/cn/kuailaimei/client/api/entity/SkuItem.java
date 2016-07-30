@@ -71,7 +71,7 @@ public class SkuItem implements Parcelable {
         this.pid = in.readInt();
     }
 
-    public static final Parcelable.Creator<SkuItem> CREATOR = new Parcelable.Creator<SkuItem>() {
+    public static final Creator<SkuItem> CREATOR = new Creator<SkuItem>() {
         @Override
         public SkuItem createFromParcel(Parcel source) {
             return new SkuItem(source);

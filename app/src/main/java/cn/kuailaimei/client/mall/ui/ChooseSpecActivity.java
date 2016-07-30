@@ -19,8 +19,8 @@ import java.util.ArrayList;
 import cn.kuailaimei.client.Constants;
 import cn.kuailaimei.client.R;
 import cn.kuailaimei.client.api.entity.GoodsDetail;
-import cn.kuailaimei.client.api.entity.SkuItem;
-import cn.kuailaimei.client.api.entity.StockItem;
+import cn.kuailaimei.client.api.entity.Sku;
+import cn.kuailaimei.client.api.entity.Stock;
 import cn.kuailaimei.client.common.utils.ToastMaster;
 import cn.kuailaimei.client.common.utils.Utils;
 import cn.kuailaimei.client.common.utils.ViewUtils;
@@ -38,11 +38,11 @@ public class ChooseSpecActivity extends Activity {
     private RippleButton confirm;
     private LinearLayout rootLayout;
     private RemoteImageView icon;
-    private SkuItem choosedSku;
-    private StockItem stockItem;
+    private Sku choosedSku;
+    private Stock stockItem;
     private TextView name;
     private TextView stock;
-    private StockItem choosedStock;
+    private Stock choosedStock;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,33 +85,33 @@ public class ChooseSpecActivity extends Activity {
 
     private void initData() {
         GoodsDetail detail = getIntent().getParcelableExtra(Constants.ActivityExtra.GOODS_DETAIL);
-        final ArrayList<SkuItem> skus = getIntent().getParcelableArrayListExtra(Constants.ActivityExtra.SKU_LIST);
-        final ArrayList<StockItem> stockItems = getIntent().getParcelableArrayListExtra(Constants.ActivityExtra.STOCK_LIST);
+        final ArrayList<Sku> skus = getIntent().getParcelableArrayListExtra(Constants.ActivityExtra.SKU_LIST);
+        final ArrayList<Stock> stockItems = getIntent().getParcelableArrayListExtra(Constants.ActivityExtra.STOCK_LIST);
         name.setText(detail.getName());
         price.setText(Utils.formartPrice( detail.getPrice()) + "+" + detail.getScore() + "美券");
         avaliableExchange.setText("可兑换" + detail.getInventory() + "件");
 //        GoodsItem
         icon.setImageUri(R.mipmap.ic_shop_default, detail.getPhotos().size() > 0 ? detail.getPhotos().get(0) : "");
 
-        choseSpecLayout.setSkuItems(skus);
-        choseSpecLayout.setOnSkuCheckChangedListener(new ChooseSpecLayout.OnSkuCheckChangedListener() {
-            @Override
-            public void onSkuChanged(SkuItem item) {
-                try {
-                    choosedSku = item;
-                    int index = skus.indexOf(item);
-                    choosedStock = stockItems.get(index);
-                    stock.setText("库存："+choosedStock.getInventory());
-                    if(choosedStock.getInventory()>0){
-                        confirm.setEnabled(true);
-                    }else{
-                        confirm.setEnabled(false);
-                    }
-                } catch (Exception e) {
-                    ToastMaster.popToast(ChooseSpecActivity.this, "数据错误");
-                }
-            }
-        });
+        choseSpecLayout.setSkuItems(skus,stockItems);
+//        choseSpecLayout.setOnStockChoosedListener(new ChooseSpecLayout.OnStockChoosedListener() {
+//            @Override
+//            public void onSkuChanged(Sku item) {
+//                try {
+//                    choosedSku = item;
+//                    int index = skus.indexOf(item);
+//                    choosedStock = stockItems.get(index);
+//                    stock.setText("库存："+choosedStock.getInventory());
+//                    if(choosedStock.getInventory()>0){
+//                        confirm.setEnabled(true);
+//                    }else{
+//                        confirm.setEnabled(false);
+//                    }
+//                } catch (Exception e) {
+//                    ToastMaster.popToast(ChooseSpecActivity.this, "数据错误");
+//                }
+//            }
+//        });
 
     }
 
@@ -145,7 +145,7 @@ public class ChooseSpecActivity extends Activity {
         return super.onTouchEvent(event);
     }
 
-    public static void launchForResult(Activity context, GoodsDetail goodsDetail, ArrayList<SkuItem> skuItems, ArrayList<StockItem> stockItems, int requestCode) {
+    public static void launchForResult(Activity context, GoodsDetail goodsDetail, ArrayList<Sku> skuItems, ArrayList<Stock> stockItems, int requestCode) {
         Intent intent = new Intent(context, ChooseSpecActivity.class);
         intent.putExtra(Constants.ActivityExtra.GOODS_DETAIL, goodsDetail);
         intent.putParcelableArrayListExtra(Constants.ActivityExtra.SKU_LIST, skuItems);

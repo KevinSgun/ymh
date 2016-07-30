@@ -1,19 +1,18 @@
 package cn.kuailaimei.client.api.response;
 
 import cn.kuailaimei.client.api.entity.GoodsDetail;
-import cn.kuailaimei.client.api.entity.SkuItem;
-import cn.kuailaimei.client.api.entity.StockItem;
+import cn.kuailaimei.client.api.entity.Sku;
+import cn.kuailaimei.client.api.entity.Stock;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by lu on 2016/7/2.
  */
 public class ExchangeDetailResponse {
     private GoodsDetail goods;
-    private ArrayList<SkuItem> sku;
-    private ArrayList<StockItem> stock;
+    private ArrayList<Sku> sku;
+    private ArrayList<Stock> stock;
 
     public GoodsDetail getGoods() {
         return goods;
@@ -23,19 +22,19 @@ public class ExchangeDetailResponse {
         this.goods = goods;
     }
 
-    public ArrayList<SkuItem> getSku() {
+    public ArrayList<Sku> getSku() {
         return sku;
     }
 
-    public void setSku(ArrayList<SkuItem> sku) {
+    public void setSku(ArrayList<Sku> sku) {
         this.sku = sku;
     }
 
-    public ArrayList<StockItem> getStock() {
+    public ArrayList<Stock> getStock() {
         return stock;
     }
 
-    public void setStock(ArrayList<StockItem> stock) {
+    public void setStock(ArrayList<Stock> stock) {
         this.stock = stock;
     }
 }

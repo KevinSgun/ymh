@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.view.View;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -24,8 +23,8 @@ import cn.kuailaimei.client.api.entity.CreditOrderDetail;
 import cn.kuailaimei.client.api.entity.CreditOrderDetailInfo;
 import cn.kuailaimei.client.api.entity.GoodsDetail;
 import cn.kuailaimei.client.api.entity.GoodsItem;
-import cn.kuailaimei.client.api.entity.SkuItem;
-import cn.kuailaimei.client.api.entity.StockItem;
+import cn.kuailaimei.client.api.entity.Sku;
+import cn.kuailaimei.client.api.entity.Stock;
 import cn.kuailaimei.client.api.request.OrderIDRequest;
 import cn.kuailaimei.client.api.request.Request;
 import cn.kuailaimei.client.api.request.SubmitExchangeOrderRequest;
@@ -40,7 +39,6 @@ import cn.kuailaimei.client.common.widget.OnRippleCompleteListener;
 import cn.kuailaimei.client.common.widget.RippleButton;
 import cn.kuailaimei.client.common.widget.RippleLinearLayout;
 import cn.kuailaimei.client.common.widget.ViewAnimator;
-import cn.kuailaimei.client.mine.ui.PayWithExistOrderActivity;
 
 /**
  * Created by lu on 2016/7/12.
@@ -84,8 +82,8 @@ public class OrderActivity extends AppBarActivity implements OnRippleCompleteLis
     private View logisticsStatusLayout;
     private Address choosedAddress;
     private GoodsDetail goodsDetail;
-    private SkuItem choosedSku;
-    private StockItem chooseStock;
+    private Sku choosedSku;
+    private Stock chooseStock;
 
     //
 //    public
@@ -328,7 +326,7 @@ public class OrderActivity extends AppBarActivity implements OnRippleCompleteLis
         return getIntent().getIntExtra(Constants.ActivityExtra.LAUNCH_ORDER_MODE, LAUNCH_FOR_ORDER) == LAUNCH_FOR_ORDER;
     }
 
-    public static void launchForOrder(Context context, GoodsDetail goodsDetail, SkuItem choosedSku, StockItem choosedStock) {
+    public static void launchForOrder(Context context, GoodsDetail goodsDetail, Sku choosedSku, Stock choosedStock) {
         Intent intent = new Intent(context, OrderActivity.class);
         intent.putExtra(Constants.ActivityExtra.GOODS_DETAIL, goodsDetail);
         intent.putExtra(Constants.ActivityExtra.CHOOSE_SKU, choosedSku);
