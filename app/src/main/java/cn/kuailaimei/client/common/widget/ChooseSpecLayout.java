@@ -73,13 +73,13 @@ public class ChooseSpecLayout extends LinearLayout {
             if (TextUtils.isEmpty(code)) {
                 return;
             }
-            String[] skuKeys = code.split(";");
+            String[] skuKeys = code.split(",");
             Arrays.sort(skuKeys);
             StringBuilder buffer = new StringBuilder();
             for (int j = 0; j < skuKeys.length; j++) {
                 buffer.append(skuKeys[j]);
                 if (j != skuKeys.length - 1) {
-                    buffer.append(";");
+                    buffer.append(",");
                 }
             }
             this.stocks.put(buffer.toString(), stocks.get(i));
@@ -105,7 +105,7 @@ public class ChooseSpecLayout extends LinearLayout {
                         String[] ids = new String[choosedSkus.size()];
                         for (int i = 0; i < choosedSkus.size(); i++) {
                             SkuItem skuItem = choosedSkus.valueAt(i);
-                            ids[i] = skus.get(position).getId() + ":" + skuItem.getId();
+                            ids[i] = skus.get(choosedSkus.keyAt(i)).getId() + ":" + skuItem.getId();
                         }
                         Arrays.sort(ids);
                         StringBuilder buffer = new StringBuilder();
@@ -113,7 +113,7 @@ public class ChooseSpecLayout extends LinearLayout {
                         for (int i = 0; i < ids.length; i++) {
                             buffer.append(ids[i]);
                             if (i != ids.length - 1) {
-                                buffer.append(";");
+                                buffer.append(",");
                             }
                         }
                         Stock stock = ChooseSpecLayout.this.stocks.get(buffer.toString());

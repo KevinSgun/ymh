@@ -75,6 +75,7 @@ public class AssistantRecycleViewAdapter extends RecyclerView.Adapter<AssistantR
         // price.setText("￥" + employee.getBottomPrice() + "起");
         rate.setText(employee.getSatisfactory());
         avatar.setImageUri(employee.getPortrait());
+        choose.setChecked(employee.isChecked());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

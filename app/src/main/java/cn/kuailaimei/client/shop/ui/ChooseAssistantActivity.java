@@ -59,7 +59,7 @@ public class ChooseAssistantActivity extends AppBarActivity {
                 if (choosedEmployee != null) {
                     CommitOrderInfo info = new CommitOrderInfo();
                     info.setsId(String.valueOf(designerService.getSid()));
-                    info.setAmount(Integer.parseInt(designerService.getPrice()));
+                    info.setAmount((int) (Float.parseFloat(designerService.getPrice())));
                     info.setAssistantName(choosedEmployee.getAlias());
                     info.setContent(designerService.getContent());
                     info.setmId(String.valueOf(designer.getId()));
@@ -71,8 +71,8 @@ public class ChooseAssistantActivity extends AppBarActivity {
 //                    info.setAmount(designerService.getPrice());
 //                    info.setmId(designerService.get);
                     ConfirmOrderActivity.launch((Activity) getContext(), info);
-                }else {
-                    ToastMaster.popToast(getContext(),"请选择助理");
+                } else {
+                    ToastMaster.popToast(getContext(), "请选择助理");
                 }
             }
         });

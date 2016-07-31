@@ -82,7 +82,6 @@ public class OrderActivity extends AppBarActivity implements OnRippleCompleteLis
     private View logisticsStatusLayout;
     private Address choosedAddress;
     private GoodsDetail goodsDetail;
-    private Sku choosedSku;
     private Stock chooseStock;
 
     //
@@ -139,7 +138,6 @@ public class OrderActivity extends AppBarActivity implements OnRippleCompleteLis
             setTitle("订单确认");
 
             goodsDetail = getIntent().getParcelableExtra(Constants.ActivityExtra.GOODS_DETAIL);
-            choosedSku = getIntent().getParcelableExtra(Constants.ActivityExtra.CHOOSE_SKU);
             chooseStock = getIntent().getParcelableExtra(Constants.ActivityExtra.CHOOSE_STOCK);
             priceCancleViewAnimator.setDisplayedChild(POSITION_PRICE);
             orderStateLayout.setVisibility(View.GONE);
@@ -326,10 +324,9 @@ public class OrderActivity extends AppBarActivity implements OnRippleCompleteLis
         return getIntent().getIntExtra(Constants.ActivityExtra.LAUNCH_ORDER_MODE, LAUNCH_FOR_ORDER) == LAUNCH_FOR_ORDER;
     }
 
-    public static void launchForOrder(Context context, GoodsDetail goodsDetail, Sku choosedSku, Stock choosedStock) {
+    public static void launchForOrder(Context context, GoodsDetail goodsDetail,Stock choosedStock) {
         Intent intent = new Intent(context, OrderActivity.class);
         intent.putExtra(Constants.ActivityExtra.GOODS_DETAIL, goodsDetail);
-        intent.putExtra(Constants.ActivityExtra.CHOOSE_SKU, choosedSku);
         intent.putExtra(Constants.ActivityExtra.CHOOSE_STOCK, choosedStock);
         intent.putExtra(Constants.ActivityExtra.LAUNCH_ORDER_MODE, LAUNCH_FOR_ORDER);
         context.startActivity(intent);

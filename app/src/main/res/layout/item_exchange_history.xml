@@ -73,7 +73,7 @@
                 android:layout_width="@dimen/w127"
                 android:layout_height="@dimen/w117"
                 android:layout_gravity="center"
-                android:scaleType="fitCenter" />
+                android:scaleType="centerCrop" />
         </FrameLayout>
 
 

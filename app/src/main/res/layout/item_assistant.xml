@@ -73,5 +73,6 @@
         android:textColor="@color/common_pink_white_color"
         android:button="@null"
         android:background="@drawable/sl_assistant_btn"
-        android:checked="false" />
+        android:checked="false"
+        android:enabled="false"/>
 </cn.kuailaimei.client.common.widget.RippleLinearLayout>

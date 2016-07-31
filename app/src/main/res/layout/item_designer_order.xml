@@ -4,21 +4,20 @@
     android:layout_height="match_parent"
     android:gravity="left"
     android:orientation="vertical"
-    android:paddingBottom="@dimen/w30"
-    android:paddingLeft="@dimen/w69"
-    android:paddingRight="@dimen/w30"
-    android:paddingTop="@dimen/w30">
+    android:paddingBottom="@dimen/w20"
+    android:paddingLeft="@dimen/w20"
+    android:paddingRight="@dimen/w20"
+    android:paddingTop="@dimen/w20">
 
     <FrameLayout
         android:layout_width="@dimen/w240"
-        android:layout_height="@dimen/w240"
-        android:layout_marginTop="@dimen/h53">
+        android:layout_height="@dimen/w240">
 
         <com.zitech.framework.widget.RemoteImageView
             android:id="@+id/avatar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"/>
         <TextView
             android:id="@+id/tag"
             android:layout_width="wrap_content"

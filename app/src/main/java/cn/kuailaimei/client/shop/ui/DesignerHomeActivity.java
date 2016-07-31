@@ -42,7 +42,6 @@ public class DesignerHomeActivity extends AppBarActivity {
     private RemoteImageView designerAvatar;
     private TextView designerName;
     private TextView designerLevel;
-    private TextView designerIntro;
     private TextView schedule;
     private TextView order;
     private TextView reveiw;
@@ -68,7 +67,7 @@ public class DesignerHomeActivity extends AppBarActivity {
         this.reveiw = (TextView) findViewById(R.id.reveiw);
         this.order = (TextView) findViewById(R.id.order);
         this.schedule = (TextView) findViewById(R.id.schedule);
-        this.designerIntro = (TextView) findViewById(R.id.designer_intro);
+        //this.designerIntro = (TextView) findViewById(R.id.designer_intro);
         this.designerLevel = (TextView) findViewById(R.id.designer_level);
         this.designerName = (TextView) findViewById(R.id.designer_name);
         this.designerAvatar = (RemoteImageView) findViewById(R.id.designer_avatar);
@@ -125,7 +124,7 @@ public class DesignerHomeActivity extends AppBarActivity {
                 } else {
                     CommitOrderInfo info = new CommitOrderInfo();
                     info.setsId(String.valueOf(choosedService.getSid()));
-                    info.setAmount(Integer.parseInt(choosedService.getPrice()));
+                    info.setAmount((int)Float.parseFloat(choosedService.getPrice()));
                     info.setContent(choosedService.getContent());
                     info.setmId(String.valueOf(designer.getId()));
                     info.setcId(String.valueOf(choosedService.getCid()));

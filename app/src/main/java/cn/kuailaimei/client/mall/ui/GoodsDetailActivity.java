@@ -119,7 +119,7 @@ public class GoodsDetailActivity extends BaseActivity {
                 if(choosedSku==null||choosedStock==null){
                     ChooseSpecActivity.launchForResult((GoodsDetailActivity.this), detail, data.getSku(),data.getStock(), Constants.ActivityExtra.REQUEST_FOR_CHOOSE_SPEC);
                 }else{
-                    OrderActivity.launchForOrder(getContext(), goodsDetail,choosedSku,choosedStock);
+                    OrderActivity.launchForOrder(getContext(), goodsDetail,choosedStock);
                 }
             }
         });
@@ -129,10 +129,8 @@ public class GoodsDetailActivity extends BaseActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(resultCode==RESULT_OK&&requestCode== Constants.ActivityExtra.REQUEST_FOR_CHOOSE_SPEC){
-            choosedSku= data.getParcelableExtra(Constants.ActivityExtra.CHOOSE_SKU);
             choosedStock=data.getParcelableExtra(Constants.ActivityExtra.CHOOSE_STOCK);
-            this.choosedSkuText.setText("已选规格："+choosedSku.getName());
-            OrderActivity.launchForOrder(this, goodsDetail,choosedSku,choosedStock);
+            OrderActivity.launchForOrder(this, goodsDetail,choosedStock);
         }
     }
 

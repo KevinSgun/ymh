@@ -35,15 +35,6 @@
 
             android:textSize="@dimen/w20" />
 
-        <TextView
-            android:id="@+id/designer_intro"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/h51"
-            android:text=" 每个理发师都听不懂“稍微修一下，不要太短”这句话"
-            android:textColor="@color/textColorPrimaryGray"
-            android:textSize="@dimen/w20" />
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

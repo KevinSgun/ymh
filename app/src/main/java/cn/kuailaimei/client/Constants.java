@@ -34,7 +34,6 @@ public class Constants {
         int REQUEST_FOR_CHOOSE_SPEC = 1002;
         String GOODS_DETAIL = "goods_detail";
         String SKU_LIST ="sku_list" ;
-        String CHOOSE_SKU ="choose_sku" ;
         String STOCK_LIST ="stock_list" ;
         String CHOOSE_STOCK = "choose_stock";
         String LAUNCH_ORDER_MODE = "launch_order_mode";

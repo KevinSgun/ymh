@@ -58,7 +58,7 @@
                     android:textSize="@dimen/w30" />
 
                 <TextView
-                    android:id="@+id/avaliableExchange"
+                    android:id="@+id/stock"
                     style="@style/CommonTextSecondary"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -84,14 +84,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <TextView
-        android:id="@+id/stock"
-        style="@style/CommonTextPrimary"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/w30"
-        android:layout_marginRight="@dimen/w30"
-        android:textSize="@dimen/w22" />
 
     <cn.kuailaimei.client.common.widget.RippleButton
         android:id="@+id/confirm"

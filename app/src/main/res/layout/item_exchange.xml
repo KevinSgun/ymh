@@ -9,17 +9,14 @@
     <FrameLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_stroke_gray"
-        android:paddingBottom="@dimen/h11"
-        android:paddingLeft="@dimen/w7"
-        android:paddingRight="@dimen/w7"
-        android:paddingTop="@dimen/h11">
+        android:padding="@dimen/w10"
+       >
 
         <com.zitech.framework.widget.RemoteImageView
-            android:layout_width="@dimen/w127"
-            android:layout_height="@dimen/w117"
+            android:layout_width="@dimen/w120"
+            android:layout_height="@dimen/w120"
             android:layout_gravity="center"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:id="@+id/icon" />
     </FrameLayout>
 

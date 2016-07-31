@@ -22,6 +22,7 @@ import cn.kuailaimei.client.api.response.ShopDetailRequest;
 import cn.kuailaimei.client.api.response.ShopDetailResponse;
 import cn.kuailaimei.client.common.ui.AppBarActivity;
 import cn.kuailaimei.client.common.utils.ToastMaster;
+import cn.kuailaimei.client.common.widget.FullyGridLayoutManager;
 import cn.kuailaimei.client.common.widget.ToolBarHelper;
 import cn.kuailaimei.client.home.adapter.DesignerRecycleViewAdapter;
 
@@ -54,6 +55,7 @@ public class ShopHomeActivity extends AppBarActivity {
     private RadioButton beautyChoice;
     private String id;
     private RecyclerView salonList;
+    private TextView employeeNum;
 //    private RecyclerView beautyList;
 
 
@@ -83,8 +85,9 @@ public class ShopHomeActivity extends AppBarActivity {
         this.shopImg = (RemoteImageView) findViewById(R.id.img_store);
         this.salonList = (RecyclerView) findViewById(R.id.salon_list);
         this.typeChooser = (RadioGroup) findViewById(R.id.type_chooser);
+        this.employeeNum = (TextView) findViewById(R.id.employee_num);
 //        this.beautyList = (RecyclerView) findViewById(R.id.beauty_list);
-        salonList.setLayoutManager(new GridLayoutManager(this, 2));
+        salonList.setLayoutManager(new FullyGridLayoutManager(this, 2));
 //        beautyList.setLayoutManager(new GridLayoutManager(this, 2));
 
     }
@@ -134,6 +137,8 @@ public class ShopHomeActivity extends AppBarActivity {
         shopImg.setImageUri(shopInfo.getIcon());
         shopName.setText(shopInfo.getName());
         shopPhonenumber.setText(shopInfo.getPhone());
+        int num = response.getEmployeeList() != null ? response.getEmployeeList().size() : 0;
+        employeeNum.setText("服务人员推荐(" + num + ")");
         evaluationRate.setText(shopInfo.getSatisfactory());
         this.shopImg.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -21,6 +21,7 @@ import cn.kuailaimei.client.R;
 import cn.kuailaimei.client.api.entity.GoodsDetail;
 import cn.kuailaimei.client.api.entity.Sku;
 import cn.kuailaimei.client.api.entity.Stock;
+import cn.kuailaimei.client.api.entity.StockItem;
 import cn.kuailaimei.client.common.utils.ToastMaster;
 import cn.kuailaimei.client.common.utils.Utils;
 import cn.kuailaimei.client.common.utils.ViewUtils;
@@ -33,13 +34,10 @@ public class ChooseSpecActivity extends Activity {
 
     private ImageView close;
     private TextView price;
-    private TextView avaliableExchange;
     private ChooseSpecLayout choseSpecLayout;
     private RippleButton confirm;
     private LinearLayout rootLayout;
     private RemoteImageView icon;
-    private Sku choosedSku;
-    private Stock stockItem;
     private TextView name;
     private TextView stock;
     private Stock choosedStock;
@@ -54,7 +52,6 @@ public class ChooseSpecActivity extends Activity {
         this.name = (TextView) findViewById(R.id.name);
         this.confirm = (RippleButton) findViewById(R.id.confirm);
         this.choseSpecLayout = (ChooseSpecLayout) findViewById(R.id.choseSpecLayout);
-        this.avaliableExchange = (TextView) findViewById(R.id.avaliableExchange);
         this.price = (TextView) findViewById(R.id.price);
         this.close = (ImageView) findViewById(R.id.close);
         this.rootLayout = (LinearLayout) findViewById(R.id.root_layout);
@@ -63,9 +60,8 @@ public class ChooseSpecActivity extends Activity {
         confirm.setOnRippleCompleteListener(new OnRippleCompleteListener() {
             @Override
             public void onComplete(View v) {
-                if (choosedSku != null) {
+                if (choosedStock != null) {
                     Intent data = new Intent();
-                    data.putExtra(Constants.ActivityExtra.CHOOSE_SKU, choosedSku);
                     data.putExtra(Constants.ActivityExtra.CHOOSE_STOCK, choosedStock);
                     setResult(RESULT_OK, data);
                     finish();
@@ -88,12 +84,29 @@ public class ChooseSpecActivity extends Activity {
         final ArrayList<Sku> skus = getIntent().getParcelableArrayListExtra(Constants.ActivityExtra.SKU_LIST);
         final ArrayList<Stock> stockItems = getIntent().getParcelableArrayListExtra(Constants.ActivityExtra.STOCK_LIST);
         name.setText(detail.getName());
-        price.setText(Utils.formartPrice( detail.getPrice()) + "+" + detail.getScore() + "美券");
-        avaliableExchange.setText("可兑换" + detail.getInventory() + "件");
+        price.setText(Utils.formartPrice(detail.getPrice()) + "+" + detail.getScore() + "美券");
+        stock.setText("可兑换" + detail.getInventory() + "件");
 //        GoodsItem
         icon.setImageUri(R.mipmap.ic_shop_default, detail.getPhotos().size() > 0 ? detail.getPhotos().get(0) : "");
 
-        choseSpecLayout.setSkuItems(skus,stockItems);
+        choseSpecLayout.setSkuItems(skus, stockItems);
+        choseSpecLayout.setOnStockChoosedListener(new ChooseSpecLayout.OnStockChoosedListener() {
+            @Override
+            public void onStockChoosed(Stock item) {
+                try {
+                    choosedStock = item;
+                    int num = choosedStock != null ? choosedStock.getInventory() : 0;
+                    stock.setText("可兑换：" + num + "件");
+                    if (num > 0) {
+                        confirm.setEnabled(true);
+                    } else {
+                        confirm.setEnabled(false);
+                    }
+                } catch (Exception e) {
+                    ToastMaster.popToast(ChooseSpecActivity.this, "数据错误");
+                }
+            }
+        });
 //        choseSpecLayout.setOnStockChoosedListener(new ChooseSpecLayout.OnStockChoosedListener() {
 //            @Override
 //            public void onSkuChanged(Sku item) {
