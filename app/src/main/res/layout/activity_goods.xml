@@ -61,7 +61,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/h9"
                 android:paddingLeft="@dimen/w30"
-                android:paddingRight="@dimen/w30">
+                android:paddingRight="@dimen/w30"
+                android:paddingBottom="@dimen/h20">
 
                 <TextView
                     android:id="@+id/price"
