@@ -21,9 +21,11 @@ public abstract class BaseActivity extends AppCompatActivity implements IContext
     protected void handleIntent() {
 
     }
+    protected void setContentView() {
+        setContentView(getContentViewId());
+    }
 
-    protected abstract void setContentView();
-
+    protected abstract int getContentViewId();
     protected abstract void initView();
 
     protected abstract void initData();

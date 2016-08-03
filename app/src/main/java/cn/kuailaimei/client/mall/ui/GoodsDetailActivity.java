@@ -56,9 +56,10 @@ public class GoodsDetailActivity extends BaseActivity {
     private Stock choosedStock;
     private GoodsDetail goodsDetail;
 
+
     @Override
-    protected void setContentView() {
-        setContentView(R.layout.activity_goods);
+    protected int getContentViewId() {
+        return R.layout.activity_goods;
     }
 
     @Override

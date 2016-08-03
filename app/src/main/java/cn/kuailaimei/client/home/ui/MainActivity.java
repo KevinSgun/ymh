@@ -37,9 +37,10 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         super.onCreate(savedInstanceState);
     }
 
+
     @Override
-    protected void setContentView() {
-        setContentView(R.layout.activity_main);
+    protected int getContentViewId() {
+        return R.layout.activity_main;
     }
 
     @Override

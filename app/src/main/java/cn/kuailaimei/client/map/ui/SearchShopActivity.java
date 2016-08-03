@@ -8,9 +8,10 @@ import cn.kuailaimei.client.common.ui.BaseActivity;
  * 暂时先不做搜索，先留着
  */
 public class SearchShopActivity extends BaseActivity{
+
     @Override
-    protected void setContentView() {
-        setContentView(R.layout.activity_search_shop);
+    protected int getContentViewId() {
+        return R.layout.activity_search_shop;
     }
 
     @Override

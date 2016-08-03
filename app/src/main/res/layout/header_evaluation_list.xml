@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h74"
+        android:layout_marginTop="@dimen/h15"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/w30"
+        android:paddingRight="@dimen/w30">
+
+        <TextView
+            style="@style/CommonTextPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="客户评价"
+            android:textSize="@dimen/w24" />
+
+        <TextView
+            style="@style/CommonTextPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="满意度："
+            android:textSize="@dimen/w24" />
+
+        <TextView
+            android:id="@+id/evaluation_rate"
+            style="@style/CommonTextPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="100%"
+            android:textColor="@color/textColorPink"
+            android:textSize="@dimen/w24" />
+
+        <ImageView
+            android:layout_width="@dimen/w15"
+            android:layout_height="@dimen/w24"
+            android:layout_marginLeft="@dimen/w19"
+            android:src="@mipmap/ic_gray_arrow" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h1"
+        android:background="@color/divider_color" />
+
+    <cn.kuailaimei.client.common.widget.MutilRadioGroup
+        android:id="@+id/review_chooser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/h18"
+        android:paddingLeft="@dimen/w30"
+        android:paddingRight="@dimen/w30">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/h20"
+            android:paddingTop="@dimen/h30">
+
+            <RadioButton
+                android:id="@+id/all_reviews"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/w56"
+                android:background="@drawable/sl_common_positive"
+                android:button="@null"
+                android:checked="true"
+                android:enabled="false"
+                android:gravity="center"
+                android:paddingLeft="@dimen/w20"
+                android:paddingRight="@dimen/w20"
+                android:text="全部评价(9999)"
+                android:textColor="@color/common_pink_white_color" />
+
+            <RadioButton
+                android:id="@+id/high_positive_reviews"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/w56"
+                android:layout_marginLeft="@dimen/w20"
+                android:background="@drawable/sl_common_positive"
+                android:button="@null"
+                android:checked="false"
+                android:enabled="false"
+                android:gravity="center"
+                android:paddingLeft="@dimen/w20"
+                android:paddingRight="@dimen/w20"
+                android:text="满意(123)"
+                android:textColor="@color/common_pink_white_color" />
+
+            <RadioButton
+                android:id="@+id/positive_reviews"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/w56"
+                android:layout_marginLeft="@dimen/w20"
+                android:background="@drawable/sl_common_positive"
+                android:button="@null"
+                android:checked="false"
+                android:enabled="false"
+                android:gravity="center"
+                android:paddingLeft="@dimen/w20"
+                android:paddingRight="@dimen/w20"
+                android:text="满意(999999)"
+                android:textColor="@color/common_pink_white_color" />
+        </LinearLayout>
+
+        <RadioButton
+            android:id="@+id/negative_reviews"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/w56"
+            android:background="@drawable/sl_common_negative"
+            android:button="@null"
+            android:checked="false"
+            android:enabled="false"
+            android:gravity="center"
+            android:paddingLeft="@dimen/w20"
+            android:paddingRight="@dimen/w20"
+            android:text="不满意(999999)"
+            android:textColor="@color/common_gray_white_color" />
+    </cn.kuailaimei.client.common.widget.MutilRadioGroup>
+
+    <CheckBox
+        android:layout_marginBottom="@dimen/h20"
+        style="@style/CommonTextSecondary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/w30"
+        android:button="@null"
+        android:drawableLeft="@drawable/sl_show_content"
+        android:drawablePadding="@dimen/w10"
+        android:gravity="center_vertical"
+        android:text="只看有内容的评价"
+        android:textColor="@color/textColorPrimaryGray" />
+</LinearLayout>

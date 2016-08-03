@@ -25,6 +25,7 @@ import cn.kuailaimei.client.api.request.UpdateProfileRequest;
 import cn.kuailaimei.client.api.response.AssistantListResposne;
 import cn.kuailaimei.client.api.response.CreditOrderDetailResponse;
 import cn.kuailaimei.client.api.response.DesignerDetail;
+import cn.kuailaimei.client.api.response.EvaluationList;
 import cn.kuailaimei.client.api.response.ExchangeDetailResponse;
 import cn.kuailaimei.client.api.response.ExchangeHistoryRespnse;
 import cn.kuailaimei.client.api.response.ExchangeListResponse;
@@ -209,6 +210,16 @@ public interface StoreService {
     @Headers("Content-Type:" + RetrofitClient.JSON)
     Observable<ApiResponse<ShopDetailResponse>> getShopDetail(@Body Request body);
 
+    /**
+     * 评论列表
+     *
+     * @param body
+     * @return
+     * @see cn.kuailaimei.client.api.request.EvaluationRequest
+     */
+    @POST(NetConstants.ORDER_EVALUATELIST)
+    @Headers("Content-Type:" + RetrofitClient.JSON)
+    Observable<ApiResponse<EvaluationList>> getShopEvaluations(@Body Request body);
 
     /**
      * 附近地图接口
@@ -267,13 +278,15 @@ public interface StoreService {
 
     /**
      * 43 积分商城订单详情
-     *@see  cn.kuailaimei.client.api.request.OrderIDRequest
+     *
      * @param body
      * @return
+     * @see cn.kuailaimei.client.api.request.OrderIDRequest
      */
     @POST(NetConstants.SCORE_ORDER_ORDERDETAIL)
     @Headers("Content-Type:" + RetrofitClient.JSON)
     Observable<ApiResponse<CreditOrderDetailResponse>> getOrderDetail(@Body Request body);
+
     /**
      * 删除收藏店铺
      *
@@ -284,6 +297,7 @@ public interface StoreService {
     @POST(NetConstants.STORE_STOREUP)
     @Headers("Content-Type:" + RetrofitClient.JSON)
     Observable<ApiResponse> favorite(@Body Request body);
+
     /**
      * 删除收藏店铺
      *

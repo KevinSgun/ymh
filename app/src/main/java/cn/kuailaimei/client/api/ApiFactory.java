@@ -22,6 +22,7 @@ import cn.kuailaimei.client.api.request.SIDRequest;
 import cn.kuailaimei.client.api.response.AssistantListResposne;
 import cn.kuailaimei.client.api.response.CreditOrderDetailResponse;
 import cn.kuailaimei.client.api.response.DesignerDetail;
+import cn.kuailaimei.client.api.response.EvaluationList;
 import cn.kuailaimei.client.api.response.ExchangeDetailResponse;
 import cn.kuailaimei.client.api.response.ExchangeHistoryRespnse;
 import cn.kuailaimei.client.api.response.ExchangeListResponse;
@@ -329,6 +330,18 @@ public class ApiFactory {
     public static Observable<ApiResponse<ShopDetailResponse>> getShopDetail(Request request) {
         return getStoreService().getShopDetail(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
     }
+    /**
+     * 评论列表
+     *
+     * @param request
+     * @return
+     * @see cn.kuailaimei.client.api.request.EvaluationRequest
+     */
+
+    public static Observable<ApiResponse<EvaluationList>> getShopEvaluations(Request request) {
+        return getStoreService().getShopEvaluations(request).map(new HttpResultFunc()).compose(SchedulersCompat.applyIoSchedulers());
+    }
+
 
     /**
      * 我的订单列表

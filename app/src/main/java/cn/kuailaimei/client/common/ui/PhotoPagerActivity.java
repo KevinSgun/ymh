@@ -41,8 +41,8 @@ public class PhotoPagerActivity extends BaseActivity {
     private TextView photoCountTv;
 
     @Override
-    protected void setContentView() {
-        setContentView(R.layout.activity_photos_pager);
+    protected int getContentViewId() {
+        return R.layout.activity_photos_pager;
     }
 
 

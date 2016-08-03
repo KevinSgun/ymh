@@ -23,6 +23,8 @@ import cn.kuailaimei.client.api.response.ShopDetailResponse;
 import cn.kuailaimei.client.common.ui.AppBarActivity;
 import cn.kuailaimei.client.common.utils.ToastMaster;
 import cn.kuailaimei.client.common.widget.FullyGridLayoutManager;
+import cn.kuailaimei.client.common.widget.OnRippleCompleteListener;
+import cn.kuailaimei.client.common.widget.RippleLinearLayout;
 import cn.kuailaimei.client.common.widget.ToolBarHelper;
 import cn.kuailaimei.client.home.adapter.DesignerRecycleViewAdapter;
 
@@ -56,8 +58,8 @@ public class ShopHomeActivity extends AppBarActivity {
     private String id;
     private RecyclerView salonList;
     private TextView employeeNum;
-//    private RecyclerView beautyList;
-
+    //    private RecyclerView beautyList;
+    private RippleLinearLayout evaluations;
 
     @Override
     protected int getContentViewId() {
@@ -86,6 +88,7 @@ public class ShopHomeActivity extends AppBarActivity {
         this.salonList = (RecyclerView) findViewById(R.id.salon_list);
         this.typeChooser = (RadioGroup) findViewById(R.id.type_chooser);
         this.employeeNum = (TextView) findViewById(R.id.employee_num);
+        this.evaluations = (RippleLinearLayout) findViewById(R.id.evaluations);
 //        this.beautyList = (RecyclerView) findViewById(R.id.beauty_list);
         salonList.setLayoutManager(new FullyGridLayoutManager(this, 2));
 //        beautyList.setLayoutManager(new GridLayoutManager(this, 2));
@@ -153,7 +156,12 @@ public class ShopHomeActivity extends AppBarActivity {
             isFavorite = false;
             setRightImg(R.mipmap.mark);
         }
-
+        evaluations.setOnRippleCompleteListener(new OnRippleCompleteListener() {
+            @Override
+            public void onComplete(View v) {
+                EvaluateListActivity.launch(getContext(),String.valueOf(shopInfo.getId()));
+            }
+        });
 //        reviewChooser
 //        salonList.setAdapter();
 //        allOrSalonList=new

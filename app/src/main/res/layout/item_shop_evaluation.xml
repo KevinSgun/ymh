@@ -14,6 +14,7 @@
         android:gravity="center_vertical">
 
         <TextView
+            android:id="@+id/satisfaction"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -22,12 +23,14 @@
             android:textSize="@dimen/w28" />
 
         <TextView
+            android:id="@+id/nickname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="153****0909"
             android:textColor="@color/textColorPrimaryGray" />
 
         <com.zitech.framework.widget.RemoteImageView
+            android:layout_marginLeft="@dimen/w20"
             android:id="@+id/avatar"
             android:layout_width="@dimen/w40"
             android:layout_height="@dimen/w40"
@@ -36,6 +39,7 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/h30"
@@ -45,6 +49,7 @@
         android:layout_marginRight="@dimen/w30"/>
 
     <TextView
+        android:id="@+id/date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/h30"

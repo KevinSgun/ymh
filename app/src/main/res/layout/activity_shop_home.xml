@@ -129,7 +129,7 @@
         </LinearLayout>
 
 
-        <LinearLayout
+        <cn.kuailaimei.client.common.widget.RippleLinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/h74"
             android:layout_marginTop="@dimen/h15"
@@ -137,7 +137,8 @@
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:paddingLeft="@dimen/w30"
-            android:paddingRight="@dimen/w30">
+            android:paddingRight="@dimen/w30"
+            android:id="@+id/evaluations">
 
             <TextView
                 style="@style/CommonTextPrimary"
@@ -168,7 +169,7 @@
                 android:layout_height="@dimen/w24"
                 android:layout_marginLeft="@dimen/w19"
                 android:src="@mipmap/ic_gray_arrow" />
-        </LinearLayout>
+        </cn.kuailaimei.client.common.widget.RippleLinearLayout>
 
         <View
             android:layout_width="match_parent"

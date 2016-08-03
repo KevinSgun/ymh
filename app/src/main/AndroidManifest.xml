@@ -148,7 +148,8 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".mall.ui.PayActivity"
             android:screenOrientation="portrait"/>
-
+        <activity android:name=".shop.ui.EvaluateListActivity"
+            android:screenOrientation="portrait"/>
         <!-- 百度地图相关配置 start-->
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"

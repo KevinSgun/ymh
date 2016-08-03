@@ -45,6 +45,7 @@ public class Constants {
         int SELECT_AREA_NAME = 0x12;
         String ADDRESS ="address" ;
         String PRICE ="price" ;
+        String SHOP_ID = "shop_id";
     }
 
     public interface FragmentExtra {
