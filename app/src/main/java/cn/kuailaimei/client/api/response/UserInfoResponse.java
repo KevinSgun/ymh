@@ -18,6 +18,8 @@ public class UserInfoResponse {
     private String token;
     private String sex;
     private String birthday;
+    private String signature;//个性签名
+    private String pushId;//极光推送ID
 
     public String getMobile() {
         return mobile;
@@ -65,5 +67,21 @@ public class UserInfoResponse {
 
     public void setBirthday(String birthday) {
         this.birthday = birthday;
+    }
+
+    public String getSignature() {
+        return signature;
+    }
+
+    public void setSignature(String signature) {
+        this.signature = signature;
+    }
+
+    public String getPushId() {
+        return pushId;
+    }
+
+    public void setPushId(String pushId) {
+        this.pushId = pushId;
     }
 }

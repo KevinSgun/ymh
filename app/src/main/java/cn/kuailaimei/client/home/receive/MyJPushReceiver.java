@@ -4,14 +4,17 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Iterator;
+import java.util.Set;
 
 import cn.jpush.android.api.JPushInterface;
+import cn.jpush.android.api.TagAliasCallback;
 import cn.kuailaimei.client.common.User;
 import cn.kuailaimei.client.common.utils.StringUtils;
 import cn.kuailaimei.client.common.utils.Utils;
@@ -31,8 +34,8 @@ public class MyJPushReceiver extends BroadcastReceiver {
         if (JPushInterface.ACTION_REGISTRATION_ID.equals(intent.getAction())) {
             String regId = bundle.getString(JPushInterface.EXTRA_REGISTRATION_ID);
             //send the Registration Id to your server...
-            if(!User.get().isNotLogin())
-                Utils.bindJGPushIdToService(regId);
+            if(!User.get().isNotLogin()&& TextUtils.isEmpty(User.get().getPushId()))
+                JPushInterface.setAliasAndTags(context,User.get().getMobile(),null,mAliasCallback);
         } else if (JPushInterface.ACTION_MESSAGE_RECEIVED.equals(intent.getAction())) {
             Log.d(TAG, "[MyJPushReceiver] 接收到推送下来的自定义消息: " + bundle.getString(JPushInterface.EXTRA_MESSAGE));
             processCustomMessage(context, bundle);
@@ -119,5 +122,16 @@ public class MyJPushReceiver extends BroadcastReceiver {
             context.sendBroadcast(msgIntent);
         }
     }
+
+    private final TagAliasCallback mAliasCallback = new TagAliasCallback() {
+
+        @Override
+        public void gotResult(int code, String alias, Set<String> tags) {
+            if(code == 0){
+                Utils.bindJGPushIdToService(alias);
+            }
+        }
+
+    };
 
 }

@@ -12,7 +12,10 @@ import com.zitech.framework.data.network.entity.Basic;
 import com.zitech.framework.data.network.response.ApiResponse;
 import com.zitech.framework.data.network.subscribe.ProgressSubscriber;
 
+import java.util.Set;
+
 import cn.jpush.android.api.JPushInterface;
+import cn.jpush.android.api.TagAliasCallback;
 import cn.kuailaimei.client.Constants;
 import cn.kuailaimei.client.R;
 import cn.kuailaimei.client.api.ApiFactory;
@@ -90,8 +93,8 @@ public class LoginActivity extends AppBarActivity implements View.OnClickListene
                     protected void onNextInActive(ApiResponse<UserInfoResponse> userInfoResponseApiResponse) {
                         Basic basic = userInfoResponseApiResponse.getBasic();
                         if(basic.getStatus() == 1){
-                            Utils.bindJGPushIdToService(JPushInterface.getRegistrationID(getApplicationContext()));
                             User.get().storeFromUserInfo(userInfoResponseApiResponse.getData());
+                            JPushInterface.setAliasAndTags(getApplicationContext(),User.get().getMobile(),null,mAliasCallback);
                             if(isFirstLaunchMain)
                                 skipActivity(MainActivity.class);
                             else
@@ -103,6 +106,17 @@ public class LoginActivity extends AppBarActivity implements View.OnClickListene
             }
         }
     }
+
+    private TagAliasCallback mAliasCallback = new TagAliasCallback() {
+
+        @Override
+        public void gotResult(int code, String alias, Set<String> tags) {
+            if(code == 0){
+                Utils.bindJGPushIdToService(alias);
+            }
+        }
+
+    };
 
     private boolean inputStatusIsCorrect() {
         if(TextUtils.isEmpty(inputphoneet.getText().toString())){

@@ -1,5 +1,7 @@
 package cn.kuailaimei.client.common.utils;
 
+import android.text.TextUtils;
+
 import com.zitech.framework.data.network.response.ApiResponse;
 import com.zitech.framework.utils.LogUtils;
 
@@ -8,6 +10,7 @@ import cn.kuailaimei.client.api.ApiFactory;
 import cn.kuailaimei.client.api.request.PushIdRequest;
 import cn.kuailaimei.client.api.request.Request;
 import cn.kuailaimei.client.common.SP;
+import cn.kuailaimei.client.common.User;
 import rx.functions.Action1;
 
 /**
@@ -44,7 +47,7 @@ public class Utils extends com.zitech.framework.utils.Utils {
         return "￥" + price;
     }
     public static void bindJGPushIdToService(final String registerId) {
-        if(!SP.getDefaultSP().getBoolean(Constants.IS_BINDING_JPUSH_ID,false)) return;
+        if(!TextUtils.isEmpty(User.get().getPushId())) return;
         PushIdRequest pushRequest = new PushIdRequest();
         pushRequest.setPushId(registerId);
         Request request = new Request(pushRequest);
