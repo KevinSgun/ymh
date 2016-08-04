@@ -3,13 +3,19 @@ package cn.kuailaimei.client.mine.ui;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
+import com.zitech.framework.utils.IoUtil;
+import com.zitech.framework.utils.Utils;
+import com.zitech.framework.widget.LoadingDialog;
+
 import cn.kuailaimei.client.R;
 import cn.kuailaimei.client.common.User;
 import cn.kuailaimei.client.common.ui.AppBarActivity;
+import cn.kuailaimei.client.common.utils.ToastMaster;
 import cn.kuailaimei.client.common.widget.CommonDialog;
 import cn.kuailaimei.client.login.ui.LoginActivity;
 import cn.kuailaimei.client.login.ui.ModifyPassWordActivity;
@@ -22,6 +28,7 @@ public class SettingActivity extends AppBarActivity implements View.OnClickListe
     private LinearLayout modifypsdlayout;
     private LinearLayout clearcachelayout;
     private Button loginoutbtn;
+    private LoadingDialog loadingDialog;
 
     @Override
     protected int getContentViewId() {
@@ -64,11 +71,32 @@ public class SettingActivity extends AppBarActivity implements View.OnClickListe
                 break;
             case R.id.clear_cache_layout:
                //清除缓存
+                if (loadingDialog == null)
+                    loadingDialog = LoadingDialog.newInstance();
                 CommonDialog dialog = new CommonDialog(this,"确定要清除所有缓存吗");
                 dialog.setOnPositiveButtonClickListener(new CommonDialog.OnPositiveButtonClickListener() {
                     @Override
                     public void onClick(Dialog dialog) {
                         //TODO 清除缓存
+                        double size = Utils.sizeOfDiskCache();
+                        if (size > 0) {
+                            loadingDialog.show(getSupportFragmentManager(),"clearCache");
+                            new AsyncTask<Void, Void, Void>() {
+
+                                @Override
+                                protected Void doInBackground(Void... params) {
+                                    IoUtil.clearDir(Utils.getDiskCachePath(null));
+                                    return null;
+                                }
+
+                                protected void onPostExecute(Void result) {
+                                    loadingDialog.dismiss();
+                                    ToastMaster.shortToast("清理缓存成功");
+                                }
+                            }.execute((Void) null);
+                        } else {
+                            ToastMaster.shortToast("清理缓存成功");
+                        }
                     }
                 });
                 dialog.show();

@@ -2,11 +2,11 @@ package cn.kuailaimei.client.common;
 
 import android.text.TextUtils;
 
+import org.greenrobot.eventbus.EventBus;
+
 import cn.kuailaimei.client.BeautApplication;
 import cn.kuailaimei.client.api.response.UserInfoResponse;
 import cn.kuailaimei.client.common.event.EventFactory;
-
-import org.greenrobot.eventbus.EventBus;
 
 /**
  * Created by ymh on 2016/7/1 0001.
@@ -18,6 +18,8 @@ public class User {
     private static final String PORTRAIT="portrait";
     private static final String SEX="sex";
     private static final String BIRTHDAY="birthday";
+    private static final String SIGNATURE="signature";
+    private static final String PUSHID="pushId";
     private SP sp;
     private String mobile;
     private String nickname;
@@ -25,6 +27,8 @@ public class User {
     private String token;
     private String sex;
     private String birthday;
+    private String signature;//个性签名
+    private String pushId;//极光推送ID
 
     public static User get() {
         return BeautApplication.getInstance().getUser();
@@ -38,6 +42,8 @@ public class User {
         nickname = sp.getString(NICKNAME,"");
         sex = sp.getString(SEX, "");
         birthday = sp.getString(BIRTHDAY,"");
+        signature = sp.getString(SIGNATURE,"");
+        pushId = sp.getString(PUSHID,"");
     }
 
     public void storeFromUserInfo(UserInfoResponse userInfo) {
@@ -48,6 +54,8 @@ public class User {
         storeSex(userInfo.getSex());
         storePortrait(userInfo.getPortrait());
         storeBirthday(userInfo.getBirthday());
+        storeSignature(userInfo.getSignature());
+        storePushId(userInfo.getPushId());
         notifyChange();
     }
 
@@ -85,6 +93,16 @@ public class User {
         sp.putString(MOBILE, phoneNumber);
     }
 
+    public void storeSignature(String signature) {
+        this.signature = signature;
+        sp.putString(SIGNATURE, signature);
+    }
+
+    public void storePushId(String pushId) {
+        this.pushId = pushId;
+        sp.putString(PUSHID, pushId);
+    }
+
     public void notifyChange() {
         EventBus.getDefault().post(new EventFactory.UserDataChange());
     }
@@ -107,6 +125,15 @@ public class User {
     public String getSex() {
         return sex;
     }
+
+    public String getSignature() {
+        return signature;
+    }
+
+    public String getPushId(){
+        return pushId;
+    }
+
 
     public String getSexTxt() {
         if("2".equals(sex))
@@ -143,6 +170,12 @@ public class User {
         //
         sp.remove(BIRTHDAY);
         birthday = "";
+        //
+        sp.remove(PUSHID);
+        pushId = "";
+        //
+        sp.remove(SIGNATURE);
+        signature = "";
         notifyChange();
 
     }

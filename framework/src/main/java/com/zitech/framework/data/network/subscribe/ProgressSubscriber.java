@@ -1,10 +1,8 @@
 package com.zitech.framework.data.network.subscribe;
 
-import android.app.Dialog;
-import android.app.ProgressDialog;
-import android.content.DialogInterface;
+import android.content.Context;
+import android.support.v4.app.FragmentActivity;
 import android.widget.Toast;
-
 
 import com.zitech.framework.data.network.IContext;
 import com.zitech.framework.widget.LoadingDialog;
@@ -21,20 +19,20 @@ import rx.Subscriber;
  */
 public abstract class ProgressSubscriber<T> extends Subscriber<T> {
 
-    private Dialog mDialog;
+    private LoadingDialog mDialog;
 
     private IContext context;
 
     public ProgressSubscriber(IContext context) {
-        this(context, new LoadingDialog(context.getContext()));
+        this(context, LoadingDialog.newInstance());
     }
 
-    public ProgressSubscriber(IContext context, Dialog dialog) {
+    public ProgressSubscriber(IContext context, LoadingDialog dialog) {
         this.context = context;
         mDialog = dialog;
-        mDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+        mDialog.setOnDialogCancelListener(new LoadingDialog.OnDialogCancelListener() {
             @Override
-            public void onCancel(DialogInterface dialogInterface) {
+            public void onCancel() {
                 if (!isUnsubscribed()) {
                     unsubscribe();
                 }
@@ -43,7 +41,9 @@ public abstract class ProgressSubscriber<T> extends Subscriber<T> {
     }
 
     private void showProgressDialog() {
-        mDialog.show();
+        Context ct = context.getContext();
+        if (mDialog!=null&&ct != null && ct instanceof FragmentActivity)
+            mDialog.show(((FragmentActivity) ct).getSupportFragmentManager(), context.getClass().getName());
     }
 
     private void dismissProgressDialog() {
