@@ -146,6 +146,8 @@ public class ProfileFragment extends BaseFragment implements OnRippleCompleteLis
         User user = User.get();
         if (user.notLogin()) {
             nametv.setText("登录/注册");
+            avatar.setImageResource(R.mipmap.ic_avatar);
+            nametv.setText("");
         } else {
             avatar.setBitmapTransformation(new CropCircleTransformation(getActivity()));
             avatar.setImageUri(R.mipmap.ic_avatar, user.getPortrait());

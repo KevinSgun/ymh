@@ -31,6 +31,7 @@ import cn.kuailaimei.client.api.request.HomeDataRequest;
 import cn.kuailaimei.client.api.request.Request;
 import cn.kuailaimei.client.api.response.HomePageResponse;
 import cn.kuailaimei.client.common.SP;
+import cn.kuailaimei.client.common.User;
 import cn.kuailaimei.client.common.ui.BaseFragment;
 import cn.kuailaimei.client.common.widget.CirclePageIndicator;
 import cn.kuailaimei.client.common.widget.LoopViewPager;
@@ -39,6 +40,7 @@ import cn.kuailaimei.client.common.widget.RippleFrameLayout;
 import cn.kuailaimei.client.common.widget.RippleLinearLayout;
 import cn.kuailaimei.client.common.widget.RippleView;
 import cn.kuailaimei.client.home.adapter.HomeDataAdapter;
+import cn.kuailaimei.client.login.ui.LoginActivity;
 import cn.kuailaimei.client.map.BaiduMapHelper;
 import cn.kuailaimei.client.map.LocationCallBack;
 import cn.kuailaimei.client.shop.ui.ShopHomeActivity;
@@ -240,7 +242,7 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
             @Override
             public void onPagerItemClick(int position) {
                 HomePageBanner banner = pagerAdapter.getItemList().get(position);
-
+                //ShopHomeActivity.launch(getActivity(),String.valueOf(banner.getId()));
             }
 
         });
@@ -269,17 +271,29 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
         if (ViewUtils.isFastDoubleClick()) return;
         switch (v.getId()) {
             case R.id.msg_layout:
+                if (!User.get().isNotLogin()) {
 //                ToastMaster.shortToast("消息");
-                MessageListActivity.launch(getContext());
+                    MessageListActivity.launch(getContext());
+                } else {
+                    LoginActivity.launch(getActivity(), false);
+                }
                 break;
 
             case R.id.want_beauty_layout:
-                String sid = getServiceId("美容");
-                BeautyActivity.launch(getActivity(), sid, "我要美容");
+                if (!User.get().isNotLogin()) {
+                    String sid = getServiceId("美容");
+                    BeautyActivity.launch(getActivity(), sid, "我要美容");
+                } else {
+                    LoginActivity.launch(getActivity(), false);
+                }
                 break;
             case R.id.want_salon_layout:
-                String serviceId = getServiceId("美发");
-                BeautyActivity.launch(getActivity(), serviceId, "我要美发");
+                if (!User.get().isNotLogin()) {
+                    String serviceId = getServiceId("美发");
+                    BeautyActivity.launch(getActivity(), serviceId, "我要美发");
+                } else {
+                    LoginActivity.launch(getActivity(), false);
+                }
                 break;
             case R.id.consumer_record_layout:
                 //TODO 进入消费过的店铺首页

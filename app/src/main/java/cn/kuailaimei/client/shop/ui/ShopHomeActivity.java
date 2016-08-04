@@ -20,6 +20,7 @@ import cn.kuailaimei.client.api.request.Request;
 import cn.kuailaimei.client.api.request.SIDRequest;
 import cn.kuailaimei.client.api.response.ShopDetailRequest;
 import cn.kuailaimei.client.api.response.ShopDetailResponse;
+import cn.kuailaimei.client.common.User;
 import cn.kuailaimei.client.common.ui.AppBarActivity;
 import cn.kuailaimei.client.common.utils.ToastMaster;
 import cn.kuailaimei.client.common.widget.FullyGridLayoutManager;
@@ -27,6 +28,7 @@ import cn.kuailaimei.client.common.widget.OnRippleCompleteListener;
 import cn.kuailaimei.client.common.widget.RippleLinearLayout;
 import cn.kuailaimei.client.common.widget.ToolBarHelper;
 import cn.kuailaimei.client.home.adapter.DesignerRecycleViewAdapter;
+import cn.kuailaimei.client.login.ui.LoginActivity;
 
 import com.zitech.framework.data.network.response.ApiResponse;
 import com.zitech.framework.data.network.subscribe.ProgressSubscriber;
@@ -102,6 +104,11 @@ public class ShopHomeActivity extends AppBarActivity {
     protected void onActionBarItemClick(int position) {
         super.onActionBarItemClick(position);
         if (position == ToolBarHelper.ITEM_RIGHT) {
+
+            if(User.get().notLogin()){
+                LoginActivity.launch(this,false);
+                return;
+            }
             if (!TextUtils.isEmpty(sid)) {
                 if (isFavorite) {
                     SIDRequest req = new SIDRequest();

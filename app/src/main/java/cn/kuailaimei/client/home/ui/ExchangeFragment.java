@@ -24,12 +24,14 @@ import cn.kuailaimei.client.api.entity.ExchangeBanner;
 import cn.kuailaimei.client.api.request.ExchangeListRequest;
 import cn.kuailaimei.client.api.request.Request;
 import cn.kuailaimei.client.api.response.ExchangeListResponse;
+import cn.kuailaimei.client.common.User;
 import cn.kuailaimei.client.common.ui.BaseFragment;
 import cn.kuailaimei.client.common.widget.CirclePageIndicator;
 import cn.kuailaimei.client.common.widget.LoopViewPager;
 import cn.kuailaimei.client.common.widget.OnRippleCompleteListener;
 import cn.kuailaimei.client.common.widget.RippleLinearLayout;
 import cn.kuailaimei.client.common.widget.RippleView;
+import cn.kuailaimei.client.login.ui.LoginActivity;
 import cn.kuailaimei.client.mall.ui.ExchangeHistoryActivity;
 import cn.kuailaimei.client.mall.ui.ExchangeListFragment;
 import cn.kuailaimei.client.mall.adapter.ExchangeListAdapter;
@@ -63,13 +65,22 @@ public class ExchangeFragment extends BaseFragment {
         userAccount.setOnRippleCompleteListener(new OnRippleCompleteListener() {
             @Override
             public void onComplete(View v) {
-                MyScoreActivity.launch(getActivity(), 0);
+                if(!User.get().notLogin()) {
+                    MyScoreActivity.launch(getActivity(), 0);
+                }else {
+                    LoginActivity.launch(getActivity(),false);
+                }
             }
         });
         exchangeHistory.setOnRippleCompleteListener(new OnRippleCompleteListener() {
             @Override
             public void onComplete(View v) {
-                ExchangeHistoryActivity.launch(getContext());
+                if(!User.get().notLogin()) {
+                    ExchangeHistoryActivity.launch(getContext());
+                }else {
+                    LoginActivity.launch(getActivity(),false);
+                }
+
             }
         });
 //        ApiFactory.get

@@ -15,6 +15,7 @@ limitations under the License.
  */
 package cn.kuailaimei.client.home.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.ViewHolder;
@@ -26,6 +27,8 @@ import android.widget.TextView;
 
 import cn.kuailaimei.client.R;
 import cn.kuailaimei.client.api.entity.Employee;
+import cn.kuailaimei.client.common.User;
+import cn.kuailaimei.client.login.ui.LoginActivity;
 import cn.kuailaimei.client.shop.ui.DesignerHomeActivity;
 import cn.kuailaimei.client.common.utils.ToastMaster;
 
@@ -57,6 +60,10 @@ public class DesignerRecycleViewAdapter extends RecyclerView.Adapter<DesignerRec
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (User.get().notLogin()) {
+                    LoginActivity.launch((Activity) mContext, false);
+                    return;
+                }
                 DesignerHomeActivity.launch(mContext, String.valueOf(employee.getUid()));
             }
         });

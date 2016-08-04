@@ -128,6 +128,7 @@
     </cn.kuailaimei.client.common.widget.MutilRadioGroup>
 
     <CheckBox
+        android:visibility="gone"
         android:layout_marginBottom="@dimen/h20"
         style="@style/CommonTextSecondary"
         android:layout_width="wrap_content"
