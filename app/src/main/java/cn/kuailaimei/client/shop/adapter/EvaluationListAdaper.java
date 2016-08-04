@@ -37,7 +37,7 @@ public class EvaluationListAdaper extends ListAdapter<Evaluation> implements IDa
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView =LayoutInflater.from(mContext).inflate( R.layout.item_shop_evaluation, null);
+            convertView = LayoutInflater.from(mContext).inflate(R.layout.item_shop_evaluation, null);
         }
         final Evaluation evaluation = mList.get(position);
         TextView satisfaction = (TextView) ViewHolderUtil.get(convertView, R.id.satisfaction);
@@ -49,12 +49,12 @@ public class EvaluationListAdaper extends ListAdapter<Evaluation> implements IDa
         avatar.setImageUri(R.mipmap.ic_avatar_small, evaluation.getPortrait());
 
         nickname.setText(evaluation.getUname());
-        satisfaction.setText("满意");
+//        commentType
+        satisfaction.setText(evaluation.getSatisfaction());
         date.setText(evaluation.getDate());
         content.setText(evaluation.getContent());
         return convertView;
     }
-
 
 
     @Override

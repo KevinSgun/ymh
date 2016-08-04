@@ -19,6 +19,7 @@ public class Evaluation {
     private int uid;
     private String uname;
     private String portrait;
+    private int commentType;// 评论类型 评论类型 1非常满意 2满意 3不满意
 
     public String getContent() {
         return content;
@@ -66,5 +67,26 @@ public class Evaluation {
 
     public void setPortrait(String portrait) {
         this.portrait = portrait;
+    }
+
+    public int getCommentType() {
+        return commentType;
+    }
+
+    public void setCommentType(int commentType) {
+        this.commentType = commentType;
+    }
+
+    public String getSatisfaction() {
+        switch (commentType) {
+            case 1:
+                return "非常满意";
+            case 2:
+                return "满意";
+            case 3:
+                return "不满意";
+
+        }
+        return "满意";
     }
 }

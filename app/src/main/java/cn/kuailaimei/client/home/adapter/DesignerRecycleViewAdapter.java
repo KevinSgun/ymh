@@ -81,7 +81,12 @@ public class DesignerRecycleViewAdapter extends RecyclerView.Adapter<DesignerRec
         order.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ToastMaster.popToast(mContext, "设计师:" + employee.getAlias());
+                //ToastMaster.popToast(mContext, "设计师:" + employee.getAlias());
+                if (User.get().notLogin()) {
+                    LoginActivity.launch((Activity) mContext, false);
+                    return;
+                }
+                DesignerHomeActivity.launch(mContext, String.valueOf(employee.getUid()));
             }
         });
     }
