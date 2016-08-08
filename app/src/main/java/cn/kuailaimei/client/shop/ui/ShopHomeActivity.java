@@ -143,7 +143,7 @@ public class ShopHomeActivity extends AppBarActivity {
         allReviews.setText("全部(" + shopInfo.getAllComment() + ")");
         highPositiveReviews.setText("很满意(" + shopInfo.getPerfectCount() + ")");
         positiveReviews.setText("满意(" + shopInfo.getGoodCount() + ")");
-        negativeReviews.setText("不满意(" + shopInfo.getGoodCount() + ")");
+        negativeReviews.setText("不满意(" + shopInfo.getBadCount() + ")");
         shopImg.setImageUri(shopInfo.getIcon());
         shopName.setText(shopInfo.getName());
         shopPhonenumber.setText(shopInfo.getPhone());
