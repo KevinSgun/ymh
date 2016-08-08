@@ -24,6 +24,7 @@ import cn.kuailaimei.client.api.entity.Stock;
 import cn.kuailaimei.client.api.request.IDRequest;
 import cn.kuailaimei.client.api.request.Request;
 import cn.kuailaimei.client.api.response.ExchangeDetailResponse;
+import cn.kuailaimei.client.common.User;
 import cn.kuailaimei.client.common.ui.BaseActivity;
 import cn.kuailaimei.client.common.utils.Utils;
 import cn.kuailaimei.client.common.widget.CirclePageIndicator;
@@ -32,6 +33,7 @@ import cn.kuailaimei.client.common.widget.OnRippleCompleteListener;
 import cn.kuailaimei.client.common.widget.RippleButton;
 import cn.kuailaimei.client.common.widget.RippleLinearLayout;
 import cn.kuailaimei.client.common.widget.RippleView;
+import cn.kuailaimei.client.login.ui.LoginActivity;
 
 /**
  * Created by lu on 2016/7/9.
@@ -120,10 +122,18 @@ public class GoodsDetailActivity extends BaseActivity {
                 if(choosedSku==null||choosedStock==null){
                     ChooseSpecActivity.launchForResult((GoodsDetailActivity.this), detail, data.getSku(),data.getStock(), Constants.ActivityExtra.REQUEST_FOR_CHOOSE_SPEC);
                 }else{
-                    OrderActivity.launchForOrder(getContext(), goodsDetail,choosedStock);
+                    tryOrder(getContext(), goodsDetail, choosedStock);
                 }
             }
         });
+    }
+
+    private void tryOrder(Context context, GoodsDetail goodsDetail, Stock choosedStock) {
+        if(User.get().notLogin()){
+            LoginActivity.launch(this,false);
+        }else {
+            OrderActivity.launchForOrder(context, goodsDetail, choosedStock);
+        }
     }
 
     @Override
@@ -131,7 +141,7 @@ public class GoodsDetailActivity extends BaseActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if(resultCode==RESULT_OK&&requestCode== Constants.ActivityExtra.REQUEST_FOR_CHOOSE_SPEC){
             choosedStock=data.getParcelableExtra(Constants.ActivityExtra.CHOOSE_STOCK);
-            OrderActivity.launchForOrder(this, goodsDetail,choosedStock);
+            tryOrder(this, goodsDetail, choosedStock);
         }
     }
 
