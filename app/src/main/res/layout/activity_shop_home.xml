@@ -203,7 +203,7 @@
                     android:gravity="center"
                     android:paddingLeft="@dimen/w20"
                     android:paddingRight="@dimen/w20"
-                    android:text="全部评价(9999)"
+                    android:text="全部(0)"
                     android:textColor="@color/white" />
 
                 <TextView
@@ -217,7 +217,7 @@
                     android:gravity="center"
                     android:paddingLeft="@dimen/w20"
                     android:paddingRight="@dimen/w20"
-                    android:text="满意(123)"
+                    android:text="很满意(0)"
                     android:textColor="@color/common_pink_white_color" />
 
                 <TextView
@@ -231,7 +231,7 @@
                     android:gravity="center"
                     android:paddingLeft="@dimen/w20"
                     android:paddingRight="@dimen/w20"
-                    android:text="满意(999999)"
+                    android:text="满意(0)"
                     android:textColor="@color/common_pink_white_color" />
             </LinearLayout>
 
@@ -245,7 +245,7 @@
                 android:gravity="center"
                 android:paddingLeft="@dimen/w20"
                 android:paddingRight="@dimen/w20"
-                android:text="不满意(999999)"
+                android:text="不满意(0)"
                 android:textColor="@color/common_gray_white_color" />
         </LinearLayout>
 
@@ -260,7 +260,7 @@
             android:layout_height="@dimen/h68"
             android:gravity="center_vertical"
             android:paddingLeft="@dimen/w30"
-            android:text="服务人员推荐(8)" />
+            android:text="服务人员推荐(0)" />
 
         <View
             android:layout_width="match_parent"

@@ -174,7 +174,7 @@
                         android:id="@+id/receiverName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="汪汪汪"
+                        android:text=""
                         android:textColor="@color/textColorPrimary"
                         android:textSize="@dimen/w24" />
 
@@ -190,7 +190,7 @@
                         android:id="@+id/receiverPhone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="15302559900"
+                        android:text=""
                         android:textColor="@color/textColorPrimary"
                         android:textSize="@dimen/w24" />
                 </LinearLayout>
@@ -201,7 +201,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/h10"
-                    android:text="广东省深圳市龙华区黄河路123号小区名称12楼1234"
+                    android:text=""
                     android:textSize="@dimen/w22" />
 
             </LinearLayout>
