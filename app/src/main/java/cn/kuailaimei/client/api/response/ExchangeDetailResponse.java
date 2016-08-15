@@ -13,7 +13,7 @@ public class ExchangeDetailResponse {
     private GoodsDetail goods;
     private ArrayList<Sku> sku;
     private ArrayList<Stock> stock;
-
+    private String phone;
     public GoodsDetail getGoods() {
         return goods;
     }
@@ -36,5 +36,13 @@ public class ExchangeDetailResponse {
 
     public void setStock(ArrayList<Stock> stock) {
         this.stock = stock;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }

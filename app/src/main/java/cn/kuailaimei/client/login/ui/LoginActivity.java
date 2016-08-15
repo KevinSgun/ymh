@@ -48,7 +48,11 @@ public class LoginActivity extends AppBarActivity implements View.OnClickListene
     @Override
     protected void initView() {
         isFirstLaunchMain = getIntent().getBooleanExtra(Constants.ActivityExtra.LOGIN_ABOUT,true);
-        toolbar.setLeftVisible(View.GONE);
+        if(isFirstLaunchMain) {
+            toolbar.setLeftVisible(View.GONE);
+        }else{
+            toolbar.setVisibility(View.VISIBLE);
+        }
         setTitle(R.string.login);
         initialize();
 

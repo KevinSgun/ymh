@@ -2,8 +2,10 @@ package cn.kuailaimei.client.mall.ui;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v4.view.PagerAdapter;
 import android.text.Html;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -92,6 +94,17 @@ public class GoodsDetailActivity extends BaseActivity {
     private void render(final ExchangeDetailResponse data) {
         final GoodsDetail detail = data.getGoods();
         this.goodsDetail=detail;
+
+        if(!TextUtils.isEmpty(data.getPhone())){
+            contactSercie.setOnRippleCompleteListener(new OnRippleCompleteListener() {
+                @Override
+                public void onComplete(View v) {
+                    Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+data.getPhone()));
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                }
+            });
+        }
 //        data.getStock();
         description.setText(Html.fromHtml(detail.getContent()));
         tips.setText(detail.getTooltip());
