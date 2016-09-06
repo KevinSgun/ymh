@@ -33,6 +33,7 @@
             android:layout_width="0dp"
             android:layout_height="@dimen/h135"
             android:layout_weight="1"
+            android:background="#f9b84e"
             app:rv_centered="true">
 
             <TextView
@@ -41,7 +42,7 @@
                 android:layout_gravity="center_vertical|left"
                 android:layout_marginLeft="@dimen/w40"
                 android:text="我要美容"
-                android:textColor="#f9b84e"
+                android:textColor="@color/white"
                 android:textSize="@dimen/w32" />
 
             <ImageView
@@ -62,6 +63,7 @@
             android:layout_width="0dp"
             android:layout_height="@dimen/h135"
             android:layout_weight="1"
+            android:background="#ff63a5"
             app:rv_centered="true">
 
             <TextView
@@ -70,7 +72,7 @@
                 android:layout_gravity="center_vertical|left"
                 android:layout_marginLeft="@dimen/w40"
                 android:text="我要美发"
-                android:textColor="@color/textColorPink"
+                android:textColor="@color/white"
                 android:textSize="@dimen/w32" />
 
             <ImageView

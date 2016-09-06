@@ -43,7 +43,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:name="cn.kuailaimei.client.BeautApplication">
-        <activity android:name="cn.kuailaimei.client.home.ui.MainActivity"
+        <activity android:name="cn.kuailaimei.client.login.ui.SplashActivity"
+            android:theme="@style/SplashTheme"
             android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -51,6 +52,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="cn.kuailaimei.client.home.ui.MainActivity"
+            android:screenOrientation="portrait"
+            />
         <activity android:name="cn.kuailaimei.client.home.ui.BeautyActivity"
             android:screenOrientation="portrait"
        />

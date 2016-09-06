@@ -13,6 +13,11 @@
         <item name="numberPickerStyle">@style/NPWidget.Holo.NumberPicker</item>
     </style>
 
+    <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowFrame">@drawable/transparent</item>
+        <item name="android:windowBackground">@drawable/transparent</item>
+    </style>
 
     <style name="AppActionbarStyle" parent="@android:style/Widget.Holo.Light.ActionBar">
         <item name="android:background">#75caff</item>
